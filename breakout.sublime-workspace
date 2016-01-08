@@ -1,0 +1,582 @@
+{
+	"auto_complete":
+	{
+		"selected_items":
+		[
+			[
+				"event",
+				"eventHandlers"
+			],
+			[
+				"SDL_SC",
+				"SDL_SCANCODE_LEFT"
+			],
+			[
+				"SDL_Get",
+				"SDL_GetPerformanceFrequency"
+			],
+			[
+				"update",
+				"updateVelocityWithAngle"
+			],
+			[
+				"colli",
+				"collidedObject"
+			],
+			[
+				"handle",
+				"handleEvents	(GameManager.h)"
+			],
+			[
+				"ENTY",
+				"ENTITY_HEIGHT	(Entity.h)"
+			],
+			[
+				"ENTITY_",
+				"ENTITY_WIDTH	(Entity.h)"
+			],
+			[
+				"instance",
+				"instanceFlag	(EventHandler.h)"
+			],
+			[
+				"key",
+				"keyDownCallbacks"
+			],
+			[
+				"registerKe",
+				"registerKeyDown	(EventHandler.h)"
+			],
+			[
+				"ca",
+				"callbacks"
+			],
+			[
+				"handl",
+				"handleEvents	(EventHandler.h)"
+			],
+			[
+				"quit",
+				"quitReceived"
+			],
+			[
+				"Event",
+				"EventHandler"
+			],
+			[
+				"SDL_Rend",
+				"SDL_RenderPresent	(09_the_viewport_SDL.cpp)"
+			],
+			[
+				"Render",
+				"Renderer	(09_the_viewport_SDL.cpp)"
+			],
+			[
+				"SDL_Create",
+				"SDL_CreateRenderer	(09_the_viewport_SDL.cpp)"
+			],
+			[
+				"SCREE",
+				"SCREEN_WIDTH"
+			],
+			[
+				"SDL_WINDOW",
+				"SDL_WINDOWPOS_UNDEFINED"
+			],
+			[
+				"SCREEN_",
+				"SCREEN_WIDTH"
+			],
+			[
+				"SCREEN",
+				"SCREEN_HEIGHT"
+			],
+			[
+				"SDL_Des",
+				"SDL_DestroyRenderer	(07_texture_loading_and_rendering_SDL.cpp)"
+			],
+			[
+				"IMG",
+				"IMG_Load"
+			],
+			[
+				"SCRE",
+				"SCREEN_HEIGHT"
+			],
+			[
+				"top",
+				"topRightViewport"
+			],
+			[
+				"to",
+				"topLeftViewport"
+			],
+			[
+				"SCR",
+				"SCREEN_WIDTH"
+			],
+			[
+				"stretc",
+				"stretchRect"
+			],
+			[
+				"loaded",
+				"loadedSurface"
+			],
+			[
+				"optim",
+				"optimizedSurface"
+			],
+			[
+				"Key",
+				"KEY_PRESS_SURFACE_DEFAULT"
+			],
+			[
+				"KEY",
+				"KEY_PRESS_SURFACE_RIGHT"
+			],
+			[
+				"load",
+				"loadSurface"
+			]
+		]
+	},
+	"buffers":
+	[
+		{
+			"file": "Makefile",
+			"settings":
+			{
+				"buffer_size": 568,
+				"line_ending": "Unix"
+			}
+		},
+		{
+			"contents": "{\n	\"folders\":\n	[\n		{\n			\"path\": \"/home/will/Documents/git/Breakout\"\n		}\n	]\n}\n",
+			"file": "project/breakout.sublime-project",
+			"file_size": 77,
+			"file_write_time": 130966993691849662,
+			"settings":
+			{
+				"buffer_size": 77,
+				"line_ending": "Unix"
+			}
+		}
+	],
+	"build_system": "Packages/User/Make.sublime-build",
+	"build_system_choices":
+	[
+		[
+			[
+				[
+					"Packages/C++/C++ Single File.sublime-build",
+					""
+				],
+				[
+					"Packages/C++/C++ Single File.sublime-build",
+					"Run"
+				]
+			],
+			[
+				"Packages/C++/C++ Single File.sublime-build",
+				""
+			]
+		],
+		[
+			[
+				[
+					"Packages/Makefile/Make.sublime-build",
+					""
+				],
+				[
+					"Packages/Makefile/Make.sublime-build",
+					"Clean"
+				]
+			],
+			[
+				"Packages/Makefile/Make.sublime-build",
+				""
+			]
+		],
+		[
+			[
+				[
+					"Packages/User/Make.sublime-build",
+					""
+				],
+				[
+					"Packages/User/Make.sublime-build",
+					"Clean"
+				],
+				[
+					"Packages/User/Make.sublime-build",
+					"All"
+				],
+				[
+					"Packages/User/Make.sublime-build",
+					"Run"
+				]
+			],
+			[
+				"Packages/User/Make.sublime-build",
+				""
+			]
+		]
+	],
+	"build_varint": "",
+	"command_palette":
+	{
+		"height": 289.0,
+		"last_filter": "make",
+		"selected_items":
+		[
+			[
+				"make",
+				"Build With: Make"
+			],
+			[
+				"make clean",
+				"Build With: Make - Clean"
+			],
+			[
+				"git difftool",
+				"Git: Diff Tool All"
+			],
+			[
+				"git status",
+				"Git: Status"
+			],
+			[
+				"git",
+				"Git: Status"
+			],
+			[
+				"install",
+				"Package Control: Install Package"
+			],
+			[
+				"",
+				"Build With: Make - Run"
+			],
+			[
+				"ctags",
+				"CTags: Rebuild Tags"
+			],
+			[
+				"insta",
+				"Package Control: Install Package"
+			],
+			[
+				"enable",
+				"Package Control: Enable Package"
+			],
+			[
+				"disable",
+				"Package Control: Disable Package"
+			],
+			[
+				"color",
+				"Colorsublime: Install Theme"
+			],
+			[
+				"remove",
+				"Package Control: Remove Package"
+			],
+			[
+				"install ",
+				"Package Control: Install Package"
+			]
+		],
+		"width": 417.0
+	},
+	"console":
+	{
+		"height": 139.0,
+		"history":
+		[
+			"sublime.run_command(\"color_scheme_emergency_reset\")",
+			"class ColorSchemeEmergencyResetCommand(sublime_plugin.ApplicationCommand):",
+			"import sublime_plugin",
+			"import sublime",
+			"import urllib.request,os,hashlib; h = '2915d1851351e5ee549c20394736b442' + '8bc59f460fa1548d1514676163dafc88'; pf = 'Package Control.sublime-package'; ipp = sublime.installed_packages_path(); urllib.request.install_opener( urllib.request.build_opener( urllib.request.ProxyHandler()) ); by = urllib.request.urlopen( 'http://packagecontrol.io/' + pf.replace(' ', '%20')).read(); dh = hashlib.sha256(by).hexdigest(); print('Error validating download (got %s instead of %s), please try manual install' % (dh, h)) if dh != h else open(os.path.join( ipp, pf), 'wb' ).write(by)"
+		]
+	},
+	"distraction_free":
+	{
+		"menu_visible": true,
+		"show_minimap": false,
+		"show_open_files": false,
+		"show_tabs": false,
+		"side_bar_visible": false,
+		"status_bar_visible": false
+	},
+	"expanded_folders":
+	[
+		"/home/will/Documents/git/Breakout"
+	],
+	"file_history":
+	[
+		"/home/will/Documents/git/Breakout/.gitignore",
+		"/home/will/Documents/git/Breakout/breakout",
+		"/home/will/Documents/git/Breakout/Makefile",
+		"/home/will/Documents/breakout/src/Paddle.cpp",
+		"/home/will/Documents/breakout/src/Paddle.h",
+		"/home/will/Documents/breakout/src/Entity.cpp",
+		"/home/will/Documents/breakout/src/Ball.cpp",
+		"/home/will/Documents/breakout/src/Entity.h",
+		"/home/will/Documents/SDL Tutorial/09_the_viewport_SDL.cpp",
+		"/home/will/Documents/breakout/src/IEventHandler.h",
+		"/home/will/Documents/breakout/src/Block.cpp",
+		"/home/will/Documents/breakout/src/Block.h",
+		"/home/will/Documents/breakout/src/Ball.h",
+		"/home/will/Documents/breakout/src/EventManager.cpp",
+		"/home/will/Documents/breakout/src/EventManager.h",
+		"/home/will/Documents/breakout/src/GameManager.cpp",
+		"/home/will/Documents/breakout/src/GameManager.h",
+		"/home/will/Documents/breakout/src/Globals.h",
+		"/home/will/Documents/breakout/src/main.cpp",
+		"/home/will/Documents/breakout/Makefile",
+		"/home/will/Documents/breakout/breakout",
+		"/home/will/.config/sublime-text-3/Packages/User/CTags.sublime-settings",
+		"/home/will/Documents/SDL Tutorial/11_clip_rendering_and_sprite_sheets/LTexture.h",
+		"/home/will/Documents/SDL Tutorial/11_clip_rendering_and_sprite_sheets/LTexture.cpp",
+		"/home/will/Documents/SDL Tutorial/11_clip_rendering_and_sprite_sheets/11_clip_rendering_and_sprite_sheets_SDL.cpp",
+		"/home/will/Documents/SDL Tutorial/10_color_keying/Makefile",
+		"/home/will/Documents/SDL Tutorial/Makefile",
+		"/home/will/.config/sublime-text-3/Packages/User/Preferences.sublime-settings",
+		"/home/will/Documents/SDL Tutorial/10_color_keying/LTexture.cpp",
+		"/home/will/Documents/SDL Tutorial/10_color_keying/LTexture.h",
+		"/home/will/Documents/SDL Tutorial/10_color_keying/10_color_keying_SDL.cpp",
+		"/home/will/Documents/SDL Tutorial/08_geometry_rendering_SDL.cpp",
+		"/home/will/Documents/SDL Tutorial/07_texture_loading_and_rendering_SDL.cpp",
+		"/home/will/Documents/SDL Tutorial/06_extension_libraries_and_loading_other_image_formats_SDL.cpp",
+		"/home/will/.config/sublime-text-3/Packages/CTags/CTags.sublime-settings",
+		"/usr/include/SDL2/SDL_render.h",
+		"/home/will/.config/sublime-text-3/Packages/User/PlainTasks.sublime-settings",
+		"/home/will/.config/sublime-text-3/Packages/PlainTasks/messages/Tutorial.todo",
+		"/home/will/Documents/SDL Tutorial/05_optimized_surface_loading_and_soft_stretching_SDL.cpp",
+		"/home/will/Documents/SDL Tutorial/04_key_presses_SDL.cpp",
+		"/home/will/Documents/SDL Tutorial/03_event_driven_programming_SDL.cpp",
+		"/home/will/Documents/SDL Tutorial/02_image_on_screen_SDL.cpp",
+		"/home/will/Downloads/01_hello_SDL/Makefile",
+		"/home/will/Downloads/01_hello_SDL/01_hello_SDL.cpp",
+		"/home/will/Downloads/01_hello_SDL/02_image_on_screen_SDL.cpp",
+		"/home/will/.config/sublime-text-3/Packages/User/Make.sublime-build",
+		"/home/will/.config/sublime-text-3/Packages/Default/Preferences.sublime-settings",
+		"/home/will/.config/sublime-text-3/Packages/User/custom.sublime-build"
+	],
+	"find":
+	{
+		"height": 55.0
+	},
+	"find_in_files":
+	{
+		"height": 100.0,
+		"where_history":
+		[
+			"\n<open folders>",
+			"<current file>"
+		]
+	},
+	"find_state":
+	{
+		"case_sensitive": false,
+		"find_history":
+		[
+			";\n",
+			"accel",
+			"posX",
+			"WAITING_ST",
+			"iterator",
+			"640",
+			"){\n",
+			"Player",
+			"0x00",
+			"GameManager",
+			");\n",
+			"quit",
+			"EventHandler",
+			",\n",
+			"Hello",
+			"theme",
+			"font"
+		],
+		"highlight": true,
+		"in_selection": false,
+		"preserve_case": false,
+		"regex": false,
+		"replace_history":
+		[
+			"Paddle",
+			"EventManager"
+		],
+		"reverse": false,
+		"show_context": true,
+		"use_buffer2": true,
+		"whole_word": false,
+		"wrap": true
+	},
+	"groups":
+	[
+		{
+			"selected": 1,
+			"sheets":
+			[
+				{
+					"buffer": 0,
+					"file": "Makefile",
+					"semi_transient": false,
+					"settings":
+					{
+						"buffer_size": 568,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								488,
+								488
+							]
+						],
+						"settings":
+						{
+							"syntax": "Packages/Makefile/Makefile.tmLanguage"
+						},
+						"translation.x": 0.0,
+						"translation.y": 0.0,
+						"zoom_level": 1.0
+					},
+					"stack_index": 1,
+					"type": "text"
+				},
+				{
+					"buffer": 1,
+					"file": "project/breakout.sublime-project",
+					"semi_transient": true,
+					"settings":
+					{
+						"buffer_size": 77,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								0,
+								0
+							]
+						],
+						"settings":
+						{
+							"syntax": "Packages/JavaScript/JSON.tmLanguage"
+						},
+						"translation.x": 0.0,
+						"translation.y": 0.0,
+						"zoom_level": 1.0
+					},
+					"stack_index": 0,
+					"type": "text"
+				}
+			]
+		}
+	],
+	"incremental_find":
+	{
+		"height": 25.0
+	},
+	"input":
+	{
+		"height": 34.0
+	},
+	"layout":
+	{
+		"cells":
+		[
+			[
+				0,
+				0,
+				1,
+				1
+			]
+		],
+		"cols":
+		[
+			0.0,
+			1.0
+		],
+		"rows":
+		[
+			0.0,
+			1.0
+		]
+	},
+	"menu_visible": true,
+	"output.exec":
+	{
+		"height": 437.0
+	},
+	"output.find_results":
+	{
+		"height": 0.0
+	},
+	"output.git":
+	{
+		"height": 466.0
+	},
+	"pinned_build_system": "Packages/User/Make.sublime-build",
+	"project": "breakout.sublime-project",
+	"replace":
+	{
+		"height": 46.0
+	},
+	"save_all_on_build": true,
+	"select_file":
+	{
+		"height": 0.0,
+		"last_filter": "",
+		"selected_items":
+		[
+			[
+				"",
+				"src/Block.cpp"
+			],
+			[
+				"p",
+				"src/Paddle.cpp"
+			]
+		],
+		"width": 0.0
+	},
+	"select_project":
+	{
+		"height": 0.0,
+		"last_filter": "",
+		"selected_items":
+		[
+		],
+		"width": 0.0
+	},
+	"select_symbol":
+	{
+		"height": 370.0,
+		"last_filter": "",
+		"selected_items":
+		[
+		],
+		"width": 480.0
+	},
+	"selected_group": 0,
+	"settings":
+	{
+	},
+	"show_minimap": true,
+	"show_open_files": false,
+	"show_tabs": true,
+	"side_bar_visible": true,
+	"side_bar_width": 232.0,
+	"status_bar_visible": true,
+	"template_settings":
+	{
+	}
+}

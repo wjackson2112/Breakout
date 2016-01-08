@@ -30,3 +30,9 @@
 
 # Debug files
 *.dSYM/
+
+# Ignore build directory
+build/
+
+# Ignore project
+breakout.sublime-project
