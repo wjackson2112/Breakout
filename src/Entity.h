@@ -24,6 +24,8 @@ public:
 	virtual void render(SDL_Renderer*) = 0;
 	virtual void resolveCollision(Entity*) = 0;
 
+	virtual Entity* clone() const = 0;
+
 	virtual SDL_Point getCenter() = 0;
 	virtual SDL_Point getOrigin() = 0;
 	virtual SDL_Point getSize() = 0;

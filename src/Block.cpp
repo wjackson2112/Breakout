@@ -24,6 +24,11 @@ Block::~Block()
 	EventManager::Instance()->deregisterHandler(this);
 }
 
+Block* Block::clone() const
+{
+	return new Block(*this);
+}
+
 void Block::handleEvents(const Uint8* keyStates)
 {
 

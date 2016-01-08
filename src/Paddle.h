@@ -13,12 +13,14 @@ public:
 	int width = 60.0;
 	int height = 20.0;
 
-	Paddle();
+	Paddle(float x, float y);
 
 	void handleEvents(const Uint8*);
 	void update(int frameTime);
 	void render(SDL_Renderer*);
 	void resolveCollision(Entity*);
+
+	Paddle* clone() const;
 
 	SDL_Point getCenter();
 	SDL_Point getOrigin();

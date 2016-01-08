@@ -34,6 +34,8 @@ public:
 	void render(SDL_Renderer*);
 	void resolveCollision(Entity*);
 
+	Ball* clone() const;
+
 	SDL_Point getCenter();
 	SDL_Point getOrigin();
 	SDL_Point getVelocity();

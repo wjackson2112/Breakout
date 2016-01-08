@@ -11,6 +11,11 @@ Ball::Ball(Paddle* paddle)
 	machineState = WAITING_ST;
 }
 
+Ball* Ball::clone() const
+{
+	return new Ball(*this);
+}
+
 void Ball::updateVelocityWithAngle(float degrees)
 {
 	float radians = degrees * 3.14159/180;
@@ -55,7 +60,7 @@ void Ball::update(int frameTime)
 				posY = 0;
 				velY = -velY;
 			}
-			else if(posY > SCREEN_WIDTH)
+			else if(posY > SCREEN_HEIGHT)
 			{
 				machineState = WAITING_ST;
 			}
@@ -77,13 +82,16 @@ void Ball::handleEvents(const Uint8* keyStates)
 
 void Ball::resolveCollision(Entity* collidedObject)
 {
+	//std::cout << "Ball resolving" << std::endl;
 	//Bounce off the paddle
 	if(dynamic_cast<Paddle*> (collidedObject) != NULL)
 	{
 		int deltaX, deltaY;
 		int direction;
 
-		if(velX >= 0){
+		//if(velX >= 0){
+		if(posX + width - collidedObject->getOrigin().x < collidedObject->getOrigin().x + collidedObject->getSize().x - posX)
+		{
 			deltaX = posX + width - collidedObject->getOrigin().x;
 			if(velX != 0)
 				deltaY = (velY/velX)*deltaX;
@@ -98,7 +106,7 @@ void Ball::resolveCollision(Entity* collidedObject)
 				deltaY = (velY/velX)*deltaX;
 			else
 				deltaY = INT_MAX;
-			direction = 1;	
+			direction = 1;
 		}
 
 		if(velY >= 0){
@@ -119,37 +127,134 @@ void Ball::resolveCollision(Entity* collidedObject)
 		}
 
 		if(velX >= 0)
-		{
 			posX -= deltaX;
-		} 
 		else
-		{
 			posX += deltaX;
-		}
 
 		if(velY >= 0)
-		{
 			posY -= deltaY;
-		}
 		else
-		{
 			posY += deltaY;
-		}
 
 		switch(direction)
 		{
-			//left or right
-			case 0: case 1:
-				velX = -velX;
+			//left
+			case 0:
+				if(velX > 0)
+				{
+					velX = -velX;
+				}
 				break;
-			//top or bottom
-			case 2: case 3:
+			//right 
+			case 1:
+				if(velX < 0)
+				{
+					velX = -velX;					
+				}
+				break;
+			//top
+			case 2:
 			{
 				float angle = (((float) collidedObject->getCenter().x - (float) getCenter().x)/((float) collidedObject->getSize().x/2) * 45) + 90;
 				updateVelocityWithAngle(angle);
-
 				break;
 			}
+			//bottom 
+			case 3:
+				if(velY < 0)
+				{
+					velY = -velY;
+				}
+				break;
+			default:
+				break;
+		}
+	}
+		//Bounce off the paddle
+	else if(dynamic_cast<Block*> (collidedObject) != NULL)
+	{
+		int deltaX, deltaY;
+		int direction;
+
+		//if(velX >= 0){
+		if(posX + width - collidedObject->getOrigin().x < collidedObject->getOrigin().x + collidedObject->getSize().x - posX)
+		{
+			deltaX = posX + width - collidedObject->getOrigin().x;
+			if(velX != 0)
+				deltaY = (velY/velX)*deltaX;
+			else
+				deltaY = INT_MAX;
+			direction = 0;
+		}
+		else
+		{
+			deltaX = collidedObject->getOrigin().x + collidedObject->getSize().x - posX;
+			if(velX != 0)
+				deltaY = (velY/velX)*deltaX;
+			else
+				deltaY = INT_MAX;
+			direction = 1;
+		}
+
+		if(posY + height - collidedObject->getOrigin().y < collidedObject->getOrigin().y + collidedObject->getSize().y - posY){
+			if(posY + height - collidedObject->getOrigin().y < abs(deltaY)){
+				deltaY = posY + height - collidedObject->getOrigin().y;
+				deltaX = (velX/velY)*deltaY;
+				direction = 2;
+			}
+		}
+		else
+		{
+			if(collidedObject->getOrigin().y + collidedObject->getSize().y - posY < abs(deltaY))
+			{
+				deltaY = collidedObject->getOrigin().y + collidedObject->getSize().y - posY;
+				deltaX = velX/velY*deltaY;
+				direction = 3;
+			}	
+		}
+
+		if(velX >= 0)
+			posX -= deltaX;
+		else
+			posX += deltaX;
+
+		if(velY >= 0)
+			posY -= deltaY;
+		else
+			posY += deltaY;
+
+		switch(direction)
+		{
+			//left
+			case 0:
+				if(velX > 0)
+				{
+					velX = -velX;
+				}
+				break;
+			//right 
+			case 1:
+				if(velX < 0)
+				{
+					velX = -velX;					
+				}
+				break;
+			//top
+			case 2:
+			{
+				if(velY > 0)
+				{
+					velY = -velY;
+				}
+				break;
+			}
+			//bottom 
+			case 3:
+				if(velY < 0)
+				{
+					velY = -velY;
+				}
+				break;
 			default:
 				break;
 		}

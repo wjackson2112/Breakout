@@ -25,6 +25,8 @@ public:
 	void render(SDL_Renderer*);
 	void resolveCollision(Entity*);
 
+	Block* clone() const;
+
 	SDL_Point getCenter();
 	SDL_Point getOrigin();
 	SDL_Point getSize();

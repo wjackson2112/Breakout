@@ -1,13 +1,18 @@
 #include "Paddle.h"
 
-Paddle::Paddle()
+Paddle::Paddle(float x, float y)
 {
-	posX = 32;
-	posY = 440;
+	posX = x;
+	posY = y;
 	velX = 0;
 	velY = 0;
 
 	EventManager::Instance()->registerHandler(this);
+}
+
+Paddle* Paddle::clone() const
+{
+	return new Paddle(*this);
 }
 
 void Paddle::render(SDL_Renderer* gRenderer)
