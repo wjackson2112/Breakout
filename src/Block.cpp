@@ -30,6 +30,11 @@ Block::~Block()
 
 Block* Block::clone() const
 {
+	return new Block(*this);
+}
+
+Block* Block::collisionClone() const
+{
 	Block* newBlock = new Block(*this);
 	newBlock->setDelegate(NULL);
 	return newBlock;

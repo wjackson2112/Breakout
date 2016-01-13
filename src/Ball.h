@@ -35,6 +35,7 @@ public:
 	void resolveCollision(Entity*);
 
 	Ball* clone() const;
+	Ball* collisionClone() const;
 
 	SDL_Point getCenter();
 	SDL_Point getOrigin();

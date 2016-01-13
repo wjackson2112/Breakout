@@ -10,7 +10,7 @@ class Entity : public IEventHandler
 {
 protected:
 	float posX, posY;
-	float velX, velY;
+	float velX, velY;P
 public:
 	int width, height;
 
@@ -25,6 +25,7 @@ public:
 	virtual void resolveCollision(Entity*) = 0;
 
 	virtual Entity* clone() const = 0;
+	virtual Entity* collisionClone() const = 0;
 
 	virtual SDL_Point getCenter() = 0;
 	virtual SDL_Point getOrigin() = 0;

@@ -29,6 +29,7 @@ public:
 	void resolveCollision(Entity*);
 
 	Block* clone() const;
+	Block* collisionClone() const;
 
 	SDL_Point getCenter();
 	SDL_Point getOrigin();

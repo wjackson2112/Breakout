@@ -21,6 +21,7 @@ public:
 	void resolveCollision(Entity*);
 
 	Paddle* clone() const;
+	Paddle* collisionClone() const;
 
 	SDL_Point getCenter();
 	SDL_Point getOrigin();

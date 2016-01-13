@@ -25,6 +25,7 @@ void GameManager::resetLevel()
 		}
 		entities.clear();
 	}
+
 	blockCount = 0;
 	entities.push_back(new Paddle(30, SCREEN_HEIGHT - 40));
 	entities.push_back(new Ball((Paddle*) entities[0]));
@@ -37,8 +38,6 @@ void GameManager::resetLevel()
 			blockCount++;	
 		}
 	}
-
-
 }
 
 bool GameManager::shouldQuit()
@@ -100,8 +99,8 @@ void GameManager::detectCollisions()
 					continue;
 				}
 
-				Entity* entityACopy = (*entityA).clone();
-				Entity* entityBCopy = (*entityB).clone();
+				Entity* entityACopy = (*entityA).collisionClone();
+				Entity* entityBCopy = (*entityB).collisionClone();
 				entityA->resolveCollision(entityBCopy);
 				entityB->resolveCollision(entityACopy);
 				delete(entityACopy);

@@ -16,6 +16,14 @@ Ball* Ball::clone() const
 	return new Ball(*this);
 }
 
+Ball* Ball::collisionClone() const
+{
+	Ball* newBall = new Ball(*this);
+	newBall->paddle = NULL;
+	newBall->machineState = WAITING_ST;
+	return newBall;
+}
+
 void Ball::updateVelocityWithAngle(float degrees)
 {
 	float radians = degrees * 3.14159/180;

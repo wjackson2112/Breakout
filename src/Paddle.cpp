@@ -15,6 +15,12 @@ Paddle* Paddle::clone() const
 	return new Paddle(*this);
 }
 
+Paddle* Paddle::collisionClone() const
+{
+	Paddle* newPaddle = new Paddle(*this);
+	return newPaddle;
+}
+
 void Paddle::render(SDL_Renderer* gRenderer)
 {
 	SDL_Rect fillRect = {posX, posY, width, height};
