@@ -5,20 +5,23 @@
 #include <cstdlib>
 #include "Entity.h"
 #include "Ball.h"
+#include "IBlockDelegate.h"
 
 class Block : public Entity
 {
 private:
 	int r, g, b;
-	int* blockCount;
+	IBlockDelegate* delegate;
 public:
 	int width = 40.0;
 	int height = 40.0;
 
 	bool visible;
 
-	Block(int x, int y, int* blockCount);
+	Block(int x, int y, int* blockCount, IBlockDelegate* delegate);
 	~Block();
+
+	void setDelegate(IBlockDelegate* delegate);
 
 	void handleEvents(const Uint8*);
 	void update(int frameTime);

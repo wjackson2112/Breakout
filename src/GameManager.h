@@ -13,7 +13,7 @@
 #include "Block.h"
 #include "Globals.h"
 
-class GameManager
+class GameManager : public IBlockDelegate
 {
 private:
 	std::vector<Entity*> entities;
@@ -25,6 +25,9 @@ private:
 public:
 	GameManager();
 	~GameManager();
+
+	void blockDisappearing();
+
 	bool shouldQuit();
 	void render(SDL_Renderer*);
 	void update(int frameTime);

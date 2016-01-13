@@ -33,7 +33,8 @@ void GameManager::resetLevel()
 	{
 		for(int y = 0; y < 240; y+= 40)
 		{
-			entities.push_back(new Block(x, y, &blockCount));			
+			entities.push_back(new Block(x, y, &blockCount, this));		
+			blockCount++;	
 		}
 	}
 
@@ -156,4 +157,8 @@ void GameManager::update(int frameTime)
 	}
 
 	detectCollisions();
+}
+
+void GameManager::blockDisappearing(){
+	blockCount--;
 }

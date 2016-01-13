@@ -4,6 +4,14 @@
 		"selected_items":
 		[
 			[
+				"block",
+				"blockDisappearing	(IBlockDelegate.h)"
+			],
+			[
+				"SCREEN",
+				"SCREEN_HEIGHT	(Globals.h)"
+			],
+			[
 				"event",
 				"eventHandlers"
 			],
@@ -88,10 +96,6 @@
 				"SCREEN_WIDTH"
 			],
 			[
-				"SCREEN",
-				"SCREEN_HEIGHT"
-			],
-			[
 				"SDL_Des",
 				"SDL_DestroyRenderer	(07_texture_loading_and_rendering_SDL.cpp)"
 			],
@@ -144,21 +148,90 @@
 	"buffers":
 	[
 		{
-			"file": "Makefile",
+			"file": "src/IBlockDelegate.h",
 			"settings":
 			{
-				"buffer_size": 568,
+				"buffer_size": 153,
 				"line_ending": "Unix"
 			}
 		},
 		{
-			"contents": "{\n	\"folders\":\n	[\n		{\n			\"path\": \"/home/will/Documents/git/Breakout\"\n		}\n	]\n}\n",
-			"file": "project/breakout.sublime-project",
-			"file_size": 77,
-			"file_write_time": 130966993691849662,
+			"file": "src/Entity.h",
 			"settings":
 			{
-				"buffer_size": 77,
+				"buffer_size": 706,
+				"line_ending": "Unix"
+			}
+		},
+		{
+			"file": "src/IEventHandler.h",
+			"settings":
+			{
+				"buffer_size": 160,
+				"line_ending": "Unix"
+			}
+		},
+		{
+			"file": "src/Block.h",
+			"settings":
+			{
+				"buffer_size": 684,
+				"line_ending": "Unix"
+			}
+		},
+		{
+			"file": "src/Block.cpp",
+			"settings":
+			{
+				"buffer_size": 1544,
+				"line_ending": "Unix"
+			}
+		},
+		{
+			"file": "src/Ball.cpp",
+			"settings":
+			{
+				"buffer_size": 5357,
+				"line_ending": "Unix"
+			}
+		},
+		{
+			"file": "src/Paddle.h",
+			"settings":
+			{
+				"buffer_size": 513,
+				"line_ending": "Unix"
+			}
+		},
+		{
+			"file": "src/Paddle.cpp",
+			"settings":
+			{
+				"buffer_size": 2076,
+				"line_ending": "Unix"
+			}
+		},
+		{
+			"file": "src/Ball.h",
+			"settings":
+			{
+				"buffer_size": 675,
+				"line_ending": "Unix"
+			}
+		},
+		{
+			"file": "src/GameManager.h",
+			"settings":
+			{
+				"buffer_size": 596,
+				"line_ending": "Unix"
+			}
+		},
+		{
+			"file": "src/GameManager.cpp",
+			"settings":
+			{
+				"buffer_size": 2901,
 				"line_ending": "Unix"
 			}
 		}
@@ -226,10 +299,18 @@
 	"build_varint": "",
 	"command_palette":
 	{
-		"height": 289.0,
-		"last_filter": "make",
+		"height": 59.0,
+		"last_filter": "make run",
 		"selected_items":
 		[
+			[
+				"make run",
+				"Build With: Make - Run"
+			],
+			[
+				"run",
+				"Build With: Make - Run"
+			],
 			[
 				"make",
 				"Build With: Make"
@@ -312,13 +393,27 @@
 	},
 	"expanded_folders":
 	[
-		"/home/will/Documents/git/Breakout"
+		"/home/will/Documents/git/Breakout",
+		"/home/will/Documents/git/Breakout/src"
 	],
 	"file_history":
 	[
+		"/home/will/Documents/git/Breakout/src/Entity.cpp",
+		"/home/will/Documents/git/Breakout/src/Entity.h",
+		"/home/will/Documents/git/Breakout/src/Paddle.cpp",
+		"/home/will/Documents/git/Breakout/src/Paddle.h",
+		"/home/will/Documents/git/Breakout/src/Globals.h",
+		"/home/will/Documents/git/Breakout/src/Ball.cpp",
+		"/home/will/Documents/git/Breakout/src/Ball.h",
+		"/home/will/Documents/git/Breakout/Makefile",
+		"/home/will/Documents/git/Breakout/src/Block.cpp",
+		"/home/will/.config/sublime-text-3/Packages/User/Preferences.sublime-settings",
+		"/home/will/Documents/git/Breakout/src/EventManager.cpp",
+		"/home/will/.config/sublime-text-3/Packages/User/Default (Linux).sublime-mousemap",
+		"/home/will/.config/sublime-text-3/Packages/Default/Default (Linux).sublime-keymap",
+		"/home/will/.config/sublime-text-3/Packages/User/Default (Linux).sublime-keymap",
 		"/home/will/Documents/git/Breakout/.gitignore",
 		"/home/will/Documents/git/Breakout/breakout",
-		"/home/will/Documents/git/Breakout/Makefile",
 		"/home/will/Documents/breakout/src/Paddle.cpp",
 		"/home/will/Documents/breakout/src/Paddle.h",
 		"/home/will/Documents/breakout/src/Entity.cpp",
@@ -343,7 +438,6 @@
 		"/home/will/Documents/SDL Tutorial/11_clip_rendering_and_sprite_sheets/11_clip_rendering_and_sprite_sheets_SDL.cpp",
 		"/home/will/Documents/SDL Tutorial/10_color_keying/Makefile",
 		"/home/will/Documents/SDL Tutorial/Makefile",
-		"/home/will/.config/sublime-text-3/Packages/User/Preferences.sublime-settings",
 		"/home/will/Documents/SDL Tutorial/10_color_keying/LTexture.cpp",
 		"/home/will/Documents/SDL Tutorial/10_color_keying/LTexture.h",
 		"/home/will/Documents/SDL Tutorial/10_color_keying/10_color_keying_SDL.cpp",
@@ -367,7 +461,7 @@
 	],
 	"find":
 	{
-		"height": 55.0
+		"height": 36.0
 	},
 	"find_in_files":
 	{
@@ -383,6 +477,9 @@
 		"case_sensitive": false,
 		"find_history":
 		[
+			"blockCount",
+			"reset",
+			"delete",
 			";\n",
 			"accel",
 			"posX",
@@ -419,44 +516,74 @@
 	"groups":
 	[
 		{
-			"selected": 1,
+			"selected": 10,
 			"sheets":
 			[
 				{
 					"buffer": 0,
-					"file": "Makefile",
+					"file": "src/IBlockDelegate.h",
 					"semi_transient": false,
 					"settings":
 					{
-						"buffer_size": 568,
+						"buffer_size": 153,
 						"regions":
 						{
 						},
 						"selection":
 						[
 							[
-								488,
-								488
+								136,
+								136
 							]
 						],
 						"settings":
 						{
-							"syntax": "Packages/Makefile/Makefile.tmLanguage"
+							"open_with_edit": true,
+							"syntax": "Packages/C++/C++.tmLanguage"
 						},
 						"translation.x": 0.0,
 						"translation.y": 0.0,
 						"zoom_level": 1.0
 					},
-					"stack_index": 1,
+					"stack_index": 9,
 					"type": "text"
 				},
 				{
 					"buffer": 1,
-					"file": "project/breakout.sublime-project",
-					"semi_transient": true,
+					"file": "src/Entity.h",
+					"semi_transient": false,
 					"settings":
 					{
-						"buffer_size": 77,
+						"buffer_size": 706,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								516,
+								516
+							]
+						],
+						"settings":
+						{
+							"syntax": "Packages/C++/C++.tmLanguage",
+							"translate_tabs_to_spaces": false
+						},
+						"translation.x": -0.0,
+						"translation.y": 53.0,
+						"zoom_level": 1.0
+					},
+					"stack_index": 10,
+					"type": "text"
+				},
+				{
+					"buffer": 2,
+					"file": "src/IEventHandler.h",
+					"semi_transient": false,
+					"settings":
+					{
+						"buffer_size": 160,
 						"regions":
 						{
 						},
@@ -469,10 +596,242 @@
 						],
 						"settings":
 						{
-							"syntax": "Packages/JavaScript/JSON.tmLanguage"
+							"syntax": "Packages/C++/C++.tmLanguage"
 						},
 						"translation.x": 0.0,
 						"translation.y": 0.0,
+						"zoom_level": 1.0
+					},
+					"stack_index": 4,
+					"type": "text"
+				},
+				{
+					"buffer": 3,
+					"file": "src/Block.h",
+					"semi_transient": false,
+					"settings":
+					{
+						"buffer_size": 684,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								404,
+								404
+							]
+						],
+						"settings":
+						{
+							"syntax": "Packages/C++/C++.tmLanguage",
+							"translate_tabs_to_spaces": false
+						},
+						"translation.x": -0.0,
+						"translation.y": 129.0,
+						"zoom_level": 1.0
+					},
+					"stack_index": 5,
+					"type": "text"
+				},
+				{
+					"buffer": 4,
+					"file": "src/Block.cpp",
+					"semi_transient": false,
+					"settings":
+					{
+						"buffer_size": 1544,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								215,
+								215
+							]
+						],
+						"settings":
+						{
+							"syntax": "Packages/C++/C++.tmLanguage",
+							"translate_tabs_to_spaces": false
+						},
+						"translation.x": 0.0,
+						"translation.y": 0.0,
+						"zoom_level": 1.0
+					},
+					"stack_index": 7,
+					"type": "text"
+				},
+				{
+					"buffer": 5,
+					"file": "src/Ball.cpp",
+					"semi_transient": false,
+					"settings":
+					{
+						"buffer_size": 5357,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								205,
+								205
+							]
+						],
+						"settings":
+						{
+							"syntax": "Packages/C++/C++.tmLanguage",
+							"translate_tabs_to_spaces": false
+						},
+						"translation.x": -0.0,
+						"translation.y": 0.0,
+						"zoom_level": 1.0
+					},
+					"stack_index": 6,
+					"type": "text"
+				},
+				{
+					"buffer": 6,
+					"file": "src/Paddle.h",
+					"semi_transient": false,
+					"settings":
+					{
+						"buffer_size": 513,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								383,
+								383
+							]
+						],
+						"settings":
+						{
+							"syntax": "Packages/C++/C++.tmLanguage",
+							"translate_tabs_to_spaces": false
+						},
+						"translation.x": 0.0,
+						"translation.y": 0.0,
+						"zoom_level": 1.0
+					},
+					"stack_index": 3,
+					"type": "text"
+				},
+				{
+					"buffer": 7,
+					"file": "src/Paddle.cpp",
+					"semi_transient": false,
+					"settings":
+					{
+						"buffer_size": 2076,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								214,
+								214
+							]
+						],
+						"settings":
+						{
+							"syntax": "Packages/C++/C++.tmLanguage",
+							"translate_tabs_to_spaces": false
+						},
+						"translation.x": 0.0,
+						"translation.y": 0.0,
+						"zoom_level": 1.0
+					},
+					"stack_index": 2,
+					"type": "text"
+				},
+				{
+					"buffer": 8,
+					"file": "src/Ball.h",
+					"semi_transient": false,
+					"settings":
+					{
+						"buffer_size": 675,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								545,
+								545
+							]
+						],
+						"settings":
+						{
+							"syntax": "Packages/C++/C++.tmLanguage",
+							"translate_tabs_to_spaces": false
+						},
+						"translation.x": 0.0,
+						"translation.y": 0.0,
+						"zoom_level": 1.0
+					},
+					"stack_index": 8,
+					"type": "text"
+				},
+				{
+					"buffer": 9,
+					"file": "src/GameManager.h",
+					"semi_transient": false,
+					"settings":
+					{
+						"buffer_size": 596,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								504,
+								504
+							]
+						],
+						"settings":
+						{
+							"syntax": "Packages/C++/C++.tmLanguage",
+							"translate_tabs_to_spaces": false
+						},
+						"translation.x": 0.0,
+						"translation.y": 0.0,
+						"zoom_level": 1.0
+					},
+					"stack_index": 1,
+					"type": "text"
+				},
+				{
+					"buffer": 10,
+					"file": "src/GameManager.cpp",
+					"semi_transient": false,
+					"settings":
+					{
+						"buffer_size": 2901,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								2884,
+								2884
+							]
+						],
+						"settings":
+						{
+							"syntax": "Packages/C++/C++.tmLanguage",
+							"translate_tabs_to_spaces": false
+						},
+						"translation.x": 0.0,
+						"translation.y": 2451.0,
 						"zoom_level": 1.0
 					},
 					"stack_index": 0,

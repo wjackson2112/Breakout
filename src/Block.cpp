@@ -1,6 +1,6 @@
 #include "Block.h"
 
-Block::Block(int x, int y, int* blockCount)
+Block::Block(int x, int y, int* blockCount, IBlockDelegate* delegate)
 {
 	posX = x;
 	posY = y;
@@ -9,24 +9,35 @@ Block::Block(int x, int y, int* blockCount)
 	g = rand()%0xFF;
 	b = rand()%0xFF;
 
+	if(delegate)
+	{
+		this->delegate = delegate;
+	}
+
 	visible = true;
-
-	this->blockCount = blockCount;
-
-	(*this->blockCount)++;
 
 	EventManager::Instance()->registerHandler(this);
 }
 
 Block::~Block()
 {
-	(*blockCount)--;
+	if(delegate){
+		delegate->blockDisappearing();
+	}
+
 	EventManager::Instance()->deregisterHandler(this);
 }
 
 Block* Block::clone() const
 {
-	return new Block(*this);
+	Block* newBlock = new Block(*this);
+	newBlock->setDelegate(NULL);
+	return newBlock;
+}
+
+void Block::setDelegate(IBlockDelegate* delegate)
+{
+	this->delegate = delegate;
 }
 
 void Block::handleEvents(const Uint8* keyStates)
