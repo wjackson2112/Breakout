@@ -7,7 +7,8 @@
 
 #include "IEventHandler.h"
 #include "EventManager.h"
-#include "Entity.h"
+#include "PhysicsEntity.h"
+#include "UIEntity.h"
 #include "Paddle.h"
 #include "Ball.h"
 #include "Block.h"
@@ -16,7 +17,7 @@
 class GameManager : public IBlockDelegate
 {
 private:
-	std::vector<Entity*> entities;
+	std::vector<PhysicsEntity*> physicsEntities;
 	int blockCount;
 	bool quit;
 	void handleEvents();

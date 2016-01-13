@@ -9,7 +9,7 @@ GameManager::GameManager()
 
 GameManager::~GameManager()
 {
-	for(auto &entity : entities)
+	for(auto &entity : physicsEntities)
 	{
 		delete(entity);
 	}
@@ -17,24 +17,24 @@ GameManager::~GameManager()
 
 void GameManager::resetLevel()
 {
-	if(entities.size() >= 0){
-		for(std::vector<Entity*>::iterator it=entities.begin(); it!=entities.end();)
+	if(physicsEntities.size() >= 0){
+		for(std::vector<PhysicsEntity*>::iterator it=physicsEntities.begin(); it!=physicsEntities.end();)
 		{
 			delete * it;
-			it = entities.erase(it);
+			it = physicsEntities.erase(it);
 		}
-		entities.clear();
+		physicsEntities.clear();
 	}
 
 	blockCount = 0;
-	entities.push_back(new Paddle(30, SCREEN_HEIGHT - 40));
-	entities.push_back(new Ball((Paddle*) entities[0]));
+	physicsEntities.push_back(new Paddle(30, SCREEN_HEIGHT - 40));
+	physicsEntities.push_back(new Ball((Paddle*) physicsEntities[0]));
 
 	for(int x = 0; x < SCREEN_WIDTH; x+=40)
 	{
 		for(int y = 0; y < 240; y+= 40)
 		{
-			entities.push_back(new Block(x, y, &blockCount, this));		
+			physicsEntities.push_back(new Block(x, y, &blockCount, this));		
 			blockCount++;	
 		}
 	}
@@ -60,9 +60,9 @@ void GameManager::handleEvents()
 
 void GameManager::detectCollisions()
 {
-	for(auto &entityA : entities)
+	for(auto &entityA : physicsEntities)
 	{
-		for(auto &entityB : entities)
+		for(auto &entityB : physicsEntities)
 		{
 			if(entityA != entityB){
 
@@ -73,8 +73,6 @@ void GameManager::detectCollisions()
 				int rightA, rightB;
 				int topA, topB;
 				int bottomA, bottomB;
-
-
 
 				originA = entityA->getOrigin();
 				originB = entityB->getOrigin();
@@ -99,8 +97,8 @@ void GameManager::detectCollisions()
 					continue;
 				}
 
-				Entity* entityACopy = (*entityA).collisionClone();
-				Entity* entityBCopy = (*entityB).collisionClone();
+				PhysicsEntity* entityACopy = (*entityA).collisionClone();
+				PhysicsEntity* entityBCopy = (*entityB).collisionClone();
 				entityA->resolveCollision(entityBCopy);
 				entityB->resolveCollision(entityACopy);
 				delete(entityACopy);
@@ -114,7 +112,7 @@ void GameManager::render(SDL_Renderer* gRenderer)
 {
 	SDL_SetRenderDrawColor(gRenderer, 0x10, 0x10, 0x10, 0xFF);
 	SDL_RenderClear(gRenderer);
-	for(auto &entity : entities)
+	for(auto &entity : physicsEntities)
 	{
 		entity->render(gRenderer);
 	}
@@ -125,13 +123,10 @@ void GameManager::update(int frameTime)
 {
 	static bool levelComplete = false;
 
-	//std::cout << "Updating" << std::endl;
-
 	handleEvents();
 
-	//std::cout << "Events Handled" << std::endl;
-
-	for(std::vector<Entity*>::iterator it=entities.begin(); it!=entities.end();)
+	//std::cout << "Updating" << std::endl;
+	for(std::vector<PhysicsEntity*>::iterator it=physicsEntities.begin(); it!=physicsEntities.end();)
 	{
 		//Update the item
 		(*it)->update(frameTime);
@@ -141,7 +136,7 @@ void GameManager::update(int frameTime)
 		{
 			delete * it;
 			//std::cout << "Deleted" << std::endl;
-			it = entities.erase(it);
+			it = physicsEntities.erase(it);
 			//std::cout << "Erased" << std::endl;
 		}
 		else
@@ -154,7 +149,7 @@ void GameManager::update(int frameTime)
 	{
 		resetLevel();
 	}
-
+	
 	detectCollisions();
 }
 

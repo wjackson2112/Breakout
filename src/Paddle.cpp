@@ -10,6 +10,11 @@ Paddle::Paddle(float x, float y)
 	EventManager::Instance()->registerHandler(this);
 }
 
+Paddle::~Paddle()
+{
+	EventManager::Instance()->deregisterHandler(this);
+}
+
 Paddle* Paddle::clone() const
 {
 	return new Paddle(*this);
@@ -81,7 +86,7 @@ void Paddle::handleEvents(const Uint8* keyStates)
 	lastRightState = keyStates[SDL_SCANCODE_RIGHT];
 }
 
-void Paddle::resolveCollision(Entity* collidedObject)
+void Paddle::resolveCollision(PhysicsEntity* collidedObject)
 {
 
 }

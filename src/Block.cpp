@@ -67,7 +67,7 @@ void Block::render(SDL_Renderer* gRenderer)
 	SDL_RenderFillRect(gRenderer, &fillRect);
 }
 
-void Block::resolveCollision(Entity* collidedObject)
+void Block::resolveCollision(PhysicsEntity* collidedObject)
 {
 	//Dismiss self if collided with ball
 	if(dynamic_cast<Ball*> (collidedObject) != NULL)

@@ -2,9 +2,9 @@
 #define PADDLE_H
 
 #include <iostream>
-#include "Entity.h"
+#include "PhysicsEntity.h"
 
-class Paddle : public Entity
+class Paddle : public PhysicsEntity
 {
 private:
 	float accelX, accelY;
@@ -14,11 +14,12 @@ public:
 	int height = 20.0;
 
 	Paddle(float x, float y);
+	~Paddle();
 
 	void handleEvents(const Uint8*);
 	void update(int frameTime);
 	void render(SDL_Renderer*);
-	void resolveCollision(Entity*);
+	void resolveCollision(PhysicsEntity*);
 
 	Paddle* clone() const;
 	Paddle* collisionClone() const;

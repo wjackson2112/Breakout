@@ -5,7 +5,7 @@
 #include <cmath>
 #include <climits>
 
-#include "Entity.h"
+#include "PhysicsEntity.h"
 #include "Paddle.h"
 #include "Block.h"
 
@@ -15,7 +15,7 @@ enum states
 	FLYING_ST
 };
 
-class Ball : public Entity
+class Ball : public PhysicsEntity
 {
 private:
 	Paddle* paddle;
@@ -28,11 +28,12 @@ public:
 	float max_vel = 300;
 
 	Ball(Paddle*);
+	~Ball();
 
 	void handleEvents(const Uint8*);
 	void update(int frameTime);
 	void render(SDL_Renderer*);
-	void resolveCollision(Entity*);
+	void resolveCollision(PhysicsEntity*);
 
 	Ball* clone() const;
 	Ball* collisionClone() const;

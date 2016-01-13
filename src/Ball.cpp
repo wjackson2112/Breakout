@@ -2,6 +2,7 @@
 
 Ball::Ball(Paddle* paddle)
 {
+	EventManager::Instance()->registerHandler(this);
 	posX = 32;
 	posY = 420;
 	velX = 0;
@@ -9,6 +10,12 @@ Ball::Ball(Paddle* paddle)
 
 	this->paddle = paddle;
 	machineState = WAITING_ST;
+	//EventManager::Instance()->registerHandler(this);
+}
+
+Ball::~Ball()
+{
+	EventManager::Instance()->deregisterHandler(this);
 }
 
 Ball* Ball::clone() const
@@ -88,7 +95,7 @@ void Ball::handleEvents(const Uint8* keyStates)
 	}
 }
 
-void Ball::resolveCollision(Entity* collidedObject)
+void Ball::resolveCollision(PhysicsEntity* collidedObject)
 {
 	//std::cout << "Ball resolving" << std::endl;
 	//Bounce off the paddle

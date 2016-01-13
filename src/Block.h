@@ -3,11 +3,11 @@
 
 #include <iostream>
 #include <cstdlib>
-#include "Entity.h"
+#include "PhysicsEntity.h"
 #include "Ball.h"
 #include "IBlockDelegate.h"
 
-class Block : public Entity
+class Block : public PhysicsEntity
 {
 private:
 	int r, g, b;
@@ -26,7 +26,7 @@ public:
 	void handleEvents(const Uint8*);
 	void update(int frameTime);
 	void render(SDL_Renderer*);
-	void resolveCollision(Entity*);
+	void resolveCollision(PhysicsEntity*);
 
 	Block* clone() const;
 	Block* collisionClone() const;
