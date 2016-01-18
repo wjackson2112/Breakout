@@ -16,7 +16,8 @@ public:
 	Paddle(float x, float y);
 	~Paddle();
 
-	void handleEvents(const Uint8*);
+	void handleKeyboardEvents(const Uint8*);
+	void handleGameEvents(int event);
 	void update(int frameTime);
 	void render(SDL_Renderer*);
 	void resolveCollision(PhysicsEntity*);

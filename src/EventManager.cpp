@@ -35,11 +35,19 @@ void EventManager::deregisterHandler(IEventHandler* handler)
 	}
 }
 
-void EventManager::handleEvents()
+void EventManager::handleKeyboardEvents()
 {
 	const Uint8* keyStates = SDL_GetKeyboardState(NULL);
 	for(auto &handler : eventHandlers)
 	{
-		handler->handleEvents(keyStates);
+		handler->handleKeyboardEvents(keyStates);
+	}
+}
+
+void EventManager::handleGameEvents(int event)
+{
+	for(auto &handler : eventHandlers)
+	{
+		handler->handleGameEvents(event);
 	}
 }

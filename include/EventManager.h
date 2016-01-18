@@ -25,7 +25,8 @@ public:
 	static EventManager* Instance();
 	void registerHandler(IEventHandler* handler);
 	void deregisterHandler(IEventHandler* handler);
-	void handleEvents();
+	void handleKeyboardEvents();
+	void handleGameEvents(int event);
 };
 
 #endif

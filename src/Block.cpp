@@ -45,9 +45,14 @@ void Block::setDelegate(IBlockDelegate* delegate)
 	this->delegate = delegate;
 }
 
-void Block::handleEvents(const Uint8* keyStates)
+void Block::handleKeyboardEvents(const Uint8* keyStates)
 {
 
+}
+
+void Block::handleGameEvents(int event)
+{
+	
 }
 
 void Block::update(int frameTime)

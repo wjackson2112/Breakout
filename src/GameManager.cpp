@@ -28,7 +28,9 @@ void GameManager::resetLevel()
 
 	blockCount = 0;
 	physicsEntities.push_back(new Paddle(30, SCREEN_HEIGHT - 40));
-	physicsEntities.push_back(new Ball((Paddle*) physicsEntities[0]));
+	physicsEntities.push_back(new Ball((Paddle*) physicsEntities[0], this));
+
+	uiEntities.push_back(new BallsIndicator(0, SCREEN_HEIGHT - 20, 3));
 
 	for(int x = 0; x < SCREEN_WIDTH; x+=40)
 	{
@@ -45,7 +47,7 @@ bool GameManager::shouldQuit()
 	return quit;
 }
 
-void GameManager::handleEvents()
+void GameManager::handleKeyboardEvents()
 {
 	SDL_Event e;
 	while( SDL_PollEvent( &e ) != 0 )
@@ -55,7 +57,12 @@ void GameManager::handleEvents()
  			quit = true;
  		}
  	}
- 	EventManager::Instance()->handleEvents();
+ 	EventManager::Instance()->handleKeyboardEvents();
+}
+
+void GameManager::handleGameEvents()
+{
+
 }
 
 void GameManager::detectCollisions()
@@ -112,10 +119,17 @@ void GameManager::render(SDL_Renderer* gRenderer)
 {
 	SDL_SetRenderDrawColor(gRenderer, 0x10, 0x10, 0x10, 0xFF);
 	SDL_RenderClear(gRenderer);
+	
 	for(auto &entity : physicsEntities)
 	{
 		entity->render(gRenderer);
 	}
+
+	for(auto &entity : uiEntities)
+	{
+		entity->render(gRenderer);
+	}
+
 	SDL_RenderPresent(gRenderer);
 }
 
@@ -123,7 +137,7 @@ void GameManager::update(int frameTime)
 {
 	static bool levelComplete = false;
 
-	handleEvents();
+	handleKeyboardEvents();
 
 	//std::cout << "Updating" << std::endl;
 	for(std::vector<PhysicsEntity*>::iterator it=physicsEntities.begin(); it!=physicsEntities.end();)
@@ -155,4 +169,8 @@ void GameManager::update(int frameTime)
 
 void GameManager::blockDisappearing(){
 	blockCount--;
+}
+
+void GameManager::ballLost(){
+	EventManager::Instance()->handleGameEvents(0);
 }

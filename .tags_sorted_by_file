@@ -1,0 +1,151 @@
+!_TAG_FILE_SORTED	1	/0=unsorted, 1=sorted, 2=foldcase/
+!_TAG_FILE_FORMAT	2	/extended format; --format=1 will not append ;" to lines/
+!_TAG_PROGRAM_VERSION	5.9~svn20110310	//
+!_TAG_PROGRAM_AUTHOR	Darren Hiebert	/dhiebert@users.sourceforge.net/
+!_TAG_PROGRAM_NAME	Exuberant Ctags	//
+BUILD_DIR	Makefile	/^BUILD_DIR = build$/;"	m
+CC	Makefile	/^CC = g++$/;"	m
+CC_FLAGS	Makefile	/^CC_FLAGS = -w -std=c++11$/;"	m
+HDR	Makefile	/^HDR = $(wildcard $(SRC_DIR)\/*.h)$/;"	m
+INCLUDES	Makefile	/^INCLUDES = -Iinclude$/;"	m
+LD_FLAGS	Makefile	/^LD_FLAGS = -lSDL2 -lSDL2_image$/;"	m
+OBJS	Makefile	/^OBJS = $(patsubst $(SRC_DIR)\/%.cpp,$(BUILD_DIR)\/%.o,$(SRC))$/;"	m
+SRC	Makefile	/^SRC = $(wildcard $(SRC_DIR)\/*.cpp)$/;"	m
+SRC_DIR	Makefile	/^SRC_DIR = src$/;"	m
+TARGET	Makefile	/^TARGET = $(BUILD_DIR)\/$(TARGET_NAME)$/;"	m
+TARGET_NAME	Makefile	/^TARGET_NAME = breakout$/;"	m
+!_TAG_PROGRAM_URL	http://ctags.sourceforge.net	/official site/
+BALL_H	include/Ball.h	2;"	d
+Ball	include/Ball.h	/^class Ball : public PhysicsEntity$/;"	c
+FLYING_ST	include/Ball.h	/^	FLYING_ST$/;"	e	enum:states
+WAITING_ST	include/Ball.h	/^	WAITING_ST,$/;"	e	enum:states
+height	include/Ball.h	/^	int height = 20.0;$/;"	m	class:Ball
+machineState	include/Ball.h	/^	int machineState;$/;"	m	class:Ball
+max_vel	include/Ball.h	/^	float max_vel = 300;$/;"	m	class:Ball
+paddle	include/Ball.h	/^	Paddle* paddle;$/;"	m	class:Ball
+states	include/Ball.h	/^enum states$/;"	g
+width	include/Ball.h	/^	int width = 20.0;$/;"	m	class:Ball
+BALLS_INDICATOR_H	include/BallsIndicator.h	2;"	d
+BallsIndicator	include/BallsIndicator.h	/^class BallsIndicator : public UIEntity$/;"	c
+BLOCK_H	include/Block.h	2;"	d
+Block	include/Block.h	/^class Block : public PhysicsEntity$/;"	c
+b	include/Block.h	/^	int r, g, b;$/;"	m	class:Block
+delegate	include/Block.h	/^	IBlockDelegate* delegate;$/;"	m	class:Block
+g	include/Block.h	/^	int r, g, b;$/;"	m	class:Block
+height	include/Block.h	/^	int height = 40.0;$/;"	m	class:Block
+r	include/Block.h	/^	int r, g, b;$/;"	m	class:Block
+visible	include/Block.h	/^	bool visible;$/;"	m	class:Block
+width	include/Block.h	/^	int width = 40.0;$/;"	m	class:Block
+ENTITY_H	include/Entity.h	2;"	d
+Entity	include/Entity.h	/^class Entity : public IEventHandler$/;"	c
+height	include/Entity.h	/^	int width, height;$/;"	m	class:Entity
+posX	include/Entity.h	/^	float posX, posY;$/;"	m	class:Entity
+posY	include/Entity.h	/^	float posX, posY;$/;"	m	class:Entity
+width	include/Entity.h	/^	int width, height;$/;"	m	class:Entity
+EVENT_MANAGER_H	include/EventManager.h	2;"	d
+EventManager	include/EventManager.h	/^	EventManager(){};$/;"	f	class:EventManager
+EventManager	include/EventManager.h	/^class EventManager$/;"	c
+e	include/EventManager.h	/^	SDL_Event e;$/;"	m	class:EventManager
+eventHandlers	include/EventManager.h	/^	std::vector<IEventHandler*> eventHandlers;$/;"	m	class:EventManager
+instance	include/EventManager.h	/^	static EventManager* instance;$/;"	m	class:EventManager
+instanceFlag	include/EventManager.h	/^	static bool instanceFlag;$/;"	m	class:EventManager
+GAME_MANAGER_H	include/GameManager.h	2;"	d
+GameManager	include/GameManager.h	/^class GameManager : public IBlockDelegate$/;"	c
+blockCount	include/GameManager.h	/^	int blockCount;$/;"	m	class:GameManager
+physicsEntities	include/GameManager.h	/^	std::vector<PhysicsEntity*> physicsEntities;$/;"	m	class:GameManager
+quit	include/GameManager.h	/^	bool quit;$/;"	m	class:GameManager
+SCREEN_HEIGHT	include/Globals.h	2;"	d
+SCREEN_WIDTH	include/Globals.h	1;"	d
+IBLOCK_DELEGATE_H	include/IBlockDelegate.h	2;"	d
+IBlockDelegate	include/IBlockDelegate.h	/^class IBlockDelegate$/;"	c
+IEVENT_HANDLER_H	include/IEventHandler.h	2;"	d
+IEventHandler	include/IEventHandler.h	/^class IEventHandler$/;"	c
+PADDLE_H	include/Paddle.h	2;"	d
+Paddle	include/Paddle.h	/^class Paddle : public PhysicsEntity$/;"	c
+accel	include/Paddle.h	/^	int accel = 1000;$/;"	m	class:Paddle
+accelX	include/Paddle.h	/^	float accelX, accelY;$/;"	m	class:Paddle
+accelY	include/Paddle.h	/^	float accelX, accelY;$/;"	m	class:Paddle
+height	include/Paddle.h	/^	int height = 20.0;$/;"	m	class:Paddle
+width	include/Paddle.h	/^	int width = 60.0;$/;"	m	class:Paddle
+PHYSICS_ENTITY_H	include/PhysicsEntity.h	2;"	d
+PhysicsEntity	include/PhysicsEntity.h	/^class PhysicsEntity : public Entity$/;"	c
+max_vel	include/PhysicsEntity.h	/^	float max_vel = 200;$/;"	m	class:PhysicsEntity
+velX	include/PhysicsEntity.h	/^	float velX, velY;$/;"	m	class:PhysicsEntity
+velY	include/PhysicsEntity.h	/^	float velX, velY;$/;"	m	class:PhysicsEntity
+UIEntity	include/UIEntity.h	/^class UIEntity : public Entity$/;"	c
+UI_ENTITY_H	include/UIEntity.h	2;"	d
+Ball	src/Ball.cpp	/^Ball::Ball(Paddle* paddle)$/;"	f	class:Ball
+clone	src/Ball.cpp	/^Ball* Ball::clone() const$/;"	f	class:Ball
+collisionClone	src/Ball.cpp	/^Ball* Ball::collisionClone() const$/;"	f	class:Ball
+getCenter	src/Ball.cpp	/^SDL_Point Ball::getCenter()$/;"	f	class:Ball
+getOrigin	src/Ball.cpp	/^SDL_Point Ball::getOrigin()$/;"	f	class:Ball
+getSize	src/Ball.cpp	/^SDL_Point Ball::getSize()$/;"	f	class:Ball
+getVelocity	src/Ball.cpp	/^SDL_Point Ball::getVelocity()$/;"	f	class:Ball
+handleEvents	src/Ball.cpp	/^void Ball::handleEvents(const Uint8* keyStates)$/;"	f	class:Ball
+isDeletable	src/Ball.cpp	/^bool Ball::isDeletable()$/;"	f	class:Ball
+render	src/Ball.cpp	/^void Ball::render(SDL_Renderer* gRenderer)$/;"	f	class:Ball
+resolveCollision	src/Ball.cpp	/^void Ball::resolveCollision(PhysicsEntity* collidedObject)$/;"	f	class:Ball
+update	src/Ball.cpp	/^void Ball::update(int frameTime)$/;"	f	class:Ball
+updateVelocityWithAngle	src/Ball.cpp	/^void Ball::updateVelocityWithAngle(float degrees)$/;"	f	class:Ball
+~Ball	src/Ball.cpp	/^Ball::~Ball()$/;"	f	class:Ball
+BallsIndicator	src/BallsIndicator.cpp	/^BallsIndicator::BallsIndicator(float x, float y)$/;"	f	class:BallsIndicator
+clone	src/BallsIndicator.cpp	/^BallsIndicator* BallsIndicator::clone() const$/;"	f	class:BallsIndicator
+getCenter	src/BallsIndicator.cpp	/^SDL_Point BallsIndicator::getCenter()$/;"	f	class:BallsIndicator
+getOrigin	src/BallsIndicator.cpp	/^SDL_Point BallsIndicator::getOrigin()$/;"	f	class:BallsIndicator
+getSize	src/BallsIndicator.cpp	/^SDL_Point BallsIndicator::getSize()$/;"	f	class:BallsIndicator
+handleEvents	src/BallsIndicator.cpp	/^void BallsIndicator::handleEvents(const Uint8*)$/;"	f	class:BallsIndicator
+isDeletable	src/BallsIndicator.cpp	/^bool BallsIndicator::isDeletable()$/;"	f	class:BallsIndicator
+render	src/BallsIndicator.cpp	/^void BallsIndicator::render(SDL_Renderer*)$/;"	f	class:BallsIndicator
+update	src/BallsIndicator.cpp	/^void BallsIndicator::update(int frameTime)$/;"	f	class:BallsIndicator
+~BallsIndicator	src/BallsIndicator.cpp	/^BallsIndicator::~BallsIndicator()$/;"	f	class:BallsIndicator
+Block	src/Block.cpp	/^Block::Block(int x, int y, int* blockCount, IBlockDelegate* delegate)$/;"	f	class:Block
+clone	src/Block.cpp	/^Block* Block::clone() const$/;"	f	class:Block
+collisionClone	src/Block.cpp	/^Block* Block::collisionClone() const$/;"	f	class:Block
+getCenter	src/Block.cpp	/^SDL_Point Block::getCenter()$/;"	f	class:Block
+getOrigin	src/Block.cpp	/^SDL_Point Block::getOrigin()$/;"	f	class:Block
+getSize	src/Block.cpp	/^SDL_Point Block::getSize()$/;"	f	class:Block
+getVelocity	src/Block.cpp	/^SDL_Point Block::getVelocity()$/;"	f	class:Block
+handleEvents	src/Block.cpp	/^void Block::handleEvents(const Uint8* keyStates)$/;"	f	class:Block
+isDeletable	src/Block.cpp	/^bool Block::isDeletable()$/;"	f	class:Block
+render	src/Block.cpp	/^void Block::render(SDL_Renderer* gRenderer)$/;"	f	class:Block
+resolveCollision	src/Block.cpp	/^void Block::resolveCollision(PhysicsEntity* collidedObject)$/;"	f	class:Block
+setDelegate	src/Block.cpp	/^void Block::setDelegate(IBlockDelegate* delegate)$/;"	f	class:Block
+update	src/Block.cpp	/^void Block::update(int frameTime)$/;"	f	class:Block
+~Block	src/Block.cpp	/^Block::~Block()$/;"	f	class:Block
+~Entity	src/Entity.cpp	/^Entity::~Entity()$/;"	f	class:Entity
+Instance	src/EventManager.cpp	/^EventManager* EventManager::Instance(){$/;"	f	class:EventManager
+deregisterHandler	src/EventManager.cpp	/^void EventManager::deregisterHandler(IEventHandler* handler)$/;"	f	class:EventManager
+handleEvents	src/EventManager.cpp	/^void EventManager::handleEvents()$/;"	f	class:EventManager
+instance	src/EventManager.cpp	/^EventManager* EventManager::instance = NULL;$/;"	m	class:EventManager	file:
+instanceFlag	src/EventManager.cpp	/^bool EventManager::instanceFlag = false;$/;"	m	class:EventManager	file:
+registerHandler	src/EventManager.cpp	/^void EventManager::registerHandler(IEventHandler* handler)$/;"	f	class:EventManager
+GameManager	src/GameManager.cpp	/^GameManager::GameManager()$/;"	f	class:GameManager
+blockDisappearing	src/GameManager.cpp	/^void GameManager::blockDisappearing(){$/;"	f	class:GameManager
+detectCollisions	src/GameManager.cpp	/^void GameManager::detectCollisions()$/;"	f	class:GameManager
+handleEvents	src/GameManager.cpp	/^void GameManager::handleEvents()$/;"	f	class:GameManager
+render	src/GameManager.cpp	/^void GameManager::render(SDL_Renderer* gRenderer)$/;"	f	class:GameManager
+resetLevel	src/GameManager.cpp	/^void GameManager::resetLevel()$/;"	f	class:GameManager
+shouldQuit	src/GameManager.cpp	/^bool GameManager::shouldQuit()$/;"	f	class:GameManager
+update	src/GameManager.cpp	/^void GameManager::update(int frameTime)$/;"	f	class:GameManager
+~GameManager	src/GameManager.cpp	/^GameManager::~GameManager()$/;"	f	class:GameManager
+Paddle	src/Paddle.cpp	/^Paddle::Paddle(float x, float y)$/;"	f	class:Paddle
+clone	src/Paddle.cpp	/^Paddle* Paddle::clone() const$/;"	f	class:Paddle
+collisionClone	src/Paddle.cpp	/^Paddle* Paddle::collisionClone() const$/;"	f	class:Paddle
+getCenter	src/Paddle.cpp	/^SDL_Point Paddle::getCenter()$/;"	f	class:Paddle
+getOrigin	src/Paddle.cpp	/^SDL_Point Paddle::getOrigin()$/;"	f	class:Paddle
+getSize	src/Paddle.cpp	/^SDL_Point Paddle::getSize()$/;"	f	class:Paddle
+getVelocity	src/Paddle.cpp	/^SDL_Point Paddle::getVelocity()$/;"	f	class:Paddle
+handleEvents	src/Paddle.cpp	/^void Paddle::handleEvents(const Uint8* keyStates)$/;"	f	class:Paddle
+isDeletable	src/Paddle.cpp	/^bool Paddle::isDeletable()$/;"	f	class:Paddle
+render	src/Paddle.cpp	/^void Paddle::render(SDL_Renderer* gRenderer)$/;"	f	class:Paddle
+resolveCollision	src/Paddle.cpp	/^void Paddle::resolveCollision(PhysicsEntity* collidedObject)$/;"	f	class:Paddle
+update	src/Paddle.cpp	/^void Paddle::update(int frameTime)$/;"	f	class:Paddle
+~Paddle	src/Paddle.cpp	/^Paddle::~Paddle()$/;"	f	class:Paddle
+close	src/main.cpp	/^void close()$/;"	f
+frameTime	src/main.cpp	/^Uint64 frameTime, lastFrameTime = 0;$/;"	v
+gRenderer	src/main.cpp	/^SDL_Renderer* gRenderer = NULL;$/;"	v
+gWindow	src/main.cpp	/^SDL_Window* gWindow = NULL;$/;"	v
+gameManager	src/main.cpp	/^GameManager gameManager;$/;"	v
+init	src/main.cpp	/^bool init()$/;"	f
+lastFrameTime	src/main.cpp	/^Uint64 frameTime, lastFrameTime = 0;$/;"	v
+main	src/main.cpp	/^int main( int argc, char* args[] )$/;"	f

@@ -16,7 +16,8 @@ public:
 	//Entity();
 	virtual ~Entity() = 0;
 
-	virtual void handleEvents(const Uint8*) = 0;
+	virtual void handleKeyboardEvents(const Uint8*) = 0;
+	virtual void handleGameEvents(int event) = 0;
 	virtual void update(int frameTime) = 0;
 	virtual void render(SDL_Renderer*) = 0;
 

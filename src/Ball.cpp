@@ -1,12 +1,13 @@
 #include "Ball.h"
 
-Ball::Ball(Paddle* paddle)
+Ball::Ball(Paddle* paddle, IBallDelegate* delegate)
 {
 	EventManager::Instance()->registerHandler(this);
 	posX = 32;
 	posY = 420;
 	velX = 0;
 	velY = 0;
+	this->delegate = delegate;
 
 	this->paddle = paddle;
 	machineState = WAITING_ST;
@@ -77,6 +78,7 @@ void Ball::update(int frameTime)
 			}
 			else if(posY > SCREEN_HEIGHT)
 			{
+				delegate->ballLost();
 				machineState = WAITING_ST;
 			}
 
@@ -84,7 +86,7 @@ void Ball::update(int frameTime)
 	}
 }
 
-void Ball::handleEvents(const Uint8* keyStates)
+void Ball::handleKeyboardEvents(const Uint8* keyStates)
 {
 	if(keyStates[SDL_SCANCODE_SPACE])
 	{
@@ -93,6 +95,11 @@ void Ball::handleEvents(const Uint8* keyStates)
 			updateVelocityWithAngle(90-((paddle->getVelocity().x/paddle->max_vel)*45));
 		}
 	}
+}
+
+void Ball::handleGameEvents(int event)
+{
+
 }
 
 void Ball::resolveCollision(PhysicsEntity* collidedObject)

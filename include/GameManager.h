@@ -12,15 +12,18 @@
 #include "Paddle.h"
 #include "Ball.h"
 #include "Block.h"
+#include "BallsIndicator.h"
 #include "Globals.h"
 
-class GameManager : public IBlockDelegate
+class GameManager : public IBlockDelegate, IBallDelegate
 {
 private:
 	std::vector<PhysicsEntity*> physicsEntities;
+	std::vector<UIEntity*> uiEntities;
 	int blockCount;
 	bool quit;
-	void handleEvents();
+	void handleKeyboardEvents();
+	void handleGameEvents();
 	void detectCollisions();
 	void resetLevel();
 public:
@@ -28,6 +31,7 @@ public:
 	~GameManager();
 
 	void blockDisappearing();
+	void ballLost();
 
 	bool shouldQuit();
 	void render(SDL_Renderer*);

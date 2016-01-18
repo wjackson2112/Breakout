@@ -8,6 +8,7 @@
 #include "PhysicsEntity.h"
 #include "Paddle.h"
 #include "Block.h"
+#include "IBallDelegate.h"
 
 enum states
 {
@@ -21,16 +22,18 @@ private:
 	Paddle* paddle;
 	int machineState;
 	void updateVelocityWithAngle(float degrees);
+	IBallDelegate* delegate;
 public:
 	int width = 20.0;
 	int height = 20.0;
 
 	float max_vel = 300;
 
-	Ball(Paddle*);
+	Ball(Paddle*, IBallDelegate* delegate);
 	~Ball();
 
-	void handleEvents(const Uint8*);
+	void handleKeyboardEvents(const Uint8*);
+	void handleGameEvents(int event);
 	void update(int frameTime);
 	void render(SDL_Renderer*);
 	void resolveCollision(PhysicsEntity*);

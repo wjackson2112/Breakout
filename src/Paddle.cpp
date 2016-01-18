@@ -58,7 +58,7 @@ void Paddle::update(int frameTime)
 	}
 }
 
-void Paddle::handleEvents(const Uint8* keyStates)
+void Paddle::handleKeyboardEvents(const Uint8* keyStates)
 {
 	static bool lastLeftState = false;
 	static bool lastRightState = false;
@@ -84,6 +84,11 @@ void Paddle::handleEvents(const Uint8* keyStates)
 
 	lastLeftState = keyStates[SDL_SCANCODE_LEFT];
 	lastRightState = keyStates[SDL_SCANCODE_RIGHT];
+}
+
+void Paddle::handleGameEvents(int event)
+{
+	
 }
 
 void Paddle::resolveCollision(PhysicsEntity* collidedObject)

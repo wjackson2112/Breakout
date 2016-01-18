@@ -15,7 +15,7 @@ Entity::~Entity()
 	
 }
 
-// void Entity::handleEvents(const Uint8* keyStates)
+// void Entity::handleKeyboardEvents(const Uint8* keyStates)
 // {
 
 // }
