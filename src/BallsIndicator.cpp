@@ -1,12 +1,13 @@
 #include "BallsIndicator.h"
 
-BallsIndicator::BallsIndicator(float x, float y, int ballsRemaining)
+BallsIndicator::BallsIndicator(float x, float y, int ballsRemaining, IBallsIndicatorDelegate* delegate)
 {
 	this->ballsRemaining = ballsRemaining;
 	posX = x;
 	posY = y;
 	width = 20;
 	height = 20;
+	this->delegate = delegate;
 
 	EventManager::Instance()->registerHandler(this);
 }
@@ -27,6 +28,8 @@ void BallsIndicator::handleGameEvents(int event)
 	{
 		if(ballsRemaining > 0){
 			this->ballsRemaining--;			
+		} else {
+			delegate->ballsDepleted();
 		}
 
 	}

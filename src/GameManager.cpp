@@ -15,8 +15,29 @@ GameManager::~GameManager()
 	}
 }
 
+void GameManager::gameWon()
+{
+	resetLevel();
+}
+
+void GameManager::gameLost()
+{
+	resetLevel();
+}
+
 void GameManager::resetLevel()
 {
+	if(uiEntities.size() >= 0){
+		for(std::vector<UIEntity*>::iterator it=uiEntities.begin(); it!=uiEntities.end();)
+		{
+			delete * it;
+			it = uiEntities.erase(it);
+		}
+		uiEntities.clear();
+	}
+
+	uiEntities.push_back(new BallsIndicator(0, SCREEN_HEIGHT - 20, 3, this));
+
 	if(physicsEntities.size() >= 0){
 		for(std::vector<PhysicsEntity*>::iterator it=physicsEntities.begin(); it!=physicsEntities.end();)
 		{
@@ -30,11 +51,9 @@ void GameManager::resetLevel()
 	physicsEntities.push_back(new Paddle(30, SCREEN_HEIGHT - 40));
 	physicsEntities.push_back(new Ball((Paddle*) physicsEntities[0], this));
 
-	uiEntities.push_back(new BallsIndicator(0, SCREEN_HEIGHT - 20, 3));
-
 	for(int x = 0; x < SCREEN_WIDTH; x+=40)
 	{
-		for(int y = 0; y < 240; y+= 40)
+		for(int y = 0; y < 40; y+= 40)
 		{
 			physicsEntities.push_back(new Block(x, y, &blockCount, this));		
 			blockCount++;	
@@ -161,16 +180,23 @@ void GameManager::update(int frameTime)
 
 	if(blockCount <= 0)
 	{
-		resetLevel();
+		gameWon();
 	}
 	
 	detectCollisions();
 }
 
-void GameManager::blockDisappearing(){
+void GameManager::blockDisappearing()
+{
 	blockCount--;
 }
 
-void GameManager::ballLost(){
+void GameManager::ballLost()
+{
 	EventManager::Instance()->handleGameEvents(0);
+}
+
+void GameManager::ballsDepleted()
+{
+	gameLost();
 }

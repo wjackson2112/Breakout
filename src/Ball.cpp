@@ -11,6 +11,7 @@ Ball::Ball(Paddle* paddle, IBallDelegate* delegate)
 
 	this->paddle = paddle;
 	machineState = WAITING_ST;
+	delegate->ballLost();
 	//EventManager::Instance()->registerHandler(this);
 }
 

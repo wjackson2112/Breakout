@@ -2,14 +2,16 @@
 #define BALLS_INDICATOR_H
 
 #include "UIEntity.h"
+#include "IBallsIndicatorDelegate.h"
 
 class BallsIndicator : public UIEntity
 {
 private:
 	int ballsRemaining;
 	int gapWidth = 10;
+	IBallsIndicatorDelegate* delegate;
 public:
-	BallsIndicator(float x, float y, int ballsRemaining);
+	BallsIndicator(float x, float y, int ballsRemaining, IBallsIndicatorDelegate* delegate);
 	~BallsIndicator();
 
 	void handleKeyboardEvents(const Uint8*);

@@ -15,7 +15,7 @@
 #include "BallsIndicator.h"
 #include "Globals.h"
 
-class GameManager : public IBlockDelegate, IBallDelegate
+class GameManager : public IBlockDelegate, IBallDelegate, IBallsIndicatorDelegate
 {
 private:
 	std::vector<PhysicsEntity*> physicsEntities;
@@ -26,12 +26,17 @@ private:
 	void handleGameEvents();
 	void detectCollisions();
 	void resetLevel();
+
+	void gameWon();
+	void gameLost();
+
 public:
 	GameManager();
 	~GameManager();
 
 	void blockDisappearing();
 	void ballLost();
+	void ballsDepleted();
 
 	bool shouldQuit();
 	void render(SDL_Renderer*);
