@@ -3,16 +3,11 @@
 #include <SDL2/SDL_image.h>
 #include <stdio.h>
 #include <string>
-#include "GameManager.h"
+#include "ProgramManager.h"
 #include "Globals.h"
-
 
 SDL_Window* gWindow = NULL;
 SDL_Renderer* gRenderer = NULL;
-
-Uint64 frameTime, lastFrameTime = 0;
-
-GameManager gameManager;
 
 bool init();
 void quitEventReceived();
@@ -28,7 +23,7 @@ bool init()
 	}
 
 	//Create Window
-	gWindow = SDL_CreateWindow("Breakout Clone", SDL_WINDOWPOS_UNDEFINED, SDL_WINDOWPOS_UNDEFINED, SCREEN_WIDTH, SCREEN_HEIGHT, SDL_WINDOW_SHOWN);
+	gWindow = SDL_CreateWindow("Breakout", SDL_WINDOWPOS_UNDEFINED, SDL_WINDOWPOS_UNDEFINED, SCREEN_WIDTH, SCREEN_HEIGHT, SDL_WINDOW_SHOWN);
 	if(gWindow == NULL)
 	{
 		printf("Window could not be created! SDL_Error: %s\n", SDL_GetError());
@@ -63,13 +58,9 @@ int main( int argc, char* args[] )
 
 	SDL_RenderPresent(gRenderer);
 
-	while(!gameManager.shouldQuit()){
-		gameManager.update(frameTime - lastFrameTime);
-		gameManager.render(gRenderer);
-		//SDL_Delay(16);
-		lastFrameTime = frameTime;
-		frameTime = SDL_GetPerformanceCounter();
-	}
+	ProgramManager* manager = new ProgramManager(gRenderer);
+	manager->gameLoop();
+	delete manager;
 
 	close();
 

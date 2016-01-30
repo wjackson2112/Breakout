@@ -22,8 +22,6 @@ private:
 	std::vector<UIEntity*> uiEntities;
 	int blockCount;
 	bool quit;
-	void handleKeyboardEvents();
-	void handleGameEvents();
 	void detectCollisions();
 	void resetLevel();
 

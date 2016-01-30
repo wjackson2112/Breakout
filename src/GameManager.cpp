@@ -13,6 +13,11 @@ GameManager::~GameManager()
 	{
 		delete(entity);
 	}
+
+	for(auto &entity : uiEntities)
+	{
+		delete(entity);
+	}
 }
 
 void GameManager::gameWon()
@@ -64,24 +69,6 @@ void GameManager::resetLevel()
 bool GameManager::shouldQuit()
 {
 	return quit;
-}
-
-void GameManager::handleKeyboardEvents()
-{
-	SDL_Event e;
-	while( SDL_PollEvent( &e ) != 0 )
- 	{
- 		if(e.type == SDL_QUIT)
- 		{
- 			quit = true;
- 		}
- 	}
- 	EventManager::Instance()->handleKeyboardEvents();
-}
-
-void GameManager::handleGameEvents()
-{
-
 }
 
 void GameManager::detectCollisions()
@@ -155,8 +142,6 @@ void GameManager::render(SDL_Renderer* gRenderer)
 void GameManager::update(int frameTime)
 {
 	static bool levelComplete = false;
-
-	handleKeyboardEvents();
 
 	//std::cout << "Updating" << std::endl;
 	for(std::vector<PhysicsEntity*>::iterator it=physicsEntities.begin(); it!=physicsEntities.end();)
