@@ -59,7 +59,7 @@ int main( int argc, char* args[] )
 	SDL_RenderPresent(gRenderer);
 
 	ProgramManager* manager = new ProgramManager(gRenderer);
-	manager->gameLoop();
+	manager->loop();
 	delete manager;
 
 	close();

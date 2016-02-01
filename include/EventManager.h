@@ -15,6 +15,7 @@ typedef enum GameEvent
 	BALL_ADDED,
 	BALL_LOST,
 	BALLS_DEPLETED,
+	NEW_GAME,
 	NUM_OF_EVENTS
 } GameEvent;
 
@@ -23,14 +24,13 @@ static char* GameEventStr[NUM_OF_EVENTS] =
 	"BLOCK_DISAPPEARED",
 	"BALL_ADDED",
 	"BALL_LOST",
-	"BALLS_DEPLETED"
+	"BALLS_DEPLETED",
+	"NEW_GAME"
 };
 
 class EventManager
 {
 private:
-
-
 	//Singleton vars
 	static bool instanceFlag;
 	static EventManager* instance;

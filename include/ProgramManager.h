@@ -3,17 +3,25 @@
 
 #include "EventManager.h"
 #include "GameManager.h"
+#include "MenuManager.h"
 #include "IEventHandler.h"
 #include <iostream>
+
+typedef enum ProgramManagerState
+{
+	MAIN_MENU,
+	GAME_RUNNING,
+	GAME_PAUSED
+} ProgramManagerState;
 
 class ProgramManager : public IEventHandler
 {
 private:
 	SDL_Renderer* gRenderer;
-	bool paused;
+	ProgramManagerState machineState;
 public:
 	ProgramManager(SDL_Renderer* gRenderer);
-	void gameLoop();
+	void loop();
 	~ProgramManager();
 
 	void handleKeyboardEvents(const Uint8*);

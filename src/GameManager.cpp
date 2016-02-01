@@ -206,4 +206,9 @@ void GameManager::handleGameEvents(const Uint8* events)
 	{
 		gameLost();
 	}
+
+	if(events[NEW_GAME])
+	{
+		resetLevel();
+	}
 }
