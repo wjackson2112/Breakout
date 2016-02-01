@@ -1,13 +1,12 @@
 #include "BallsIndicator.h"
 
-BallsIndicator::BallsIndicator(float x, float y, int ballsRemaining, IBallsIndicatorDelegate* delegate)
+BallsIndicator::BallsIndicator(float x, float y, int ballsRemaining)
 {
 	this->ballsRemaining = ballsRemaining;
 	posX = x;
 	posY = y;
 	width = 20;
 	height = 20;
-	this->delegate = delegate;
 
 	EventManager::Instance()->registerHandler(this);
 }
@@ -22,16 +21,16 @@ void BallsIndicator::handleKeyboardEvents(const Uint8*)
 
 }
 
-void BallsIndicator::handleGameEvents(int event)
+void BallsIndicator::handleGameEvents(const Uint8* events)
 {
-	if(event == 0)
+	if(events[BALL_LOST])
 	{
+		std::cout << "ballsRemaining: " << ballsRemaining << std::endl;
 		if(ballsRemaining > 0){
 			this->ballsRemaining--;			
 		} else {
-			delegate->ballsDepleted();
+			EventManager::Instance()->reportGameEvent(BALLS_DEPLETED);
 		}
-
 	}
 }
 
@@ -48,11 +47,6 @@ void BallsIndicator::render(SDL_Renderer* gRenderer)
 		SDL_SetRenderDrawColor(gRenderer, 0x00, 0x00, 0xFF, 0x00);
 		SDL_RenderFillRect(gRenderer, &fillRect);
 	}
-}
-
-BallsIndicator* BallsIndicator::clone() const
-{
-	return new BallsIndicator(*this);
 }
 
 SDL_Point BallsIndicator::getCenter()

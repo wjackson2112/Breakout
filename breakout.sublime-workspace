@@ -4,6 +4,10 @@
 		"selected_items":
 		[
 			[
+				"SDL_SC",
+				"SDL_SCANCODE_P"
+			],
+			[
 				"SCREE",
 				"SCREEN_HEIGHT"
 			],
@@ -30,10 +34,6 @@
 			[
 				"event",
 				"eventHandlers"
-			],
-			[
-				"SDL_SC",
-				"SDL_SCANCODE_LEFT"
 			],
 			[
 				"SDL_Get",
@@ -156,26 +156,34 @@
 	"buffers":
 	[
 		{
-			"file": "include/BallsIndicator.h",
+			"file": "include/ProgramManager.h",
 			"settings":
 			{
-				"buffer_size": 697,
+				"buffer_size": 423,
 				"line_ending": "Unix"
 			}
 		},
 		{
-			"file": "src/BallsIndicator.cpp",
+			"file": "src/ProgramManager.cpp",
 			"settings":
 			{
-				"buffer_size": 1406,
+				"buffer_size": 1277,
 				"line_ending": "Unix"
 			}
 		},
 		{
-			"file": "include/IBallsIndicatorDelegate.h",
+			"file": "include/GameManager.h",
 			"settings":
 			{
-				"buffer_size": 158,
+				"buffer_size": 799,
+				"line_ending": "Unix"
+			}
+		},
+		{
+			"file": "src/GameManager.cpp",
+			"settings":
+			{
+				"buffer_size": 3430,
 				"line_ending": "Unix"
 			}
 		},
@@ -188,87 +196,18 @@
 			}
 		},
 		{
-			"file": "include/EventManager.h",
-			"settings":
-			{
-				"buffer_size": 595,
-				"line_ending": "Unix"
-			}
-		},
-		{
-			"file": "include/Ball.h",
-			"settings":
-			{
-				"buffer_size": 858,
-				"line_ending": "Unix"
-			}
-		},
-		{
-			"file": "src/Ball.cpp",
-			"settings":
-			{
-				"buffer_size": 5845,
-				"line_ending": "Unix"
-			}
-		},
-		{
-			"contents": "Searching 21 files for \"if(event == 1)\"\n\n/home/will/Documents/git/Breakout/src/BallsIndicator.cpp:\n   24  void BallsIndicator::handleGameEvents(int event)\n   25  {\n   26: 	if(event == 1)\n   27  	{\n   28  		this->ballsRemaining--;\n\n1 match in 1 file\n\n\nSearching 22 files for \"GameManager\"\n\n/home/will/Documents/git/Breakout/src/GameManager.cpp:\n    1: #include \"GameManager.h\"\n    2  \n    3: GameManager::GameManager()\n    4  {\n    5  	srand(time(NULL));\n    .\n    8  }\n    9  \n   10: GameManager::~GameManager()\n   11  {\n   12  	for(auto &entity : physicsEntities)\n   ..\n   16  }\n   17  \n   18: void GameManager::gameWon()\n   19  {\n   20  	resetLevel();\n   21  }\n   22  \n   23: void GameManager::gameLost()\n   24  {\n   25  	resetLevel();\n   26  }\n   27  \n   28: void GameManager::resetLevel()\n   29  {\n   30  	if(uiEntities.size() >= 0){\n   ..\n   62  }\n   63  \n   64: bool GameManager::shouldQuit()\n   65  {\n   66  	return quit;\n   67  }\n   68  \n   69: void GameManager::handleKeyboardEvents()\n   70  {\n   71  	SDL_Event e;\n   ..\n   80  }\n   81  \n   82: void GameManager::handleGameEvents()\n   83  {\n   84  \n   85  }\n   86  \n   87: void GameManager::detectCollisions()\n   88  {\n   89  	for(auto &entityA : physicsEntities)\n   ..\n  135  }\n  136  \n  137: void GameManager::render(SDL_Renderer* gRenderer)\n  138  {\n  139  	SDL_SetRenderDrawColor(gRenderer, 0x10, 0x10, 0x10, 0xFF);\n  ...\n  153  }\n  154  \n  155: void GameManager::update(int frameTime)\n  156  {\n  157  	static bool levelComplete = false;\n  ...\n  187  }\n  188  \n  189: void GameManager::blockDisappearing()\n  190  {\n  191  	blockCount--;\n  192  }\n  193  \n  194: void GameManager::ballLost()\n  195  {\n  196  	EventManager::Instance()->handleGameEvents(0);\n  197  }\n  198  \n  199: void GameManager::ballsDepleted()\n  200  {\n  201  	gameLost();\n\n/home/will/Documents/git/Breakout/src/main.cpp:\n    4  #include <stdio.h>\n    5  #include <string>\n    6: #include \"GameManager.h\"\n    7  #include \"Globals.h\"\n    8  \n    .\n   13  Uint64 frameTime, lastFrameTime = 0;\n   14  \n   15: GameManager gameManager;\n   16  \n   17  bool init();\n   ..\n   64  	SDL_RenderPresent(gRenderer);\n   65  \n   66: 	while(!gameManager.shouldQuit()){\n   67: 		gameManager.update(frameTime - lastFrameTime);\n   68: 		gameManager.render(gRenderer);\n   69  		lastFrameTime = frameTime;\n   70  		frameTime = SDL_GetPerformanceCounter();\n\n/home/will/Documents/git/Breakout/include/GameManager.h:\n   16  #include \"Globals.h\"\n   17  \n   18: class GameManager : public IBlockDelegate, IBallDelegate, IBallsIndicatorDelegate\n   19  {\n   20  private:\n   ..\n   32  \n   33  public:\n   34: 	GameManager();\n   35: 	~GameManager();\n   36  \n   37  	void blockDisappearing();\n\n26 matches across 3 files\n",
-			"settings":
-			{
-				"buffer_size": 2719,
-				"line_ending": "Unix",
-				"name": "Find Results",
-				"scratch": true
-			}
-		},
-		{
-			"file": "include/IBallDelegate.h",
-			"settings":
-			{
-				"buffer_size": 121,
-				"line_ending": "Unix"
-			}
-		},
-		{
-			"file": "include/GameManager.h",
-			"settings":
-			{
-				"buffer_size": 855,
-				"line_ending": "Unix"
-			}
-		},
-		{
-			"file": "src/GameManager.cpp",
-			"settings":
-			{
-				"buffer_size": 3707,
-				"line_ending": "Unix"
-			}
-		},
-		{
 			"file": "src/main.cpp",
 			"settings":
 			{
-				"buffer_size": 1479,
+				"buffer_size": 1298,
 				"line_ending": "Unix"
 			}
 		},
 		{
-			"file": "src/ProgramManager.cpp",
+			"file": "include/IEventHandler.h",
 			"settings":
 			{
-				"buffer_size": 0,
-				"line_ending": "Unix"
-			}
-		},
-		{
-			"contents": "#ifndef PROGRAM_MANAGER_H\n#define PROGRAM_MANAGER_H\n\nclass ProgramManager\n{\n	\n};\n\n#endif",
-			"file": "include/ProgramManager.h",
-			"file_size": 59,
-			"file_write_time": 130975699770591695,
-			"settings":
-			{
-				"buffer_size": 88,
+				"buffer_size": 215,
 				"line_ending": "Unix"
 			}
 		}
@@ -337,16 +276,20 @@
 	"command_palette":
 	{
 		"height": 370.0,
-		"last_filter": "run",
+		"last_filter": "",
 		"selected_items":
 		[
 			[
-				"run",
+				"",
 				"Build With: Make - Run"
 			],
 			[
-				"",
-				"Build With: Make - All"
+				"install ",
+				"Package Control: Install Package"
+			],
+			[
+				"run",
+				"Build With: Make - Run"
 			],
 			[
 				"make",
@@ -427,10 +370,6 @@
 			[
 				"color",
 				"Colorsublime: Install Theme"
-			],
-			[
-				"install ",
-				"Package Control: Install Package"
 			]
 		],
 		"width": 417.0
@@ -465,12 +404,18 @@
 	],
 	"file_history":
 	[
+		"/home/will/Documents/git/Breakout/include/IBallDelegate.h",
+		"/home/will/Documents/git/Breakout/src/Ball.cpp",
+		"/home/will/Documents/git/Breakout/include/Ball.h",
+		"/home/will/Documents/git/Breakout/include/EventManager.h",
+		"/home/will/Documents/git/Breakout/src/EventManager.cpp",
+		"/home/will/Documents/git/Breakout/include/IBallsIndicatorDelegate.h",
+		"/home/will/Documents/git/Breakout/src/BallsIndicator.cpp",
+		"/home/will/Documents/git/Breakout/include/BallsIndicator.h",
 		"/home/will/Documents/git/Breakout/src/main.cpp",
 		"/home/will/Documents/git/Breakout/src/Paddle.cpp",
 		"/home/will/Documents/git/Breakout/include/Paddle.h",
 		"/home/will/Documents/git/Breakout/include/Block.h",
-		"/home/will/Documents/git/Breakout/include/EventManager.h",
-		"/home/will/Documents/git/Breakout/src/EventManager.cpp",
 		"/home/will/.config/sublime-text-3/Packages/User/Default (Linux).sublime-mousemap",
 		"/home/will/Documents/git/Breakout/src/Block.cpp",
 		"/home/will/Documents/git/Breakout/src/Entity.cpp",
@@ -484,11 +429,9 @@
 		"/home/will/.config/sublime-text-3/Packages/User/Default (Linux).sublime-keymap",
 		"/home/will/.config/sublime-text-3/Packages/User/Preferences.sublime-settings",
 		"/usr/local/bin/colormake",
-		"/home/will/Documents/git/Breakout/src/Ball.cpp",
 		"/home/will/Documents/git/Breakout/Makefile",
 		"/usr/local/bin/testcolormake.sh",
 		"/home/will/Documents/git/Breakout/build/Ball.d",
-		"/home/will/Documents/git/Breakout/include/Ball.h",
 		"/home/will/Documents/git/Breakout/src/GameManager.h",
 		"/home/will/Documents/git/Breakout/src/Ball.h",
 		"/home/will/Documents/git/Breakout/src/Paddle.h",
@@ -613,24 +556,24 @@
 	"groups":
 	[
 		{
-			"selected": 11,
+			"selected": 1,
 			"sheets":
 			[
 				{
 					"buffer": 0,
-					"file": "include/BallsIndicator.h",
+					"file": "include/ProgramManager.h",
 					"semi_transient": false,
 					"settings":
 					{
-						"buffer_size": 697,
+						"buffer_size": 423,
 						"regions":
 						{
 						},
 						"selection":
 						[
 							[
-								327,
-								327
+								150,
+								150
 							]
 						],
 						"settings":
@@ -640,439 +583,55 @@
 						},
 						"translation.x": 0.0,
 						"translation.y": 0.0,
-						"zoom_level": 1.0
-					},
-					"stack_index": 7,
-					"type": "text"
-				},
-				{
-					"buffer": 1,
-					"file": "src/BallsIndicator.cpp",
-					"semi_transient": false,
-					"settings":
-					{
-						"buffer_size": 1406,
-						"regions":
-						{
-						},
-						"selection":
-						[
-							[
-								625,
-								625
-							]
-						],
-						"settings":
-						{
-							"open_with_edit": true,
-							"syntax": "Packages/C++/C++.tmLanguage",
-							"translate_tabs_to_spaces": false
-						},
-						"translation.x": 0.0,
-						"translation.y": 171.0,
-						"zoom_level": 1.0
-					},
-					"stack_index": 6,
-					"type": "text"
-				},
-				{
-					"buffer": 2,
-					"file": "include/IBallsIndicatorDelegate.h",
-					"semi_transient": false,
-					"settings":
-					{
-						"buffer_size": 158,
-						"regions":
-						{
-						},
-						"selection":
-						[
-							[
-								147,
-								147
-							]
-						],
-						"settings":
-						{
-							"open_with_edit": true,
-							"syntax": "Packages/C++/C++.tmLanguage"
-						},
-						"translation.x": 0.0,
-						"translation.y": 0.0,
-						"zoom_level": 1.0
-					},
-					"stack_index": 8,
-					"type": "text"
-				},
-				{
-					"buffer": 3,
-					"file": "src/EventManager.cpp",
-					"semi_transient": false,
-					"settings":
-					{
-						"buffer_size": 973,
-						"regions":
-						{
-						},
-						"selection":
-						[
-							[
-								968,
-								968
-							]
-						],
-						"settings":
-						{
-							"syntax": "Packages/C++/C++.tmLanguage",
-							"translate_tabs_to_spaces": false
-						},
-						"translation.x": 0.0,
-						"translation.y": 128.0,
-						"zoom_level": 1.0
-					},
-					"stack_index": 11,
-					"type": "text"
-				},
-				{
-					"buffer": 4,
-					"file": "include/EventManager.h",
-					"semi_transient": false,
-					"settings":
-					{
-						"buffer_size": 595,
-						"regions":
-						{
-						},
-						"selection":
-						[
-							[
-								582,
-								582
-							]
-						],
-						"settings":
-						{
-							"syntax": "Packages/C++/C++.tmLanguage",
-							"translate_tabs_to_spaces": false
-						},
-						"translation.x": 0.0,
-						"translation.y": 0.0,
-						"zoom_level": 1.0
-					},
-					"stack_index": 13,
-					"type": "text"
-				},
-				{
-					"buffer": 5,
-					"file": "include/Ball.h",
-					"semi_transient": false,
-					"settings":
-					{
-						"buffer_size": 858,
-						"regions":
-						{
-						},
-						"selection":
-						[
-							[
-								486,
-								486
-							]
-						],
-						"settings":
-						{
-							"syntax": "Packages/C++/C++.tmLanguage",
-							"translate_tabs_to_spaces": false
-						},
-						"translation.x": 0.0,
-						"translation.y": 0.0,
-						"zoom_level": 1.0
-					},
-					"stack_index": 10,
-					"type": "text"
-				},
-				{
-					"buffer": 6,
-					"file": "src/Ball.cpp",
-					"semi_transient": false,
-					"settings":
-					{
-						"buffer_size": 5845,
-						"regions":
-						{
-						},
-						"selection":
-						[
-							[
-								399,
-								399
-							]
-						],
-						"settings":
-						{
-							"syntax": "Packages/C++/C++.tmLanguage",
-							"translate_tabs_to_spaces": false
-						},
-						"translation.x": 0.0,
-						"translation.y": 513.0,
-						"zoom_level": 1.0
-					},
-					"stack_index": 12,
-					"type": "text"
-				},
-				{
-					"buffer": 7,
-					"semi_transient": false,
-					"settings":
-					{
-						"buffer_size": 2719,
-						"regions":
-						{
-							"match":
-							{
-								"flags": 112,
-								"regions":
-								[
-									[
-										172,
-										186
-									],
-									[
-										361,
-										372
-									],
-									[
-										391,
-										402
-									],
-									[
-										404,
-										415
-									],
-									[
-										484,
-										495
-									],
-									[
-										498,
-										509
-									],
-									[
-										600,
-										611
-									],
-									[
-										683,
-										694
-									],
-									[
-										767,
-										778
-									],
-									[
-										873,
-										884
-									],
-									[
-										958,
-										969
-									],
-									[
-										1059,
-										1070
-									],
-									[
-										1137,
-										1148
-									],
-									[
-										1258,
-										1269
-									],
-									[
-										1414,
-										1425
-									],
-									[
-										1536,
-										1547
-									],
-									[
-										1629,
-										1640
-									],
-									[
-										1746,
-										1757
-									],
-									[
-										1921,
-										1932
-									],
-									[
-										2037,
-										2048
-									],
-									[
-										2049,
-										2060
-									],
-									[
-										2157,
-										2168
-									],
-									[
-										2193,
-										2204
-									],
-									[
-										2249,
-										2260
-									],
-									[
-										2473,
-										2484
-									],
-									[
-										2611,
-										2622
-									],
-									[
-										2635,
-										2646
-									]
-								],
-								"scope": ""
-							}
-						},
-						"selection":
-						[
-							[
-								251,
-								251
-							]
-						],
-						"settings":
-						{
-							"default_dir": "/home/will/Documents/git/Breakout",
-							"detect_indentation": false,
-							"line_numbers": false,
-							"output_tag": 2,
-							"result_base_dir": "",
-							"result_file_regex": "^([A-Za-z\\\\/<].*):$",
-							"result_line_regex": "^ +([0-9]+):",
-							"scroll_past_end": true,
-							"syntax": "Packages/Default/Find Results.hidden-tmLanguage"
-						},
-						"translation.x": 0.0,
-						"translation.y": 1463.0,
-						"zoom_level": 1.0
-					},
-					"stack_index": 5,
-					"type": "text"
-				},
-				{
-					"buffer": 8,
-					"file": "include/IBallDelegate.h",
-					"semi_transient": false,
-					"settings":
-					{
-						"buffer_size": 121,
-						"regions":
-						{
-						},
-						"selection":
-						[
-							[
-								49,
-								49
-							]
-						],
-						"settings":
-						{
-							"open_with_edit": true,
-							"syntax": "Packages/C++/C++.tmLanguage"
-						},
-						"translation.x": 0.0,
-						"translation.y": 0.0,
-						"zoom_level": 1.0
-					},
-					"stack_index": 9,
-					"type": "text"
-				},
-				{
-					"buffer": 9,
-					"file": "include/GameManager.h",
-					"semi_transient": false,
-					"settings":
-					{
-						"buffer_size": 855,
-						"regions":
-						{
-						},
-						"selection":
-						[
-							[
-								724,
-								724
-							]
-						],
-						"settings":
-						{
-							"syntax": "Packages/C++/C++.tmLanguage",
-							"translate_tabs_to_spaces": false
-						},
-						"translation.x": 0.0,
-						"translation.y": 257.0,
-						"zoom_level": 1.0
-					},
-					"stack_index": 4,
-					"type": "text"
-				},
-				{
-					"buffer": 10,
-					"file": "src/GameManager.cpp",
-					"semi_transient": false,
-					"settings":
-					{
-						"buffer_size": 3707,
-						"regions":
-						{
-						},
-						"selection":
-						[
-							[
-								1470,
-								1470
-							]
-						],
-						"settings":
-						{
-							"syntax": "Packages/C++/C++.tmLanguage",
-							"translate_tabs_to_spaces": false
-						},
-						"translation.x": 0.0,
-						"translation.y": 1140.0,
 						"zoom_level": 1.0
 					},
 					"stack_index": 3,
 					"type": "text"
 				},
 				{
-					"buffer": 11,
-					"file": "src/main.cpp",
+					"buffer": 1,
+					"file": "src/ProgramManager.cpp",
 					"semi_transient": false,
 					"settings":
 					{
-						"buffer_size": 1479,
+						"buffer_size": 1277,
 						"regions":
 						{
 						},
 						"selection":
 						[
 							[
-								625,
-								625
+								1093,
+								1093
+							]
+						],
+						"settings":
+						{
+							"open_with_edit": true,
+							"syntax": "Packages/C++/C++.tmLanguage"
+						},
+						"translation.x": 0.0,
+						"translation.y": 0.0,
+						"zoom_level": 1.0
+					},
+					"stack_index": 0,
+					"type": "text"
+				},
+				{
+					"buffer": 2,
+					"file": "include/GameManager.h",
+					"semi_transient": false,
+					"settings":
+					{
+						"buffer_size": 799,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								563,
+								563
 							]
 						],
 						"settings":
@@ -1081,19 +640,48 @@
 							"translate_tabs_to_spaces": false
 						},
 						"translation.x": 0.0,
-						"translation.y": 171.0,
+						"translation.y": 0.0,
 						"zoom_level": 1.0
 					},
-					"stack_index": 0,
+					"stack_index": 5,
 					"type": "text"
 				},
 				{
-					"buffer": 12,
-					"file": "src/ProgramManager.cpp",
+					"buffer": 3,
+					"file": "src/GameManager.cpp",
 					"semi_transient": false,
 					"settings":
 					{
-						"buffer_size": 0,
+						"buffer_size": 3430,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								2670,
+								2670
+							]
+						],
+						"settings":
+						{
+							"syntax": "Packages/C++/C++.tmLanguage",
+							"translate_tabs_to_spaces": false
+						},
+						"translation.x": 0.0,
+						"translation.y": 2793.0,
+						"zoom_level": 1.0
+					},
+					"stack_index": 2,
+					"type": "text"
+				},
+				{
+					"buffer": 4,
+					"file": "src/EventManager.cpp",
+					"semi_transient": true,
+					"settings":
+					{
+						"buffer_size": 973,
 						"regions":
 						{
 						},
@@ -1106,43 +694,71 @@
 						],
 						"settings":
 						{
-							"open_with_edit": true,
-							"syntax": "Packages/C++/C++.tmLanguage"
+							"syntax": "Packages/C++/C++.tmLanguage",
+							"translate_tabs_to_spaces": false
 						},
-						"translation.x": 0.0,
-						"translation.y": 0.0,
+						"translation.x": -0.0,
+						"translation.y": 285.0,
 						"zoom_level": 1.0
 					},
-					"stack_index": 2,
+					"stack_index": 1,
 					"type": "text"
 				},
 				{
-					"buffer": 13,
-					"file": "include/ProgramManager.h",
+					"buffer": 5,
+					"file": "src/main.cpp",
 					"semi_transient": false,
 					"settings":
 					{
-						"buffer_size": 88,
+						"buffer_size": 1298,
 						"regions":
 						{
 						},
 						"selection":
 						[
 							[
-								77,
-								77
+								1234,
+								1234
 							]
 						],
 						"settings":
 						{
-							"open_with_edit": true,
+							"syntax": "Packages/C++/C++.tmLanguage",
+							"translate_tabs_to_spaces": false
+						},
+						"translation.x": 0.0,
+						"translation.y": 513.0,
+						"zoom_level": 1.0
+					},
+					"stack_index": 6,
+					"type": "text"
+				},
+				{
+					"buffer": 6,
+					"file": "include/IEventHandler.h",
+					"semi_transient": false,
+					"settings":
+					{
+						"buffer_size": 215,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								104,
+								104
+							]
+						],
+						"settings":
+						{
 							"syntax": "Packages/C++/C++.tmLanguage"
 						},
 						"translation.x": 0.0,
 						"translation.y": 0.0,
 						"zoom_level": 1.0
 					},
-					"stack_index": 1,
+					"stack_index": 4,
 					"type": "text"
 				}
 			]

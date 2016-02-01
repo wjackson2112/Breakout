@@ -7,7 +7,7 @@ class IEventHandler
 {
 public:
 	virtual void handleKeyboardEvents(const Uint8*) = 0;
-	virtual void handleGameEvents(int event) = 0;
+	virtual void handleGameEvents(const Uint8*) = 0;
 };
 
 #endif

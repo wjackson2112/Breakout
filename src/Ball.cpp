@@ -1,36 +1,22 @@
 #include "Ball.h"
 
-Ball::Ball(Paddle* paddle, IBallDelegate* delegate)
+Ball::Ball(Paddle* paddle)
 {
 	EventManager::Instance()->registerHandler(this);
 	posX = 32;
 	posY = 420;
 	velX = 0;
 	velY = 0;
-	this->delegate = delegate;
 
 	this->paddle = paddle;
 	machineState = WAITING_ST;
-	delegate->ballLost();
-	//EventManager::Instance()->registerHandler(this);
+
+	EventManager::Instance()->reportGameEvent(BALL_LOST);
 }
 
 Ball::~Ball()
 {
 	EventManager::Instance()->deregisterHandler(this);
-}
-
-Ball* Ball::clone() const
-{
-	return new Ball(*this);
-}
-
-Ball* Ball::collisionClone() const
-{
-	Ball* newBall = new Ball(*this);
-	newBall->paddle = NULL;
-	newBall->machineState = WAITING_ST;
-	return newBall;
 }
 
 void Ball::updateVelocityWithAngle(float degrees)
@@ -79,7 +65,7 @@ void Ball::update(int frameTime)
 			}
 			else if(posY > SCREEN_HEIGHT)
 			{
-				delegate->ballLost();
+				EventManager::Instance()->reportGameEvent(BALL_LOST);
 				machineState = WAITING_ST;
 			}
 
@@ -98,24 +84,24 @@ void Ball::handleKeyboardEvents(const Uint8* keyStates)
 	}
 }
 
-void Ball::handleGameEvents(int event)
+void Ball::handleGameEvents(const Uint8* events)
 {
 
 }
 
-void Ball::resolveCollision(PhysicsEntity* collidedObject)
+void Ball::resolveCollision(PhysicsEntity* collider, PhysicsEntity* object)
 {
 	//std::cout << "Ball resolving" << std::endl;
 	//Bounce off the paddle
-	if(dynamic_cast<Paddle*> (collidedObject) != NULL)
+	if(dynamic_cast<Paddle*> (object) != NULL)
 	{
 		int deltaX, deltaY;
 		int direction;
 
 		//if(velX >= 0){
-		if(posX + width - collidedObject->getOrigin().x < collidedObject->getOrigin().x + collidedObject->getSize().x - posX)
+		if(posX + width - collider->getOrigin().x < collider->getOrigin().x + collider->getSize().x - posX)
 		{
-			deltaX = posX + width - collidedObject->getOrigin().x;
+			deltaX = posX + width - collider->getOrigin().x;
 			if(velX != 0)
 				deltaY = (velY/velX)*deltaX;
 			else
@@ -124,7 +110,7 @@ void Ball::resolveCollision(PhysicsEntity* collidedObject)
 		}
 		else
 		{
-			deltaX = collidedObject->getOrigin().x + collidedObject->getSize().x - posX;
+			deltaX = collider->getOrigin().x + collider->getSize().x - posX;
 			if(velX != 0)
 				deltaY = (velY/velX)*deltaX;
 			else
@@ -133,17 +119,17 @@ void Ball::resolveCollision(PhysicsEntity* collidedObject)
 		}
 
 		if(velY >= 0){
-			if(posY + height - collidedObject->getOrigin().y < abs(deltaY)){
-				deltaY = posY + height - collidedObject->getOrigin().y;
+			if(posY + height - collider->getOrigin().y < abs(deltaY)){
+				deltaY = posY + height - collider->getOrigin().y;
 				deltaX = (velX/velY)*deltaY;
 				direction = 2;
 			}
 		}
 		else
 		{
-			if(collidedObject->getOrigin().y + collidedObject->getSize().y - posY < abs(deltaY))
+			if(collider->getOrigin().y + collider->getSize().y - posY < abs(deltaY))
 			{
-				deltaY = collidedObject->getOrigin().y + collidedObject->getSize().y - posY;
+				deltaY = collider->getOrigin().y + collider->getSize().y - posY;
 				deltaX = velX/velY*deltaY;
 				direction = 3;
 			}	
@@ -178,7 +164,7 @@ void Ball::resolveCollision(PhysicsEntity* collidedObject)
 			//top
 			case 2:
 			{
-				float angle = (((float) collidedObject->getCenter().x - (float) getCenter().x)/((float) collidedObject->getSize().x/2) * 45) + 90;
+				float angle = (((float) collider->getCenter().x - (float) getCenter().x)/((float) collider->getSize().x/2) * 45) + 90;
 				updateVelocityWithAngle(angle);
 				break;
 			}
@@ -194,15 +180,15 @@ void Ball::resolveCollision(PhysicsEntity* collidedObject)
 		}
 	}
 		//Bounce off the paddle
-	else if(dynamic_cast<Block*> (collidedObject) != NULL)
+	else if(dynamic_cast<Block*> (object) != NULL)
 	{
 		int deltaX, deltaY;
 		int direction;
 
 		//if(velX >= 0){
-		if(posX + width - collidedObject->getOrigin().x < collidedObject->getOrigin().x + collidedObject->getSize().x - posX)
+		if(posX + width - collider->getOrigin().x < collider->getOrigin().x + collider->getSize().x - posX)
 		{
-			deltaX = posX + width - collidedObject->getOrigin().x;
+			deltaX = posX + width - collider->getOrigin().x;
 			if(velX != 0)
 				deltaY = (velY/velX)*deltaX;
 			else
@@ -211,7 +197,7 @@ void Ball::resolveCollision(PhysicsEntity* collidedObject)
 		}
 		else
 		{
-			deltaX = collidedObject->getOrigin().x + collidedObject->getSize().x - posX;
+			deltaX = collider->getOrigin().x + collider->getSize().x - posX;
 			if(velX != 0)
 				deltaY = (velY/velX)*deltaX;
 			else
@@ -219,18 +205,18 @@ void Ball::resolveCollision(PhysicsEntity* collidedObject)
 			direction = 1;
 		}
 
-		if(posY + height - collidedObject->getOrigin().y < collidedObject->getOrigin().y + collidedObject->getSize().y - posY){
-			if(posY + height - collidedObject->getOrigin().y < abs(deltaY)){
-				deltaY = posY + height - collidedObject->getOrigin().y;
+		if(posY + height - collider->getOrigin().y < collider->getOrigin().y + collider->getSize().y - posY){
+			if(posY + height - collider->getOrigin().y < abs(deltaY)){
+				deltaY = posY + height - collider->getOrigin().y;
 				deltaX = (velX/velY)*deltaY;
 				direction = 2;
 			}
 		}
 		else
 		{
-			if(collidedObject->getOrigin().y + collidedObject->getSize().y - posY < abs(deltaY))
+			if(collider->getOrigin().y + collider->getSize().y - posY < abs(deltaY))
 			{
-				deltaY = collidedObject->getOrigin().y + collidedObject->getSize().y - posY;
+				deltaY = collider->getOrigin().y + collider->getSize().y - posY;
 				deltaX = velX/velY*deltaY;
 				direction = 3;
 			}	

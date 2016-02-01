@@ -1,6 +1,6 @@
 #include "Block.h"
 
-Block::Block(int x, int y, int* blockCount, IBlockDelegate* delegate)
+Block::Block(int x, int y, int* blockCount)
 {
 	posX = x;
 	posY = y;
@@ -9,11 +9,6 @@ Block::Block(int x, int y, int* blockCount, IBlockDelegate* delegate)
 	g = rand()%0xFF;
 	b = rand()%0xFF;
 
-	if(delegate)
-	{
-		this->delegate = delegate;
-	}
-
 	visible = true;
 
 	EventManager::Instance()->registerHandler(this);
@@ -21,28 +16,9 @@ Block::Block(int x, int y, int* blockCount, IBlockDelegate* delegate)
 
 Block::~Block()
 {
-	if(delegate){
-		delegate->blockDisappearing();
-	}
 
+	EventManager::Instance()->reportGameEvent(BLOCK_DISAPPEARED);
 	EventManager::Instance()->deregisterHandler(this);
-}
-
-Block* Block::clone() const
-{
-	return new Block(*this);
-}
-
-Block* Block::collisionClone() const
-{
-	Block* newBlock = new Block(*this);
-	newBlock->setDelegate(NULL);
-	return newBlock;
-}
-
-void Block::setDelegate(IBlockDelegate* delegate)
-{
-	this->delegate = delegate;
 }
 
 void Block::handleKeyboardEvents(const Uint8* keyStates)
@@ -50,7 +26,7 @@ void Block::handleKeyboardEvents(const Uint8* keyStates)
 
 }
 
-void Block::handleGameEvents(int event)
+void Block::handleGameEvents(const Uint8* events)
 {
 	
 }
@@ -72,10 +48,10 @@ void Block::render(SDL_Renderer* gRenderer)
 	SDL_RenderFillRect(gRenderer, &fillRect);
 }
 
-void Block::resolveCollision(PhysicsEntity* collidedObject)
+void Block::resolveCollision(PhysicsEntity* collider, PhysicsEntity* object)
 {
 	//Dismiss self if collided with ball
-	if(dynamic_cast<Ball*> (collidedObject) != NULL)
+	if(dynamic_cast<Ball*> (object) != NULL)
 	{
 		visible = false;
 	}

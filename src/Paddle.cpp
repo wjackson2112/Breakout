@@ -15,17 +15,6 @@ Paddle::~Paddle()
 	EventManager::Instance()->deregisterHandler(this);
 }
 
-Paddle* Paddle::clone() const
-{
-	return new Paddle(*this);
-}
-
-Paddle* Paddle::collisionClone() const
-{
-	Paddle* newPaddle = new Paddle(*this);
-	return newPaddle;
-}
-
 void Paddle::render(SDL_Renderer* gRenderer)
 {
 	SDL_Rect fillRect = {posX, posY, width, height};
@@ -86,12 +75,12 @@ void Paddle::handleKeyboardEvents(const Uint8* keyStates)
 	lastRightState = keyStates[SDL_SCANCODE_RIGHT];
 }
 
-void Paddle::handleGameEvents(int event)
+void Paddle::handleGameEvents(const Uint8* events)
 {
 	
 }
 
-void Paddle::resolveCollision(PhysicsEntity* collidedObject)
+void Paddle::resolveCollision(PhysicsEntity* collider, PhysicsEntity* object)
 {
 
 }

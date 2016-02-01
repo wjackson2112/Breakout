@@ -5,6 +5,7 @@ GameManager::GameManager()
 	srand(time(NULL));
 	quit = false;
 	resetLevel();
+	EventManager::Instance()->registerHandler(this);
 }
 
 GameManager::~GameManager()
@@ -18,6 +19,8 @@ GameManager::~GameManager()
 	{
 		delete(entity);
 	}
+
+	EventManager::Instance()->deregisterHandler(this);
 }
 
 void GameManager::gameWon()
@@ -41,7 +44,7 @@ void GameManager::resetLevel()
 		uiEntities.clear();
 	}
 
-	uiEntities.push_back(new BallsIndicator(0, SCREEN_HEIGHT - 20, 3, this));
+	uiEntities.push_back(new BallsIndicator(0, SCREEN_HEIGHT - 20, 3));
 
 	if(physicsEntities.size() >= 0){
 		for(std::vector<PhysicsEntity*>::iterator it=physicsEntities.begin(); it!=physicsEntities.end();)
@@ -54,13 +57,13 @@ void GameManager::resetLevel()
 
 	blockCount = 0;
 	physicsEntities.push_back(new Paddle(30, SCREEN_HEIGHT - 40));
-	physicsEntities.push_back(new Ball((Paddle*) physicsEntities[0], this));
+	physicsEntities.push_back(new Ball((Paddle*) physicsEntities[0]));
 
 	for(int x = 0; x < SCREEN_WIDTH; x+=40)
 	{
 		for(int y = 0; y < 40; y+= 40)
 		{
-			physicsEntities.push_back(new Block(x, y, &blockCount, this));		
+			physicsEntities.push_back(new Block(x, y, &blockCount));		
 			blockCount++;	
 		}
 	}
@@ -110,10 +113,10 @@ void GameManager::detectCollisions()
 					continue;
 				}
 
-				PhysicsEntity* entityACopy = (*entityA).collisionClone();
-				PhysicsEntity* entityBCopy = (*entityB).collisionClone();
-				entityA->resolveCollision(entityBCopy);
-				entityB->resolveCollision(entityACopy);
+				Collider* entityACopy = new Collider(entityA);
+				Collider* entityBCopy = new Collider(entityB);
+				entityA->resolveCollision(entityBCopy, entityB);
+				entityB->resolveCollision(entityACopy, entityA);
 				delete(entityACopy);
 				delete(entityBCopy);
 			}
@@ -171,17 +174,20 @@ void GameManager::update(int frameTime)
 	detectCollisions();
 }
 
-void GameManager::blockDisappearing()
+void GameManager::handleKeyboardEvents(const Uint8* keyStates)
 {
-	blockCount--;
+
 }
 
-void GameManager::ballLost()
+void GameManager::handleGameEvents(const Uint8* events)
 {
-	EventManager::Instance()->handleGameEvents(0);
-}
+	if(events[BLOCK_DISAPPEARED])
+	{
+		blockCount -= events[BLOCK_DISAPPEARED];
+	}
 
-void GameManager::ballsDepleted()
-{
-	gameLost();
+	if(events[BALLS_DEPLETED])
+	{
+		gameLost();
+	}
 }

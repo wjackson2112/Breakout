@@ -10,10 +10,8 @@ protected:
 	float velX, velY;
 public:
 	float max_vel = 200;
-	virtual void resolveCollision(PhysicsEntity*) = 0;
+	virtual void resolveCollision(PhysicsEntity* collider, PhysicsEntity* object) = 0;
 	virtual SDL_Point getVelocity() = 0;
-
-	virtual PhysicsEntity* collisionClone() const = 0;
 };
 
 #endif

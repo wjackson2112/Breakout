@@ -44,10 +44,24 @@ void EventManager::handleKeyboardEvents()
 	}
 }
 
-void EventManager::handleGameEvents(int event)
+void EventManager::reportGameEvent(GameEvent event)
+{
+	this->gameEvents[event] += 1;
+}
+
+void EventManager::handleGameEvents()
 {
 	for(auto &handler : eventHandlers)
 	{
-		handler->handleGameEvents(event);
+		handler->handleGameEvents(gameEvents);
+	}
+	this->clearGameEvents();
+}
+
+void EventManager::clearGameEvents()
+{
+	for(int i = 0; i < NUM_OF_EVENTS; i++)
+	{
+		this->gameEvents[i] = 0;
 	}
 }

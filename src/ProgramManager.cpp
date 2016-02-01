@@ -32,6 +32,7 @@ void ProgramManager::gameLoop()
  		}
 
  		EventManager::Instance()->handleKeyboardEvents(); 		
+ 		EventManager::Instance()->handleGameEvents();
 
  		if(!paused)
  		{
@@ -59,7 +60,7 @@ void ProgramManager::handleKeyboardEvents(const Uint8* keyStates)
 	lastPauseState = currentPauseState;
 }
 
-void ProgramManager::handleGameEvents(int event)
+void ProgramManager::handleGameEvents(const Uint8* events)
 {
 
 }

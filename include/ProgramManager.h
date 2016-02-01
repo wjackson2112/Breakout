@@ -17,7 +17,7 @@ public:
 	~ProgramManager();
 
 	void handleKeyboardEvents(const Uint8*);
-	void handleGameEvents(int event);
+	void handleGameEvents(const Uint8* events);
 };
 
 #endif

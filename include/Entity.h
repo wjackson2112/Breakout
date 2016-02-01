@@ -17,11 +17,9 @@ public:
 	virtual ~Entity() = 0;
 
 	virtual void handleKeyboardEvents(const Uint8*) = 0;
-	virtual void handleGameEvents(int event) = 0;
+	virtual void handleGameEvents(const Uint8* events) = 0;
 	virtual void update(int frameTime) = 0;
 	virtual void render(SDL_Renderer*) = 0;
-
-	virtual Entity* clone() const = 0;
 
 	virtual SDL_Point getCenter() = 0;
 	virtual SDL_Point getOrigin() = 0;

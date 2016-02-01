@@ -17,13 +17,10 @@ public:
 	~Paddle();
 
 	void handleKeyboardEvents(const Uint8*);
-	void handleGameEvents(int event);
+	void handleGameEvents(const Uint8* events);
 	void update(int frameTime);
 	void render(SDL_Renderer*);
-	void resolveCollision(PhysicsEntity*);
-
-	Paddle* clone() const;
-	Paddle* collisionClone() const;
+	void resolveCollision(PhysicsEntity* collider, PhysicsEntity* object);
 
 	SDL_Point getCenter();
 	SDL_Point getOrigin();

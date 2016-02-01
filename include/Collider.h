@@ -1,23 +1,15 @@
-#ifndef BLOCK_H
-#define BLOCK_H
+#ifndef COLLIDER_H
+#define COLLIDER_H
 
 #include <iostream>
 #include <cstdlib>
 #include "PhysicsEntity.h"
-#include "Ball.h"
 
-class Block : public PhysicsEntity
+class Collider : public PhysicsEntity
 {
-private:
-	int r, g, b;
 public:
-	int width = 40.0;
-	int height = 40.0;
-
-	bool visible;
-
-	Block(int x, int y, int* blockCount);
-	~Block();
+	Collider(Entity* entity);
+	~Collider();
 
 	void handleKeyboardEvents(const Uint8*);
 	void handleGameEvents(const Uint8* events);

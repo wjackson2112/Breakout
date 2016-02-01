@@ -13,9 +13,10 @@
 #include "Ball.h"
 #include "Block.h"
 #include "BallsIndicator.h"
+#include "Collider.h"
 #include "Globals.h"
 
-class GameManager : public IBlockDelegate, IBallDelegate, IBallsIndicatorDelegate
+class GameManager : public IEventHandler
 {
 private:
 	std::vector<PhysicsEntity*> physicsEntities;
@@ -39,6 +40,9 @@ public:
 	bool shouldQuit();
 	void render(SDL_Renderer*);
 	void update(int frameTime);
+
+	void handleKeyboardEvents(const Uint8*);
+	void handleGameEvents(const Uint8* events);
 };
 
 #endif
