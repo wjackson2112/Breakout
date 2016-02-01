@@ -33,6 +33,11 @@ void Collider::render(SDL_Renderer*)
 
 }
 
+char* Collider::type()
+{
+	return "Collider";
+}
+
 void Collider::resolveCollision(PhysicsEntity* collider, PhysicsEntity* object)
 {
 

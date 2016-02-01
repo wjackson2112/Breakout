@@ -41,6 +41,8 @@ public:
 	void render(SDL_Renderer*);
 	void update(int frameTime);
 
+	char* type();
+
 	void handleKeyboardEvents(const Uint8*);
 	void handleGameEvents(const Uint8* events);
 };

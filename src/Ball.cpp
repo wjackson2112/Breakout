@@ -9,9 +9,7 @@ Ball::Ball(Paddle* paddle)
 	velY = 0;
 
 	this->paddle = paddle;
-	machineState = WAITING_ST;
-
-	EventManager::Instance()->reportGameEvent(BALL_LOST);
+	machineState = LOST_ST;
 }
 
 Ball::~Ball()
@@ -37,6 +35,9 @@ void Ball::update(int frameTime)
 {
 	switch(machineState)
 	{
+		case LOST_ST:
+			EventManager::Instance()->reportGameEvent(BALL_LOST);
+			machineState = WAITING_ST;
 		case WAITING_ST:
 			posX = paddle->getCenter().x - width/2;
 			posY = paddle->getOrigin().y - height;
@@ -65,12 +66,17 @@ void Ball::update(int frameTime)
 			}
 			else if(posY > SCREEN_HEIGHT)
 			{
-				EventManager::Instance()->reportGameEvent(BALL_LOST);
-				machineState = WAITING_ST;
+				
+				machineState = LOST_ST;
 			}
 
 			break;
 	}
+}
+
+char* Ball::type()
+{
+	return "Ball";
 }
 
 void Ball::handleKeyboardEvents(const Uint8* keyStates)

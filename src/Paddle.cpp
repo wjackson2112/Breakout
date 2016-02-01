@@ -47,6 +47,11 @@ void Paddle::update(int frameTime)
 	}
 }
 
+char* Paddle::type()
+{
+	return "Paddle";
+}
+
 void Paddle::handleKeyboardEvents(const Uint8* keyStates)
 {
 	static bool lastLeftState = false;

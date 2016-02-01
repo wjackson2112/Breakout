@@ -48,6 +48,11 @@ void Block::render(SDL_Renderer* gRenderer)
 	SDL_RenderFillRect(gRenderer, &fillRect);
 }
 
+char* Block::type()
+{
+	return "Block";
+}
+
 void Block::resolveCollision(PhysicsEntity* collider, PhysicsEntity* object)
 {
 	//Dismiss self if collided with ball

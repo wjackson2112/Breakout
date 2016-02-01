@@ -9,13 +9,14 @@ private:
 	int ballsRemaining;
 	int gapWidth = 10;
 public:
-	BallsIndicator(float x, float y, int ballsRemaining);
+	BallsIndicator(float x, float y);
 	~BallsIndicator();
 
 	void handleKeyboardEvents(const Uint8*);
 	void handleGameEvents(const Uint8* events);
 	void update(int frameTime);
 	void render(SDL_Renderer*);
+	char* type();
 
 	SDL_Point getCenter();
 	SDL_Point getOrigin();

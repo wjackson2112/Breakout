@@ -18,6 +18,7 @@ public:
 
 	void handleKeyboardEvents(const Uint8*);
 	void handleGameEvents(const Uint8* events);
+	char* type();
 };
 
 #endif

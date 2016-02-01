@@ -4,20 +4,22 @@ GameManager::GameManager()
 {
 	srand(time(NULL));
 	quit = false;
-	resetLevel();
 	EventManager::Instance()->registerHandler(this);
+	resetLevel();
 }
 
 GameManager::~GameManager()
 {
-	for(auto &entity : physicsEntities)
+	for(std::vector<UIEntity*>::iterator it=uiEntities.begin(); it!=uiEntities.end();)
 	{
-		delete(entity);
+		delete * it;
+		it = uiEntities.erase(it);
 	}
 
-	for(auto &entity : uiEntities)
+	for(std::vector<PhysicsEntity*>::iterator it=physicsEntities.begin(); it!=physicsEntities.end();)
 	{
-		delete(entity);
+		delete * it;
+		it = physicsEntities.erase(it);
 	}
 
 	EventManager::Instance()->deregisterHandler(this);
@@ -44,7 +46,7 @@ void GameManager::resetLevel()
 		uiEntities.clear();
 	}
 
-	uiEntities.push_back(new BallsIndicator(0, SCREEN_HEIGHT - 20, 3));
+	uiEntities.push_back(new BallsIndicator(0, SCREEN_HEIGHT - 20));
 
 	if(physicsEntities.size() >= 0){
 		for(std::vector<PhysicsEntity*>::iterator it=physicsEntities.begin(); it!=physicsEntities.end();)
@@ -67,6 +69,10 @@ void GameManager::resetLevel()
 			blockCount++;	
 		}
 	}
+
+	EventManager::Instance()->reportGameEvent(BALL_ADDED);
+	EventManager::Instance()->reportGameEvent(BALL_ADDED);
+	EventManager::Instance()->reportGameEvent(BALL_ADDED);
 }
 
 bool GameManager::shouldQuit()
@@ -146,6 +152,11 @@ void GameManager::update(int frameTime)
 {
 	static bool levelComplete = false;
 
+	for(auto &entity : uiEntities)
+	{
+		entity->update(frameTime);
+	}
+
 	//std::cout << "Updating" << std::endl;
 	for(std::vector<PhysicsEntity*>::iterator it=physicsEntities.begin(); it!=physicsEntities.end();)
 	{
@@ -172,6 +183,11 @@ void GameManager::update(int frameTime)
 	}
 	
 	detectCollisions();
+}
+
+char* GameManager::type()
+{
+	return "GameManager";
 }
 
 void GameManager::handleKeyboardEvents(const Uint8* keyStates)

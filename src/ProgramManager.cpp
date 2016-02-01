@@ -27,11 +27,12 @@ void ProgramManager::gameLoop()
  		{
  			if(e.type == SDL_QUIT)
  			{
+ 				delete gameManager;
  				return;
  			}
  		}
 
- 		EventManager::Instance()->handleKeyboardEvents(); 		
+ 		EventManager::Instance()->handleKeyboardEvents();
  		EventManager::Instance()->handleGameEvents();
 
  		if(!paused)
@@ -44,6 +45,8 @@ void ProgramManager::gameLoop()
 		lastFrameTime = frameTime;
 		frameTime = SDL_GetPerformanceCounter();
 	}
+
+	delete gameManager;
 }
 
 void ProgramManager::handleKeyboardEvents(const Uint8* keyStates)
@@ -63,4 +66,9 @@ void ProgramManager::handleKeyboardEvents(const Uint8* keyStates)
 void ProgramManager::handleGameEvents(const Uint8* events)
 {
 
+}
+
+char* ProgramManager::type()
+{
+	return "ProgramManager";
 }

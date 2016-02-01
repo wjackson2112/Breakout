@@ -11,6 +11,7 @@
 
 enum states
 {
+	LOST_ST,
 	WAITING_ST,
 	FLYING_ST
 };
@@ -34,6 +35,9 @@ public:
 	void handleGameEvents(const Uint8* events);
 	void update(int frameTime);
 	void render(SDL_Renderer*);
+
+	char* type();
+
 	void resolveCollision(PhysicsEntity* collider, PhysicsEntity* object);
 
 	SDL_Point getCenter();

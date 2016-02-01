@@ -4,6 +4,11 @@
 bool EventManager::instanceFlag = false;
 EventManager* EventManager::instance = NULL;
 
+EventManager::EventManager()
+{
+	this->clearGameEvents();
+}
+
 EventManager* EventManager::Instance(){
 
 	if(!instanceFlag)
@@ -33,6 +38,16 @@ void EventManager::deregisterHandler(IEventHandler* handler)
 			++it;
 		}
 	}
+}
+
+void EventManager::printHandlers()
+{
+	std::cout << "Registered Handlers: |";
+	for(auto &handler : eventHandlers)
+	{
+		std::cout << handler->type() << "|";
+	}
+	std::cout << std::endl;
 }
 
 void EventManager::handleKeyboardEvents()
