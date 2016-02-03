@@ -16,6 +16,11 @@ BallsIndicator::~BallsIndicator()
 	EventManager::Instance()->deregisterHandler(this);
 }
 
+void BallsIndicator::handleMouseEvents(int mouseState, int x, int y)
+{
+
+}
+
 void BallsIndicator::handleKeyboardEvents(const Uint8*)
 {
 
@@ -46,7 +51,7 @@ void BallsIndicator::render(SDL_Renderer* gRenderer)
 	for(int i = 0; i < ballsRemaining; i++)
 	{
 		SDL_Rect fillRect = {posX + i*width + i*gapWidth, posY, width, height};
-		SDL_SetRenderDrawColor(gRenderer, 0x00, 0x00, 0xFF, 0x00);
+		SDL_SetRenderDrawColor(gRenderer, 0x00, 0x00, 0xFF, 0xFF);
 		SDL_RenderFillRect(gRenderer, &fillRect);
 	}
 }

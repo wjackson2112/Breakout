@@ -12,6 +12,8 @@ public:
 	float max_vel = 200;
 	virtual void resolveCollision(PhysicsEntity* collider, PhysicsEntity* object) = 0;
 	virtual SDL_Point getVelocity() = 0;
+
+		virtual bool isDeletable() = 0;
 };
 
 #endif

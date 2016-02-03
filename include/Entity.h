@@ -16,16 +16,17 @@ public:
 	//Entity();
 	virtual ~Entity() = 0;
 
+	virtual void handleMouseEvents(int mouseState, int x, int y) = 0;
 	virtual void handleKeyboardEvents(const Uint8*) = 0;
 	virtual void handleGameEvents(const Uint8* events) = 0;
+	virtual char* type() = 0;
+
 	virtual void update(int frameTime) = 0;
 	virtual void render(SDL_Renderer*) = 0;
 
 	virtual SDL_Point getCenter() = 0;
 	virtual SDL_Point getOrigin() = 0;
 	virtual SDL_Point getSize() = 0;
-
-	virtual bool isDeletable() = 0;
 };
 
 #endif

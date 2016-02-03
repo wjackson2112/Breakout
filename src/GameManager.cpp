@@ -190,6 +190,11 @@ char* GameManager::type()
 	return "GameManager";
 }
 
+void GameManager::handleMouseEvents(int mouseState, int x, int y)
+{
+	
+}
+
 void GameManager::handleKeyboardEvents(const Uint8* keyStates)
 {
 

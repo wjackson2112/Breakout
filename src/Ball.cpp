@@ -27,7 +27,7 @@ void Ball::updateVelocityWithAngle(float degrees)
 void Ball::render(SDL_Renderer* gRenderer)
 {
 	SDL_Rect fillRect = {posX, posY, width, height};
-	SDL_SetRenderDrawColor(gRenderer, 0x00, 0x00, 0xFF, 0x00);
+	SDL_SetRenderDrawColor(gRenderer, 0x00, 0x00, 0xFF, 0xFF);
 	SDL_RenderFillRect(gRenderer, &fillRect);
 }
 
@@ -77,6 +77,11 @@ void Ball::update(int frameTime)
 char* Ball::type()
 {
 	return "Ball";
+}
+
+void Ball::handleMouseEvents(int mouseState, int x, int y)
+{
+
 }
 
 void Ball::handleKeyboardEvents(const Uint8* keyStates)

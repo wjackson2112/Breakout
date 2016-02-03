@@ -16,9 +16,13 @@ Block::Block(int x, int y, int* blockCount)
 
 Block::~Block()
 {
-
 	EventManager::Instance()->reportGameEvent(BLOCK_DISAPPEARED);
 	EventManager::Instance()->deregisterHandler(this);
+}
+
+void Block::handleMouseEvents(int mouseState, int x, int y)
+{
+
 }
 
 void Block::handleKeyboardEvents(const Uint8* keyStates)
@@ -44,7 +48,7 @@ void Block::render(SDL_Renderer* gRenderer)
 	}
 
 	SDL_Rect fillRect = {posX, posY, width, height};
-	SDL_SetRenderDrawColor(gRenderer, r, g, b, 0x00);
+	SDL_SetRenderDrawColor(gRenderer, r, g, b, 0xFF);
 	SDL_RenderFillRect(gRenderer, &fillRect);
 }
 

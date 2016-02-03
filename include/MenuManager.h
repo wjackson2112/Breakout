@@ -8,6 +8,7 @@
 #include "IEventHandler.h"
 #include "EventManager.h"
 #include "UIEntity.h"
+#include "Button.h"
 #include "Globals.h"
 
 class MenuManager : public IEventHandler
@@ -26,6 +27,7 @@ public:
 
 	char* type();
 
+	void handleMouseEvents(int mouseState, int x, int y);
 	void handleKeyboardEvents(const Uint8*);
 	void handleGameEvents(const Uint8* events);
 };

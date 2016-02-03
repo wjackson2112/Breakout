@@ -1,6 +1,7 @@
 //Using SDL and standard IO
 #include <SDL2/SDL.h>
 #include <SDL2/SDL_image.h>
+#include <SDL2/SDL_ttf.h>
 #include <stdio.h>
 #include <string>
 #include "ProgramManager.h"
@@ -22,6 +23,13 @@ bool init()
 		return false;
 	}
 
+	//Init Fonts
+	if(TTF_Init() < 0)
+	{
+		printf("Font library could not intiialize! SDL_Error: %s\n", TTF_GetError());
+		return false;
+	}
+
 	//Create Window
 	gWindow = SDL_CreateWindow("Breakout", SDL_WINDOWPOS_UNDEFINED, SDL_WINDOWPOS_UNDEFINED, SCREEN_WIDTH, SCREEN_HEIGHT, SDL_WINDOW_SHOWN);
 	if(gWindow == NULL)
@@ -32,6 +40,7 @@ bool init()
 
 	//Create Renderer
 	gRenderer = SDL_CreateRenderer(gWindow, -1, SDL_RENDERER_ACCELERATED | SDL_RENDERER_PRESENTVSYNC);
+	SDL_SetRenderDrawBlendMode(gRenderer, SDL_BLENDMODE_BLEND);
 	if(gRenderer == NULL)
 	{
 		printf("Renderer could not be created! SDL Error: %s\n", SDL_GetError());
@@ -49,6 +58,7 @@ void close()
 	SDL_DestroyWindow(gWindow);
 	gWindow = NULL;
 
+	TTF_Quit();
 	SDL_Quit();
 }
 

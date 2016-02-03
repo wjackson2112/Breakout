@@ -48,8 +48,10 @@ public:
 	void deregisterHandler(IEventHandler* handler);
 	void printHandlers();
 	void handleKeyboardEvents();
+	void reportSDLEvent(SDL_Event e);
 	void reportGameEvent(GameEvent event);
 	void handleGameEvents();
+	void handleMouseEvents();
 
 };
 

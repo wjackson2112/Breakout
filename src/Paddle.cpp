@@ -18,7 +18,7 @@ Paddle::~Paddle()
 void Paddle::render(SDL_Renderer* gRenderer)
 {
 	SDL_Rect fillRect = {posX, posY, width, height};
-	SDL_SetRenderDrawColor(gRenderer, 0xFF, 0x00, 0x00, 0x00);
+	SDL_SetRenderDrawColor(gRenderer, 0xFF, 0x00, 0x00, 0xFF);
 	SDL_RenderFillRect(gRenderer, &fillRect);
 }
 
@@ -50,6 +50,11 @@ void Paddle::update(int frameTime)
 char* Paddle::type()
 {
 	return "Paddle";
+}
+
+void Paddle::handleMouseEvents(int mouseState, int x, int y)
+{
+	
 }
 
 void Paddle::handleKeyboardEvents(const Uint8* keyStates)

@@ -34,6 +34,7 @@ void ProgramManager::loop()
  			}
  		}
 
+ 		EventManager::Instance()->handleMouseEvents();
  		EventManager::Instance()->handleKeyboardEvents();
  		EventManager::Instance()->handleGameEvents();
 
@@ -62,6 +63,11 @@ void ProgramManager::loop()
 
 	delete gameManager;
 	delete menuManager;
+}
+
+void ProgramManager::handleMouseEvents(int mouseState, int x, int y)
+{
+
 }
 
 void ProgramManager::handleKeyboardEvents(const Uint8* keyStates)
@@ -106,31 +112,14 @@ void ProgramManager::handleKeyboardEvents(const Uint8* keyStates)
 		}
 	}
 	lastMenuQuit = menuQuit;
-
-	static bool lastStart = false;
-	bool start = keyStates[SDL_SCANCODE_RETURN];
-	if(lastStart != start && start)
-	{
-		switch(machineState)
-		{
-			case MAIN_MENU:
-				machineState = GAME_RUNNING;
-				EventManager::Instance()->reportGameEvent(NEW_GAME);
-				break;
-			case GAME_RUNNING:
-				break;
-			case GAME_PAUSED:
-				break;
-			default:
-				break;
-		}
-	}
-	lastStart = start;
 }
 
 void ProgramManager::handleGameEvents(const Uint8* events)
 {
-
+	if(events[NEW_GAME])
+	{
+		machineState = GAME_RUNNING;
+	}
 }
 
 char* ProgramManager::type()

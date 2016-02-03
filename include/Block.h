@@ -19,6 +19,7 @@ public:
 	Block(int x, int y, int* blockCount);
 	~Block();
 
+	void handleMouseEvents(int mouseState, int x, int y);
 	void handleKeyboardEvents(const Uint8*);
 	void handleGameEvents(const Uint8* events);
 	void update(int frameTime);

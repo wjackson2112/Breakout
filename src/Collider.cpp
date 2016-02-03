@@ -13,6 +13,11 @@ Collider::~Collider()
 
 }
 
+void Collider::handleMouseEvents(int mouseState, int x, int y)
+{
+	
+}
+
 void Collider::handleKeyboardEvents(const Uint8*)
 {
 

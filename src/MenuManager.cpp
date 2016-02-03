@@ -4,6 +4,8 @@ MenuManager::MenuManager()
 {
 	quit = false;
 	EventManager::Instance()->registerHandler(this);
+
+	uiEntities.push_back(new Button(""));
 }
 
 MenuManager::~MenuManager()
@@ -46,6 +48,11 @@ void MenuManager::update(int frameTime)
 char* MenuManager::type()
 {
 	return "MenuManager";
+}
+
+void MenuManager::handleMouseEvents(int mouseState, int x, int y)
+{
+	
 }
 
 void MenuManager::handleKeyboardEvents(const Uint8* keyStates)

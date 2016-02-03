@@ -50,6 +50,19 @@ void EventManager::printHandlers()
 	std::cout << std::endl;
 }
 
+void EventManager::handleMouseEvents()
+{
+	int x, y, mouseState;
+
+	SDL_PumpEvents();
+	mouseState = SDL_GetMouseState(&x, &y);
+
+	for(auto &handler : eventHandlers)
+	{
+		handler->handleMouseEvents(mouseState, x, y);
+	}
+}
+
 void EventManager::handleKeyboardEvents()
 {
 	const Uint8* keyStates = SDL_GetKeyboardState(NULL);
