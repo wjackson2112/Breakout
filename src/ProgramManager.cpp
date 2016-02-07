@@ -3,7 +3,10 @@
 ProgramManager::ProgramManager(SDL_Renderer* gRenderer)
 {
 	this->gRenderer = gRenderer;
-	machineState = MAIN_MENU;
+	gameManager = new GameManager();
+	menuManager = new MenuManager();
+	machineState = MENU;
+	quit = false;
 
 	EventManager::Instance()->registerHandler(this);
 }
@@ -15,13 +18,12 @@ ProgramManager::~ProgramManager()
 
 void ProgramManager::loop()
 {
-	GameManager* gameManager = new GameManager();
-	MenuManager* menuManager = new MenuManager();
+
 	Uint64 frameTime, lastFrameTime = 0;
 	SDL_Event e;
 
 	//Keep the game running until the game manager wants to quit
-	while(!gameManager->shouldQuit() && !menuManager->shouldQuit())
+	while(!this->quit)
 	{
 		//Quit early if a quit event is detected
 		while( SDL_PollEvent( &e ) != 0 )
@@ -34,28 +36,24 @@ void ProgramManager::loop()
  			}
  		}
 
+ 		//Handle Events
  		EventManager::Instance()->handleMouseEvents();
  		EventManager::Instance()->handleKeyboardEvents();
  		EventManager::Instance()->handleGameEvents();
 
- 		switch(machineState){
- 			case MAIN_MENU:
- 				menuManager->update(frameTime - lastFrameTime);
- 				menuManager->render(gRenderer);
- 				break;
- 			case GAME_RUNNING:
- 			 	gameManager->update(frameTime - lastFrameTime);
-				gameManager->render(gRenderer);
- 				break;
- 			case GAME_PAUSED:
- 				gameManager->render(gRenderer);
- 				break;
- 			default:
- 				std::cout << "ERROR: Invalid ProgramManager State" << std::endl;
-				delete gameManager;
-				delete menuManager;
-				return;
- 		}
+ 		//Update Managers
+ 		gameManager->update(frameTime - lastFrameTime);
+ 		menuManager->update(frameTime - lastFrameTime);
+
+ 		//Render
+		SDL_SetRenderDrawColor(gRenderer, 0x10, 0x10, 0x10, 0xFF);
+		SDL_RenderClear(gRenderer);
+
+ 		gameManager->render(gRenderer);
+ 		menuManager->render(gRenderer);
+
+ 		SDL_RenderPresent(gRenderer);
+
 
 		lastFrameTime = frameTime;
 		frameTime = SDL_GetPerformanceCounter();
@@ -78,13 +76,11 @@ void ProgramManager::handleKeyboardEvents(const Uint8* keyStates)
 	{
 		switch(machineState)
 		{
-			case MAIN_MENU:
+			case MENU:
+				EventManager::Instance()->reportGameEvent(RESUME_GAME);
 				break;
-			case GAME_RUNNING:
-				machineState = GAME_PAUSED;
-				break;
-			case GAME_PAUSED:
-				machineState = GAME_RUNNING;
+			case GAME:
+				EventManager::Instance()->reportGameEvent(PAUSE_GAME);
 				break;
 			default:
 				break;
@@ -97,19 +93,7 @@ void ProgramManager::handleKeyboardEvents(const Uint8* keyStates)
 	bool menuQuit = keyStates[SDL_SCANCODE_ESCAPE];
 	if(lastMenuQuit != menuQuit && menuQuit)
 	{
-		switch(machineState)
-		{
-			case MAIN_MENU:
-				break;
-			case GAME_RUNNING:
-				machineState = MAIN_MENU;
-				break;
-			case GAME_PAUSED:
-				machineState = MAIN_MENU;
-				break;
-			default:
-				break;
-		}
+		EventManager::Instance()->reportGameEvent(QUIT_GAME);
 	}
 	lastMenuQuit = menuQuit;
 }
@@ -118,7 +102,27 @@ void ProgramManager::handleGameEvents(const Uint8* events)
 {
 	if(events[NEW_GAME])
 	{
-		machineState = GAME_RUNNING;
+		machineState = GAME;
+	}
+
+	if(events[PAUSE_GAME])
+	{
+		machineState = MENU;
+	}
+
+	if(events[RESUME_GAME])
+	{
+		machineState = GAME;
+	}
+
+	if(events[QUIT_GAME])
+	{
+		machineState = MENU;
+	}
+
+	if(events[QUIT_PROGRAM])
+	{
+		this->quit = true;
 	}
 }
 

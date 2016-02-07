@@ -9,9 +9,8 @@
 
 typedef enum ProgramManagerState
 {
-	MAIN_MENU,
-	GAME_RUNNING,
-	GAME_PAUSED
+	MENU,
+	GAME
 } ProgramManagerState;
 
 class ProgramManager : public IEventHandler
@@ -19,6 +18,9 @@ class ProgramManager : public IEventHandler
 private:
 	SDL_Renderer* gRenderer;
 	ProgramManagerState machineState;
+	GameManager* gameManager;
+	MenuManager* menuManager;
+	bool quit;
 public:
 	ProgramManager(SDL_Renderer* gRenderer);
 	void loop();

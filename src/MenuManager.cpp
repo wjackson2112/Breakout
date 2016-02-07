@@ -2,10 +2,10 @@
 
 MenuManager::MenuManager()
 {
-	quit = false;
+	visible = true;
 	EventManager::Instance()->registerHandler(this);
 
-	uiEntities.push_back(new Button(""));
+	this->setMainMenuButtons();
 }
 
 MenuManager::~MenuManager()
@@ -19,22 +19,42 @@ MenuManager::~MenuManager()
 	EventManager::Instance()->deregisterHandler(this);
 }
 
-bool MenuManager::shouldQuit()
+void MenuManager::setMainMenuButtons()
 {
-	return quit;
+	for(std::vector<UIEntity*>::iterator it=uiEntities.begin(); it!=uiEntities.end();)
+	{
+		delete * it;
+		it = uiEntities.erase(it);
+	}
+
+	uiEntities.push_back(new Button("/usr/local/share/fonts/Anonymous Pro.ttf", "New Game", NEW_GAME, 100, 100));
+	uiEntities.push_back(new Button("/usr/local/share/fonts/Anonymous Pro.ttf", "Quit to Desktop", QUIT_PROGRAM, 100, 175));	
+}
+
+void MenuManager::setPauseMenuButtons()
+{
+	for(std::vector<UIEntity*>::iterator it=uiEntities.begin(); it!=uiEntities.end();)
+	{
+		delete * it;
+		it = uiEntities.erase(it);
+	}
+	
+	uiEntities.push_back(new Button("/usr/local/share/fonts/Anonymous Pro.ttf", "Resume Game", RESUME_GAME, 100, 100));	
+	uiEntities.push_back(new Button("/usr/local/share/fonts/Anonymous Pro.ttf", "New Game", NEW_GAME, 100, 175));
+	uiEntities.push_back(new Button("/usr/local/share/fonts/Anonymous Pro.ttf", "Quit Game", QUIT_GAME, 100, 250));	
 }
 
 void MenuManager::render(SDL_Renderer* gRenderer)
 {
-	SDL_SetRenderDrawColor(gRenderer, 0x10, 0x10, 0x10, 0xFF);
-	SDL_RenderClear(gRenderer);
+	if(!visible)
+	{
+		return;
+	}
 
 	for(auto &entity : uiEntities)
 	{
 		entity->render(gRenderer);
 	}
-
-	SDL_RenderPresent(gRenderer);
 }
 
 void MenuManager::update(int frameTime)
@@ -62,5 +82,20 @@ void MenuManager::handleKeyboardEvents(const Uint8* keyStates)
 
 void MenuManager::handleGameEvents(const Uint8* events)
 {
+	if(events[NEW_GAME] || events[RESUME_GAME])
+	{
+		visible = false;
+	}
 
+	if(events[PAUSE_GAME])
+	{
+		visible = true;
+		this->setPauseMenuButtons();
+	}
+
+	if(events[QUIT_GAME])
+	{
+		visible = true;
+		this->setMainMenuButtons();
+	}
 }

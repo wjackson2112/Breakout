@@ -1,27 +1,27 @@
-#ifndef MENU_MANAGER_H
-#define MENU_MANAGER_H
+#ifndef PAUSE_MENU_MANAGER_H
+#define PAUSE_MENU_MANAGER_H
 
 #include <vector>
 #include <cstdlib>
 #include <cstring>
 
-#include "IEventHandler.h"
+#include "MenuManager.h"
 #include "EventManager.h"
 #include "UIEntity.h"
 #include "Button.h"
 #include "Globals.h"
 
-class MenuManager : public IEventHandler
+class PauseMenuManager : public MenuManager
 {
 private:
 	std::vector<UIEntity*> uiEntities;
-	bool visible;
-	void setMainMenuButtons();
-	void setPauseMenuButtons();
-public:
-	MenuManager();
-	~MenuManager();
+	bool quit;
 
+public:
+	PauseMenuManager();
+	~PauseMenuManager();
+
+	bool shouldQuit();
 	void render(SDL_Renderer*);
 	void update(int frameTime);
 

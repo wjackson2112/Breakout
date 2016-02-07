@@ -16,6 +16,12 @@ typedef enum GameEvent
 	BALL_LOST,
 	BALLS_DEPLETED,
 	NEW_GAME,
+	PAUSE_GAME,
+	RESUME_GAME,
+	OPTIONS,
+	CREDITS,
+	QUIT_GAME,
+	QUIT_PROGRAM,
 	NUM_OF_EVENTS
 } GameEvent;
 
@@ -25,7 +31,13 @@ static char* GameEventStr[NUM_OF_EVENTS] =
 	"BALL_ADDED",
 	"BALL_LOST",
 	"BALLS_DEPLETED",
-	"NEW_GAME"
+	"NEW_GAME",
+	"PAUSE_GAME",
+	"RESUME_GAME",
+	"OPTIONS",
+	"CREDITS",
+	"QUIT_GAME",
+	"QUIT_PROGRAM"
 };
 
 class EventManager

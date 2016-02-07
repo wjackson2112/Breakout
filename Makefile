@@ -32,12 +32,12 @@ dir:
 
 $(TARGET): $(OBJS)
 	@echo Linking $@
-	@$(CC) $^ -o $@ $(LD_FLAGS)
+	@$(CC) -ggdb $^ -o $@ $(LD_FLAGS)
 
 $(BUILD_DIR)/%.o : $(SRC_DIR)/%.cpp
 $(BUILD_DIR)/%.o : $(SRC_DIR)/%.cpp $(BUILD_DIR)/%.d
 	@echo Compiling $< to $@
-	@$(CC) $(CC_FLAGS) $(INCLUDES) -c $< -o $@ -MT $@ -MMD -MP -MF $(@:.o=.d)
+	@$(CC) -ggdb $(CC_FLAGS) $(INCLUDES) -c $< -o $@ -MT $@ -MMD -MP -MF $(@:.o=.d)
 
 clean:
 	@echo Cleaning

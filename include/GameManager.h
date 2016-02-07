@@ -22,9 +22,10 @@ private:
 	std::vector<PhysicsEntity*> physicsEntities;
 	std::vector<UIEntity*> uiEntities;
 	int blockCount;
-	bool quit;
+	bool pause, visible;
 	void detectCollisions();
 	void resetLevel();
+	void clearLevel();
 
 	void gameWon();
 	void gameLost();
@@ -33,7 +34,6 @@ public:
 	GameManager();
 	~GameManager();
 
-	bool shouldQuit();
 	void render(SDL_Renderer*);
 	void update(int frameTime);
 

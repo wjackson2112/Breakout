@@ -3,6 +3,7 @@
 
 #include <SDL2/SDL.h>
 #include <SDL2/SDL_ttf.h>
+#include <string>
 #include "UIEntity.h"
 #include "EventManager.h"
 
@@ -11,8 +12,11 @@ class Button : public UIEntity
 private:
 	int r, g, b;
 	TTF_Font* font;
+	const char* text;
+	GameEvent event;
+	bool lastState = false;
 public:
-	Button(const char* fontName);
+	Button(const char* fontName, const char* text, GameEvent event, int x, int y);
 	~Button();
 
 	void handleMouseEvents(int mouseState, int x, int y);

@@ -3,9 +3,10 @@
 GameManager::GameManager()
 {
 	srand(time(NULL));
-	quit = false;
+	pause = true;
+	visible = false;
 	EventManager::Instance()->registerHandler(this);
-	resetLevel();
+	this->resetLevel();
 }
 
 GameManager::~GameManager()
@@ -27,12 +28,12 @@ GameManager::~GameManager()
 
 void GameManager::gameWon()
 {
-	resetLevel();
+	this->resetLevel();
 }
 
 void GameManager::gameLost()
 {
-	resetLevel();
+	this->resetLevel();
 }
 
 void GameManager::resetLevel()
@@ -73,11 +74,6 @@ void GameManager::resetLevel()
 	EventManager::Instance()->reportGameEvent(BALL_ADDED);
 	EventManager::Instance()->reportGameEvent(BALL_ADDED);
 	EventManager::Instance()->reportGameEvent(BALL_ADDED);
-}
-
-bool GameManager::shouldQuit()
-{
-	return quit;
 }
 
 void GameManager::detectCollisions()
@@ -132,9 +128,11 @@ void GameManager::detectCollisions()
 
 void GameManager::render(SDL_Renderer* gRenderer)
 {
-	SDL_SetRenderDrawColor(gRenderer, 0x10, 0x10, 0x10, 0xFF);
-	SDL_RenderClear(gRenderer);
-	
+	if(!visible)
+	{
+		return;
+	}
+
 	for(auto &entity : physicsEntities)
 	{
 		entity->render(gRenderer);
@@ -144,13 +142,16 @@ void GameManager::render(SDL_Renderer* gRenderer)
 	{
 		entity->render(gRenderer);
 	}
-
-	SDL_RenderPresent(gRenderer);
 }
 
 void GameManager::update(int frameTime)
 {
 	static bool levelComplete = false;
+
+	if(pause)
+	{
+		return;
+	}
 
 	for(auto &entity : uiEntities)
 	{
@@ -214,6 +215,24 @@ void GameManager::handleGameEvents(const Uint8* events)
 
 	if(events[NEW_GAME])
 	{
-		resetLevel();
+		visible = true;
+		pause = false;
+		this->resetLevel();
+	}
+
+	if(events[PAUSE_GAME])
+	{
+		pause = true;
+	}
+
+	if(events[RESUME_GAME])
+	{
+		pause = false;
+	}
+
+	if(events[QUIT_GAME])
+	{
+		visible = false;
+		this->resetLevel();
 	}
 }

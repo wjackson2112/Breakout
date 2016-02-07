@@ -1,16 +1,18 @@
 #include "Button.h"
 
-Button::Button(const char* fontName)
+Button::Button(const char* fontName, const char* text, GameEvent event, int x, int y)
 {
-	this->posX = 100;
-	this->posY = 100;
+	this->posX = x;
+	this->posY = y;
 	this->width = 200;
 	this->height = 50;
 	this->r = 0x22;
 	this->g = 0x22;
 	this->b = 0x22;
+	this->text = text;
+	this->event = event;
 
-	this->font = TTF_OpenFont("/usr/local/share/fonts/Anonymous Pro.ttf", 90);
+	this->font = TTF_OpenFont(fontName, 90);
 
 	if(font == nullptr)
 	{
@@ -27,8 +29,6 @@ Button::~Button()
 
 void Button::handleMouseEvents(int mouseState, int x, int y)
 {
-	static bool lastState = false;
-
 	if((mouseState & SDL_BUTTON(SDL_BUTTON_LEFT)) && 
 		x > posX && 
 		x < posX + width && 
@@ -41,7 +41,7 @@ void Button::handleMouseEvents(int mouseState, int x, int y)
 	else if(!(mouseState & SDL_BUTTON(SDL_BUTTON_LEFT)) && 
 			lastState == true)
 	{
-		EventManager::Instance()->reportGameEvent(NEW_GAME);
+		EventManager::Instance()->reportGameEvent(this->event);
 		lastState = false;
 	}
 }
@@ -58,7 +58,7 @@ void Button::handleGameEvents(const Uint8* events)
 
 char* Button::type()
 {
-
+	return "Button";
 }
 
 void Button::update(int frameTime)
@@ -73,7 +73,7 @@ void Button::render(SDL_Renderer* gRenderer)
 	SDL_RenderFillRect(gRenderer, &fillRect);
 
 	SDL_Color textColor = {0xFF, 0xFF, 0xFF, 0xFF};
-	SDL_Surface* text_surface = TTF_RenderText_Solid(font, "New Game", textColor);
+	SDL_Surface* text_surface = TTF_RenderText_Solid(font, this->text, textColor);
 	SDL_Texture* text = SDL_CreateTextureFromSurface(gRenderer, text_surface);
 
 	SDL_RenderCopy(gRenderer, text, nullptr, &fillRect);
