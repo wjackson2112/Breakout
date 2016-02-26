@@ -4,15 +4,15 @@ Button::Button(const char* fontName, const char* text, GameEvent event, int x, i
 {
 	this->posX = x;
 	this->posY = y;
-	this->width = 200;
-	this->height = 50;
+	this->width = Globals::screenWidth / 4;
+	this->height = this->width / 4;
 	this->r = 0x22;
 	this->g = 0x22;
 	this->b = 0x22;
 	this->text = text;
 	this->event = event;
 
-	this->font = TTF_OpenFont(fontName, 90);
+	this->font = TTF_OpenFont(fontName, 180);
 
 	if(font == nullptr)
 	{
@@ -69,8 +69,8 @@ void Button::update(int frameTime)
 void Button::render(SDL_Renderer* gRenderer)
 {
 	SDL_Rect fillRect = {posX, posY, width, height};
-	SDL_SetRenderDrawColor(gRenderer, r, g, b, 0xFF);
-	SDL_RenderFillRect(gRenderer, &fillRect);
+	//SDL_SetRenderDrawColor(gRenderer, r, g, b, 0xFF);
+	//SDL_RenderFillRect(gRenderer, &fillRect);
 
 	SDL_Color textColor = {0xFF, 0xFF, 0xFF, 0xFF};
 	SDL_Surface* text_surface = TTF_RenderText_Solid(font, this->text, textColor);

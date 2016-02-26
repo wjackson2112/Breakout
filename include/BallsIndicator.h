@@ -7,7 +7,7 @@ class BallsIndicator : public UIEntity
 {
 private:
 	int ballsRemaining;
-	int gapWidth = 10;
+	int gapWidth = Globals::ballWidth / 2;
 public:
 	BallsIndicator(float x, float y);
 	~BallsIndicator();

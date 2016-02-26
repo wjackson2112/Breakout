@@ -46,7 +46,7 @@ void ProgramManager::loop()
  		menuManager->update(frameTime - lastFrameTime);
 
  		//Render
-		SDL_SetRenderDrawColor(gRenderer, 0x10, 0x10, 0x10, 0xFF);
+		SDL_SetRenderDrawColor(gRenderer, 0x0, 0x0, 0x0, 0xFF);
 		SDL_RenderClear(gRenderer);
 
  		gameManager->render(gRenderer);
@@ -93,7 +93,17 @@ void ProgramManager::handleKeyboardEvents(const Uint8* keyStates)
 	bool menuQuit = keyStates[SDL_SCANCODE_ESCAPE];
 	if(lastMenuQuit != menuQuit && menuQuit)
 	{
-		EventManager::Instance()->reportGameEvent(QUIT_GAME);
+		switch(machineState)
+		{
+			case MENU:
+				break;
+			case GAME:
+				EventManager::Instance()->reportGameEvent(QUIT_GAME);
+				break;
+			default:
+				break;
+		}
+		
 	}
 	lastMenuQuit = menuQuit;
 }

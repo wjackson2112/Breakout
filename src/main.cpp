@@ -6,13 +6,45 @@
 #include <string>
 #include "ProgramManager.h"
 #include "Globals.h"
+#include "SimpleIni.h"
 
 SDL_Window* gWindow = NULL;
 SDL_Renderer* gRenderer = NULL;
 
+CSimpleIniA ini;
+
 bool init();
 void quitEventReceived();
 void close();
+
+void load_settings()
+{	
+	const char * val;
+
+	ini.SetUnicode();
+	ini.LoadFile("breakout.ini");
+	
+	val = ini.GetValue("dimensions", "width", std::to_string(DEF_SCREEN_WIDTH).c_str());
+	Globals::screenWidth=atoi(val);
+	ini.SetValue("dimensions", "width", std::to_string(Globals::screenWidth).c_str());
+
+	val = ini.GetValue("dimensions", "height", std::to_string(DEF_SCREEN_HEIGHT).c_str());
+	Globals::screenHeight=atoi(val);
+	ini.SetValue("dimensions", "height", std::to_string(Globals::screenHeight).c_str());
+
+	Globals::fieldRatio = (float) 3/ (float) 4;
+	Globals::fieldWidth = (Globals::screenHeight * Globals::fieldRatio) / 10 * 10;
+	Globals::fieldHeight = Globals::screenHeight;
+	Globals::xOffset = (Globals::screenWidth / 2) - (Globals::fieldWidth / 2);
+	Globals::yOffset = 0;
+
+	Globals::blockWidth = Globals::fieldWidth / 10;
+	Globals::blockHeight = Globals::blockWidth * 2/3;
+	Globals::paddleWidth = Globals::blockWidth;
+	Globals::paddleHeight = Globals::blockHeight / 2;
+	Globals::ballWidth = Globals::blockHeight / 2;
+	Globals::ballHeight = Globals::blockHeight / 2;
+}
 
 bool init()
 {
@@ -30,13 +62,17 @@ bool init()
 		return false;
 	}
 
+	load_settings();
+
 	//Create Window
-	gWindow = SDL_CreateWindow("Breakout", SDL_WINDOWPOS_UNDEFINED, SDL_WINDOWPOS_UNDEFINED, SCREEN_WIDTH, SCREEN_HEIGHT, SDL_WINDOW_SHOWN);
+	gWindow = SDL_CreateWindow("Breakout", SDL_WINDOWPOS_UNDEFINED, SDL_WINDOWPOS_UNDEFINED, Globals::screenWidth, Globals::screenHeight, SDL_WINDOW_SHOWN);
 	if(gWindow == NULL)
 	{
 		printf("Window could not be created! SDL_Error: %s\n", SDL_GetError());
 		return false;
 	}
+
+	SDL_SetWindowFullscreen(gWindow, SDL_WINDOW_FULLSCREEN_DESKTOP);
 
 	//Create Renderer
 	gRenderer = SDL_CreateRenderer(gWindow, -1, SDL_RENDERER_ACCELERATED | SDL_RENDERER_PRESENTVSYNC);

@@ -5,8 +5,8 @@ BallsIndicator::BallsIndicator(float x, float y)
 	this->ballsRemaining = 0;
 	posX = x;
 	posY = y;
-	width = 20;
-	height = 20;
+	width = Globals::ballWidth;
+	height = Globals::ballHeight;
 
 	EventManager::Instance()->registerHandler(this);
 }

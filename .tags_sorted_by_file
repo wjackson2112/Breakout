@@ -8,7 +8,7 @@ CC	Makefile	/^CC = g++$/;"	m
 CC_FLAGS	Makefile	/^CC_FLAGS = -w -std=c++11$/;"	m
 HDR	Makefile	/^HDR = $(wildcard $(SRC_DIR)\/*.h)$/;"	m
 INCLUDES	Makefile	/^INCLUDES = -Iinclude$/;"	m
-LD_FLAGS	Makefile	/^LD_FLAGS = -lSDL2 -lSDL2_image$/;"	m
+LD_FLAGS	Makefile	/^LD_FLAGS = -lSDL2 -lSDL2_image -lSDL2_ttf$/;"	m
 OBJS	Makefile	/^OBJS = $(patsubst $(SRC_DIR)\/%.cpp,$(BUILD_DIR)\/%.o,$(SRC))$/;"	m
 SRC	Makefile	/^SRC = $(wildcard $(SRC_DIR)\/*.cpp)$/;"	m
 SRC_DIR	Makefile	/^SRC_DIR = src$/;"	m
@@ -18,6 +18,7 @@ TARGET_NAME	Makefile	/^TARGET_NAME = breakout$/;"	m
 BALL_H	include/Ball.h	2;"	d
 Ball	include/Ball.h	/^class Ball : public PhysicsEntity$/;"	c
 FLYING_ST	include/Ball.h	/^	FLYING_ST$/;"	e	enum:states
+LOST_ST	include/Ball.h	/^	LOST_ST,$/;"	e	enum:states
 WAITING_ST	include/Ball.h	/^	WAITING_ST,$/;"	e	enum:states
 height	include/Ball.h	/^	int height = 20.0;$/;"	m	class:Ball
 machineState	include/Ball.h	/^	int machineState;$/;"	m	class:Ball
@@ -27,39 +28,77 @@ states	include/Ball.h	/^enum states$/;"	g
 width	include/Ball.h	/^	int width = 20.0;$/;"	m	class:Ball
 BALLS_INDICATOR_H	include/BallsIndicator.h	2;"	d
 BallsIndicator	include/BallsIndicator.h	/^class BallsIndicator : public UIEntity$/;"	c
+ballsRemaining	include/BallsIndicator.h	/^	int ballsRemaining;$/;"	m	class:BallsIndicator
+gapWidth	include/BallsIndicator.h	/^	int gapWidth = 10;$/;"	m	class:BallsIndicator
 BLOCK_H	include/Block.h	2;"	d
 Block	include/Block.h	/^class Block : public PhysicsEntity$/;"	c
 b	include/Block.h	/^	int r, g, b;$/;"	m	class:Block
-delegate	include/Block.h	/^	IBlockDelegate* delegate;$/;"	m	class:Block
 g	include/Block.h	/^	int r, g, b;$/;"	m	class:Block
 height	include/Block.h	/^	int height = 40.0;$/;"	m	class:Block
 r	include/Block.h	/^	int r, g, b;$/;"	m	class:Block
 visible	include/Block.h	/^	bool visible;$/;"	m	class:Block
-width	include/Block.h	/^	int width = 40.0;$/;"	m	class:Block
+width	include/Block.h	/^	int width = 80.0;$/;"	m	class:Block
+BUTTON_H	include/Button.h	2;"	d
+Button	include/Button.h	/^class Button : public UIEntity$/;"	c
+b	include/Button.h	/^	int r, g, b;$/;"	m	class:Button
+event	include/Button.h	/^	GameEvent event;$/;"	m	class:Button
+font	include/Button.h	/^	TTF_Font* font;$/;"	m	class:Button
+g	include/Button.h	/^	int r, g, b;$/;"	m	class:Button
+lastState	include/Button.h	/^	bool lastState = false;$/;"	m	class:Button
+r	include/Button.h	/^	int r, g, b;$/;"	m	class:Button
+text	include/Button.h	/^	const char* text;$/;"	m	class:Button
+COLLIDER_H	include/Collider.h	2;"	d
+Collider	include/Collider.h	/^class Collider : public PhysicsEntity$/;"	c
 ENTITY_H	include/Entity.h	2;"	d
 Entity	include/Entity.h	/^class Entity : public IEventHandler$/;"	c
 height	include/Entity.h	/^	int width, height;$/;"	m	class:Entity
 posX	include/Entity.h	/^	float posX, posY;$/;"	m	class:Entity
 posY	include/Entity.h	/^	float posX, posY;$/;"	m	class:Entity
 width	include/Entity.h	/^	int width, height;$/;"	m	class:Entity
+BALLS_DEPLETED	include/EventManager.h	/^	BALLS_DEPLETED,$/;"	e	enum:GameEvent
+BALL_ADDED	include/EventManager.h	/^	BALL_ADDED,$/;"	e	enum:GameEvent
+BALL_LOST	include/EventManager.h	/^	BALL_LOST,$/;"	e	enum:GameEvent
+BLOCK_DISAPPEARED	include/EventManager.h	/^	BLOCK_DISAPPEARED = 0,$/;"	e	enum:GameEvent
+CREDITS	include/EventManager.h	/^	CREDITS,$/;"	e	enum:GameEvent
 EVENT_MANAGER_H	include/EventManager.h	2;"	d
-EventManager	include/EventManager.h	/^	EventManager(){};$/;"	f	class:EventManager
 EventManager	include/EventManager.h	/^class EventManager$/;"	c
+GameEvent	include/EventManager.h	/^typedef enum GameEvent$/;"	g
+GameEvent	include/EventManager.h	/^} GameEvent;$/;"	t	typeref:enum:GameEvent
+GameEventStr	include/EventManager.h	/^static char* GameEventStr[NUM_OF_EVENTS] =$/;"	v
+NEW_GAME	include/EventManager.h	/^	NEW_GAME,$/;"	e	enum:GameEvent
+NUM_OF_EVENTS	include/EventManager.h	/^	NUM_OF_EVENTS$/;"	e	enum:GameEvent
+OPTIONS	include/EventManager.h	/^	OPTIONS,$/;"	e	enum:GameEvent
+PAUSE_GAME	include/EventManager.h	/^	PAUSE_GAME,$/;"	e	enum:GameEvent
+QUIT_GAME	include/EventManager.h	/^	QUIT_GAME,$/;"	e	enum:GameEvent
+QUIT_PROGRAM	include/EventManager.h	/^	QUIT_PROGRAM,$/;"	e	enum:GameEvent
+RESUME_GAME	include/EventManager.h	/^	RESUME_GAME,$/;"	e	enum:GameEvent
 e	include/EventManager.h	/^	SDL_Event e;$/;"	m	class:EventManager
 eventHandlers	include/EventManager.h	/^	std::vector<IEventHandler*> eventHandlers;$/;"	m	class:EventManager
+gameEvents	include/EventManager.h	/^	Uint8 gameEvents[NUM_OF_EVENTS] = {{0}};$/;"	m	class:EventManager
 instance	include/EventManager.h	/^	static EventManager* instance;$/;"	m	class:EventManager
 instanceFlag	include/EventManager.h	/^	static bool instanceFlag;$/;"	m	class:EventManager
 GAME_MANAGER_H	include/GameManager.h	2;"	d
-GameManager	include/GameManager.h	/^class GameManager : public IBlockDelegate$/;"	c
+GameManager	include/GameManager.h	/^class GameManager : public IEventHandler$/;"	c
 blockCount	include/GameManager.h	/^	int blockCount;$/;"	m	class:GameManager
+pause	include/GameManager.h	/^	bool pause, visible;$/;"	m	class:GameManager
 physicsEntities	include/GameManager.h	/^	std::vector<PhysicsEntity*> physicsEntities;$/;"	m	class:GameManager
-quit	include/GameManager.h	/^	bool quit;$/;"	m	class:GameManager
+uiEntities	include/GameManager.h	/^	std::vector<UIEntity*> uiEntities;$/;"	m	class:GameManager
+visible	include/GameManager.h	/^	bool pause, visible;$/;"	m	class:GameManager
+BLOCK_HEIGHT	include/Globals.h	15;"	d
+BLOCK_WIDTH	include/Globals.h	14;"	d
+FIELD_HEIGHT	include/Globals.h	8;"	d
+FIELD_RATIO	include/Globals.h	3;"	d
+FIELD_WIDTH	include/Globals.h	7;"	d
 SCREEN_HEIGHT	include/Globals.h	2;"	d
 SCREEN_WIDTH	include/Globals.h	1;"	d
-IBLOCK_DELEGATE_H	include/IBlockDelegate.h	2;"	d
-IBlockDelegate	include/IBlockDelegate.h	/^class IBlockDelegate$/;"	c
+X_OFFSET	include/Globals.h	9;"	d
+Y_OFFSET	include/Globals.h	10;"	d
 IEVENT_HANDLER_H	include/IEventHandler.h	2;"	d
 IEventHandler	include/IEventHandler.h	/^class IEventHandler$/;"	c
+MENU_MANAGER_H	include/MenuManager.h	2;"	d
+MenuManager	include/MenuManager.h	/^class MenuManager : public IEventHandler$/;"	c
+uiEntities	include/MenuManager.h	/^	std::vector<UIEntity*> uiEntities;$/;"	m	class:MenuManager
+visible	include/MenuManager.h	/^	bool visible;$/;"	m	class:MenuManager
 PADDLE_H	include/Paddle.h	2;"	d
 Paddle	include/Paddle.h	/^class Paddle : public PhysicsEntity$/;"	c
 accel	include/Paddle.h	/^	int accel = 1000;$/;"	m	class:Paddle
@@ -67,85 +106,338 @@ accelX	include/Paddle.h	/^	float accelX, accelY;$/;"	m	class:Paddle
 accelY	include/Paddle.h	/^	float accelX, accelY;$/;"	m	class:Paddle
 height	include/Paddle.h	/^	int height = 20.0;$/;"	m	class:Paddle
 width	include/Paddle.h	/^	int width = 60.0;$/;"	m	class:Paddle
+PAUSE_MENU_MANAGER_H	include/PauseMenuManager.h	2;"	d
+PauseMenuManager	include/PauseMenuManager.h	/^class PauseMenuManager : public MenuManager$/;"	c
+quit	include/PauseMenuManager.h	/^	bool quit;$/;"	m	class:PauseMenuManager
+uiEntities	include/PauseMenuManager.h	/^	std::vector<UIEntity*> uiEntities;$/;"	m	class:PauseMenuManager
 PHYSICS_ENTITY_H	include/PhysicsEntity.h	2;"	d
 PhysicsEntity	include/PhysicsEntity.h	/^class PhysicsEntity : public Entity$/;"	c
 max_vel	include/PhysicsEntity.h	/^	float max_vel = 200;$/;"	m	class:PhysicsEntity
 velX	include/PhysicsEntity.h	/^	float velX, velY;$/;"	m	class:PhysicsEntity
 velY	include/PhysicsEntity.h	/^	float velX, velY;$/;"	m	class:PhysicsEntity
+GAME	include/ProgramManager.h	/^	GAME$/;"	e	enum:ProgramManagerState
+MENU	include/ProgramManager.h	/^	MENU,$/;"	e	enum:ProgramManagerState
+PROGRAM_MANAGER_H	include/ProgramManager.h	2;"	d
+ProgramManager	include/ProgramManager.h	/^class ProgramManager : public IEventHandler$/;"	c
+ProgramManagerState	include/ProgramManager.h	/^typedef enum ProgramManagerState$/;"	g
+ProgramManagerState	include/ProgramManager.h	/^} ProgramManagerState;$/;"	t	typeref:enum:ProgramManagerState
+gRenderer	include/ProgramManager.h	/^	SDL_Renderer* gRenderer;$/;"	m	class:ProgramManager
+gameManager	include/ProgramManager.h	/^	GameManager* gameManager;$/;"	m	class:ProgramManager
+machineState	include/ProgramManager.h	/^	ProgramManagerState machineState;$/;"	m	class:ProgramManager
+menuManager	include/ProgramManager.h	/^	MenuManager* menuManager;$/;"	m	class:ProgramManager
+quit	include/ProgramManager.h	/^	bool quit;$/;"	m	class:ProgramManager
+AddEntry	include/SimpleIni.h	/^CSimpleIniTempl<SI_CHAR,SI_STRLESS,SI_CONVERTER>::AddEntry($/;"	f	class:CSimpleIniTempl
+CSimpleIni	include/SimpleIni.h	3423;"	d
+CSimpleIni	include/SimpleIni.h	3427;"	d
+CSimpleIniA	include/SimpleIni.h	/^    SI_NoCase<char>,SI_ConvertA<char> >                 CSimpleIniA;$/;"	t
+CSimpleIniCase	include/SimpleIni.h	3424;"	d
+CSimpleIniCase	include/SimpleIni.h	3428;"	d
+CSimpleIniCaseA	include/SimpleIni.h	/^    SI_Case<char>,SI_ConvertA<char> >                   CSimpleIniCaseA;$/;"	t
+CSimpleIniCaseW	include/SimpleIni.h	/^    SI_Case<UChar>,SI_ConvertW<UChar> >                 CSimpleIniCaseW;$/;"	t
+CSimpleIniCaseW	include/SimpleIni.h	/^    SI_Case<wchar_t>,SI_ConvertW<wchar_t> >             CSimpleIniCaseW;$/;"	t
+CSimpleIniTempl	include/SimpleIni.h	/^CSimpleIniTempl<SI_CHAR,SI_STRLESS,SI_CONVERTER>::CSimpleIniTempl($/;"	f	class:CSimpleIniTempl
+CSimpleIniTempl	include/SimpleIni.h	/^class CSimpleIniTempl$/;"	c
+CSimpleIniW	include/SimpleIni.h	/^    SI_NoCase<UChar>,SI_ConvertW<UChar> >               CSimpleIniW;$/;"	t
+CSimpleIniW	include/SimpleIni.h	/^    SI_NoCase<wchar_t>,SI_ConvertW<wchar_t> >           CSimpleIniW;$/;"	t
+ConvertFromStore	include/SimpleIni.h	/^    bool ConvertFromStore($/;"	f	class:SI_ConvertA
+ConvertFromStore	include/SimpleIni.h	/^    bool ConvertFromStore($/;"	f	class:SI_ConvertW
+ConvertToStore	include/SimpleIni.h	/^        bool ConvertToStore(const SI_CHAR * a_pszString) {$/;"	f	class:CSimpleIniTempl::Converter
+ConvertToStore	include/SimpleIni.h	/^    bool ConvertToStore($/;"	f	class:SI_ConvertA
+ConvertToStore	include/SimpleIni.h	/^    bool ConvertToStore($/;"	f	class:SI_ConvertW
+Converter	include/SimpleIni.h	/^        Converter(bool a_bStoreIsUtf8) : SI_CONVERTER(a_bStoreIsUtf8) {$/;"	f	class:CSimpleIniTempl::Converter
+Converter	include/SimpleIni.h	/^        Converter(const Converter & rhs) { operator=(rhs); }$/;"	f	class:CSimpleIniTempl::Converter
+Converter	include/SimpleIni.h	/^    class Converter : private SI_CONVERTER {$/;"	c	class:CSimpleIniTempl
+CopyString	include/SimpleIni.h	/^CSimpleIniTempl<SI_CHAR,SI_STRLESS,SI_CONVERTER>::CopyString($/;"	f	class:CSimpleIniTempl
+Data	include/SimpleIni.h	/^        const char * Data() { return m_scratch.data(); }$/;"	f	class:CSimpleIniTempl::Converter
+Delete	include/SimpleIni.h	/^CSimpleIniTempl<SI_CHAR,SI_STRLESS,SI_CONVERTER>::Delete($/;"	f	class:CSimpleIniTempl
+DeleteString	include/SimpleIni.h	/^CSimpleIniTempl<SI_CHAR,SI_STRLESS,SI_CONVERTER>::DeleteString($/;"	f	class:CSimpleIniTempl
+DeleteValue	include/SimpleIni.h	/^CSimpleIniTempl<SI_CHAR,SI_STRLESS,SI_CONVERTER>::DeleteValue($/;"	f	class:CSimpleIniTempl
+Entry	include/SimpleIni.h	/^        Entry(const Entry & rhs) { operator=(rhs); }$/;"	f	struct:CSimpleIniTempl::Entry
+Entry	include/SimpleIni.h	/^        Entry(const SI_CHAR * a_pszItem = NULL, int a_nOrder = 0)$/;"	f	struct:CSimpleIniTempl::Entry
+Entry	include/SimpleIni.h	/^        Entry(const SI_CHAR * a_pszItem, const SI_CHAR * a_pszComment, int a_nOrder)$/;"	f	struct:CSimpleIniTempl::Entry
+Entry	include/SimpleIni.h	/^    struct Entry {$/;"	s	class:CSimpleIniTempl
+FileWriter	include/SimpleIni.h	/^        FileWriter(FILE * a_file) : m_file(a_file) { }$/;"	f	class:CSimpleIniTempl::FileWriter
+FileWriter	include/SimpleIni.h	/^    class FileWriter : public OutputWriter {$/;"	c	class:CSimpleIniTempl
+FindEntry	include/SimpleIni.h	/^CSimpleIniTempl<SI_CHAR,SI_STRLESS,SI_CONVERTER>::FindEntry($/;"	f	class:CSimpleIniTempl
+FindFileComment	include/SimpleIni.h	/^CSimpleIniTempl<SI_CHAR,SI_STRLESS,SI_CONVERTER>::FindFileComment($/;"	f	class:CSimpleIniTempl
+GetAllKeys	include/SimpleIni.h	/^CSimpleIniTempl<SI_CHAR,SI_STRLESS,SI_CONVERTER>::GetAllKeys($/;"	f	class:CSimpleIniTempl
+GetAllSections	include/SimpleIni.h	/^CSimpleIniTempl<SI_CHAR,SI_STRLESS,SI_CONVERTER>::GetAllSections($/;"	f	class:CSimpleIniTempl
+GetAllValues	include/SimpleIni.h	/^CSimpleIniTempl<SI_CHAR,SI_STRLESS,SI_CONVERTER>::GetAllValues($/;"	f	class:CSimpleIniTempl
+GetBoolValue	include/SimpleIni.h	/^CSimpleIniTempl<SI_CHAR,SI_STRLESS,SI_CONVERTER>::GetBoolValue($/;"	f	class:CSimpleIniTempl
+GetConverter	include/SimpleIni.h	/^    Converter GetConverter() const {$/;"	f	class:CSimpleIniTempl
+GetDoubleValue	include/SimpleIni.h	/^CSimpleIniTempl<SI_CHAR,SI_STRLESS,SI_CONVERTER>::GetDoubleValue($/;"	f	class:CSimpleIniTempl
+GetLongValue	include/SimpleIni.h	/^CSimpleIniTempl<SI_CHAR,SI_STRLESS,SI_CONVERTER>::GetLongValue($/;"	f	class:CSimpleIniTempl
+GetSection	include/SimpleIni.h	/^CSimpleIniTempl<SI_CHAR,SI_STRLESS,SI_CONVERTER>::GetSection($/;"	f	class:CSimpleIniTempl
+GetSectionSize	include/SimpleIni.h	/^CSimpleIniTempl<SI_CHAR,SI_STRLESS,SI_CONVERTER>::GetSectionSize($/;"	f	class:CSimpleIniTempl
+GetValue	include/SimpleIni.h	/^CSimpleIniTempl<SI_CHAR,SI_STRLESS,SI_CONVERTER>::GetValue($/;"	f	class:CSimpleIniTempl
+INCLUDED_SimpleIni_h	include/SimpleIni.h	196;"	d
+IsComment	include/SimpleIni.h	/^    inline bool IsComment(SI_CHAR ch) const {$/;"	f	class:CSimpleIniTempl
+IsEmpty	include/SimpleIni.h	/^    bool IsEmpty() const { return m_data.empty(); }$/;"	f	class:CSimpleIniTempl
+IsLess	include/SimpleIni.h	/^    bool IsLess(const SI_CHAR * a_pLeft, const SI_CHAR * a_pRight) const {$/;"	f	class:CSimpleIniTempl
+IsMultiKey	include/SimpleIni.h	/^    bool IsMultiKey() const { return m_bAllowMultiKey; }$/;"	f	class:CSimpleIniTempl
+IsMultiLine	include/SimpleIni.h	/^    bool IsMultiLine() const { return m_bAllowMultiLine; }$/;"	f	class:CSimpleIniTempl
+IsMultiLineData	include/SimpleIni.h	/^CSimpleIniTempl<SI_CHAR,SI_STRLESS,SI_CONVERTER>::IsMultiLineData($/;"	f	class:CSimpleIniTempl
+IsMultiLineTag	include/SimpleIni.h	/^CSimpleIniTempl<SI_CHAR,SI_STRLESS,SI_CONVERTER>::IsMultiLineTag($/;"	f	class:CSimpleIniTempl
+IsNewLineChar	include/SimpleIni.h	/^CSimpleIniTempl<SI_CHAR,SI_STRLESS,SI_CONVERTER>::IsNewLineChar($/;"	f	class:CSimpleIniTempl
+IsSpace	include/SimpleIni.h	/^    inline bool IsSpace(SI_CHAR ch) const {$/;"	f	class:CSimpleIniTempl
+IsUnicode	include/SimpleIni.h	/^    bool IsUnicode() const { return m_bStoreIsUtf8; }$/;"	f	class:CSimpleIniTempl
+KeyOrder	include/SimpleIni.h	/^        struct KeyOrder : std::binary_function<Entry, Entry, bool> {$/;"	s	struct:CSimpleIniTempl::Entry
+LoadData	include/SimpleIni.h	/^    SI_Error LoadData(const std::string & a_strData) {$/;"	f	class:CSimpleIniTempl
+LoadData	include/SimpleIni.h	/^CSimpleIniTempl<SI_CHAR,SI_STRLESS,SI_CONVERTER>::LoadData($/;"	f	class:CSimpleIniTempl
+LoadFile	include/SimpleIni.h	/^CSimpleIniTempl<SI_CHAR,SI_STRLESS,SI_CONVERTER>::LoadFile($/;"	f	class:CSimpleIniTempl
+LoadMultiLineText	include/SimpleIni.h	/^CSimpleIniTempl<SI_CHAR,SI_STRLESS,SI_CONVERTER>::LoadMultiLineText($/;"	f	class:CSimpleIniTempl
+LoadOrder	include/SimpleIni.h	/^        struct LoadOrder : std::binary_function<Entry, Entry, bool> {$/;"	s	struct:CSimpleIniTempl::Entry
+OutputMultiLineText	include/SimpleIni.h	/^CSimpleIniTempl<SI_CHAR,SI_STRLESS,SI_CONVERTER>::OutputMultiLineText($/;"	f	class:CSimpleIniTempl
+OutputWriter	include/SimpleIni.h	/^        OutputWriter() { }$/;"	f	class:CSimpleIniTempl::OutputWriter
+OutputWriter	include/SimpleIni.h	/^    class OutputWriter {$/;"	c	class:CSimpleIniTempl
+Reset	include/SimpleIni.h	/^CSimpleIniTempl<SI_CHAR,SI_STRLESS,SI_CONVERTER>::Reset()$/;"	f	class:CSimpleIniTempl
+SI_ASSERT	include/SimpleIni.h	232;"	d
+SI_ASSERT	include/SimpleIni.h	234;"	d
+SI_CHAR_T	include/SimpleIni.h	/^    typedef SI_CHAR SI_CHAR_T;$/;"	t	class:CSimpleIniTempl
+SI_CONVERT_GENERIC	include/SimpleIni.h	2675;"	d
+SI_CONVERT_WIN32	include/SimpleIni.h	2673;"	d
+SI_Case	include/SimpleIni.h	2843;"	d
+SI_Case	include/SimpleIni.h	3051;"	d
+SI_Case	include/SimpleIni.h	3239;"	d
+SI_ConvertA	include/SimpleIni.h	/^    SI_ConvertA() { }$/;"	f	class:SI_ConvertA
+SI_ConvertA	include/SimpleIni.h	/^    SI_ConvertA(bool a_bStoreIsUtf8) : m_bStoreIsUtf8(a_bStoreIsUtf8) { }$/;"	f	class:SI_ConvertA
+SI_ConvertA	include/SimpleIni.h	/^    SI_ConvertA(const SI_ConvertA & rhs) { operator=(rhs); }$/;"	f	class:SI_ConvertA
+SI_ConvertA	include/SimpleIni.h	/^class SI_ConvertA {$/;"	c
+SI_ConvertW	include/SimpleIni.h	/^    SI_ConvertW() : m_pEncoding(NULL), m_pConverter(NULL) { }$/;"	f	class:SI_ConvertW
+SI_ConvertW	include/SimpleIni.h	/^    SI_ConvertW() { }$/;"	f	class:SI_ConvertW
+SI_ConvertW	include/SimpleIni.h	/^    SI_ConvertW(bool a_bStoreIsUtf8) : m_bStoreIsUtf8(a_bStoreIsUtf8) { }$/;"	f	class:SI_ConvertW
+SI_ConvertW	include/SimpleIni.h	/^    SI_ConvertW(bool a_bStoreIsUtf8) : m_pConverter(NULL) {$/;"	f	class:SI_ConvertW
+SI_ConvertW	include/SimpleIni.h	/^    SI_ConvertW(bool a_bStoreIsUtf8) {$/;"	f	class:SI_ConvertW
+SI_ConvertW	include/SimpleIni.h	/^    SI_ConvertW(const SI_ConvertW & rhs) { operator=(rhs); }$/;"	f	class:SI_ConvertW
+SI_ConvertW	include/SimpleIni.h	/^class SI_ConvertW {$/;"	c
+SI_Error	include/SimpleIni.h	/^enum SI_Error {$/;"	g
+SI_FAIL	include/SimpleIni.h	/^    SI_FAIL     = -1,   \/\/!< Generic failure$/;"	e	enum:SI_Error
+SI_FILE	include/SimpleIni.h	/^    SI_FILE     = -3    \/\/!< File error (see errno for detail error)$/;"	e	enum:SI_Error
+SI_GenericCase	include/SimpleIni.h	/^struct SI_GenericCase {$/;"	s
+SI_GenericNoCase	include/SimpleIni.h	/^struct SI_GenericNoCase {$/;"	s
+SI_HAS_WIDE_FILE	include/SimpleIni.h	263;"	d
+SI_HAS_WIDE_FILE	include/SimpleIni.h	266;"	d
+SI_INSERTED	include/SimpleIni.h	/^    SI_INSERTED =  2,   \/\/!< A new value was inserted$/;"	e	enum:SI_Error
+SI_NEWLINE	include/SimpleIni.h	3425;"	d
+SI_NEWLINE	include/SimpleIni.h	3429;"	d
+SI_NEWLINE_A	include/SimpleIni.h	251;"	d
+SI_NEWLINE_A	include/SimpleIni.h	254;"	d
+SI_NEWLINE_W	include/SimpleIni.h	252;"	d
+SI_NEWLINE_W	include/SimpleIni.h	255;"	d
+SI_NOMEM	include/SimpleIni.h	/^    SI_NOMEM    = -2,   \/\/!< Out of memory error$/;"	e	enum:SI_Error
+SI_NO_MBCS	include/SimpleIni.h	3244;"	d
+SI_NoCase	include/SimpleIni.h	/^struct SI_NoCase {$/;"	s
+SI_NoCase	include/SimpleIni.h	2844;"	d
+SI_NoCase	include/SimpleIni.h	3052;"	d
+SI_NoCase	include/SimpleIni.h	3250;"	d
+SI_OK	include/SimpleIni.h	/^    SI_OK       =  0,   \/\/!< No error$/;"	e	enum:SI_Error
+SI_UPDATED	include/SimpleIni.h	/^    SI_UPDATED  =  1,   \/\/!< An existing value was updated$/;"	e	enum:SI_Error
+SI_UTF8_SIGNATURE	include/SimpleIni.h	248;"	d
+SI_WCHAR_T	include/SimpleIni.h	264;"	d
+SI_WCHAR_T	include/SimpleIni.h	267;"	d
+Save	include/SimpleIni.h	/^    SI_Error Save($/;"	f	class:CSimpleIniTempl
+Save	include/SimpleIni.h	/^CSimpleIniTempl<SI_CHAR,SI_STRLESS,SI_CONVERTER>::Save($/;"	f	class:CSimpleIniTempl
+SaveFile	include/SimpleIni.h	/^CSimpleIniTempl<SI_CHAR,SI_STRLESS,SI_CONVERTER>::SaveFile($/;"	f	class:CSimpleIniTempl
+SetBoolValue	include/SimpleIni.h	/^CSimpleIniTempl<SI_CHAR,SI_STRLESS,SI_CONVERTER>::SetBoolValue($/;"	f	class:CSimpleIniTempl
+SetDoubleValue	include/SimpleIni.h	/^CSimpleIniTempl<SI_CHAR,SI_STRLESS,SI_CONVERTER>::SetDoubleValue($/;"	f	class:CSimpleIniTempl
+SetLongValue	include/SimpleIni.h	/^CSimpleIniTempl<SI_CHAR,SI_STRLESS,SI_CONVERTER>::SetLongValue($/;"	f	class:CSimpleIniTempl
+SetMultiKey	include/SimpleIni.h	/^    void SetMultiKey(bool a_bAllowMultiKey = true) {$/;"	f	class:CSimpleIniTempl
+SetMultiLine	include/SimpleIni.h	/^    void SetMultiLine(bool a_bAllowMultiLine = true) {$/;"	f	class:CSimpleIniTempl
+SetSpaces	include/SimpleIni.h	/^    void SetSpaces(bool a_bSpaces = true) {$/;"	f	class:CSimpleIniTempl
+SetUnicode	include/SimpleIni.h	/^    void SetUnicode(bool a_bIsUtf8 = true) {$/;"	f	class:CSimpleIniTempl
+SetValue	include/SimpleIni.h	/^    SI_Error SetValue($/;"	f	class:CSimpleIniTempl
+SizeFromStore	include/SimpleIni.h	/^    size_t SizeFromStore($/;"	f	class:SI_ConvertA
+SizeFromStore	include/SimpleIni.h	/^    size_t SizeFromStore($/;"	f	class:SI_ConvertW
+SizeToStore	include/SimpleIni.h	/^    size_t SizeToStore($/;"	f	class:SI_ConvertA
+SizeToStore	include/SimpleIni.h	/^    size_t SizeToStore($/;"	f	class:SI_ConvertW
+SkipNewLine	include/SimpleIni.h	/^    inline void SkipNewLine(SI_CHAR *& a_pData) const {$/;"	f	class:CSimpleIniTempl
+StreamWriter	include/SimpleIni.h	/^        StreamWriter(std::ostream & a_ostream) : m_ostream(a_ostream) { }$/;"	f	class:CSimpleIniTempl::StreamWriter
+StreamWriter	include/SimpleIni.h	/^    class StreamWriter : public OutputWriter {$/;"	c	class:CSimpleIniTempl
+StringWriter	include/SimpleIni.h	/^        StringWriter(std::string & a_string) : m_string(a_string) { }$/;"	f	class:CSimpleIniTempl::StringWriter
+StringWriter	include/SimpleIni.h	/^    class StringWriter : public OutputWriter {$/;"	c	class:CSimpleIniTempl
+TKeyVal	include/SimpleIni.h	/^    typedef std::multimap<Entry,const SI_CHAR *,typename Entry::KeyOrder> TKeyVal;$/;"	t	class:CSimpleIniTempl
+TNamesDepend	include/SimpleIni.h	/^    typedef std::list<Entry> TNamesDepend;$/;"	t	class:CSimpleIniTempl
+TSection	include/SimpleIni.h	/^    typedef std::map<Entry,TKeyVal,typename Entry::KeyOrder> TSection;$/;"	t	class:CSimpleIniTempl
+UsingSpaces	include/SimpleIni.h	/^    bool UsingSpaces() const { return m_bSpaces; }$/;"	f	class:CSimpleIniTempl
+Write	include/SimpleIni.h	/^        void Write(const char * a_pBuf) {$/;"	f	class:CSimpleIniTempl::FileWriter
+Write	include/SimpleIni.h	/^        void Write(const char * a_pBuf) {$/;"	f	class:CSimpleIniTempl::StreamWriter
+Write	include/SimpleIni.h	/^        void Write(const char * a_pBuf) {$/;"	f	class:CSimpleIniTempl::StringWriter
+locase	include/SimpleIni.h	/^    inline SI_CHAR locase(SI_CHAR ch) const {$/;"	f	struct:SI_GenericNoCase
+m_bAllowMultiKey	include/SimpleIni.h	/^    bool m_bAllowMultiKey;$/;"	m	class:CSimpleIniTempl
+m_bAllowMultiLine	include/SimpleIni.h	/^    bool m_bAllowMultiLine;$/;"	m	class:CSimpleIniTempl
+m_bSpaces	include/SimpleIni.h	/^    bool m_bSpaces;$/;"	m	class:CSimpleIniTempl
+m_bStoreIsUtf8	include/SimpleIni.h	/^    bool m_bStoreIsUtf8;$/;"	m	class:CSimpleIniTempl
+m_bStoreIsUtf8	include/SimpleIni.h	/^    bool m_bStoreIsUtf8;$/;"	m	class:SI_ConvertA
+m_bStoreIsUtf8	include/SimpleIni.h	/^    bool m_bStoreIsUtf8;$/;"	m	class:SI_ConvertW
+m_data	include/SimpleIni.h	/^    TSection m_data;$/;"	m	class:CSimpleIniTempl
+m_file	include/SimpleIni.h	/^        FILE * m_file;$/;"	m	class:CSimpleIniTempl::FileWriter
+m_nOrder	include/SimpleIni.h	/^    int m_nOrder;$/;"	m	class:CSimpleIniTempl
+m_ostream	include/SimpleIni.h	/^        std::ostream & m_ostream;$/;"	m	class:CSimpleIniTempl::StreamWriter
+m_pConverter	include/SimpleIni.h	/^    UConverter * m_pConverter;$/;"	m	class:SI_ConvertW
+m_pData	include/SimpleIni.h	/^    SI_CHAR * m_pData;$/;"	m	class:CSimpleIniTempl
+m_pEncoding	include/SimpleIni.h	/^    const char * m_pEncoding;$/;"	m	class:SI_ConvertW
+m_pFileComment	include/SimpleIni.h	/^    const SI_CHAR * m_pFileComment;$/;"	m	class:CSimpleIniTempl
+m_scratch	include/SimpleIni.h	/^        std::string m_scratch;$/;"	m	class:CSimpleIniTempl::Converter
+m_string	include/SimpleIni.h	/^        std::string & m_string;$/;"	m	class:CSimpleIniTempl::StringWriter
+m_strings	include/SimpleIni.h	/^    TNamesDepend m_strings;$/;"	m	class:CSimpleIniTempl
+m_uCodePage	include/SimpleIni.h	/^    UINT m_uCodePage;$/;"	m	class:SI_ConvertW
+m_uDataLen	include/SimpleIni.h	/^    size_t m_uDataLen;$/;"	m	class:CSimpleIniTempl
+nOrder	include/SimpleIni.h	/^        int             nOrder;$/;"	m	struct:CSimpleIniTempl::Entry
+operator ()	include/SimpleIni.h	/^            bool operator()(const Entry & lhs, const Entry & rhs) const {$/;"	f	struct:CSimpleIniTempl::Entry::KeyOrder
+operator ()	include/SimpleIni.h	/^            bool operator()(const Entry & lhs, const Entry & rhs) const {$/;"	f	struct:CSimpleIniTempl::Entry::LoadOrder
+operator ()	include/SimpleIni.h	/^    bool operator()(const SI_CHAR * pLeft, const SI_CHAR * pRight) const {$/;"	f	struct:SI_GenericCase
+operator ()	include/SimpleIni.h	/^    bool operator()(const SI_CHAR * pLeft, const SI_CHAR * pRight) const {$/;"	f	struct:SI_GenericNoCase
+operator ()	include/SimpleIni.h	/^    bool operator()(const SI_CHAR * pLeft, const SI_CHAR * pRight) const {$/;"	f	struct:SI_NoCase
+operator <	include/SimpleIni.h	/^        bool operator<(const Entry & rhs) const { return LoadOrder()(*this, rhs); }$/;"	f	struct:CSimpleIniTempl::Entry
+operator =	include/SimpleIni.h	/^        Converter & operator=(const Converter & rhs) {$/;"	f	class:CSimpleIniTempl::Converter
+operator =	include/SimpleIni.h	/^        Entry & operator=(const Entry & rhs) {$/;"	f	struct:CSimpleIniTempl::Entry
+operator =	include/SimpleIni.h	/^    SI_ConvertA & operator=(const SI_ConvertA & rhs) {$/;"	f	class:SI_ConvertA
+operator =	include/SimpleIni.h	/^    SI_ConvertW & operator=(const SI_ConvertW & rhs) {$/;"	f	class:SI_ConvertW
+operator >	include/SimpleIni.h	/^        bool operator>(const Entry & rhs) const { return LoadOrder()(rhs, *this); }$/;"	f	struct:CSimpleIniTempl::Entry
+pComment	include/SimpleIni.h	/^        const SI_CHAR * pComment;$/;"	m	struct:CSimpleIniTempl::Entry
+pItem	include/SimpleIni.h	/^        const SI_CHAR * pItem;$/;"	m	struct:CSimpleIniTempl::Entry
+~CSimpleIniTempl	include/SimpleIni.h	/^CSimpleIniTempl<SI_CHAR,SI_STRLESS,SI_CONVERTER>::~CSimpleIniTempl()$/;"	f	class:CSimpleIniTempl
+~OutputWriter	include/SimpleIni.h	/^        virtual ~OutputWriter() { }$/;"	f	class:CSimpleIniTempl::OutputWriter
+~SI_ConvertW	include/SimpleIni.h	/^    ~SI_ConvertW() { if (m_pConverter) ucnv_close(m_pConverter); }$/;"	f	class:SI_ConvertW
 UIEntity	include/UIEntity.h	/^class UIEntity : public Entity$/;"	c
 UI_ENTITY_H	include/UIEntity.h	2;"	d
 Ball	src/Ball.cpp	/^Ball::Ball(Paddle* paddle)$/;"	f	class:Ball
-clone	src/Ball.cpp	/^Ball* Ball::clone() const$/;"	f	class:Ball
-collisionClone	src/Ball.cpp	/^Ball* Ball::collisionClone() const$/;"	f	class:Ball
 getCenter	src/Ball.cpp	/^SDL_Point Ball::getCenter()$/;"	f	class:Ball
 getOrigin	src/Ball.cpp	/^SDL_Point Ball::getOrigin()$/;"	f	class:Ball
 getSize	src/Ball.cpp	/^SDL_Point Ball::getSize()$/;"	f	class:Ball
 getVelocity	src/Ball.cpp	/^SDL_Point Ball::getVelocity()$/;"	f	class:Ball
-handleEvents	src/Ball.cpp	/^void Ball::handleEvents(const Uint8* keyStates)$/;"	f	class:Ball
+handleGameEvents	src/Ball.cpp	/^void Ball::handleGameEvents(const Uint8* events)$/;"	f	class:Ball
+handleKeyboardEvents	src/Ball.cpp	/^void Ball::handleKeyboardEvents(const Uint8* keyStates)$/;"	f	class:Ball
+handleMouseEvents	src/Ball.cpp	/^void Ball::handleMouseEvents(int mouseState, int x, int y)$/;"	f	class:Ball
 isDeletable	src/Ball.cpp	/^bool Ball::isDeletable()$/;"	f	class:Ball
 render	src/Ball.cpp	/^void Ball::render(SDL_Renderer* gRenderer)$/;"	f	class:Ball
-resolveCollision	src/Ball.cpp	/^void Ball::resolveCollision(PhysicsEntity* collidedObject)$/;"	f	class:Ball
+resolveCollision	src/Ball.cpp	/^void Ball::resolveCollision(PhysicsEntity* collider, PhysicsEntity* object)$/;"	f	class:Ball
+type	src/Ball.cpp	/^char* Ball::type()$/;"	f	class:Ball
 update	src/Ball.cpp	/^void Ball::update(int frameTime)$/;"	f	class:Ball
 updateVelocityWithAngle	src/Ball.cpp	/^void Ball::updateVelocityWithAngle(float degrees)$/;"	f	class:Ball
 ~Ball	src/Ball.cpp	/^Ball::~Ball()$/;"	f	class:Ball
 BallsIndicator	src/BallsIndicator.cpp	/^BallsIndicator::BallsIndicator(float x, float y)$/;"	f	class:BallsIndicator
-clone	src/BallsIndicator.cpp	/^BallsIndicator* BallsIndicator::clone() const$/;"	f	class:BallsIndicator
 getCenter	src/BallsIndicator.cpp	/^SDL_Point BallsIndicator::getCenter()$/;"	f	class:BallsIndicator
 getOrigin	src/BallsIndicator.cpp	/^SDL_Point BallsIndicator::getOrigin()$/;"	f	class:BallsIndicator
 getSize	src/BallsIndicator.cpp	/^SDL_Point BallsIndicator::getSize()$/;"	f	class:BallsIndicator
-handleEvents	src/BallsIndicator.cpp	/^void BallsIndicator::handleEvents(const Uint8*)$/;"	f	class:BallsIndicator
+handleGameEvents	src/BallsIndicator.cpp	/^void BallsIndicator::handleGameEvents(const Uint8* events)$/;"	f	class:BallsIndicator
+handleKeyboardEvents	src/BallsIndicator.cpp	/^void BallsIndicator::handleKeyboardEvents(const Uint8*)$/;"	f	class:BallsIndicator
+handleMouseEvents	src/BallsIndicator.cpp	/^void BallsIndicator::handleMouseEvents(int mouseState, int x, int y)$/;"	f	class:BallsIndicator
 isDeletable	src/BallsIndicator.cpp	/^bool BallsIndicator::isDeletable()$/;"	f	class:BallsIndicator
-render	src/BallsIndicator.cpp	/^void BallsIndicator::render(SDL_Renderer*)$/;"	f	class:BallsIndicator
+render	src/BallsIndicator.cpp	/^void BallsIndicator::render(SDL_Renderer* gRenderer)$/;"	f	class:BallsIndicator
+type	src/BallsIndicator.cpp	/^char* BallsIndicator::type()$/;"	f	class:BallsIndicator
 update	src/BallsIndicator.cpp	/^void BallsIndicator::update(int frameTime)$/;"	f	class:BallsIndicator
 ~BallsIndicator	src/BallsIndicator.cpp	/^BallsIndicator::~BallsIndicator()$/;"	f	class:BallsIndicator
-Block	src/Block.cpp	/^Block::Block(int x, int y, int* blockCount, IBlockDelegate* delegate)$/;"	f	class:Block
-clone	src/Block.cpp	/^Block* Block::clone() const$/;"	f	class:Block
-collisionClone	src/Block.cpp	/^Block* Block::collisionClone() const$/;"	f	class:Block
+Block	src/Block.cpp	/^Block::Block(int x, int y, int width, int height, int* blockCount)$/;"	f	class:Block
 getCenter	src/Block.cpp	/^SDL_Point Block::getCenter()$/;"	f	class:Block
 getOrigin	src/Block.cpp	/^SDL_Point Block::getOrigin()$/;"	f	class:Block
 getSize	src/Block.cpp	/^SDL_Point Block::getSize()$/;"	f	class:Block
 getVelocity	src/Block.cpp	/^SDL_Point Block::getVelocity()$/;"	f	class:Block
-handleEvents	src/Block.cpp	/^void Block::handleEvents(const Uint8* keyStates)$/;"	f	class:Block
+handleGameEvents	src/Block.cpp	/^void Block::handleGameEvents(const Uint8* events)$/;"	f	class:Block
+handleKeyboardEvents	src/Block.cpp	/^void Block::handleKeyboardEvents(const Uint8* keyStates)$/;"	f	class:Block
+handleMouseEvents	src/Block.cpp	/^void Block::handleMouseEvents(int mouseState, int x, int y)$/;"	f	class:Block
 isDeletable	src/Block.cpp	/^bool Block::isDeletable()$/;"	f	class:Block
 render	src/Block.cpp	/^void Block::render(SDL_Renderer* gRenderer)$/;"	f	class:Block
-resolveCollision	src/Block.cpp	/^void Block::resolveCollision(PhysicsEntity* collidedObject)$/;"	f	class:Block
-setDelegate	src/Block.cpp	/^void Block::setDelegate(IBlockDelegate* delegate)$/;"	f	class:Block
+resolveCollision	src/Block.cpp	/^void Block::resolveCollision(PhysicsEntity* collider, PhysicsEntity* object)$/;"	f	class:Block
+type	src/Block.cpp	/^char* Block::type()$/;"	f	class:Block
 update	src/Block.cpp	/^void Block::update(int frameTime)$/;"	f	class:Block
 ~Block	src/Block.cpp	/^Block::~Block()$/;"	f	class:Block
+Button	src/Button.cpp	/^Button::Button(const char* fontName, const char* text, GameEvent event, int x, int y)$/;"	f	class:Button
+getCenter	src/Button.cpp	/^SDL_Point Button::getCenter()$/;"	f	class:Button
+getOrigin	src/Button.cpp	/^SDL_Point Button::getOrigin()$/;"	f	class:Button
+getSize	src/Button.cpp	/^SDL_Point Button::getSize()$/;"	f	class:Button
+handleGameEvents	src/Button.cpp	/^void Button::handleGameEvents(const Uint8* events)$/;"	f	class:Button
+handleKeyboardEvents	src/Button.cpp	/^void Button::handleKeyboardEvents(const Uint8*)$/;"	f	class:Button
+handleMouseEvents	src/Button.cpp	/^void Button::handleMouseEvents(int mouseState, int x, int y)$/;"	f	class:Button
+render	src/Button.cpp	/^void Button::render(SDL_Renderer* gRenderer)$/;"	f	class:Button
+type	src/Button.cpp	/^char* Button::type()$/;"	f	class:Button
+update	src/Button.cpp	/^void Button::update(int frameTime)$/;"	f	class:Button
+~Button	src/Button.cpp	/^Button::~Button()$/;"	f	class:Button
+Collider	src/Collider.cpp	/^Collider::Collider(Entity* entity)$/;"	f	class:Collider
+getCenter	src/Collider.cpp	/^SDL_Point Collider::getCenter()$/;"	f	class:Collider
+getOrigin	src/Collider.cpp	/^SDL_Point Collider::getOrigin()$/;"	f	class:Collider
+getSize	src/Collider.cpp	/^SDL_Point Collider::getSize()$/;"	f	class:Collider
+getVelocity	src/Collider.cpp	/^SDL_Point Collider::getVelocity()$/;"	f	class:Collider
+handleGameEvents	src/Collider.cpp	/^void Collider::handleGameEvents(const Uint8* events)$/;"	f	class:Collider
+handleKeyboardEvents	src/Collider.cpp	/^void Collider::handleKeyboardEvents(const Uint8*)$/;"	f	class:Collider
+handleMouseEvents	src/Collider.cpp	/^void Collider::handleMouseEvents(int mouseState, int x, int y)$/;"	f	class:Collider
+isDeletable	src/Collider.cpp	/^bool Collider::isDeletable()$/;"	f	class:Collider
+render	src/Collider.cpp	/^void Collider::render(SDL_Renderer*)$/;"	f	class:Collider
+resolveCollision	src/Collider.cpp	/^void Collider::resolveCollision(PhysicsEntity* collider, PhysicsEntity* object)$/;"	f	class:Collider
+type	src/Collider.cpp	/^char* Collider::type()$/;"	f	class:Collider
+update	src/Collider.cpp	/^void Collider::update(int frameTime)$/;"	f	class:Collider
+~Collider	src/Collider.cpp	/^Collider::~Collider()$/;"	f	class:Collider
 ~Entity	src/Entity.cpp	/^Entity::~Entity()$/;"	f	class:Entity
+EventManager	src/EventManager.cpp	/^EventManager::EventManager()$/;"	f	class:EventManager
 Instance	src/EventManager.cpp	/^EventManager* EventManager::Instance(){$/;"	f	class:EventManager
+clearGameEvents	src/EventManager.cpp	/^void EventManager::clearGameEvents()$/;"	f	class:EventManager
 deregisterHandler	src/EventManager.cpp	/^void EventManager::deregisterHandler(IEventHandler* handler)$/;"	f	class:EventManager
-handleEvents	src/EventManager.cpp	/^void EventManager::handleEvents()$/;"	f	class:EventManager
+handleGameEvents	src/EventManager.cpp	/^void EventManager::handleGameEvents()$/;"	f	class:EventManager
+handleKeyboardEvents	src/EventManager.cpp	/^void EventManager::handleKeyboardEvents()$/;"	f	class:EventManager
+handleMouseEvents	src/EventManager.cpp	/^void EventManager::handleMouseEvents()$/;"	f	class:EventManager
 instance	src/EventManager.cpp	/^EventManager* EventManager::instance = NULL;$/;"	m	class:EventManager	file:
 instanceFlag	src/EventManager.cpp	/^bool EventManager::instanceFlag = false;$/;"	m	class:EventManager	file:
+printHandlers	src/EventManager.cpp	/^void EventManager::printHandlers()$/;"	f	class:EventManager
 registerHandler	src/EventManager.cpp	/^void EventManager::registerHandler(IEventHandler* handler)$/;"	f	class:EventManager
+reportGameEvent	src/EventManager.cpp	/^void EventManager::reportGameEvent(GameEvent event)$/;"	f	class:EventManager
 GameManager	src/GameManager.cpp	/^GameManager::GameManager()$/;"	f	class:GameManager
-blockDisappearing	src/GameManager.cpp	/^void GameManager::blockDisappearing(){$/;"	f	class:GameManager
 detectCollisions	src/GameManager.cpp	/^void GameManager::detectCollisions()$/;"	f	class:GameManager
-handleEvents	src/GameManager.cpp	/^void GameManager::handleEvents()$/;"	f	class:GameManager
+gameLost	src/GameManager.cpp	/^void GameManager::gameLost()$/;"	f	class:GameManager
+gameWon	src/GameManager.cpp	/^void GameManager::gameWon()$/;"	f	class:GameManager
+handleGameEvents	src/GameManager.cpp	/^void GameManager::handleGameEvents(const Uint8* events)$/;"	f	class:GameManager
+handleKeyboardEvents	src/GameManager.cpp	/^void GameManager::handleKeyboardEvents(const Uint8* keyStates)$/;"	f	class:GameManager
+handleMouseEvents	src/GameManager.cpp	/^void GameManager::handleMouseEvents(int mouseState, int x, int y)$/;"	f	class:GameManager
 render	src/GameManager.cpp	/^void GameManager::render(SDL_Renderer* gRenderer)$/;"	f	class:GameManager
 resetLevel	src/GameManager.cpp	/^void GameManager::resetLevel()$/;"	f	class:GameManager
-shouldQuit	src/GameManager.cpp	/^bool GameManager::shouldQuit()$/;"	f	class:GameManager
+type	src/GameManager.cpp	/^char* GameManager::type()$/;"	f	class:GameManager
 update	src/GameManager.cpp	/^void GameManager::update(int frameTime)$/;"	f	class:GameManager
 ~GameManager	src/GameManager.cpp	/^GameManager::~GameManager()$/;"	f	class:GameManager
+MenuManager	src/MenuManager.cpp	/^MenuManager::MenuManager()$/;"	f	class:MenuManager
+handleGameEvents	src/MenuManager.cpp	/^void MenuManager::handleGameEvents(const Uint8* events)$/;"	f	class:MenuManager
+handleKeyboardEvents	src/MenuManager.cpp	/^void MenuManager::handleKeyboardEvents(const Uint8* keyStates)$/;"	f	class:MenuManager
+handleMouseEvents	src/MenuManager.cpp	/^void MenuManager::handleMouseEvents(int mouseState, int x, int y)$/;"	f	class:MenuManager
+render	src/MenuManager.cpp	/^void MenuManager::render(SDL_Renderer* gRenderer)$/;"	f	class:MenuManager
+setMainMenuButtons	src/MenuManager.cpp	/^void MenuManager::setMainMenuButtons()$/;"	f	class:MenuManager
+setPauseMenuButtons	src/MenuManager.cpp	/^void MenuManager::setPauseMenuButtons()$/;"	f	class:MenuManager
+type	src/MenuManager.cpp	/^char* MenuManager::type()$/;"	f	class:MenuManager
+update	src/MenuManager.cpp	/^void MenuManager::update(int frameTime)$/;"	f	class:MenuManager
+~MenuManager	src/MenuManager.cpp	/^MenuManager::~MenuManager()$/;"	f	class:MenuManager
 Paddle	src/Paddle.cpp	/^Paddle::Paddle(float x, float y)$/;"	f	class:Paddle
-clone	src/Paddle.cpp	/^Paddle* Paddle::clone() const$/;"	f	class:Paddle
-collisionClone	src/Paddle.cpp	/^Paddle* Paddle::collisionClone() const$/;"	f	class:Paddle
 getCenter	src/Paddle.cpp	/^SDL_Point Paddle::getCenter()$/;"	f	class:Paddle
 getOrigin	src/Paddle.cpp	/^SDL_Point Paddle::getOrigin()$/;"	f	class:Paddle
 getSize	src/Paddle.cpp	/^SDL_Point Paddle::getSize()$/;"	f	class:Paddle
 getVelocity	src/Paddle.cpp	/^SDL_Point Paddle::getVelocity()$/;"	f	class:Paddle
-handleEvents	src/Paddle.cpp	/^void Paddle::handleEvents(const Uint8* keyStates)$/;"	f	class:Paddle
+handleGameEvents	src/Paddle.cpp	/^void Paddle::handleGameEvents(const Uint8* events)$/;"	f	class:Paddle
+handleKeyboardEvents	src/Paddle.cpp	/^void Paddle::handleKeyboardEvents(const Uint8* keyStates)$/;"	f	class:Paddle
+handleMouseEvents	src/Paddle.cpp	/^void Paddle::handleMouseEvents(int mouseState, int x, int y)$/;"	f	class:Paddle
 isDeletable	src/Paddle.cpp	/^bool Paddle::isDeletable()$/;"	f	class:Paddle
 render	src/Paddle.cpp	/^void Paddle::render(SDL_Renderer* gRenderer)$/;"	f	class:Paddle
-resolveCollision	src/Paddle.cpp	/^void Paddle::resolveCollision(PhysicsEntity* collidedObject)$/;"	f	class:Paddle
+resolveCollision	src/Paddle.cpp	/^void Paddle::resolveCollision(PhysicsEntity* collider, PhysicsEntity* object)$/;"	f	class:Paddle
+type	src/Paddle.cpp	/^char* Paddle::type()$/;"	f	class:Paddle
 update	src/Paddle.cpp	/^void Paddle::update(int frameTime)$/;"	f	class:Paddle
 ~Paddle	src/Paddle.cpp	/^Paddle::~Paddle()$/;"	f	class:Paddle
+PauseMenuManager	src/PauseMenuManager.cpp	/^PauseMenuManager::PauseMenuManager()$/;"	f	class:PauseMenuManager
+handleGameEvents	src/PauseMenuManager.cpp	/^void PauseMenuManager::handleGameEvents(const Uint8* events)$/;"	f	class:PauseMenuManager
+handleKeyboardEvents	src/PauseMenuManager.cpp	/^void PauseMenuManager::handleKeyboardEvents(const Uint8* keyStates)$/;"	f	class:PauseMenuManager
+handleMouseEvents	src/PauseMenuManager.cpp	/^void PauseMenuManager::handleMouseEvents(int mouseState, int x, int y)$/;"	f	class:PauseMenuManager
+render	src/PauseMenuManager.cpp	/^void PauseMenuManager::render(SDL_Renderer* gRenderer)$/;"	f	class:PauseMenuManager
+shouldQuit	src/PauseMenuManager.cpp	/^bool PauseMenuManager::shouldQuit()$/;"	f	class:PauseMenuManager
+type	src/PauseMenuManager.cpp	/^char* PauseMenuManager::type()$/;"	f	class:PauseMenuManager
+update	src/PauseMenuManager.cpp	/^void PauseMenuManager::update(int frameTime)$/;"	f	class:PauseMenuManager
+~PauseMenuManager	src/PauseMenuManager.cpp	/^PauseMenuManager::~PauseMenuManager()$/;"	f	class:PauseMenuManager
+ProgramManager	src/ProgramManager.cpp	/^ProgramManager::ProgramManager(SDL_Renderer* gRenderer)$/;"	f	class:ProgramManager
+handleGameEvents	src/ProgramManager.cpp	/^void ProgramManager::handleGameEvents(const Uint8* events)$/;"	f	class:ProgramManager
+handleKeyboardEvents	src/ProgramManager.cpp	/^void ProgramManager::handleKeyboardEvents(const Uint8* keyStates)$/;"	f	class:ProgramManager
+handleMouseEvents	src/ProgramManager.cpp	/^void ProgramManager::handleMouseEvents(int mouseState, int x, int y)$/;"	f	class:ProgramManager
+loop	src/ProgramManager.cpp	/^void ProgramManager::loop()$/;"	f	class:ProgramManager
+type	src/ProgramManager.cpp	/^char* ProgramManager::type()$/;"	f	class:ProgramManager
+~ProgramManager	src/ProgramManager.cpp	/^ProgramManager::~ProgramManager()$/;"	f	class:ProgramManager
 close	src/main.cpp	/^void close()$/;"	f
-frameTime	src/main.cpp	/^Uint64 frameTime, lastFrameTime = 0;$/;"	v
 gRenderer	src/main.cpp	/^SDL_Renderer* gRenderer = NULL;$/;"	v
 gWindow	src/main.cpp	/^SDL_Window* gWindow = NULL;$/;"	v
-gameManager	src/main.cpp	/^GameManager gameManager;$/;"	v
+ini	src/main.cpp	/^CSimpleIniA ini;$/;"	v
 init	src/main.cpp	/^bool init()$/;"	f
-lastFrameTime	src/main.cpp	/^Uint64 frameTime, lastFrameTime = 0;$/;"	v
+load_settings	src/main.cpp	/^void load_settings()$/;"	f
 main	src/main.cpp	/^int main( int argc, char* args[] )$/;"	f
+screen_height	src/main.cpp	/^int screen_height;$/;"	v
+screen_width	src/main.cpp	/^int screen_width;$/;"	v

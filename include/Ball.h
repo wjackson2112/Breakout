@@ -23,10 +23,10 @@ private:
 	int machineState;
 	void updateVelocityWithAngle(float degrees);
 public:
-	int width = 20.0;
-	int height = 20.0;
+	int width = Globals::ballWidth;
+	int height = Globals::ballHeight;
 
-	float max_vel = 300;
+	float max_vel = width * 15;
 
 	Ball(Paddle*);
 	~Ball();

@@ -2,8 +2,8 @@
 
 Paddle::Paddle(float x, float y)
 {
-	posX = x;
-	posY = y;
+	posX = x + Globals::xOffset;
+	posY = y + Globals::yOffset;
 	velX = 0;
 	velY = 0;
 
@@ -24,8 +24,8 @@ void Paddle::render(SDL_Renderer* gRenderer)
 
 void Paddle::update(int frameTime)
 {
-	if(posX + velX * (float) frameTime/SDL_GetPerformanceFrequency() >= 0 && 
-	   posX + velX * (float) frameTime/SDL_GetPerformanceFrequency() + width <= SCREEN_WIDTH)
+	if(posX + velX * (float) frameTime/SDL_GetPerformanceFrequency() >= Globals::xOffset && 
+	   posX + velX * (float) frameTime/SDL_GetPerformanceFrequency() + width <= Globals::xOffset + Globals::fieldWidth)
 	{
 		velX += accelX * (float) frameTime/SDL_GetPerformanceFrequency();
 		if(abs(velX) > max_vel)
@@ -37,13 +37,13 @@ void Paddle::update(int frameTime)
 		}
 		posX += velX * (float) frameTime/SDL_GetPerformanceFrequency();
 	} 
-	else if(posX + velX * (float) frameTime/SDL_GetPerformanceFrequency() < 0)
+	else if(posX + velX * (float) frameTime/SDL_GetPerformanceFrequency() < Globals::xOffset)
 	{
-		posX = 0;
+		posX = Globals::xOffset;
 	}
-	else if(posX + velX * (float) frameTime/SDL_GetPerformanceFrequency() + width > SCREEN_WIDTH)
+	else if(posX + velX * (float) frameTime/SDL_GetPerformanceFrequency() + width > Globals::xOffset + Globals::fieldWidth)
 	{
-		posX = SCREEN_WIDTH - width;
+		posX = Globals::xOffset + Globals::fieldWidth - width;
 	}
 }
 

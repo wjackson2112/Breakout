@@ -11,12 +11,12 @@ class Block : public PhysicsEntity
 private:
 	int r, g, b;
 public:
-	int width = 40.0;
+	int width = 80.0;
 	int height = 40.0;
 
 	bool visible;
 
-	Block(int x, int y, int* blockCount);
+	Block(int x, int y, int width, int height, int* blockCount);
 	~Block();
 
 	void handleMouseEvents(int mouseState, int x, int y);

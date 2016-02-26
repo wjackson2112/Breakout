@@ -8,10 +8,13 @@ class Paddle : public PhysicsEntity
 {
 private:
 	float accelX, accelY;
-	int accel = 1000;
+
 public:
-	int width = 60.0;
-	int height = 20.0;
+	int width = Globals::paddleWidth;
+	int height = Globals::paddleHeight;
+
+	float max_vel = width * 2.5;
+	int accel = max_vel * 5;
 
 	Paddle(float x, float y);
 	~Paddle();

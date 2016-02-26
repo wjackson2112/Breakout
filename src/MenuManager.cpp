@@ -27,8 +27,8 @@ void MenuManager::setMainMenuButtons()
 		it = uiEntities.erase(it);
 	}
 
-	uiEntities.push_back(new Button("/usr/local/share/fonts/Anonymous Pro.ttf", "New Game", NEW_GAME, 100, 100));
-	uiEntities.push_back(new Button("/usr/local/share/fonts/Anonymous Pro.ttf", "Quit to Desktop", QUIT_PROGRAM, 100, 175));	
+	uiEntities.push_back(new Button("/usr/share/fonts/truetype/inconsolata/Inconsolata.otf", "New Game", NEW_GAME, Globals::screenHeight / 10, Globals::screenHeight / 10));
+	uiEntities.push_back(new Button("/usr/share/fonts/truetype/inconsolata/Inconsolata.otf", "Quit to Desktop", QUIT_PROGRAM, Globals::screenHeight / 10, Globals::screenHeight / 10 * 2));	
 }
 
 void MenuManager::setPauseMenuButtons()
@@ -39,9 +39,9 @@ void MenuManager::setPauseMenuButtons()
 		it = uiEntities.erase(it);
 	}
 	
-	uiEntities.push_back(new Button("/usr/local/share/fonts/Anonymous Pro.ttf", "Resume Game", RESUME_GAME, 100, 100));	
-	uiEntities.push_back(new Button("/usr/local/share/fonts/Anonymous Pro.ttf", "New Game", NEW_GAME, 100, 175));
-	uiEntities.push_back(new Button("/usr/local/share/fonts/Anonymous Pro.ttf", "Quit Game", QUIT_GAME, 100, 250));	
+	uiEntities.push_back(new Button("/usr/share/fonts/truetype/inconsolata/Inconsolata.otf", "Resume Game", RESUME_GAME, Globals::screenHeight / 10, Globals::screenHeight / 10));	
+	uiEntities.push_back(new Button("/usr/share/fonts/truetype/inconsolata/Inconsolata.otf", "New Game", NEW_GAME, Globals::screenHeight / 10, Globals::screenHeight / 10 * 2));
+	uiEntities.push_back(new Button("/usr/share/fonts/truetype/inconsolata/Inconsolata.otf", "Quit Game", QUIT_GAME, Globals::screenHeight / 10, Globals::screenHeight / 10 * 3));	
 }
 
 void MenuManager::render(SDL_Renderer* gRenderer)
@@ -49,6 +49,12 @@ void MenuManager::render(SDL_Renderer* gRenderer)
 	if(!visible)
 	{
 		return;
+	}
+	else
+	{
+		SDL_Rect fillRect = {0, 0, Globals::screenWidth, Globals::screenHeight};
+		SDL_SetRenderDrawColor(gRenderer, 0x00, 0x00, 0x00, 0xCC);
+		SDL_RenderFillRect(gRenderer, &fillRect);
 	}
 
 	for(auto &entity : uiEntities)

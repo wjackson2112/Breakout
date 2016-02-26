@@ -3,8 +3,8 @@
 Ball::Ball(Paddle* paddle)
 {
 	EventManager::Instance()->registerHandler(this);
-	posX = 32;
-	posY = 420;
+	posX = -100;
+	posY = -100;
 	velX = 0;
 	velY = 0;
 
@@ -46,25 +46,25 @@ void Ball::update(int frameTime)
 		case FLYING_ST:
 			posX += velX * (float) frameTime/SDL_GetPerformanceFrequency();
 
-			if(posX < 0)
+			if(posX < Globals::xOffset)
 			{
-				posX = 0;
+				posX = Globals::xOffset;
 				velX = -velX;
 			} 
-			else if(posX > SCREEN_WIDTH - width)
+			else if(posX > Globals::xOffset + Globals::fieldWidth - width)
 			{
-				posX = SCREEN_WIDTH - width;
+				posX = Globals::xOffset + Globals::fieldWidth - width;
 				velX = -velX;
 			}
 
 			posY += velY * (float) frameTime/SDL_GetPerformanceFrequency();
 
-			if(posY < 0)
+			if(posY < Globals::yOffset)
 			{
-				posY = 0;
+				posY = Globals::yOffset;
 				velY = -velY;
 			}
-			else if(posY > SCREEN_HEIGHT)
+			else if(posY > Globals::yOffset + Globals::fieldHeight)
 			{
 				
 				machineState = LOST_ST;

@@ -1,9 +1,11 @@
 #include "Block.h"
 
-Block::Block(int x, int y, int* blockCount)
+Block::Block(int x, int y, int width, int height, int* blockCount)
 {
-	posX = x;
-	posY = y;
+	this->posX = x;
+	this->posY = y;
+	this->width = width;
+	this->height = height;
 
 	r = rand()%0xFF;
 	g = rand()%0xFF;
