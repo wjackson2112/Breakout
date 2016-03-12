@@ -1,11 +1,14 @@
 #include "Paddle.h"
 
-Paddle::Paddle(float x, float y)
+Paddle::Paddle(float x, float y, TextureFactory* textureFactory)
 {
 	posX = x + Globals::xOffset;
 	posY = y + Globals::yOffset;
 	velX = 0;
 	velY = 0;
+
+	this->textureFactory = textureFactory;
+	this->texture = textureFactory->getTexture("./png/RedBlock.png");
 
 	EventManager::Instance()->registerHandler(this);
 }
@@ -17,9 +20,8 @@ Paddle::~Paddle()
 
 void Paddle::render(SDL_Renderer* gRenderer)
 {
-	SDL_Rect fillRect = {posX, posY, width, height};
-	SDL_SetRenderDrawColor(gRenderer, 0xFF, 0x00, 0x00, 0xFF);
-	SDL_RenderFillRect(gRenderer, &fillRect);
+	SDL_Rect drawRect = {posX, posY, width, height};
+	SDL_RenderCopy( gRenderer, this->texture, NULL, &drawRect );
 }
 
 void Paddle::update(int frameTime)

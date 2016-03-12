@@ -3,7 +3,8 @@
 ProgramManager::ProgramManager(SDL_Renderer* gRenderer)
 {
 	this->gRenderer = gRenderer;
-	gameManager = new GameManager();
+	textureFactory = new TextureFactory(gRenderer);
+	gameManager = new GameManager(this->textureFactory);
 	menuManager = new MenuManager();
 	machineState = MENU;
 	quit = false;

@@ -21,6 +21,7 @@ class GameManager : public IEventHandler
 private:
 	std::vector<PhysicsEntity*> physicsEntities;
 	std::vector<UIEntity*> uiEntities;
+	TextureFactory* textureFactory;
 	int blockCount;
 	bool pause, visible;
 	void detectCollisions();
@@ -31,7 +32,7 @@ private:
 	void gameLost();
 
 public:
-	GameManager();
+	GameManager(TextureFactory* textureFactory);
 	~GameManager();
 
 	void render(SDL_Renderer*);

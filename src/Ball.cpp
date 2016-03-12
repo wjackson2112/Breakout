@@ -1,12 +1,15 @@
 #include "Ball.h"
 
-Ball::Ball(Paddle* paddle)
+Ball::Ball(Paddle* paddle, TextureFactory* textureFactory)
 {
 	EventManager::Instance()->registerHandler(this);
 	posX = -100;
 	posY = -100;
 	velX = 0;
 	velY = 0;
+
+	this->textureFactory = textureFactory;
+	this->texture = textureFactory->getTexture("./png/BlueBlock.png");
 
 	this->paddle = paddle;
 	machineState = LOST_ST;
@@ -26,9 +29,8 @@ void Ball::updateVelocityWithAngle(float degrees)
 
 void Ball::render(SDL_Renderer* gRenderer)
 {
-	SDL_Rect fillRect = {posX, posY, width, height};
-	SDL_SetRenderDrawColor(gRenderer, 0x00, 0x00, 0xFF, 0xFF);
-	SDL_RenderFillRect(gRenderer, &fillRect);
+	SDL_Rect drawRect = {posX, posY, width, height};
+	SDL_RenderCopy( gRenderer, this->texture, NULL, &drawRect );
 }
 
 void Ball::update(int frameTime)

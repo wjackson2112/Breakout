@@ -1,6 +1,6 @@
 #include "Block.h"
 
-Block::Block(int x, int y, int width, int height, int* blockCount)
+Block::Block(int x, int y, int width, int height, int* blockCount, TextureFactory* textureFactory, BlockColor color)
 {
 	this->posX = x;
 	this->posY = y;
@@ -12,6 +12,31 @@ Block::Block(int x, int y, int width, int height, int* blockCount)
 	b = rand()%0xFF;
 
 	visible = true;
+
+	this->textureFactory = textureFactory;
+
+	switch(color){
+		case RED:
+			this->texture = this->textureFactory->getTexture("./png/RedBlock.png");
+			break;
+		case ORANGE:
+			this->texture = this->textureFactory->getTexture("./png/OrangeBlock.png");
+			break;
+		case YELLOW:
+			this->texture = this->textureFactory->getTexture("./png/YellowBlock.png");
+			break;
+		case GREEN:
+			this->texture = this->textureFactory->getTexture("./png/GreenBlock.png");
+			break;
+		case BLUE:
+			this->texture = this->textureFactory->getTexture("./png/BlueBlock.png");
+			break;
+		case PURPLE:
+			this->texture = this->textureFactory->getTexture("./png/PurpleBlock.png");
+			break;
+		default:
+			break;
+	}
 
 	EventManager::Instance()->registerHandler(this);
 }
@@ -49,9 +74,8 @@ void Block::render(SDL_Renderer* gRenderer)
 		return;
 	}
 
-	SDL_Rect fillRect = {posX, posY, width, height};
-	SDL_SetRenderDrawColor(gRenderer, r, g, b, 0xFF);
-	SDL_RenderFillRect(gRenderer, &fillRect);
+	SDL_Rect drawRect = {posX, posY, width, height};
+	SDL_RenderCopy( gRenderer, this->texture, NULL, &drawRect );
 }
 
 char* Block::type()

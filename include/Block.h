@@ -5,18 +5,31 @@
 #include <cstdlib>
 #include "PhysicsEntity.h"
 #include "Ball.h"
+#include "TextureFactory.h"
+
+typedef enum
+{
+	RED,
+	ORANGE,
+	YELLOW,
+	GREEN,
+	BLUE,
+	PURPLE
+} BlockColor;
 
 class Block : public PhysicsEntity
 {
 private:
 	int r, g, b;
+	SDL_Texture* texture;
+	TextureFactory* textureFactory;
 public:
 	int width = 80.0;
 	int height = 40.0;
 
 	bool visible;
 
-	Block(int x, int y, int width, int height, int* blockCount);
+	Block(int x, int y, int width, int height, int* blockCount, TextureFactory* textureFactory, BlockColor color);
 	~Block();
 
 	void handleMouseEvents(int mouseState, int x, int y);

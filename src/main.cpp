@@ -7,9 +7,12 @@
 #include "ProgramManager.h"
 #include "Globals.h"
 #include "SimpleIni.h"
+#include "TextureFactory.h"
+#include <memory>
 
 SDL_Window* gWindow = NULL;
 SDL_Renderer* gRenderer = NULL;
+
 
 CSimpleIniA ini;
 
@@ -44,6 +47,8 @@ void load_settings()
 	Globals::paddleHeight = Globals::blockHeight / 2;
 	Globals::ballWidth = Globals::blockHeight / 2;
 	Globals::ballHeight = Globals::blockHeight / 2;
+
+
 }
 
 bool init()

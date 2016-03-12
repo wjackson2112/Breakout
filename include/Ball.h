@@ -8,6 +8,7 @@
 #include "PhysicsEntity.h"
 #include "Paddle.h"
 #include "Block.h"
+#include "TextureFactory.h"
 
 enum states
 {
@@ -22,13 +23,15 @@ private:
 	Paddle* paddle;
 	int machineState;
 	void updateVelocityWithAngle(float degrees);
+	SDL_Texture* texture;
+	TextureFactory* textureFactory;
 public:
 	int width = Globals::ballWidth;
 	int height = Globals::ballHeight;
 
 	float max_vel = width * 15;
 
-	Ball(Paddle*);
+	Ball(Paddle*, TextureFactory* textureFactory);
 	~Ball();
 
 	void handleMouseEvents(int mouseState, int x, int y);

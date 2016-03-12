@@ -3,12 +3,14 @@
 
 #include <iostream>
 #include "PhysicsEntity.h"
+#include "TextureFactory.h"
 
 class Paddle : public PhysicsEntity
 {
 private:
 	float accelX, accelY;
-
+	SDL_Texture* texture;
+	TextureFactory* textureFactory;
 public:
 	int width = Globals::paddleWidth;
 	int height = Globals::paddleHeight;
@@ -16,7 +18,7 @@ public:
 	float max_vel = width * 2.5;
 	int accel = max_vel * 5;
 
-	Paddle(float x, float y);
+	Paddle(float x, float y, TextureFactory* textureFactory);
 	~Paddle();
 
 	void handleMouseEvents(int mouseState, int x, int y);

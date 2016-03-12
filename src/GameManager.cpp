@@ -1,11 +1,12 @@
 #include "GameManager.h"
 
-GameManager::GameManager()
+GameManager::GameManager(TextureFactory* textureFactory)
 {
 	srand(time(NULL));
 	pause = true;
 	visible = false;
 	EventManager::Instance()->registerHandler(this);
+	this->textureFactory = textureFactory;
 	this->resetLevel();
 }
 
@@ -47,7 +48,7 @@ void GameManager::resetLevel()
 		uiEntities.clear();
 	}
 
-	uiEntities.push_back(new BallsIndicator(0, Globals::screenHeight - Globals::ballHeight));
+	uiEntities.push_back(new BallsIndicator(0, Globals::screenHeight - Globals::ballHeight, textureFactory));
 
 	if(physicsEntities.size() >= 0){
 		for(std::vector<PhysicsEntity*>::iterator it=physicsEntities.begin(); it!=physicsEntities.end();)
@@ -59,14 +60,14 @@ void GameManager::resetLevel()
 	}
 
 	blockCount = 0;
-	physicsEntities.push_back(new Paddle((Globals::fieldWidth / 2) - (Globals::paddleWidth / 2), Globals::screenHeight - Globals::paddleHeight));
-	physicsEntities.push_back(new Ball((Paddle*) physicsEntities[0]));
+	physicsEntities.push_back(new Paddle((Globals::fieldWidth / 2) - (Globals::paddleWidth / 2), Globals::screenHeight - Globals::paddleHeight, textureFactory));
+	physicsEntities.push_back(new Ball((Paddle*) physicsEntities[0], textureFactory));
 
 	for(int x = 0; x + Globals::blockWidth <= Globals::fieldWidth; x+=Globals::blockWidth)
 	{
 		for(int y = 0; y < Globals::blockHeight * 6; y += Globals::blockHeight)
 		{
-			physicsEntities.push_back(new Block(Globals::xOffset + x, Globals::yOffset + y, Globals::blockWidth, Globals::blockHeight, &blockCount));		
+			physicsEntities.push_back(new Block(Globals::xOffset + x, Globals::yOffset + y, Globals::blockWidth, Globals::blockHeight, &blockCount, this->textureFactory, (BlockColor) (y/Globals::blockHeight)));		
 			blockCount++;
 		}
 	}

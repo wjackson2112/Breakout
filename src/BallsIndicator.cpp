@@ -1,12 +1,15 @@
 #include "BallsIndicator.h"
 
-BallsIndicator::BallsIndicator(float x, float y)
+BallsIndicator::BallsIndicator(float x, float y, TextureFactory* textureFactory)
 {
 	this->ballsRemaining = 0;
 	posX = x;
 	posY = y;
 	width = Globals::ballWidth;
 	height = Globals::ballHeight;
+
+	this->textureFactory = textureFactory;
+	this->texture = textureFactory->getTexture("./png/BlueBlock.png");
 
 	EventManager::Instance()->registerHandler(this);
 }
@@ -50,9 +53,8 @@ void BallsIndicator::render(SDL_Renderer* gRenderer)
 {
 	for(int i = 0; i < ballsRemaining; i++)
 	{
-		SDL_Rect fillRect = {posX + i*width + i*gapWidth, posY, width, height};
-		SDL_SetRenderDrawColor(gRenderer, 0x00, 0x00, 0xFF, 0xFF);
-		SDL_RenderFillRect(gRenderer, &fillRect);
+		SDL_Rect drawRect = {posX + i*width + i*gapWidth, posY, width, height};
+		SDL_RenderCopy( gRenderer, this->texture, NULL, &drawRect );
 	}
 }
 
