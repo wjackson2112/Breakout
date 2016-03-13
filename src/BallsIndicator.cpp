@@ -9,7 +9,7 @@ BallsIndicator::BallsIndicator(float x, float y, TextureFactory* textureFactory)
 	height = Globals::ballHeight;
 
 	this->textureFactory = textureFactory;
-	this->texture = textureFactory->getTexture("./png/BlueBlock.png");
+	this->texture = textureFactory->getTexture("./png/Ball.png");
 
 	EventManager::Instance()->registerHandler(this);
 }

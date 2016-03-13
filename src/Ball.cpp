@@ -9,7 +9,7 @@ Ball::Ball(Paddle* paddle, TextureFactory* textureFactory)
 	velY = 0;
 
 	this->textureFactory = textureFactory;
-	this->texture = textureFactory->getTexture("./png/BlueBlock.png");
+	this->texture = textureFactory->getTexture("./png/Ball.png");
 
 	this->paddle = paddle;
 	machineState = LOST_ST;

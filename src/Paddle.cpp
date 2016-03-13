@@ -8,7 +8,7 @@ Paddle::Paddle(float x, float y, TextureFactory* textureFactory)
 	velY = 0;
 
 	this->textureFactory = textureFactory;
-	this->texture = textureFactory->getTexture("./png/RedBlock.png");
+	this->texture = textureFactory->getTexture("./png/Paddle.png");
 
 	EventManager::Instance()->registerHandler(this);
 }
