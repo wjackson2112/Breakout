@@ -15,4 +15,5 @@ namespace Globals
 	int paddleHeight;
 	int ballWidth;
 	int ballHeight;
+	int fullScreen;
 }

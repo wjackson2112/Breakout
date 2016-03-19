@@ -1,5 +1,5 @@
-#ifndef ASSET_FACTORY_H
-#define ASSET_FACTORY_H
+#ifndef TEXTURE_FACTORY_H
+#define TEXTURE_FACTORY_H
 
 #include <string>
 #include <unordered_map>

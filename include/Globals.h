@@ -16,12 +16,14 @@ namespace Globals
 	extern int paddleHeight;
 	extern int ballWidth;
 	extern int ballHeight;
+	extern int fullScreen;
 }
 
 #endif
 
 #define DEF_SCREEN_WIDTH 	1024
 #define DEF_SCREEN_HEIGHT 	768
+#define DEF_FULL_SCREEN 	0
 // #define FIELD_RATIO 	3 / 4
 
 // #if SCREEN_WIDTH > SCREEN_HEIGHT

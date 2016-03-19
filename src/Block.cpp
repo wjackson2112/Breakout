@@ -1,6 +1,7 @@
 #include "Block.h"
 
 Block::Block(int x, int y, int width, int height, int* blockCount, TextureFactory* textureFactory, BlockColor color)
+
 {
 	this->posX = x;
 	this->posY = y;
@@ -11,9 +12,11 @@ Block::Block(int x, int y, int width, int height, int* blockCount, TextureFactor
 	g = rand()%0xFF;
 	b = rand()%0xFF;
 
-	visible = true;
-
 	this->textureFactory = textureFactory;
+
+	this->state = new StateMachine<BlockState>(
+						(StateMachine<BlockState>::StateMachineCB) &Block::stateChanged, 
+						IDLE_ST);
 
 	switch(color){
 		case RED:
@@ -69,13 +72,28 @@ void Block::update(int frameTime)
 
 void Block::render(SDL_Renderer* gRenderer)
 {
-	if(!visible)
-	{
-		return;
+	switch(this->state->getState()){
+		case IDLE_ST:
+			SDL_Rect drawRect = {posX, posY, width, height};
+			SDL_RenderCopy( gRenderer, this->texture, NULL, &drawRect );	
+			break;	
 	}
 
-	SDL_Rect drawRect = {posX, posY, width, height};
-	SDL_RenderCopy( gRenderer, this->texture, NULL, &drawRect );
+}
+
+void Block::stateChanged(BlockState prevState, BlockState currState){
+	switch(currState)
+	{
+		case IDLE_ST:
+			std::cout << "Changed to IDLE" << std::endl;
+			break;
+		case FADING_ST:
+			std::cout << "Changed to FADING" << std::endl;
+			break;
+		case GONE_ST:
+			std::cout << "Changed to GONE" << std::endl;
+			break;
+	}
 }
 
 char* Block::type()
@@ -88,7 +106,7 @@ void Block::resolveCollision(PhysicsEntity* collider, PhysicsEntity* object)
 	//Dismiss self if collided with ball
 	if(dynamic_cast<Ball*> (object) != NULL)
 	{
-		visible = false;
+		this->state->updateState(GONE_ST);
 	}
 }
 
@@ -118,7 +136,7 @@ SDL_Point Block::getVelocity()
 
 bool Block::isDeletable()
 {
-	if(!visible){
+	if(this->state->getState() == GONE_ST){
 		return true;
 	}
 	return false;

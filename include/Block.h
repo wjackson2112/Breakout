@@ -6,6 +6,14 @@
 #include "PhysicsEntity.h"
 #include "Ball.h"
 #include "TextureFactory.h"
+#include "StateMachine.h"
+
+typedef enum
+{
+	IDLE_ST,
+	FADING_ST,
+	GONE_ST
+} BlockState;
 
 typedef enum
 {
@@ -21,13 +29,15 @@ class Block : public PhysicsEntity
 {
 private:
 	int r, g, b;
+	StateMachine<BlockState>* state;
 	SDL_Texture* texture;
 	TextureFactory* textureFactory;
+
+	void stateChanged(BlockState prevState, BlockState currState);
+
 public:
 	int width = 80.0;
 	int height = 40.0;
-
-	bool visible;
 
 	Block(int x, int y, int width, int height, int* blockCount, TextureFactory* textureFactory, BlockColor color);
 	~Block();

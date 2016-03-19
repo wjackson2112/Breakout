@@ -35,6 +35,10 @@ void load_settings()
 	Globals::screenHeight=atoi(val);
 	ini.SetValue("dimensions", "height", std::to_string(Globals::screenHeight).c_str());
 
+	val = ini.GetValue("dimensions", "fullScreen", std::to_string(DEF_FULL_SCREEN).c_str());
+	Globals::fullScreen=atoi(val);
+	ini.SetValue("dimensions", "fullScreen", std::to_string(Globals::fullScreen).c_str());
+
 	Globals::fieldRatio = (float) 3/ (float) 4;
 	Globals::fieldWidth = (Globals::screenHeight * Globals::fieldRatio) / 10 * 10;
 	Globals::fieldHeight = Globals::screenHeight;
@@ -77,8 +81,9 @@ bool init()
 		return false;
 	}
 
-	SDL_SetWindowFullscreen(gWindow, SDL_WINDOW_FULLSCREEN_DESKTOP);
-
+	if(Globals::fullScreen){
+		SDL_SetWindowFullscreen(gWindow, SDL_WINDOW_FULLSCREEN_DESKTOP);
+	}
 	//Create Renderer
 	gRenderer = SDL_CreateRenderer(gWindow, -1, SDL_RENDERER_ACCELERATED | SDL_RENDERER_PRESENTVSYNC);
 	SDL_SetRenderDrawBlendMode(gRenderer, SDL_BLENDMODE_BLEND);
