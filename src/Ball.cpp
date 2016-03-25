@@ -12,7 +12,9 @@ Ball::Ball(Paddle* paddle, TextureFactory* textureFactory)
 	this->texture = textureFactory->getTexture("./png/Ball.png");
 
 	this->paddle = paddle;
-	machineState = LOST_ST;
+	this->state = new StateMachine<BallState>(
+						(StateMachine<BallState>::StateMachineCB) &Ball::stateChanged,
+						LOST_ST);
 }
 
 Ball::~Ball()
@@ -35,11 +37,11 @@ void Ball::render(SDL_Renderer* gRenderer)
 
 void Ball::update(int frameTime)
 {
-	switch(machineState)
+	switch(this->state->getState())
 	{
 		case LOST_ST:
 			EventManager::Instance()->reportGameEvent(BALL_LOST);
-			machineState = WAITING_ST;
+			this->state->updateState(WAITING_ST);
 		case WAITING_ST:
 			posX = paddle->getCenter().x - width/2;
 			posY = paddle->getOrigin().y - height;
@@ -69,9 +71,25 @@ void Ball::update(int frameTime)
 			else if(posY > Globals::yOffset + Globals::fieldHeight)
 			{
 				
-				machineState = LOST_ST;
+				this->state->updateState(LOST_ST);
 			}
 
+			break;
+	}
+}
+
+void Ball::stateChanged(BallState prevState, BallState currState)
+{
+	switch(currState)
+	{
+		case LOST_ST:
+			std::cout << "Changed to LOST" << std::endl;
+			break;
+		case WAITING_ST:
+			std::cout << "Changed to WAITING" << std::endl;
+			break;
+		case FLYING_ST:
+			std::cout << "Changed to FLYING" << std::endl;
 			break;
 	}
 }
@@ -90,8 +108,8 @@ void Ball::handleKeyboardEvents(const Uint8* keyStates)
 {
 	if(keyStates[SDL_SCANCODE_SPACE])
 	{
-		if(machineState == WAITING_ST){
-			machineState = FLYING_ST;
+		if(this->state->getState() == WAITING_ST){
+			this->state->updateState(FLYING_ST);
 			updateVelocityWithAngle(90-((paddle->getVelocity().x/paddle->max_vel)*45));
 		}
 	}

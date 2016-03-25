@@ -49,6 +49,11 @@ void Paddle::update(int frameTime)
 	}
 }
 
+void stateChanged(PaddleState prevState, PaddleState currState)
+{
+	
+}
+
 char* Paddle::type()
 {
 	return "Paddle";

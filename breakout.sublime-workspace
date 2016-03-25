@@ -264,34 +264,10 @@
 	"buffers":
 	[
 		{
-			"file": "breakout.ini",
-			"settings":
-			{
-				"buffer_size": 227,
-				"line_ending": "Unix"
-			}
-		},
-		{
-			"file": "include/TextureFactory.h",
-			"settings":
-			{
-				"buffer_size": 459,
-				"line_ending": "Unix"
-			}
-		},
-		{
 			"file": "include/Block.h",
 			"settings":
 			{
-				"buffer_size": 1009,
-				"line_ending": "Unix"
-			}
-		},
-		{
-			"file": "include/Ball.h",
-			"settings":
-			{
-				"buffer_size": 1002,
+				"buffer_size": 1116,
 				"line_ending": "Unix"
 			}
 		},
@@ -299,15 +275,23 @@
 			"file": "src/Block.cpp",
 			"settings":
 			{
-				"buffer_size": 2315,
+				"buffer_size": 2778,
 				"line_ending": "Unix"
 			}
 		},
 		{
-			"file": "src/Ball.cpp",
+			"file": "src/Paddle.cpp",
 			"settings":
 			{
-				"buffer_size": 5762,
+				"buffer_size": 2549,
+				"line_ending": "Unix"
+			}
+		},
+		{
+			"file": "include/StateMachine.h",
+			"settings":
+			{
+				"buffer_size": 650,
 				"line_ending": "Unix"
 			}
 		}
@@ -521,41 +505,44 @@
 	],
 	"file_history":
 	[
+		"/home/will/Documents/git/Breakout/src/StateMachine.cpp",
+		"/home/will/Documents/git/Breakout/src/Paddle.cpp",
+		"/home/will/Documents/git/Breakout/include/Paddle.h",
 		"/home/will/Documents/git/Breakout/src/Ball.cpp",
+		"/home/will/Documents/git/Breakout/include/SimpleIni.h",
 		"/home/will/Documents/git/Breakout/include/Ball.h",
 		"/home/will/Documents/git/Breakout/src/main.cpp",
-		"/home/will/Documents/git/Breakout/include/Paddle.h",
-		"/home/will/Documents/git/Breakout/src/Paddle.cpp",
+		"/home/will/Documents/git/Breakout/breakout.ini",
+		"/home/will/Documents/git/Breakout/include/Globals.h",
+		"/home/will/Documents/git/Breakout/src/Globals.cpp",
+		"/home/will/Documents/git/Breakout/include/TextureFactory.h",
+		"/home/will/Documents/git/Breakout/include/IEventHandler.h",
+		"/home/will/Documents/git/Breakout/include/Types.h",
+		"/home/will/Documents/git/Breakout/include/Entity.h",
 		"/home/will/Documents/git/Breakout/include/Block.h",
 		"/home/will/Documents/git/Breakout/src/Block.cpp",
 		"/home/will/Documents/git/Breakout/include/ProgramManager.h",
 		"/home/will/Documents/git/Breakout/src/ProgramManager.cpp",
 		"/home/will/Documents/git/Breakout/include/GameManager.h",
 		"/home/will/Documents/git/Breakout/src/GameManager.cpp",
-		"/home/will/Documents/git/Breakout/include/Globals.h",
-		"/home/will/Documents/git/Breakout/include/TextureFactory.h",
 		"/home/will/Documents/git/Breakout/src/TextureFactory.cpp",
 		"/home/will/Documents/SDL Tutorial/07_texture_loading_and_rendering_SDL.cpp",
-		"/home/will/Documents/git/Breakout/src/Globals.cpp",
 		"/home/will/Documents/git/Breakout/include/MenuManager.h",
 		"/home/will/Documents/git/Breakout/src/MenuManager.cpp",
 		"/home/will/Documents/git/Breakout/src/Button.cpp",
 		"/home/will/.config/sublime-text-3/Packages/User/Preferences.sublime-settings",
 		"/home/will/Documents/git/Breakout/include/BallsIndicator.h",
 		"/home/will/Documents/git/Breakout/src/BallsIndicator.cpp",
-		"/home/will/Documents/git/Breakout/breakout.ini",
 		"/home/will/Documents/git/Breakout/Makefile",
 		"/home/will/Documents/git/Breakout/include/AssetFactory.h",
 		"/home/will/Documents/git/Breakout/src/AssetFactory.cpp",
 		"/home/will/Documents/git/Breakout/include/Collider.h",
-		"/home/will/Documents/git/Breakout/include/Entity.h",
 		"/home/will/Documents/git/Breakout/include/Button.h",
 		"/home/will/Documents/git/Breakout/src/Collider.cpp",
 		"/home/will/Documents/git/Breakout/src/PauseMenuManager.cpp",
 		"/home/will/Documents/git/Breakout/include/EventManager.h",
 		"/home/will/Documents/git/Breakout/include/PauseMenuManager.h",
 		"/home/will/Documents/git/Breakout/breakout.sublime-project",
-		"/home/will/Documents/git/Breakout/include/IEventHandler.h",
 		"/home/will/Documents/git/Breakout/include/UIEntity.h",
 		"/home/will/Documents/git/Breakout/include/PhysicsEntity.h",
 		"/home/will/Documents/git/Breakout/src/EventManager.cpp",
@@ -760,57 +747,30 @@
 	"groups":
 	[
 		{
-			"selected": 5,
+			"selected": 2,
 			"sheets":
 			[
 				{
 					"buffer": 0,
-					"file": "breakout.ini",
+					"file": "include/Block.h",
 					"semi_transient": false,
 					"settings":
 					{
-						"buffer_size": 227,
+						"buffer_size": 1116,
 						"regions":
 						{
 						},
 						"selection":
 						[
 							[
-								227,
-								227
+								403,
+								403
 							]
 						],
 						"settings":
 						{
-							"syntax": "Packages/Text/Plain text.tmLanguage"
-						},
-						"translation.x": 0.0,
-						"translation.y": 0.0,
-						"zoom_level": 1.0
-					},
-					"stack_index": 5,
-					"type": "text"
-				},
-				{
-					"buffer": 1,
-					"file": "include/TextureFactory.h",
-					"semi_transient": false,
-					"settings":
-					{
-						"buffer_size": 459,
-						"regions":
-						{
-						},
-						"selection":
-						[
-							[
-								459,
-								459
-							]
-						],
-						"settings":
-						{
-							"syntax": "Packages/C++/C++.sublime-syntax"
+							"syntax": "Packages/C++/C++.sublime-syntax",
+							"translate_tabs_to_spaces": false
 						},
 						"translation.x": 0.0,
 						"translation.y": 0.0,
@@ -820,78 +780,20 @@
 					"type": "text"
 				},
 				{
-					"buffer": 2,
-					"file": "include/Block.h",
-					"semi_transient": false,
-					"settings":
-					{
-						"buffer_size": 1009,
-						"regions":
-						{
-						},
-						"selection":
-						[
-							[
-								465,
-								465
-							]
-						],
-						"settings":
-						{
-							"syntax": "Packages/C++/C++.sublime-syntax",
-							"translate_tabs_to_spaces": false
-						},
-						"translation.x": 0.0,
-						"translation.y": 0.0,
-						"zoom_level": 1.0
-					},
-					"stack_index": 3,
-					"type": "text"
-				},
-				{
-					"buffer": 3,
-					"file": "include/Ball.h",
-					"semi_transient": false,
-					"settings":
-					{
-						"buffer_size": 1002,
-						"regions":
-						{
-						},
-						"selection":
-						[
-							[
-								298,
-								298
-							]
-						],
-						"settings":
-						{
-							"syntax": "Packages/C++/C++.sublime-syntax",
-							"translate_tabs_to_spaces": false
-						},
-						"translation.x": 0.0,
-						"translation.y": 0.0,
-						"zoom_level": 1.0
-					},
-					"stack_index": 4,
-					"type": "text"
-				},
-				{
-					"buffer": 4,
+					"buffer": 1,
 					"file": "src/Block.cpp",
 					"semi_transient": false,
 					"settings":
 					{
-						"buffer_size": 2315,
+						"buffer_size": 2778,
 						"regions":
 						{
 						},
 						"selection":
 						[
 							[
-								1454,
-								1454
+								2311,
+								2311
 							]
 						],
 						"settings":
@@ -900,27 +802,27 @@
 							"translate_tabs_to_spaces": false
 						},
 						"translation.x": 0.0,
-						"translation.y": 1767.0,
+						"translation.y": 1710.0,
 						"zoom_level": 1.0
 					},
 					"stack_index": 1,
 					"type": "text"
 				},
 				{
-					"buffer": 5,
-					"file": "src/Ball.cpp",
+					"buffer": 2,
+					"file": "src/Paddle.cpp",
 					"semi_transient": false,
 					"settings":
 					{
-						"buffer_size": 5762,
+						"buffer_size": 2549,
 						"regions":
 						{
 						},
 						"selection":
 						[
 							[
-								614,
-								614
+								0,
+								0
 							]
 						],
 						"settings":
@@ -928,11 +830,46 @@
 							"syntax": "Packages/C++/C++.sublime-syntax",
 							"translate_tabs_to_spaces": false
 						},
-						"translation.x": -0.0,
-						"translation.y": 228.0,
+						"translation.x": 0.0,
+						"translation.y": 0.0,
 						"zoom_level": 1.0
 					},
 					"stack_index": 0,
+					"type": "text"
+				}
+			]
+		},
+		{
+			"selected": 0,
+			"sheets":
+			[
+				{
+					"buffer": 3,
+					"file": "include/StateMachine.h",
+					"semi_transient": false,
+					"settings":
+					{
+						"buffer_size": 650,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								462,
+								462
+							]
+						],
+						"settings":
+						{
+							"open_with_edit": true,
+							"syntax": "Packages/C++/C++.sublime-syntax"
+						},
+						"translation.x": 0.0,
+						"translation.y": 57.0,
+						"zoom_level": 1.0
+					},
+					"stack_index": 3,
 					"type": "text"
 				}
 			]
@@ -955,11 +892,18 @@
 				0,
 				1,
 				1
+			],
+			[
+				1,
+				0,
+				2,
+				1
 			]
 		],
 		"cols":
 		[
 			0.0,
+			0.5,
 			1.0
 		],
 		"rows":
@@ -994,6 +938,14 @@
 		"last_filter": "",
 		"selected_items":
 		[
+			[
+				"paddle.cpp",
+				"src/Paddle.cpp"
+			],
+			[
+				"block.cp",
+				"src/Block.cpp"
+			],
 			[
 				"ini",
 				"breakout.ini"

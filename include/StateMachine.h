@@ -21,11 +21,6 @@ public:
 
 	void updateState(T state)
 	{
-		if(state == currState)
-		{
-			return;
-		}
-
 		this->prevState = this->currState;
 		this->currState	= state;
 

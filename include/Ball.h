@@ -9,22 +9,25 @@
 #include "Paddle.h"
 #include "Block.h"
 #include "TextureFactory.h"
+#include "StateMachine.h"
 
-enum states
+typedef enum
 {
 	LOST_ST,
 	WAITING_ST,
 	FLYING_ST
-};
+} BallState;
 
 class Ball : public PhysicsEntity
 {
 private:
 	Paddle* paddle;
-	int machineState;
+	StateMachine<BallState>* state;
 	void updateVelocityWithAngle(float degrees);
 	SDL_Texture* texture;
 	TextureFactory* textureFactory;
+
+	void stateChanged(BallState prevState, BallState currState);
 public:
 	int width = Globals::ballWidth;
 	int height = Globals::ballHeight;

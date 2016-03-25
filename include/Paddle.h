@@ -4,6 +4,11 @@
 #include <iostream>
 #include "PhysicsEntity.h"
 #include "TextureFactory.h"
+#include "StateMachine.h"
+
+typedef enum
+{
+} PaddleState;
 
 class Paddle : public PhysicsEntity
 {
@@ -11,6 +16,9 @@ private:
 	float accelX, accelY;
 	SDL_Texture* texture;
 	TextureFactory* textureFactory;
+	StateMachine<PaddleState>* state;
+
+	void stateChanged(PaddleState prevState, PaddleState currState);
 public:
 	int width = Globals::paddleWidth;
 	int height = Globals::paddleHeight;
