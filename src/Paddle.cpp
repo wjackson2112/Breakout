@@ -1,14 +1,14 @@
 #include "Paddle.h"
 
-Paddle::Paddle(float x, float y, TextureFactory* textureFactory)
+Paddle::Paddle(float x, float y, AssetFactory* assetFactory)
 {
 	posX = x + Globals::xOffset;
 	posY = y + Globals::yOffset;
 	velX = 0;
 	velY = 0;
 
-	this->textureFactory = textureFactory;
-	this->texture = textureFactory->getTexture("./png/Paddle.png");
+	this->assetFactory = assetFactory;
+	this->texture = assetFactory->getAsset<SDL_Texture>("./png/Paddle.png");
 
 	EventManager::Instance()->registerHandler(this);
 }

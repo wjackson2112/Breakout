@@ -1,20 +1,32 @@
-#include "TextureFactory.h"
+#include "AssetFactory.h"
 
 using namespace std;
 
-TextureFactory::TextureFactory(SDL_Renderer* gRenderer){
+AssetFactory::AssetFactory(SDL_Renderer* gRenderer){
 	this->gRenderer = gRenderer;
 }
 
-void TextureFactory::printTextures(){
+AssetFactory::~AssetFactory(){
+	textures.clear();
+	sounds.clear();
+}
+
+void AssetFactory::printAssets(){
+	cout << "Textures" << endl;
 	for(auto it = textures.begin(); it != textures.end(); ++it){
+		cout << it->first << ":" << (it->second) << " ";
+	}
+
+	cout << "Sounds" << endl;
+	for(auto it = sounds.begin(); it != sounds.end(); ++it){
 		cout << it->first << ":" << (it->second) << " ";
 	}
 
 	cout << endl;
 }
 
-SDL_Texture* TextureFactory::getTexture(string key){
+template<>
+SDL_Texture* AssetFactory::getAsset<SDL_Texture>(string key){
 	
 	SDL_Surface* surface;
 	SDL_Texture* texture;

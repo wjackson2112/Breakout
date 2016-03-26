@@ -1,6 +1,6 @@
 #include "Block.h"
 
-Block::Block(int x, int y, int width, int height, int* blockCount, TextureFactory* textureFactory, BlockColor color)
+Block::Block(int x, int y, int width, int height, int* blockCount, AssetFactory* assetFactory, BlockColor color)
 
 {
 	this->posX = x;
@@ -12,7 +12,7 @@ Block::Block(int x, int y, int width, int height, int* blockCount, TextureFactor
 	g = rand()%0xFF;
 	b = rand()%0xFF;
 
-	this->textureFactory = textureFactory;
+	this->assetFactory = assetFactory;
 
 	this->state = new StateMachine<BlockState>(
 						(StateMachine<BlockState>::StateMachineCB) &Block::stateChanged, 
@@ -20,22 +20,22 @@ Block::Block(int x, int y, int width, int height, int* blockCount, TextureFactor
 
 	switch(color){
 		case RED:
-			this->texture = this->textureFactory->getTexture("./png/RedBlock.png");
+			this->texture = this->assetFactory->getAsset<SDL_Texture>("./png/RedBlock.png");
 			break;
 		case ORANGE:
-			this->texture = this->textureFactory->getTexture("./png/OrangeBlock.png");
+			this->texture = this->assetFactory->getAsset<SDL_Texture>("./png/OrangeBlock.png");
 			break;
 		case YELLOW:
-			this->texture = this->textureFactory->getTexture("./png/YellowBlock.png");
+			this->texture = this->assetFactory->getAsset<SDL_Texture>("./png/YellowBlock.png");
 			break;
 		case GREEN:
-			this->texture = this->textureFactory->getTexture("./png/GreenBlock.png");
+			this->texture = this->assetFactory->getAsset<SDL_Texture>("./png/GreenBlock.png");
 			break;
 		case BLUE:
-			this->texture = this->textureFactory->getTexture("./png/BlueBlock.png");
+			this->texture = this->assetFactory->getAsset<SDL_Texture>("./png/BlueBlock.png");
 			break;
 		case PURPLE:
-			this->texture = this->textureFactory->getTexture("./png/PurpleBlock.png");
+			this->texture = this->assetFactory->getAsset<SDL_Texture>("./png/PurpleBlock.png");
 			break;
 		default:
 			break;

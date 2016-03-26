@@ -4,11 +4,12 @@
 #include <iostream>
 #include <cmath>
 #include <climits>
+#include <SDL2/SDL_mixer.h>
 
 #include "PhysicsEntity.h"
 #include "Paddle.h"
 #include "Block.h"
-#include "TextureFactory.h"
+#include "AssetFactory.h"
 #include "StateMachine.h"
 
 typedef enum
@@ -25,7 +26,8 @@ private:
 	StateMachine<BallState>* state;
 	void updateVelocityWithAngle(float degrees);
 	SDL_Texture* texture;
-	TextureFactory* textureFactory;
+	Mix_Chunk* paddle_sound, *block_sound;
+	AssetFactory* assetFactory;
 
 	void stateChanged(BallState prevState, BallState currState);
 public:
@@ -34,7 +36,7 @@ public:
 
 	float max_vel = width * 15;
 
-	Ball(Paddle*, TextureFactory* textureFactory);
+	Ball(Paddle*, AssetFactory* assetFactory);
 	~Ball();
 
 	void handleMouseEvents(int mouseState, int x, int y);

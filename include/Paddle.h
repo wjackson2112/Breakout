@@ -3,7 +3,7 @@
 
 #include <iostream>
 #include "PhysicsEntity.h"
-#include "TextureFactory.h"
+#include "AssetFactory.h"
 #include "StateMachine.h"
 
 typedef enum
@@ -15,7 +15,7 @@ class Paddle : public PhysicsEntity
 private:
 	float accelX, accelY;
 	SDL_Texture* texture;
-	TextureFactory* textureFactory;
+	AssetFactory* assetFactory;
 	StateMachine<PaddleState>* state;
 
 	void stateChanged(PaddleState prevState, PaddleState currState);
@@ -26,7 +26,7 @@ public:
 	float max_vel = width * 2.5;
 	int accel = max_vel * 5;
 
-	Paddle(float x, float y, TextureFactory* textureFactory);
+	Paddle(float x, float y, AssetFactory* assetFactory);
 	~Paddle();
 
 	void handleMouseEvents(int mouseState, int x, int y);

@@ -7,7 +7,7 @@
 #include "ProgramManager.h"
 #include "Globals.h"
 #include "SimpleIni.h"
-#include "TextureFactory.h"
+#include "AssetFactory.h"
 #include <memory>
 
 SDL_Window* gWindow = NULL;
@@ -58,9 +58,17 @@ void load_settings()
 bool init()
 {
 	//Init SDL
-	if(SDL_Init( SDL_INIT_VIDEO ) < 0)
+	if(SDL_Init( SDL_INIT_VIDEO | SDL_INIT_AUDIO ) < 0)
 	{
 		printf("SDL could not initialize! SDL_Error: %s\n", SDL_GetError());
+		return false;
+	}
+
+	//Init SDL_image
+	int imgFlags = IMG_INIT_PNG;
+	if(!(IMG_Init(imgFlags) & imgFlags))
+	{
+		printf("SDL_image could not initialize! SDL_image Error: %s\n", IMG_GetError());
 		return false;
 	}
 
@@ -104,6 +112,7 @@ void close()
 	SDL_DestroyWindow(gWindow);
 	gWindow = NULL;
 
+	IMG_Quit();
 	TTF_Quit();
 	SDL_Quit();
 }

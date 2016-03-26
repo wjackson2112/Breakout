@@ -1,6 +1,6 @@
 #include "BallsIndicator.h"
 
-BallsIndicator::BallsIndicator(float x, float y, TextureFactory* textureFactory)
+BallsIndicator::BallsIndicator(float x, float y, AssetFactory* assetFactory)
 {
 	this->ballsRemaining = 0;
 	posX = x;
@@ -8,8 +8,8 @@ BallsIndicator::BallsIndicator(float x, float y, TextureFactory* textureFactory)
 	width = Globals::ballWidth;
 	height = Globals::ballHeight;
 
-	this->textureFactory = textureFactory;
-	this->texture = textureFactory->getTexture("./png/Ball.png");
+	this->assetFactory = assetFactory;
+	this->texture = assetFactory->getAsset<SDL_Texture>("./png/Ball.png");
 
 	EventManager::Instance()->registerHandler(this);
 }

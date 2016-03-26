@@ -2,17 +2,17 @@
 #define BALLS_INDICATOR_H
 
 #include "UIEntity.h"
-#include "TextureFactory.h"
+#include "AssetFactory.h"
 
 class BallsIndicator : public UIEntity
 {
 private:
 	int ballsRemaining;
 	int gapWidth = Globals::ballWidth / 2;
-	TextureFactory* textureFactory;
+	AssetFactory* assetFactory;
 	SDL_Texture* texture;
 public:
-	BallsIndicator(float x, float y, TextureFactory* textureFactory);
+	BallsIndicator(float x, float y, AssetFactory* assetFactory);
 	~BallsIndicator();
 
 	void handleMouseEvents(int mouseState, int x, int y);

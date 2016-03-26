@@ -3,8 +3,8 @@
 ProgramManager::ProgramManager(SDL_Renderer* gRenderer)
 {
 	this->gRenderer = gRenderer;
-	textureFactory = new TextureFactory(gRenderer);
-	gameManager = new GameManager(this->textureFactory);
+	assetFactory = new AssetFactory(gRenderer);
+	gameManager = new GameManager(this->assetFactory);
 	menuManager = new MenuManager();
 	machineState = MENU;
 	quit = false;
@@ -15,6 +15,7 @@ ProgramManager::ProgramManager(SDL_Renderer* gRenderer)
 ProgramManager::~ProgramManager()
 {
 	EventManager::Instance()->deregisterHandler(this);
+	free(assetFactory);
 }
 
 void ProgramManager::loop()

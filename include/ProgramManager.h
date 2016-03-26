@@ -20,7 +20,7 @@ private:
 	ProgramManagerState machineState;
 	GameManager* gameManager;
 	MenuManager* menuManager;
-	TextureFactory* textureFactory;
+	AssetFactory* assetFactory;
 	bool quit;
 public:
 	ProgramManager(SDL_Renderer* gRenderer);

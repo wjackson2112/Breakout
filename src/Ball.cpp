@@ -1,6 +1,6 @@
 #include "Ball.h"
 
-Ball::Ball(Paddle* paddle, TextureFactory* textureFactory)
+Ball::Ball(Paddle* paddle, AssetFactory* assetFactory)
 {
 	EventManager::Instance()->registerHandler(this);
 	posX = -100;
@@ -8,8 +8,8 @@ Ball::Ball(Paddle* paddle, TextureFactory* textureFactory)
 	velX = 0;
 	velY = 0;
 
-	this->textureFactory = textureFactory;
-	this->texture = textureFactory->getTexture("./png/Ball.png");
+	this->assetFactory = assetFactory;
+	this->texture = assetFactory->getAsset<SDL_Texture>("./png/Ball.png");
 
 	this->paddle = paddle;
 	this->state = new StateMachine<BallState>(
@@ -83,13 +83,10 @@ void Ball::stateChanged(BallState prevState, BallState currState)
 	switch(currState)
 	{
 		case LOST_ST:
-			std::cout << "Changed to LOST" << std::endl;
 			break;
 		case WAITING_ST:
-			std::cout << "Changed to WAITING" << std::endl;
 			break;
 		case FLYING_ST:
-			std::cout << "Changed to FLYING" << std::endl;
 			break;
 	}
 }

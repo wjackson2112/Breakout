@@ -5,7 +5,7 @@
 #include <cstdlib>
 #include "PhysicsEntity.h"
 #include "Ball.h"
-#include "TextureFactory.h"
+#include "AssetFactory.h"
 #include "StateMachine.h"
 
 typedef enum
@@ -31,7 +31,7 @@ private:
 	int r, g, b;
 	StateMachine<BlockState>* state;
 	SDL_Texture* texture;
-	TextureFactory* textureFactory;
+	AssetFactory* assetFactory;
 
 	void stateChanged(BlockState prevState, BlockState currState);
 
@@ -39,7 +39,7 @@ public:
 	int width = 80.0;
 	int height = 40.0;
 
-	Block(int x, int y, int width, int height, int* blockCount, TextureFactory* textureFactory, BlockColor color);
+	Block(int x, int y, int width, int height, int* blockCount, AssetFactory* assetFactory, BlockColor color);
 	~Block();
 
 	void handleMouseEvents(int mouseState, int x, int y);
