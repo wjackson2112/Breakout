@@ -42,7 +42,7 @@ void load_settings()
 	ini.SetValue("dimensions", "fullScreen", std::to_string(Globals::fullScreen).c_str());
 
 	Globals::fieldRatio = (float) 3/ (float) 4;
-	Globals::fieldWidth = (Globals::screenHeight * Globals::fieldRatio) / 10 * 10;
+	Globals::fieldWidth = (int) (Globals::screenHeight * Globals::fieldRatio) / 10 * 10;
 	Globals::fieldHeight = Globals::screenHeight;
 	Globals::xOffset = (Globals::screenWidth / 2) - (Globals::fieldWidth / 2);
 	Globals::yOffset = 0;
