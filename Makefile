@@ -18,7 +18,7 @@ INCLUDES = -Iinclude
 
 #TARGET specifies the name of our exectuable
 TARGET_NAME = breakout
-TARGET = $(BUILD_DIR)/$(TARGET_NAME)
+TARGET = $(TARGET_NAME)
 
 OBJS = $(patsubst $(SRC_DIR)/%.cpp,$(BUILD_DIR)/%.o,$(SRC))
 
