@@ -7,7 +7,7 @@
 #include <memory>
 #include <SDL2/SDL.h>
 #include <SDL2/SDL_image.h>
-#include <SDL2/SDL_mixer.h>
+#include "Sound.h"
 
 #include "SimpleIni.h"
 
@@ -16,7 +16,7 @@ using namespace std;
 class AssetFactory {	
 private:
 	unordered_map<string, SDL_Texture*> textures;
-	unordered_map<string, Mix_Chunk*> sounds;
+	unordered_map<string, Sound*> sounds;
 	SDL_Renderer* gRenderer;
 public: 
 	AssetFactory(SDL_Renderer* gRenderer);

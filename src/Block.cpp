@@ -85,13 +85,10 @@ void Block::stateChanged(BlockState prevState, BlockState currState){
 	switch(currState)
 	{
 		case IDLE_ST:
-			std::cout << "Changed to IDLE" << std::endl;
 			break;
 		case FADING_ST:
-			std::cout << "Changed to FADING" << std::endl;
 			break;
 		case GONE_ST:
-			std::cout << "Changed to GONE" << std::endl;
 			break;
 	}
 }

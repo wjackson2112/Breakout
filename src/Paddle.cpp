@@ -1,4 +1,5 @@
 #include "Paddle.h"
+#include "Ball.h"
 
 Paddle::Paddle(float x, float y, AssetFactory* assetFactory)
 {

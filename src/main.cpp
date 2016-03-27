@@ -2,6 +2,7 @@
 #include <SDL2/SDL.h>
 #include <SDL2/SDL_image.h>
 #include <SDL2/SDL_ttf.h>
+#include <AL/alut.h>
 #include <stdio.h>
 #include <string>
 #include "ProgramManager.h"
@@ -9,6 +10,7 @@
 #include "SimpleIni.h"
 #include "AssetFactory.h"
 #include <memory>
+
 
 SDL_Window* gWindow = NULL;
 SDL_Renderer* gRenderer = NULL;
@@ -79,6 +81,10 @@ bool init()
 		return false;
 	}
 
+	//Init Sound
+	alutInit(0, NULL);
+	alGetError();
+
 	load_settings();
 
 	//Create Window
@@ -112,6 +118,7 @@ void close()
 	SDL_DestroyWindow(gWindow);
 	gWindow = NULL;
 
+	alutExit();
 	IMG_Quit();
 	TTF_Quit();
 	SDL_Quit();

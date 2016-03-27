@@ -11,6 +11,9 @@ Ball::Ball(Paddle* paddle, AssetFactory* assetFactory)
 	this->assetFactory = assetFactory;
 	this->texture = assetFactory->getAsset<SDL_Texture>("./png/Ball.png");
 
+	this->paddleSound = assetFactory->getAsset<Sound>("./sounds/LowBlip.wav");
+	this->blockSound = assetFactory->getAsset<Sound>("./sounds/MidBlip.wav");
+
 	this->paddle = paddle;
 	this->state = new StateMachine<BallState>(
 						(StateMachine<BallState>::StateMachineCB) &Ball::stateChanged,
@@ -206,6 +209,8 @@ void Ball::resolveCollision(PhysicsEntity* collider, PhysicsEntity* object)
 			default:
 				break;
 		}
+
+		paddleSound->play();
 	}
 		//Bounce off the paddle
 	else if(dynamic_cast<Block*> (object) != NULL)
@@ -295,6 +300,8 @@ void Ball::resolveCollision(PhysicsEntity* collider, PhysicsEntity* object)
 			default:
 				break;
 		}
+
+		blockSound->play();
 	}
 }
 

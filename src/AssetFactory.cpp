@@ -16,12 +16,6 @@ void AssetFactory::printAssets(){
 	for(auto it = textures.begin(); it != textures.end(); ++it){
 		cout << it->first << ":" << (it->second) << " ";
 	}
-
-	cout << "Sounds" << endl;
-	for(auto it = sounds.begin(); it != sounds.end(); ++it){
-		cout << it->first << ":" << (it->second) << " ";
-	}
-
 	cout << endl;
 }
 
@@ -41,6 +35,24 @@ SDL_Texture* AssetFactory::getAsset<SDL_Texture>(string key){
 	surface = IMG_Load(key.c_str());
 	texture = SDL_CreateTextureFromSurface( gRenderer, surface );
 
-	textures.insert( make_pair(key, texture) );
+	textures.insert(make_pair(key, texture));
 	return texture;
+}
+
+template<>
+Sound* AssetFactory::getAsset<Sound>(string key){
+
+	Sound* sound;
+
+	unordered_map<string, Sound*>::iterator it = sounds.find(key);
+
+	if(it != sounds.end())
+	{
+		return it->second;
+	}
+
+	sound = new Sound(key);
+
+	sounds.insert(make_pair(key, sound));
+	return sound;
 }

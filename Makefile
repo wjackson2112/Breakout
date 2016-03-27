@@ -13,7 +13,7 @@ CC = g++
 CC_FLAGS = -w -std=c++11
 
 #Linker Flags
-LD_FLAGS = -lSDL2 -lSDL2_image -lSDL2_ttf
+LD_FLAGS = -lSDL2 -lSDL2_image -lSDL2_ttf -lopenal -lalut
 INCLUDES = -Iinclude
 
 #TARGET specifies the name of our exectuable

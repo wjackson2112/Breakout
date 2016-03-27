@@ -15,7 +15,7 @@ ProgramManager::ProgramManager(SDL_Renderer* gRenderer)
 ProgramManager::~ProgramManager()
 {
 	EventManager::Instance()->deregisterHandler(this);
-	free(assetFactory);
+	delete assetFactory;
 }
 
 void ProgramManager::loop()

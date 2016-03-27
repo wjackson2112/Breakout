@@ -7,6 +7,7 @@
 #include "Ball.h"
 #include "AssetFactory.h"
 #include "StateMachine.h"
+#include "Sound.h"
 
 typedef enum
 {
