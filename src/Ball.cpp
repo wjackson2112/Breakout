@@ -16,7 +16,8 @@ Ball::Ball(Paddle* paddle, AssetFactory* assetFactory)
 
 	this->paddle = paddle;
 	this->state = new StateMachine<BallState>(
-						(StateMachine<BallState>::StateMachineCB) &Ball::stateChanged,
+						//(StateMachine<BallState>::StateMachineCB) &Ball::stateChanged,
+						[this](BallState prevState, BallState currState){ return this->stateChanged(prevState, currState); },
 						LOST_ST);
 }
 

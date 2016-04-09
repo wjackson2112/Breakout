@@ -1,11 +1,15 @@
 #ifndef STATE_MACHINE_H
 #define STATE_MACHINE_H
 
+#include <functional>
+
 template <typename T>
 class StateMachine
 {
 public:
-	using StateMachineCB = void (*)(T prevState, T currState);
+	//using StateMachineCB = void (*)(T prevState, T currState);
+	//using StateMachineCB = std::function<int(T, T)>;
+	typedef std::function<void(T, T)> StateMachineCB;
 
 private:
 	T prevState, currState;

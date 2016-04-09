@@ -7,7 +7,7 @@
 #include "Ball.h"
 #include "AssetFactory.h"
 #include "StateMachine.h"
-#include "Sound.h"
+#include "Effects.h"
 
 typedef enum
 {
@@ -33,6 +33,7 @@ private:
 	StateMachine<BlockState>* state;
 	SDL_Texture* texture;
 	AssetFactory* assetFactory;
+	Effects* effects;
 
 	void stateChanged(BlockState prevState, BlockState currState);
 
@@ -59,6 +60,8 @@ public:
 	SDL_Point getVelocity();
 
 	bool isDeletable();
+
+	void alphaTransitionComplete();
 };
 
 #endif

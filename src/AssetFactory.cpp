@@ -22,18 +22,37 @@ void AssetFactory::printAssets(){
 template<>
 SDL_Texture* AssetFactory::getAsset<SDL_Texture>(string key){
 	
-	SDL_Surface* surface;
+	//SDL_Surface* surface;
 	SDL_Texture* texture;
 
 	unordered_map<string, SDL_Texture *>::iterator it = textures.find(key);
 
 	if(it != textures.end())
 	{
-		return it->second;
+		Uint32 format;
+		int access, w, h;
+		
+		SDL_QueryTexture(it->second, &format, &access, &w, &h);
+		texture = SDL_CreateTexture(gRenderer, SDL_PIXELFORMAT_RGBA8888, SDL_TEXTUREACCESS_TARGET, w, h);
+
+		SDL_SetRenderTarget(gRenderer, texture);
+		SDL_SetTextureBlendMode(texture, SDL_BLENDMODE_BLEND);
+		SDL_SetTextureBlendMode(it->second, SDL_BLENDMODE_BLEND);
+		SDL_SetRenderDrawColor(gRenderer, 0x00, 0x00, 0x00, 0x00);
+		SDL_RenderClear(gRenderer);
+		
+		SDL_Rect destRect = {0, 0, w, h};
+
+		SDL_RenderCopy(gRenderer, it->second, NULL, &destRect);
+
+		SDL_SetRenderTarget(gRenderer, NULL);
+		SDL_RenderClear(gRenderer);
+
+		return texture;
 	}
 
-	surface = IMG_Load(key.c_str());
-	texture = SDL_CreateTextureFromSurface( gRenderer, surface );
+	//surface = IMG_Load(key.c_str());
+	texture = IMG_LoadTexture(gRenderer, key.c_str());//SDL_CreateTextureFromSurface( gRenderer, surface );
 
 	textures.insert(make_pair(key, texture));
 	return texture;

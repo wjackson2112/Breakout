@@ -15,7 +15,7 @@ Block::Block(int x, int y, int width, int height, int* blockCount, AssetFactory*
 	this->assetFactory = assetFactory;
 
 	this->state = new StateMachine<BlockState>(
-						(StateMachine<BlockState>::StateMachineCB) &Block::stateChanged, 
+						[this](BlockState prevState, BlockState currState) { return this->stateChanged(prevState, currState); },
 						IDLE_ST);
 
 	switch(color){
@@ -40,6 +40,13 @@ Block::Block(int x, int y, int width, int height, int* blockCount, AssetFactory*
 		default:
 			break;
 	}
+
+	SDL_SetTextureBlendMode(this->texture, SDL_BLENDMODE_BLEND);
+
+	this->effects = new Effects(this->texture,
+								[this](void){ return this->alphaTransitionComplete(); }, 
+								//(Effects::EffectsCB) &Block::alphaTransitionComplete, 
+								NULL);
 
 	EventManager::Instance()->registerHandler(this);
 }
@@ -74,9 +81,11 @@ void Block::render(SDL_Renderer* gRenderer)
 {
 	switch(this->state->getState()){
 		case IDLE_ST:
+		case FADING_ST:
 			SDL_Rect drawRect = {posX, posY, width, height};
+			this->effects->apply();
 			SDL_RenderCopy( gRenderer, this->texture, NULL, &drawRect );	
-			break;	
+			break;
 	}
 
 }
@@ -87,6 +96,13 @@ void Block::stateChanged(BlockState prevState, BlockState currState){
 		case IDLE_ST:
 			break;
 		case FADING_ST:
+			switch(prevState)
+			{
+				case IDLE_ST:
+					this->effects->addAlphaTransition(250, 255, 0);
+					SDL_SetTextureAlphaMod(this->texture, 50);
+					break;
+			}
 			break;
 		case GONE_ST:
 			break;
@@ -103,7 +119,7 @@ void Block::resolveCollision(PhysicsEntity* collider, PhysicsEntity* object)
 	//Dismiss self if collided with ball
 	if(dynamic_cast<Ball*> (object) != NULL)
 	{
-		this->state->updateState(GONE_ST);
+		this->state->updateState(FADING_ST);
 	}
 }
 
@@ -137,4 +153,9 @@ bool Block::isDeletable()
 		return true;
 	}
 	return false;
+}
+
+void Block::alphaTransitionComplete()
+{
+	this->state->updateState(GONE_ST);
 }

@@ -29,6 +29,7 @@ private:
 	Sound *paddleSound, *blockSound;
 	AssetFactory* assetFactory;
 
+
 	void stateChanged(BallState prevState, BallState currState);
 public:
 	int width = Globals::ballWidth;
