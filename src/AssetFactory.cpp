@@ -29,26 +29,28 @@ SDL_Texture* AssetFactory::getAsset<SDL_Texture>(string key){
 
 	if(it != textures.end())
 	{
-		Uint32 format;
-		int access, w, h;
+		// Uint32 format;
+		// int access, w, h;
 		
-		SDL_QueryTexture(it->second, &format, &access, &w, &h);
-		texture = SDL_CreateTexture(gRenderer, SDL_PIXELFORMAT_RGBA8888, SDL_TEXTUREACCESS_TARGET, w, h);
+		// SDL_QueryTexture(it->second, &format, &access, &w, &h);
+		// texture = SDL_CreateTexture(gRenderer, SDL_PIXELFORMAT_RGBA8888, SDL_TEXTUREACCESS_TARGET, w, h);
 
-		SDL_SetRenderTarget(gRenderer, texture);
-		SDL_SetTextureBlendMode(texture, SDL_BLENDMODE_BLEND);
-		SDL_SetTextureBlendMode(it->second, SDL_BLENDMODE_BLEND);
-		SDL_SetRenderDrawColor(gRenderer, 0x00, 0x00, 0x00, 0x00);
-		SDL_RenderClear(gRenderer);
+		// SDL_SetRenderTarget(gRenderer, texture);
+		// SDL_SetTextureBlendMode(texture, SDL_BLENDMODE_BLEND);
+		// SDL_SetTextureBlendMode(it->second, SDL_BLENDMODE_BLEND);
+		// SDL_SetRenderDrawColor(gRenderer, 0x00, 0x00, 0x00, 0x00);
+		// SDL_RenderClear(gRenderer);
 		
-		SDL_Rect destRect = {0, 0, w, h};
+		// SDL_Rect destRect = {0, 0, w, h};
 
-		SDL_RenderCopy(gRenderer, it->second, NULL, &destRect);
+		// SDL_RenderCopy(gRenderer, it->second, NULL, &destRect);
 
-		SDL_SetRenderTarget(gRenderer, NULL);
-		SDL_RenderClear(gRenderer);
+		// SDL_SetRenderTarget(gRenderer, NULL);
+		// SDL_RenderClear(gRenderer);
 
-		return texture;
+		// return texture;
+
+		return it->second;
 	}
 
 	//surface = IMG_Load(key.c_str());

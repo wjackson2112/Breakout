@@ -22,29 +22,15 @@ void Effects::apply(){
 	double timeElapsed = (double) ((currTime - this->prevTime)*1000)/SDL_GetPerformanceFrequency();
 	this->prevTime = currTime;
 
-	if(alphaFrames.empty()){
-		return;
+	if(!alphaFrames.empty()){
+		if(alphaFrames.front()->frameComplete()){
+			alphaFrames.erase(alphaFrames.begin());
+			alphaCB();
+		}
+
+		alphaFrames.front()->update(timeElapsed, this->a);
 	}
-
-	if(alphaFrames.front()->frameComplete()){
-		alphaFrames.erase(alphaFrames.begin());
-		alphaCB();
-	}
-
-	alphaFrames.front()->update(timeElapsed, this->a);
-
-	// std::cout << timeElapsed << " seconds elapsed" << std::endl;
-
-	// if(colorFrames->size() != 0)
-	// {
-	// 	this->colorFrames.begin()->		
-	// }
-
-
-	// SDL_SetTextureColorMod(this->texture, this->r, this->g, this->b);
 	SDL_SetTextureAlphaMod(this->texture, this->a);
-
-
 }
 
 void Effects::reset(){
