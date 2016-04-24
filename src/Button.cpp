@@ -1,23 +1,11 @@
 #include "Button.h"
 
-Button::Button(const char* fontName, const char* text, GameEvent event, int x, int y)
+Button::Button(string texture_file, AssetFactory* assetFactory, GameEvent event)
 {
-	this->posX = x;
-	this->posY = y;
-	this->width = Globals::screenWidth / 4;
-	this->height = this->width / 4;
-	this->r = 0x22;
-	this->g = 0x22;
-	this->b = 0x22;
-	this->text = text;
 	this->event = event;
 
-	this->font = TTF_OpenFont(fontName, 180);
-
-	if(font == nullptr)
-	{
-		std::cout << "Couldn't load font: " << SDL_GetError() << std::endl;
-	}
+	this->texture = assetFactory->getAsset<SDL_Texture>(texture_file);
+	SDL_QueryTexture(this->texture, NULL, NULL, &(this->rect.w), &(this->rect.h));
 
 	EventManager::Instance()->registerHandler(this);
 }
@@ -27,22 +15,33 @@ Button::~Button()
 	EventManager::Instance()->deregisterHandler(this);
 }
 
+void Button::setRect(SDL_Rect rect)
+{
+	this->rect.x = rect.x;
+	this->rect.y = rect.y;
+	this->rect.w = rect.w;
+	this->rect.h = rect.h;
+}
+
 void Button::handleMouseEvents(int mouseState, int x, int y)
 {
-	if((mouseState & SDL_BUTTON(SDL_BUTTON_LEFT)) && 
-		x > posX && 
-		x < posX + width && 
-		y > posY && 
-		y < posY + height &&
-		lastState == false)
-	{
-		lastState = true;
-	}
-	else if(!(mouseState & SDL_BUTTON(SDL_BUTTON_LEFT)) && 
-			lastState == true)
-	{
-		EventManager::Instance()->reportGameEvent(this->event);
-		lastState = false;
+	if(enabled)
+	{	
+		if((mouseState & SDL_BUTTON(SDL_BUTTON_LEFT)) && 
+			x > this->rect.x && 
+			x < this->rect.x + this->rect.w && 
+			y > this->rect.y && 
+			y < this->rect.y + this->rect.h &&
+			lastState == false)
+		{
+			lastState = true;
+		}
+		else if(!(mouseState & SDL_BUTTON(SDL_BUTTON_LEFT)) && 
+				lastState == true)
+		{
+			EventManager::Instance()->reportGameEvent(this->event);
+			lastState = false;
+		}
 	}
 }
 
@@ -68,33 +67,38 @@ void Button::update(int frameTime)
 
 void Button::render(SDL_Renderer* gRenderer)
 {
-	SDL_Rect fillRect = {posX, posY, width, height};
-	//SDL_SetRenderDrawColor(gRenderer, r, g, b, 0xFF);
-	//SDL_RenderFillRect(gRenderer, &fillRect);
-
-	SDL_Color textColor = {0xFF, 0xFF, 0xFF, 0xFF};
-	SDL_Surface* text_surface = TTF_RenderText_Solid(font, this->text, textColor);
-	SDL_Texture* text = SDL_CreateTextureFromSurface(gRenderer, text_surface);
-
-	SDL_RenderCopy(gRenderer, text, nullptr, &fillRect);
-
-	SDL_FreeSurface(text_surface);
+	SDL_RenderCopy( gRenderer, this->texture, NULL, &this->rect);
 }
 
 SDL_Point Button::getCenter()
 {
-	SDL_Point center = {posX + width/2, posY + height/2};
+	SDL_Point center = {this->rect.x + this->rect.w/2, this->rect.y + this->rect.h/2};
 	return center;
 }
 
 SDL_Point Button::getOrigin()
 {
-	SDL_Point origin = {posX, posY};
+	SDL_Point origin = {this->rect.x, this->rect.y};
 	return origin;
 }
 
 SDL_Point Button::getSize()
 {
-	SDL_Point velocity = {width, height};
+	SDL_Point velocity = {this->rect.w, this->rect.h};
 	return velocity;
+}
+
+SDL_Rect  Button::getRect()
+{
+	return this->rect;
+}
+
+void Button::disable()
+{
+	this->enabled = false;
+}
+
+void Button::enable()
+{
+	this->enabled = true;
 }

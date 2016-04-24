@@ -129,11 +129,6 @@ void GameManager::detectCollisions()
 
 void GameManager::render(SDL_Renderer* gRenderer)
 {
-	//if(!visible)
-	//{
-	//	return;
-	//}
-
 	SDL_Rect backgroundRect = {Globals::xOffset, Globals::yOffset, Globals::fieldWidth, Globals::fieldHeight};
 	SDL_SetRenderDrawColor(gRenderer, 0x10, 0x10, 0x10, 0xFF);
 	SDL_RenderFillRect(gRenderer, &backgroundRect);

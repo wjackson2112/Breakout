@@ -4,20 +4,21 @@
 #include <SDL2/SDL.h>
 #include <SDL2/SDL_ttf.h>
 #include <string>
-#include "UIEntity.h"
+#include "MenuEntity.h"
 #include "EventManager.h"
+#include "AssetFactory.h"
 
-class Button : public UIEntity
+class Button : public MenuEntity
 {
 private:
-	int r, g, b;
-	TTF_Font* font;
-	const char* text;
 	GameEvent event;
 	bool lastState = false;
+	bool enabled = false;
 public:
-	Button(const char* fontName, const char* text, GameEvent event, int x, int y);
+	Button(string texture_file, AssetFactory* assetFactory, GameEvent event);
 	~Button();
+
+	void setRect(SDL_Rect rect);
 
 	void handleMouseEvents(int mouseState, int x, int y);
 	void handleKeyboardEvents(const Uint8*);
@@ -30,6 +31,10 @@ public:
 	SDL_Point getCenter();
 	SDL_Point getOrigin();
 	SDL_Point getSize();
+	SDL_Rect  getRect();
+
+	void disable();
+	void enable();
 
 };
 

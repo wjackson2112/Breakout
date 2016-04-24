@@ -30,6 +30,7 @@ void Effects::apply(){
 
 		alphaFrames.front()->update(timeElapsed, this->a);
 	}
+	
 	SDL_SetTextureAlphaMod(this->texture, this->a);
 }
 

@@ -1,74 +1,68 @@
 #include "MenuManager.h"
 
-MenuManager::MenuManager()
+MenuManager::MenuManager(AssetFactory* assetFactory)
 {
 	visible = true;
+	this->assetFactory = assetFactory;
 	EventManager::Instance()->registerHandler(this);
 
+	this->state = new StateMachine<MenuManagerState>(
+						[this](MenuManagerState prevState, MenuManagerState currState) { return this->stateChanged(prevState, currState); },
+						MAIN_ST);
+
 	this->setMainMenuButtons();
+	mainMenu->enable();
+	this->setPauseMenuButtons();
 }
 
 MenuManager::~MenuManager()
 {
-	for(std::vector<UIEntity*>::iterator it=uiEntities.begin(); it!=uiEntities.end();)
-	{
-		delete * it;
-		it = uiEntities.erase(it);
-	}
-
 	EventManager::Instance()->deregisterHandler(this);
 }
 
 void MenuManager::setMainMenuButtons()
 {
-	for(std::vector<UIEntity*>::iterator it=uiEntities.begin(); it!=uiEntities.end();)
-	{
-		delete * it;
-		it = uiEntities.erase(it);
-	}
+	this->mainMenu = new Menu(100, 100, 2, 75, 25, 1, 100, 25);
 
-	uiEntities.push_back(new Button("/usr/share/fonts/truetype/inconsolata/Inconsolata.otf", "New Game", NEW_GAME, Globals::screenHeight / 10, Globals::screenHeight / 10));
-	uiEntities.push_back(new Button("/usr/share/fonts/truetype/inconsolata/Inconsolata.otf", "Quit to Desktop", QUIT_PROGRAM, Globals::screenHeight / 10, Globals::screenHeight / 10 * 2));	
+	this->mainMenu->add_menu_item(new Button("./png/NewGame.png", this->assetFactory, NEW_GAME), 0, 0);
+	this->mainMenu->add_menu_item(new Button("./png/QuitToDesktop.png", this->assetFactory, QUIT_PROGRAM), 1, 0);
 }
 
 void MenuManager::setPauseMenuButtons()
 {
-	for(std::vector<UIEntity*>::iterator it=uiEntities.begin(); it!=uiEntities.end();)
-	{
-		delete * it;
-		it = uiEntities.erase(it);
-	}
+	this->pauseMenu = new Menu(100, 100, 3, 75, 25, 1, 100, 25);
 	
-	uiEntities.push_back(new Button("/usr/share/fonts/truetype/inconsolata/Inconsolata.otf", "Resume Game", RESUME_GAME, Globals::screenHeight / 10, Globals::screenHeight / 10));	
-	uiEntities.push_back(new Button("/usr/share/fonts/truetype/inconsolata/Inconsolata.otf", "New Game", NEW_GAME, Globals::screenHeight / 10, Globals::screenHeight / 10 * 2));
-	uiEntities.push_back(new Button("/usr/share/fonts/truetype/inconsolata/Inconsolata.otf", "Quit Game", QUIT_GAME, Globals::screenHeight / 10, Globals::screenHeight / 10 * 3));	
+	this->pauseMenu->add_menu_item(new Button("./png/ResumeGame.png", this->assetFactory,  RESUME_GAME), 0, 0);
+	this->pauseMenu->add_menu_item(new Button("./png/NewGame.png", this->assetFactory, NEW_GAME), 1, 0);
+	this->pauseMenu->add_menu_item(new Button("./png/QuitGame.png", this->assetFactory, QUIT_GAME), 2, 0);	
 }
 
 void MenuManager::render(SDL_Renderer* gRenderer)
 {
-	if(!visible)
+	switch(this->state->getState())
 	{
-		return;
-	}
-	else
-	{
-		SDL_Rect fillRect = {0, 0, Globals::screenWidth, Globals::screenHeight};
-		SDL_SetRenderDrawColor(gRenderer, 0x00, 0x00, 0x00, 0xCC);
-		SDL_RenderFillRect(gRenderer, &fillRect);
-	}
-
-	for(auto &entity : uiEntities)
-	{
-		entity->render(gRenderer);
+		case MAIN_ST:
+		{
+			SDL_Rect fillRect = {0, 0, Globals::screenWidth, Globals::screenHeight};
+			SDL_SetRenderDrawColor(gRenderer, 0x00, 0x00, 0x00, 0xCC);
+			SDL_RenderFillRect(gRenderer, &fillRect);
+			this->mainMenu->render(gRenderer);
+			break;
+		}
+		case PAUSE_ST:
+		{
+			SDL_Rect fillRect = {0, 0, Globals::screenWidth, Globals::screenHeight};
+			SDL_SetRenderDrawColor(gRenderer, 0x00, 0x00, 0x00, 0xCC);
+			SDL_RenderFillRect(gRenderer, &fillRect);
+			this->pauseMenu->render(gRenderer);
+			break;			
+		}
 	}
 }
 
 void MenuManager::update(int frameTime)
 {
-	for(auto &entity : uiEntities)
-	{
-		entity->update(frameTime);
-	}
+
 }
 
 char* MenuManager::type()
@@ -88,20 +82,51 @@ void MenuManager::handleKeyboardEvents(const Uint8* keyStates)
 
 void MenuManager::handleGameEvents(const Uint8* events)
 {
-	if(events[NEW_GAME] || events[RESUME_GAME])
+	switch(this->state->getState())
 	{
-		visible = false;
+		case NONE_ST:
+			if(events[PAUSE_GAME])
+			{
+				this->state->updateState(PAUSE_ST);
+			}
+			else if(events[QUIT_GAME])
+			{
+				this->state->updateState(MAIN_ST);
+			}
+			break;
+		case MAIN_ST:
+			if(events[NEW_GAME])
+			{
+				this->state->updateState(NONE_ST);
+			}
+			break;
+		case PAUSE_ST:
+			if(events[NEW_GAME] || events[RESUME_GAME])
+			{
+				this->state->updateState(NONE_ST);
+			} 
+			else if(events[QUIT_GAME])
+			{
+				this->state->updateState(MAIN_ST);
+			}
+			break;
 	}
+}
 
-	if(events[PAUSE_GAME])
+void MenuManager::stateChanged(MenuManagerState prevState, MenuManagerState currState){
+	switch(currState)
 	{
-		visible = true;
-		this->setPauseMenuButtons();
-	}
-
-	if(events[QUIT_GAME])
-	{
-		visible = true;
-		this->setMainMenuButtons();
+		case NONE_ST:
+			this->mainMenu->disable();
+			this->pauseMenu->disable();
+			break;
+		case MAIN_ST:
+			this->mainMenu->enable();
+			this->pauseMenu->disable();
+			break;
+		case PAUSE_ST:
+			this->mainMenu->disable();
+			this->pauseMenu->enable();
+			break; 
 	}
 }

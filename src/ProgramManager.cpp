@@ -5,7 +5,7 @@ ProgramManager::ProgramManager(SDL_Renderer* gRenderer)
 	this->gRenderer = gRenderer;
 	assetFactory = new AssetFactory(gRenderer);
 	gameManager = new GameManager(this->assetFactory);
-	menuManager = new MenuManager();
+	menuManager = new MenuManager(this->assetFactory);
 	machineState = MENU;
 	quit = false;
 

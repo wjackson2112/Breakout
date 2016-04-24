@@ -10,16 +10,29 @@
 #include "UIEntity.h"
 #include "Button.h"
 #include "Globals.h"
+#include "AssetFactory.h"
+#include "Menu.h"
+#include "StateMachine.h"
+
+typedef enum
+{
+	NONE_ST,
+	MAIN_ST,
+	PAUSE_ST
+} MenuManagerState;
 
 class MenuManager : public IEventHandler
 {
 private:
-	std::vector<UIEntity*> uiEntities;
+	Menu *mainMenu, *pauseMenu;
+	AssetFactory* assetFactory;
+	StateMachine<MenuManagerState>* state;
 	bool visible;
 	void setMainMenuButtons();
 	void setPauseMenuButtons();
+	void stateChanged(MenuManagerState prevState, MenuManagerState currState);
 public:
-	MenuManager();
+	MenuManager(AssetFactory* assetFactory);
 	~MenuManager();
 
 	void render(SDL_Renderer*);
