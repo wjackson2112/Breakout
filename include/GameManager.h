@@ -22,6 +22,7 @@ private:
 	std::vector<PhysicsEntity*> physicsEntities;
 	std::vector<UIEntity*> uiEntities;
 	AssetFactory* assetFactory;
+	SDL_Texture* gameTexture;
 	int blockCount;
 	bool pause, visible;
 	void detectCollisions();

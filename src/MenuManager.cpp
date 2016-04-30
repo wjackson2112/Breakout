@@ -22,7 +22,17 @@ MenuManager::~MenuManager()
 
 void MenuManager::setMainMenuButtons()
 {
-	this->mainMenu = new Menu(100, 100, 2, 75, 25, 1, 100, 25);
+	int mainMenuNumRows = 2;
+	int mainMenuNumCols = 1;
+
+	this->mainMenu = new Menu(Globals::mainMenuX, 
+							  Globals::mainMenuY, 
+							  mainMenuNumRows, 
+							  Globals::mainMenuRowHeight, 
+							  Globals::mainMenuRowPadding, 
+							  mainMenuNumCols,
+							  Globals::mainMenuColWidth, 
+							  Globals::mainMenuColPadding);
 
 	this->mainMenu->add_menu_item(new Button("./png/NewGame.png", this->assetFactory, NEW_GAME), 0, 0);
 	this->mainMenu->add_menu_item(new Button("./png/QuitToDesktop.png", this->assetFactory, QUIT_PROGRAM), 1, 0);
@@ -30,7 +40,17 @@ void MenuManager::setMainMenuButtons()
 
 void MenuManager::setPauseMenuButtons()
 {
-	this->pauseMenu = new Menu(100, 100, 3, 75, 25, 1, 100, 25);
+	int pauseMenuNumRows = 3;
+	int pauseMenuNumCols = 1;
+
+	this->pauseMenu = new Menu(Globals::pauseMenuX,
+							   Globals::pauseMenuY, 
+							   pauseMenuNumRows, 
+							   Globals::pauseMenuRowHeight, 
+							   Globals::pauseMenuRowPadding, 
+							   pauseMenuNumCols, 
+							   Globals::pauseMenuColWidth, 
+							   Globals::pauseMenuColPadding);
 	
 	this->pauseMenu->add_menu_item(new Button("./png/ResumeGame.png", this->assetFactory,  RESUME_GAME), 0, 0);
 	this->pauseMenu->add_menu_item(new Button("./png/NewGame.png", this->assetFactory, NEW_GAME), 1, 0);

@@ -54,25 +54,25 @@ void Ball::update(int frameTime)
 		case FLYING_ST:
 			posX += velX * (float) frameTime/SDL_GetPerformanceFrequency();
 
-			if(posX < Globals::xOffset)
+			if(posX < 0)
 			{
-				posX = Globals::xOffset;
+				posX = 0;
 				velX = -velX;
 			} 
-			else if(posX > Globals::xOffset + Globals::fieldWidth - width)
+			else if(posX > Globals::fieldWidth - width)
 			{
-				posX = Globals::xOffset + Globals::fieldWidth - width;
+				posX = Globals::fieldWidth - width;
 				velX = -velX;
 			}
 
 			posY += velY * (float) frameTime/SDL_GetPerformanceFrequency();
 
-			if(posY < Globals::yOffset)
+			if(posY < 0)
 			{
-				posY = Globals::yOffset;
+				posY = 0;
 				velY = -velY;
 			}
-			else if(posY > Globals::yOffset + Globals::fieldHeight)
+			else if(posY > Globals::fieldHeight)
 			{
 				
 				this->state->updateState(LOST_ST);

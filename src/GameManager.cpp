@@ -60,14 +60,14 @@ void GameManager::resetLevel()
 	}
 
 	blockCount = 0;
-	physicsEntities.push_back(new Paddle((Globals::fieldWidth / 2) - (Globals::paddleWidth / 2), Globals::screenHeight - Globals::paddleHeight, assetFactory));
+	physicsEntities.push_back(new Paddle((Globals::fieldWidth / 2) - (Globals::paddleWidth / 2), Globals::fieldHeight - Globals::paddleHeight, assetFactory));
 	physicsEntities.push_back(new Ball((Paddle*) physicsEntities[0], assetFactory));
 
 	for(int x = 0; x + Globals::blockWidth <= Globals::fieldWidth; x+=Globals::blockWidth)
 	{
 		for(int y = 0; y < Globals::blockHeight * 6; y += Globals::blockHeight)
 		{
-			physicsEntities.push_back(new Block(Globals::xOffset + x, Globals::yOffset + y, Globals::blockWidth, Globals::blockHeight, &blockCount, this->assetFactory, (BlockColor) (y/Globals::blockHeight)));		
+			physicsEntities.push_back(new Block(x, y, Globals::blockWidth, Globals::blockHeight, &blockCount, this->assetFactory, (BlockColor) (y/Globals::blockHeight)));		
 			blockCount++;
 		}
 	}
@@ -133,10 +133,21 @@ void GameManager::render(SDL_Renderer* gRenderer)
 	SDL_SetRenderDrawColor(gRenderer, 0x10, 0x10, 0x10, 0xFF);
 	SDL_RenderFillRect(gRenderer, &backgroundRect);
 
+	if(!this->gameTexture){
+		this->gameTexture = SDL_CreateTexture(gRenderer, SDL_PIXELFORMAT_RGBA8888, SDL_TEXTUREACCESS_TARGET, Globals::fieldWidth, Globals::fieldHeight);
+	}
+
+	SDL_SetRenderTarget(gRenderer, this->gameTexture);
+	SDL_RenderClear(gRenderer);
+
 	for(auto &entity : physicsEntities)
 	{
 		entity->render(gRenderer);
 	}
+
+	SDL_SetRenderTarget(gRenderer, NULL);
+
+	SDL_RenderCopy(gRenderer, this->gameTexture, NULL, &backgroundRect);
 
 	for(auto &entity : uiEntities)
 	{

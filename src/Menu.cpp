@@ -1,5 +1,7 @@
 #include "Menu.h"
 
+//TODO: Find a way to eliminate the "num_rows" and "num_cols" vars here
+//They should just be dynamically updated based on adding items to the menu
 Menu::Menu(int x, int y, int num_rows, int row_height, int row_padding, int num_cols, int col_width, int col_padding)
 {
 	this->rect.x = x;

@@ -4,6 +4,42 @@
 		"selected_items":
 		[
 			[
+				"screen",
+				"screenWidth"
+			],
+			[
+				"scree",
+				"screenWidth"
+			],
+			[
+				"pauseMen",
+				"pauseMenuNumRows"
+			],
+			[
+				"mainMen",
+				"mainMenuColPadding"
+			],
+			[
+				"main",
+				"mainMenuColWidth"
+			],
+			[
+				"mainMenuRow",
+				"mainMenuRowPadding"
+			],
+			[
+				"upda",
+				"updateState"
+			],
+			[
+				"enab",
+				"enabled"
+			],
+			[
+				"extra",
+				"extra_tag_files"
+			],
+			[
 				"SDL_GetPer",
 				"SDL_GetPerformanceFrequency	(Ball.cpp)"
 			],
@@ -74,14 +110,6 @@
 			[
 				"block",
 				"blockWidth	(Globals.h)"
-			],
-			[
-				"scree",
-				"screenHeight	(Globals.h)"
-			],
-			[
-				"screen",
-				"screenHeight	(Globals.h)"
 			],
 			[
 				"getFiel",
@@ -308,71 +336,90 @@
 	"buffers":
 	[
 		{
-			"file": "include/Button.h",
+			"file": "include/Globals.h",
 			"settings":
 			{
-				"buffer_size": 696,
+				"buffer_size": 814,
 				"line_ending": "Unix"
 			}
 		},
 		{
-			"file": "include/UIEntity.h",
+			"file": "src/Globals.cpp",
 			"settings":
 			{
-				"buffer_size": 128,
+				"buffer_size": 2856,
 				"line_ending": "Unix"
 			}
 		},
 		{
-			"contents": "#ifndef MENU_ENTITY_H\n#define MENU_ENTITY_H\n\n#include <SDL2/SDL.h>\n#include \"Entity.h\"\n\nclass MenuEntity : public Entity\n{\n	 size;\n};\n\n#endif",
-			"file": "include/MenuEntity.h",
-			"file_size": 141,
-			"file_write_time": 131059887893620484,
+			"file": "src/main.cpp",
 			"settings":
 			{
-				"buffer_size": 141,
+				"buffer_size": 2037,
 				"line_ending": "Unix"
 			}
 		},
 		{
-			"file": "/home/will/.config/sublime-text-3/Packages/User/CTags.sublime-settings",
+			"file": "src/GameManager.cpp",
 			"settings":
 			{
-				"buffer_size": 66,
+				"buffer_size": 5305,
 				"line_ending": "Unix"
 			}
 		},
 		{
-			"contents": "[\n    {\n        \"command\": \"navigate_to_definition\",\n        \"keys\": [\"ctrl+t\", \"ctrl+t\"]\n    },\n    {\n        \"command\": \"navigate_to_definition\",\n        \"keys\": [\"ctrl+shift+period\"]\n    },\n    {\n        \"command\": \"search_for_definition\",\n        \"keys\": [\"ctrl+t\", \"ctrl+y\"]\n    },\n    {\n        \"command\": \"jump_prev\",\n        \"keys\": [\"ctrl+t\", \"ctrl+b\"]\n    },\n    {\n        \"command\": \"jump_prev\",\n        \"keys\": [\"ctrl+shift+comma\"]\n    },\n    {\n        \"command\": \"rebuild_tags\",\n        \"keys\": [\"ctrl+t\", \"ctrl+r\"]\n    },\n    {\n        \"command\": \"show_symbols\",\n        \"context\": [\n            {\n                \"key\": \"selector\",\n                \"match_all\": true,\n                \"operand\": \"source -source.css\",\n                \"operator\": \"equal\"\n            }\n        ],\n        \"keys\": [\"alt+s\"]\n    },\n    {\n        \"command\": \"show_symbols\",\n        \"args\": {\"type\": \"multi\"},\n        \"context\": [\n            {\n                \"key\": \"selector\",\n                \"match_all\": true,\n                \"operand\": \"source -source.css\",\n                \"operator\": \"equal\"\n            }\n        ],\n        \"keys\": [\"alt+shift+s\"]\n    },\n    {\n        \"command\": \"show_symbols\",\n        \"args\": {\"type\": \"lang\"},\n        \"context\": [\n            {\n                \"key\": \"selector\",\n                \"match_all\": true,\n                \"operand\": \"source -source.css\",\n                \"operator\": \"equal\"\n            }\n        ],\n        \"keys\": [\"ctrl+alt+shift+s\"]\n    },\n    { // override current default\n        \"command\": \"transpose\",\n        \"context\": [\n            { \"key\": \"num_selections\", \"operator\": \"not_equal\", \"operand\": 1 }\n        ],\n        \"keys\": [\"ctrl+t\"]\n    }\n]\n",
-			"file": "/home/will/.config/sublime-text-3/Packages/CTags/Default.sublime-keymap",
-			"file_size": -1,
-			"file_write_time": -1,
+			"file": "src/Ball.cpp",
 			"settings":
 			{
-				"buffer_size": 1701,
-				"line_ending": "Unix",
-				"read_only": true,
-				"scratch": true
+				"buffer_size": 6293,
+				"line_ending": "Unix"
 			}
 		},
 		{
-			"contents": "// Place your settings in the file \"User/CTags.sublime-settings\", which\n// overrides the settings in here.\n{\n    // Enable debugging.\n    //\n    // When enabled, this will result in debug output being printed to the\n    // console. This can be useful for debugging issues.\n    \"debug\": false,\n\n    // Enable auto-complete.\n    //\n    // When enabled, this turns on a basic \"auto-complete\" feature, similar to\n    // a very rudimentary \"Intellisense(TM)\". This is useful for providing\n    // better suggestions than stock Sublime Text could provide.\n    \"autocomplete\": false,\n\n    // Path to ctags executable.\n    //\n    // Alter this value if your ctags command is not in the PATH, or if using\n    // a different version of ctags to that in the path (i.e. for OSX).\n    //\n    // NOTE: You *should not* place entire commands here. These commands are\n    // built automatically using the values below. For example, this is OK:\n    //\n    //     \"command\": \"/usr/bin/ctags\"\n    //\n    // This, on the other hand, won't work!\n    //\n    //     \"command\": \"ctags -R -f .tags --exclude=some/path\"\n    //\n    \"command\": \"\",\n\n    // Enable recursive searching of directories when building tag files.\n    //\n    // When enabled, this is equivalent to `-R` parameter. Set to true to\n    // enable recursive search of directories when generating tag files.\n    \"recursive\" : true,\n\n    // Default read/write location of the tags file.\n    //\n    // This is equivalent to the `-f [FILENAME]` parameter. There is likely no\n    // reason to change this unless you have a large number of existing tags\n    // files you'd like to use that already have a different name. In this\n    // case perhaps consider using the 'extra_tag_files' setting instead.\n    \"tag_file\" : \".tags\",\n\n    // Additional tag files names to search.\n    //\n    // These are searched in addition to the file name given in 'tag_file'\n    \"extra_tag_files\": [\".gemtags\", \"tags\"],\n\n    // Additional options to pass to ctags.\n    //\n    // Any addition options you may wish to pass to the ctags executable. For\n    // example:\n    //\n    //     [\"--exclude=some/path\", \"--exclude=some/other/path\", ...]\n    \"opts\" : [],\n\n    // Tag \"kind\"s to ignore.\n    //\n    // A ctags tagfile describes a number of different \"kind\"s, described in\n    // tag FORMAT file found here:\n    //\n    //     http://ctags.sourceforge.net/FORMAT\n    //\n    // These can be filtered (i.e. ignored). For example - 'import' statements\n    // should be ignored in Python. These are of kind \"i\", e.g.\n    //\n    //     \"type\":\"^i$\"\n    //\n    \"filters\": {\n        \"source.python\": {\"type\":\"^i$\"}\n    },\n\n    // Definition \"kind\"s to ignore.\n    //\n    // This is very similar to the 'filters' option. However, this only\n    // applies to the process that is used to find a definition. All filters\n    // placed here will be used when the plugin is searching for a definition\n    // in the file.\n    \"definition_filters\": {\n        \"source.php\": {\"type\":\"^v$\"}\n    },\n\n    // Enable the ctags menu in the context menus.\n    \"show_context_menus\": true,\n\n    // Paths to additional tag files to include in tag search.\n    //\n    // This is a list of items in the following format:\n    //\n    //     [[\"language\", \"platform\"], \"path\"]\n    //\n    \"extra_tag_paths\": [\n        [[\"source.python\", \"windows\"], \"C:\\\\Python27\\\\Lib\\\\tags\"]\n    ],\n\n    // Enable highlighting of selected symbol.\n    //\n    // When enabled, searched symbols will be highlighted when found. This\n    // can be irritating in some instances, e.g. when in Vintage mode. In\n    // these cases, setting this to false will disable this highlighting.\n    \"select_searched_symbol\": true,\n\n    // Set to false to not open an error dialog while tags are building\n    \"display_rebuilding_message\": true,\n\n    // Rank Manager language syntax regex and character sets\n    //\n    // Ex: Python 'and' ignore exp --> '\\sand\\s' - it must have whitespace\n    // around it so it is not part of real name: gates.Nand.evaluate()\n    \"language_syntax\": {\n        \"splitters\" : [\".\", \"::\", \"->\"],\n        \"source.js\": {\n            \"member_exp\": {\n                \"chars\": \"[A-Za-z0-9_$]\",\n                \"splitters\": [\"\\\\.\"],\n                \"open\": [\"\\\\{\", \"\\\\[\", \"\\\\(\"],\n                \"close\": [\"\\\\}\", \"\\\\]\" , \"\\\\)\"], //close[i] must match open[i]\n                \"ignore\": [\"&\", \"\\\\|\", \"\\\\?\", \":\", \"\\\\!\", \"'\", \"=\", \"\\\"\"],\n                \"stop\": [\"\\\\s\", \",\"],\n                \"this\": [\"this\", \"me\", \"self\", \"that\"]\n            },\n            \"reference_types\": {\n                \"__symbol__(\\\\.call|\\\\.apply){0,1}\\\\s*?\\\\(\": [\"f\", \"fa\"],\n                \"\\\\.fire\\\\s*?\\\\(\\\\s*?\\\\[\\\\'\\\"]__symbol__\\\\[\\\\'\\\"\\\\]\": [\n                    \"eventHandler\"\n                ]\n            }\n        },\n        \"source.python\": {\n            //python settings inherit JavaScript, with some overrides\n            \"inherit\": \"source.js\",\n            \"member_exp\": {\n                \"ignore\": [\"\\\\sand\\\\s\", \"\\\\sor\\\\s\", \"\\\\snot\\\\s\", \":\", \"\\\\!\",\n                           \"'\", \"=\", \"\\\"\"],\n                \"this\" : [\"self\"]\n            }\n        },\n        \"source.java\": {\n            \"inherit\": \"source.js\",\n            \"member_exp\": {\n                \"this\" : [\"this\"]\n            }\n        },\n        \"source.cs\": {\n            \"inherit\": \"source.js\",\n            \"member_exp\": {\n                \"this\" : [\"this\"]\n            }\n        }\n    },\n\n    // Scope Filters\n    //\n    // Tags file may optionally contain tagfield for the scope of the tag. For\n    // example:\n    //\n    //   item  .\\fileHelper.js   420;\"   vp  lineno:420  scope:420:19-422:9\n    //\n    // The re is used to extract 'scope:/beginLine:beginCol-endLine:endCol/'\n    //\n    // Different tags generators may generate this non-standard field in\n    // different formats\n    \"scope_re\": \"(\\\\d.*?):(\\\\d.*?)-(\\\\d.*?):(\\\\d.*?)\"\n}\n",
-			"file": "/home/will/.config/sublime-text-3/Packages/CTags/CTags.sublime-settings",
-			"file_size": -1,
-			"file_write_time": -1,
+			"file": "src/Paddle.cpp",
 			"settings":
 			{
-				"buffer_size": 5863,
-				"line_ending": "Unix",
-				"read_only": true,
-				"scratch": true
+				"buffer_size": 2499,
+				"line_ending": "Unix"
 			}
 		},
 		{
-			"file": "src/MenuEntity.cpp",
+			"file": "src/ProgramManager.cpp",
 			"settings":
 			{
-				"buffer_size": 0,
+				"buffer_size": 2672,
+				"line_ending": "Unix"
+			}
+		},
+		{
+			"file": "include/GameManager.h",
+			"settings":
+			{
+				"buffer_size": 962,
+				"line_ending": "Unix"
+			}
+		},
+		{
+			"file": "include/SimpleIni.h",
+			"settings":
+			{
+				"buffer_size": 123190,
+				"line_ending": "Unix"
+			}
+		},
+		{
+			"file": "src/MenuManager.cpp",
+			"settings":
+			{
+				"buffer_size": 3665,
+				"line_ending": "Unix"
+			}
+		},
+		{
+			"file": "src/Menu.cpp",
+			"settings":
+			{
+				"buffer_size": 1504,
 				"line_ending": "Unix"
 			}
 		}
@@ -441,13 +488,9 @@
 	"command_palette":
 	{
 		"height": 370.0,
-		"last_filter": "remove",
+		"last_filter": "",
 		"selected_items":
 		[
-			[
-				"remove",
-				"Package Control: Remove Package"
-			],
 			[
 				"",
 				"Build With: Make - Run"
@@ -455,6 +498,10 @@
 			[
 				"make",
 				"Build With: Make - Run"
+			],
+			[
+				"remove",
+				"Package Control: Remove Package"
 			],
 			[
 				"list",
@@ -589,24 +636,38 @@
 	[
 		"/home/will/Documents/git/Breakout",
 		"/home/will/Documents/git/Breakout/include",
-		"/home/will/Documents/git/Breakout/sounds",
-		"/home/will/Documents/git/Breakout/src",
-		"/usr/include/SDL2"
+		"/home/will/Documents/git/Breakout/src"
 	],
 	"file_history":
 	[
+		"/home/will/Documents/git/Breakout/include/Button.h",
+		"/home/will/Documents/git/Breakout/src/Button.cpp",
+		"/home/will/Documents/git/Breakout/include/AssetFactory.h",
+		"/home/will/Documents/git/Breakout/include/GameManager.h",
+		"/home/will/Documents/git/Breakout/include/MenuManager.h",
+		"/home/will/Documents/git/Breakout/src/MenuManager.cpp",
+		"/home/will/Documents/git/Breakout/include/Menu.h",
+		"/home/will/Documents/git/Breakout/src/Menu.cpp",
+		"/home/will/Documents/git/Breakout/src/GameManager.cpp",
+		"/home/will/Documents/git/Breakout/include/MenuEntity.h",
+		"/home/will/Documents/git/Breakout/src/ProgramManager.cpp",
+		"/home/will/Documents/git/Breakout/.tags",
+		"/home/will/.config/sublime-text-3/Packages/CTags/CTags.sublime-settings",
+		"/home/will/.config/sublime-text-3/Packages/User/CTags.sublime-settings",
+		"/home/will/Documents/git/Breakout/include/PauseMenuManager.h",
+		"/home/will/Documents/git/Breakout/src/PauseMenuManager.cpp",
+		"/home/will/Documents/git/Breakout/include/UIEntity.h",
+		"/home/will/Documents/git/Breakout/src/MenuEntity.cpp",
+		"/home/will/.config/sublime-text-3/Packages/CTags/Default.sublime-keymap",
 		"/usr/include/SDL2/.tags",
 		"/usr/include/SDL2/SDL_surface.h",
 		"/home/will/.config/sublime-text-3/Packages/User/Preferences.sublime-settings",
 		"/home/will/.config/sublime-text-3/Packages/User/Default (Linux).sublime-keymap",
-		"/home/will/Documents/git/Breakout/.tags",
-		"/home/will/.config/sublime-text-3/Packages/CTags/CTags.sublime-settings",
 		"/home/will/Documents/git/Breakout/include/Ball.h",
 		"/home/will/Documents/git/Breakout/src/Ball.cpp",
 		"/home/will/Documents/git/Breakout/include/Block.h",
 		"/home/will/Documents/git/Breakout/src/Block.cpp",
 		"/home/will/Documents/git/Breakout/src/AssetFactory.cpp",
-		"/home/will/Documents/git/Breakout/include/AssetFactory.h",
 		"/home/will/Documents/git/Breakout/src/main.cpp",
 		"/home/will/Documents/git/Breakout/include/StateMachine.h",
 		"/home/will/Documents/git/Breakout/include/Effects.h",
@@ -618,13 +679,9 @@
 		"/home/will/Documents/git/Breakout/src/BallsIndicator.cpp",
 		"/home/will/Documents/git/Breakout/include/Paddle.h",
 		"/home/will/Documents/git/Breakout/src/Paddle.cpp",
-		"/home/will/Documents/git/Breakout/include/GameManager.h",
-		"/home/will/Documents/git/Breakout/src/GameManager.cpp",
 		"/home/will/Documents/git/Breakout/include/ProgramManager.h",
-		"/home/will/Documents/git/Breakout/src/ProgramManager.cpp",
 		"/home/will/Documents/git/Breakout/include/BallsIndicator.h",
 		"/home/will/Documents/git/Breakout/include/Sound.h",
-		"/home/will/.config/sublime-text-3/Packages/User/CTags.sublime-settings",
 		"/home/will/Documents/git/Breakout/breakout.sublime-project",
 		"/home/will/Documents/git/Breakout/src/StateMachine.cpp",
 		"/home/will/Documents/git/Breakout/include/SimpleIni.h",
@@ -636,16 +693,9 @@
 		"/home/will/Documents/git/Breakout/include/Types.h",
 		"/home/will/Documents/git/Breakout/src/TextureFactory.cpp",
 		"/home/will/Documents/SDL Tutorial/07_texture_loading_and_rendering_SDL.cpp",
-		"/home/will/Documents/git/Breakout/include/MenuManager.h",
-		"/home/will/Documents/git/Breakout/src/MenuManager.cpp",
-		"/home/will/Documents/git/Breakout/src/Button.cpp",
 		"/home/will/Documents/git/Breakout/include/Collider.h",
-		"/home/will/Documents/git/Breakout/include/Button.h",
 		"/home/will/Documents/git/Breakout/src/Collider.cpp",
-		"/home/will/Documents/git/Breakout/src/PauseMenuManager.cpp",
 		"/home/will/Documents/git/Breakout/include/EventManager.h",
-		"/home/will/Documents/git/Breakout/include/PauseMenuManager.h",
-		"/home/will/Documents/git/Breakout/include/UIEntity.h",
 		"/home/will/Documents/git/Breakout/src/EventManager.cpp",
 		"/usr/include/c++/4.9/bits/stl_iterator.h",
 		"/build/buildd/glibc-2.21/sysdeps/unix/syscall-template.S",
@@ -733,6 +783,15 @@
 		"case_sensitive": false,
 		"find_history":
 		[
+			"disable",
+			"enable",
+			"height",
+			"width",
+			"posY",
+			"posX",
+			"this->r",
+			"UIEntity",
+			"uiEntities",
 			"cout",
 			"SetRenderDrawColor",
 			"0",
@@ -848,6 +907,12 @@
 		"regex": false,
 		"replace_history":
 		[
+			"this->rect.h",
+			"this->rect.w",
+			"this->rect.y",
+			"this->rect.x",
+			"MenuEntity",
+			"menuEntities",
 			"getAsset",
 			"AssetFactory",
 			"assetFactory",
@@ -903,19 +968,19 @@
 			[
 				{
 					"buffer": 0,
-					"file": "include/Button.h",
+					"file": "include/Globals.h",
 					"semi_transient": false,
 					"settings":
 					{
-						"buffer_size": 696,
+						"buffer_size": 814,
 						"regions":
 						{
 						},
 						"selection":
 						[
 							[
-								176,
-								176
+								36,
+								36
 							]
 						],
 						"settings":
@@ -927,29 +992,146 @@
 						"translation.y": 0.0,
 						"zoom_level": 1.0
 					},
-					"stack_index": 5,
+					"stack_index": 7,
 					"type": "text"
 				},
 				{
 					"buffer": 1,
-					"file": "include/UIEntity.h",
+					"file": "src/Globals.cpp",
 					"semi_transient": false,
 					"settings":
 					{
-						"buffer_size": 128,
+						"buffer_size": 2856,
 						"regions":
 						{
 						},
 						"selection":
 						[
 							[
-								120,
-								120
+								570,
+								570
 							]
 						],
 						"settings":
 						{
-							"syntax": "Packages/C++/C++.sublime-syntax"
+							"syntax": "Packages/C++/C++.sublime-syntax",
+							"translate_tabs_to_spaces": false
+						},
+						"translation.x": 0.0,
+						"translation.y": 57.0,
+						"zoom_level": 1.0
+					},
+					"stack_index": 3,
+					"type": "text"
+				},
+				{
+					"buffer": 2,
+					"file": "src/main.cpp",
+					"semi_transient": false,
+					"settings":
+					{
+						"buffer_size": 2037,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								963,
+								963
+							]
+						],
+						"settings":
+						{
+							"syntax": "Packages/C++/C++.sublime-syntax",
+							"translate_tabs_to_spaces": false
+						},
+						"translation.x": 0.0,
+						"translation.y": 637.0,
+						"zoom_level": 1.0
+					},
+					"stack_index": 5,
+					"type": "text"
+				},
+				{
+					"buffer": 3,
+					"file": "src/GameManager.cpp",
+					"semi_transient": false,
+					"settings":
+					{
+						"buffer_size": 5305,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								1607,
+								1607
+							]
+						],
+						"settings":
+						{
+							"syntax": "Packages/C++/C++.sublime-syntax",
+							"translate_tabs_to_spaces": false
+						},
+						"translation.x": 0.0,
+						"translation.y": 1130.0,
+						"zoom_level": 1.0
+					},
+					"stack_index": 0,
+					"type": "text"
+				},
+				{
+					"buffer": 4,
+					"file": "src/Ball.cpp",
+					"semi_transient": false,
+					"settings":
+					{
+						"buffer_size": 6293,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								1802,
+								1802
+							]
+						],
+						"settings":
+						{
+							"syntax": "Packages/C++/C++.sublime-syntax",
+							"translate_tabs_to_spaces": false
+						},
+						"translation.x": 0.0,
+						"translation.y": 735.0,
+						"zoom_level": 1.0
+					},
+					"stack_index": 4,
+					"type": "text"
+				},
+				{
+					"buffer": 5,
+					"file": "src/Paddle.cpp",
+					"semi_transient": false,
+					"settings":
+					{
+						"buffer_size": 2499,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								122,
+								122
+							]
+						],
+						"settings":
+						{
+							"syntax": "Packages/C++/C++.sublime-syntax",
+							"translate_tabs_to_spaces": false
 						},
 						"translation.x": 0.0,
 						"translation.y": 0.0,
@@ -959,26 +1141,26 @@
 					"type": "text"
 				},
 				{
-					"buffer": 2,
-					"file": "include/MenuEntity.h",
+					"buffer": 6,
+					"file": "src/ProgramManager.cpp",
 					"semi_transient": false,
 					"settings":
 					{
-						"buffer_size": 141,
+						"buffer_size": 2672,
 						"regions":
 						{
 						},
 						"selection":
 						[
 							[
-								124,
-								124
+								193,
+								193
 							]
 						],
 						"settings":
 						{
-							"open_with_edit": true,
-							"syntax": "Packages/C++/C++.sublime-syntax"
+							"syntax": "Packages/C++/C++.sublime-syntax",
+							"translate_tabs_to_spaces": false
 						},
 						"translation.x": 0.0,
 						"translation.y": 0.0,
@@ -988,116 +1170,120 @@
 					"type": "text"
 				},
 				{
-					"buffer": 3,
-					"file": "/home/will/.config/sublime-text-3/Packages/User/CTags.sublime-settings",
+					"buffer": 7,
+					"file": "include/GameManager.h",
 					"semi_transient": false,
 					"settings":
 					{
-						"buffer_size": 66,
+						"buffer_size": 962,
 						"regions":
 						{
 						},
 						"selection":
 						[
 							[
-								45,
-								45
+								688,
+								688
 							]
 						],
 						"settings":
 						{
-							"syntax": "Packages/JavaScript/JSON.sublime-syntax"
-						},
-						"translation.x": 0.0,
-						"translation.y": 0.0,
-						"zoom_level": 1.0
-					},
-					"stack_index": 0,
-					"type": "text"
-				},
-				{
-					"buffer": 4,
-					"file": "/home/will/.config/sublime-text-3/Packages/CTags/Default.sublime-keymap",
-					"semi_transient": false,
-					"settings":
-					{
-						"buffer_size": 1701,
-						"regions":
-						{
-						},
-						"selection":
-						[
-							[
-								450,
-								450
-							]
-						],
-						"settings":
-						{
-							"syntax": "Packages/JavaScript/JSON.sublime-syntax"
-						},
-						"translation.x": 0.0,
-						"translation.y": 0.0,
-						"zoom_level": 1.0
-					},
-					"stack_index": 4,
-					"type": "text"
-				},
-				{
-					"buffer": 5,
-					"file": "/home/will/.config/sublime-text-3/Packages/CTags/CTags.sublime-settings",
-					"semi_transient": false,
-					"settings":
-					{
-						"buffer_size": 5863,
-						"regions":
-						{
-						},
-						"selection":
-						[
-							[
-								1425,
-								1425
-							]
-						],
-						"settings":
-						{
-							"syntax": "Packages/JavaScript/JSON.sublime-syntax"
+							"syntax": "Packages/C++/C++.sublime-syntax",
+							"translate_tabs_to_spaces": false
 						},
 						"translation.x": -0.0,
-						"translation.y": 399.0,
-						"zoom_level": 1.0
-					},
-					"stack_index": 3,
-					"type": "text"
-				},
-				{
-					"buffer": 6,
-					"file": "src/MenuEntity.cpp",
-					"semi_transient": false,
-					"settings":
-					{
-						"buffer_size": 0,
-						"regions":
-						{
-						},
-						"selection":
-						[
-							[
-								0,
-								0
-							]
-						],
-						"settings":
-						{
-							"open_with_edit": true,
-							"syntax": "Packages/C++/C++.sublime-syntax"
-						},
-						"translation.x": 0.0,
-						"translation.y": 0.0,
+						"translation.y": 171.0,
 						"zoom_level": 1.0
 					},
 					"stack_index": 6,
+					"type": "text"
+				},
+				{
+					"buffer": 8,
+					"file": "include/SimpleIni.h",
+					"semi_transient": false,
+					"settings":
+					{
+						"buffer_size": 123190,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								34264,
+								34264
+							]
+						],
+						"settings":
+						{
+							"syntax": "Packages/C++/C++.sublime-syntax",
+							"tab_size": 4,
+							"translate_tabs_to_spaces": true
+						},
+						"translation.x": 0.0,
+						"translation.y": 15969.0,
+						"zoom_level": 1.0
+					},
+					"stack_index": 8,
+					"type": "text"
+				},
+				{
+					"buffer": 9,
+					"file": "src/MenuManager.cpp",
+					"semi_transient": false,
+					"settings":
+					{
+						"buffer_size": 3665,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								637,
+								637
+							]
+						],
+						"settings":
+						{
+							"syntax": "Packages/C++/C++.sublime-syntax",
+							"translate_tabs_to_spaces": false
+						},
+						"translation.x": 0.0,
+						"translation.y": 342.0,
+						"zoom_level": 1.0
+					},
+					"stack_index": 10,
+					"type": "text"
+				},
+				{
+					"buffer": 10,
+					"file": "src/Menu.cpp",
+					"semi_transient": false,
+					"settings":
+					{
+						"buffer_size": 1504,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								166,
+								166
+							]
+						],
+						"settings":
+						{
+							"syntax": "Packages/C++/C++.sublime-syntax",
+							"translate_tabs_to_spaces": false
+						},
+						"translation.x": 0.0,
+						"translation.y": 0.0,
+						"zoom_level": 1.0
+					},
+					"stack_index": 9,
 					"type": "text"
 				}
 			]
@@ -1159,6 +1345,18 @@
 		"last_filter": "",
 		"selected_items":
 		[
+			[
+				"pro",
+				"Breakout/src/ProgramManager.cpp"
+			],
+			[
+				"asset",
+				"Breakout/include/AssetFactory.h"
+			],
+			[
+				"button.h",
+				"Breakout/include/Button.h"
+			],
 			[
 				"stateme",
 				"include/StateMachine.h"
@@ -1246,10 +1444,6 @@
 			[
 				"button.c",
 				"src/Button.cpp"
-			],
-			[
-				"button.h",
-				"include/Button.h"
 			],
 			[
 				"button.cpp",
