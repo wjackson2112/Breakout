@@ -33,7 +33,7 @@ private:
 	void gameLost();
 
 public:
-	GameManager(AssetFactory* assetFactory);
+	GameManager(AssetFactory* assetFactory, SDL_Renderer* gRenderer);
 	~GameManager();
 
 	void render(SDL_Renderer*);

@@ -1,12 +1,13 @@
 #include "GameManager.h"
 
-GameManager::GameManager(AssetFactory* assetFactory)
+GameManager::GameManager(AssetFactory* assetFactory, SDL_Renderer* gRenderer)
 {
 	srand(time(NULL));
 	pause = true;
 	visible = false;
 	EventManager::Instance()->registerHandler(this);
 	this->assetFactory = assetFactory;
+	this->gameTexture = SDL_CreateTexture(gRenderer, SDL_PIXELFORMAT_RGBA8888, SDL_TEXTUREACCESS_TARGET, Globals::fieldWidth, Globals::fieldHeight);
 	this->resetLevel();
 }
 
@@ -129,16 +130,13 @@ void GameManager::detectCollisions()
 
 void GameManager::render(SDL_Renderer* gRenderer)
 {
-	SDL_Rect backgroundRect = {Globals::xOffset, Globals::yOffset, Globals::fieldWidth, Globals::fieldHeight};
-	SDL_SetRenderDrawColor(gRenderer, 0x10, 0x10, 0x10, 0xFF);
-	SDL_RenderFillRect(gRenderer, &backgroundRect);
-
-	if(!this->gameTexture){
-		this->gameTexture = SDL_CreateTexture(gRenderer, SDL_PIXELFORMAT_RGBA8888, SDL_TEXTUREACCESS_TARGET, Globals::fieldWidth, Globals::fieldHeight);
-	}
+	SDL_Rect gameTextureSizeRect = {0, 0, Globals::fieldWidth, Globals::fieldHeight};
+	SDL_Rect gameTexturePosRect = {Globals::xOffset, Globals::yOffset, Globals::fieldWidth, Globals::fieldHeight};
 
 	SDL_SetRenderTarget(gRenderer, this->gameTexture);
-	SDL_RenderClear(gRenderer);
+
+	SDL_SetRenderDrawColor(gRenderer, 0x10, 0x10, 0x10, 0xFF);
+	SDL_RenderFillRect(gRenderer, &gameTextureSizeRect);
 
 	for(auto &entity : physicsEntities)
 	{
@@ -146,8 +144,7 @@ void GameManager::render(SDL_Renderer* gRenderer)
 	}
 
 	SDL_SetRenderTarget(gRenderer, NULL);
-
-	SDL_RenderCopy(gRenderer, this->gameTexture, NULL, &backgroundRect);
+	SDL_RenderCopy(gRenderer, this->gameTexture, NULL, &gameTexturePosRect);
 
 	for(auto &entity : uiEntities)
 	{

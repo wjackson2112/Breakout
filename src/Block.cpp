@@ -43,6 +43,8 @@ Block::Block(int x, int y, int width, int height, int* blockCount, AssetFactory*
 
 	SDL_SetTextureBlendMode(this->texture, SDL_BLENDMODE_BLEND);
 
+	SDL_SetTextureAlphaMod(this->texture, 255);
+
 	this->effects = new Effects(this->texture,
 								[this](void){ return this->alphaTransitionComplete(); }, 
 								//(Effects::EffectsCB) &Block::alphaTransitionComplete, 
@@ -100,7 +102,6 @@ void Block::stateChanged(BlockState prevState, BlockState currState){
 			{
 				case IDLE_ST:
 					this->effects->addAlphaTransition(250, 255, 0);
-					SDL_SetTextureAlphaMod(this->texture, 50);
 					break;
 			}
 			break;

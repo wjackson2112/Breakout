@@ -63,6 +63,7 @@ bool init()
 	
 	//Create Renderer
 	gRenderer = SDL_CreateRenderer(gWindow, -1, SDL_RENDERER_ACCELERATED | SDL_RENDERER_PRESENTVSYNC);
+	SDL_RenderClear(gRenderer);
 	SDL_SetRenderDrawBlendMode(gRenderer, SDL_BLENDMODE_BLEND);
 	if(gRenderer == NULL)
 	{
