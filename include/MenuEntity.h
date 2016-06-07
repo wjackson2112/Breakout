@@ -13,9 +13,6 @@ public:
 	virtual void setRect(SDL_Rect rect) = 0;
 	virtual SDL_Rect  getRect() = 0;
 
-	virtual void disable() = 0;
-	virtual void enable() = 0;
-
 };
 
 #endif

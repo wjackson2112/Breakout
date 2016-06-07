@@ -18,18 +18,30 @@ typedef enum
 {
 	NONE_ST,
 	MAIN_ST,
-	PAUSE_ST
+	PAUSE_ST,
+	OPTIONS_ST
 } MenuManagerState;
 
 class MenuManager : public IEventHandler
 {
 private:
-	Menu *mainMenu, *pauseMenu;
+	Menu *mainMenu, *pauseMenu, *optionsMenu;
+	std::vector<MenuManagerState> menuStack;
 	AssetFactory* assetFactory;
+	
 	StateMachine<MenuManagerState>* state;
+	
 	bool visible;
+	
 	void setMainMenuButtons();
 	void setPauseMenuButtons();
+	void setOptionsMenuButtons();
+
+	void pushMenu(MenuManagerState menu);
+	void popMenu();
+	MenuManagerState peekMenu();
+	void clearMenuStack();
+
 	void stateChanged(MenuManagerState prevState, MenuManagerState currState);
 public:
 	MenuManager(AssetFactory* assetFactory);

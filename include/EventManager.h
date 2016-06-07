@@ -19,6 +19,7 @@ typedef enum GameEvent
 	PAUSE_GAME,
 	RESUME_GAME,
 	OPTIONS,
+	BACK,
 	CREDITS,
 	QUIT_GAME,
 	QUIT_PROGRAM,

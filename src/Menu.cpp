@@ -41,19 +41,3 @@ void Menu::render(SDL_Renderer* gRenderer)
 		item->render(gRenderer);
 	}
 }
-
-void Menu::enable()
-{
-	for(auto &item : menuItems)
-	{
-		item->enable();
-	}
-}
-
-void Menu::disable()
-{
-	for(auto &item : menuItems)
-	{
-		item->disable();
-	}
-}

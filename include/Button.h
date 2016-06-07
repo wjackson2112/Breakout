@@ -13,7 +13,6 @@ class Button : public MenuEntity
 private:
 	GameEvent event;
 	bool lastState = false;
-	bool enabled = false;
 public:
 	Button(string texture_file, AssetFactory* assetFactory, GameEvent event);
 	~Button();
@@ -23,6 +22,7 @@ public:
 	void handleMouseEvents(int mouseState, int x, int y);
 	void handleKeyboardEvents(const Uint8*);
 	void handleGameEvents(const Uint8* events);
+
 	char* type();
 
 	void update(int frameTime);
@@ -32,9 +32,6 @@ public:
 	SDL_Point getOrigin();
 	SDL_Point getSize();
 	SDL_Rect  getRect();
-
-	void disable();
-	void enable();
 
 };
 

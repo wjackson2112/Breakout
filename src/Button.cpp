@@ -25,23 +25,21 @@ void Button::setRect(SDL_Rect rect)
 
 void Button::handleMouseEvents(int mouseState, int x, int y)
 {
-	if(enabled)
-	{	
-		if((mouseState & SDL_BUTTON(SDL_BUTTON_LEFT)) && 
-			x > this->rect.x && 
-			x < this->rect.x + this->rect.w && 
-			y > this->rect.y && 
-			y < this->rect.y + this->rect.h &&
-			lastState == false)
-		{
-			lastState = true;
-		}
-		else if(!(mouseState & SDL_BUTTON(SDL_BUTTON_LEFT)) && 
-				lastState == true)
-		{
-			EventManager::Instance()->reportGameEvent(this->event);
-			lastState = false;
-		}
+
+	if((mouseState & SDL_BUTTON(SDL_BUTTON_LEFT)) && 
+		x > this->rect.x && 
+		x < this->rect.x + this->rect.w && 
+		y > this->rect.y && 
+		y < this->rect.y + this->rect.h &&
+		lastState == false)
+	{
+		lastState = true;
+	}
+	else if(!(mouseState & SDL_BUTTON(SDL_BUTTON_LEFT)) && 
+			lastState == true)
+	{
+		EventManager::Instance()->reportGameEvent(this->event);
+		lastState = false;
 	}
 }
 
@@ -91,14 +89,4 @@ SDL_Point Button::getSize()
 SDL_Rect  Button::getRect()
 {
 	return this->rect;
-}
-
-void Button::disable()
-{
-	this->enabled = false;
-}
-
-void Button::enable()
-{
-	this->enabled = true;
 }
