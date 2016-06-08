@@ -16,12 +16,16 @@
 #include "MainMenu.h"
 #include "PauseMenu.h"
 #include "OptionsMenu.h"
+#include "AudioOptionsMenu.h"
+#include "VideoOptionsMenu.h"
 
 typedef enum
 {
 	MAIN_MENU,
 	PAUSE_MENU,
-	OPTIONS_MENU
+	OPTIONS_MENU,
+	VIDEO_OPTIONS_MENU,
+	AUDIO_OPTIONS_MENU
 } MenuType;
 
 class MenuManager : public IEventHandler

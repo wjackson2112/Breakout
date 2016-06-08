@@ -146,7 +146,27 @@ char* MenuManager::type()
 
 void MenuManager::handleMouseEvents(int mouseState, int x, int y)
 {
-	
+	static bool lastState = false;
+	Menu* activeMenu = this->peekMenu();
+
+	if((mouseState & SDL_BUTTON(SDL_BUTTON_LEFT)) &&
+		lastState == false)
+	{
+		lastState = true;
+	}
+	else if(!(mouseState & SDL_BUTTON(SDL_BUTTON_LEFT)) && 
+			lastState == true)
+	{
+		if(activeMenu)
+		{
+			GameEvent event = activeMenu->handleClick(x, y);
+			if(event != NO_EVENT)
+			{
+				EventManager::Instance()->reportGameEvent(event);
+			}
+		}
+		lastState = false;
+	}
 }
 
 void MenuManager::handleKeyboardEvents(const Uint8* keyStates)
@@ -177,6 +197,16 @@ void MenuManager::handleGameEvents(const Uint8* events)
 		this->pushMenu(OPTIONS_MENU);
 	}
 
+	if(events[VIDEO_OPTIONS])
+	{
+		this->pushMenu(VIDEO_OPTIONS_MENU);
+	}
+
+	if(events[AUDIO_OPTIONS])
+	{
+		this->pushMenu(AUDIO_OPTIONS_MENU);
+	}
+
 	if(events[BACK])
 	{
 		this->popMenu();
@@ -185,36 +215,63 @@ void MenuManager::handleGameEvents(const Uint8* events)
 
 void MenuManager::pushMenu(MenuType menuType)
 {	
+	Menu* newMenu;
+
 	switch(menuType)
 	{
 		case MAIN_MENU:
-			this->menuStack.push_back(new MainMenu(Globals::mainMenuX, 
-												   Globals::mainMenuY, 
-												   Globals::mainMenuRowHeight, 
-												   Globals::mainMenuRowPadding,
-												   Globals::mainMenuColWidth,
-												   Globals::mainMenuColPadding,
-												   this->assetFactory));
+			newMenu = new MainMenu(Globals::mainMenuX, 
+								   Globals::mainMenuY, 
+								   Globals::mainMenuRowHeight, 
+								   Globals::mainMenuRowPadding,
+								   Globals::mainMenuColWidth,
+								   Globals::mainMenuColPadding,
+								   this->assetFactory);
 			break;
 		case PAUSE_MENU:
-			this->menuStack.push_back(new PauseMenu(Globals::pauseMenuX, 
-										   		    Globals::pauseMenuY, 
-										   		    Globals::pauseMenuRowHeight, 
-										   		    Globals::pauseMenuRowPadding,
-										   		    Globals::pauseMenuColWidth,
-										   		    Globals::pauseMenuColPadding,
-										   		    this->assetFactory));
+			newMenu = new PauseMenu(Globals::pauseMenuX, 
+						   		    Globals::pauseMenuY, 
+						   		    Globals::pauseMenuRowHeight, 
+						   		    Globals::pauseMenuRowPadding,
+						   		    Globals::pauseMenuColWidth,
+						   		    Globals::pauseMenuColPadding,
+						   		    this->assetFactory);
 			break;
 		case OPTIONS_MENU:
-			this->menuStack.push_back(new OptionsMenu(Globals::mainMenuX, 
-										   		      Globals::mainMenuY, 
-										   		      Globals::mainMenuRowHeight, 
-										   		      Globals::mainMenuRowPadding,
-										   		      Globals::mainMenuColWidth,
-										   		      Globals::mainMenuColPadding,
-										   		      this->assetFactory));
+			newMenu = new OptionsMenu(Globals::mainMenuX, 
+						   		      Globals::mainMenuY, 
+						   		      Globals::mainMenuRowHeight, 
+						   		      Globals::mainMenuRowPadding,
+						   		      Globals::mainMenuColWidth,
+						   		      Globals::mainMenuColPadding,
+						   		      this->assetFactory);
+			break;
+		case AUDIO_OPTIONS_MENU:
+			newMenu = new AudioOptionsMenu(Globals::mainMenuX, 
+						   		      	   Globals::mainMenuY, 
+						   		           Globals::mainMenuRowHeight, 
+						   		           Globals::mainMenuRowPadding,
+						   		           Globals::mainMenuColWidth,
+						   		           Globals::mainMenuColPadding,
+						   		           this->assetFactory);
+			break;
+		case VIDEO_OPTIONS_MENU:
+			newMenu = new VideoOptionsMenu(Globals::mainMenuX, 
+						   		           Globals::mainMenuY, 
+						   		           Globals::mainMenuRowHeight, 
+						   		           Globals::mainMenuRowPadding,
+						   		           Globals::mainMenuColWidth,
+						   		           Globals::mainMenuColPadding,
+						   		           this->assetFactory);
 			break;
 	}
+
+	if(this->menuStack.size() >= 1)
+	{
+		newMenu->add_floating_menu_item(new Button("./png/Back.png", assetFactory, BACK), 25, 25);
+	}
+
+	this->menuStack.push_back(newMenu);
 }
 
 void MenuManager::popMenu()

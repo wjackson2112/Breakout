@@ -5,7 +5,7 @@
 
 class PauseMenu : public Menu
 {
-	int num_rows = 4;
+	int num_rows = 5;
 	int num_cols = 1;
 
 public:

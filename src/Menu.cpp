@@ -34,6 +34,36 @@ void Menu::add_menu_item(MenuEntity* item, int row, int col)
 	this->menuItems.push_back(item);//this->menuItems[row + col] = item;
 }
 
+void Menu::add_floating_menu_item(MenuEntity* item, int x, int y)
+{
+	//Scale the texture to match the size of the menu items
+	SDL_Rect orig_rect = item->getRect();
+	SDL_Rect *new_rect = new SDL_Rect();
+
+	new_rect->x = x;
+	new_rect->y = y;
+	new_rect->w = ((float) this->row_height/(float) orig_rect.h)*orig_rect.w;
+	new_rect->h = this->row_height;
+
+	item->setRect(*new_rect);
+
+	this->menuItems.push_back(item);//this->menuItems[row + col] = item	
+}
+
+GameEvent Menu::handleClick(int x, int y)
+{
+	for(auto &menuItem : menuItems)
+	{
+		GameEvent event = menuItem->handleClick(x,y);
+		if(event != NO_EVENT)
+		{
+			return event;
+		}
+	}
+
+	return NO_EVENT;
+}
+
 void Menu::render(SDL_Renderer* gRenderer)
 {
 	for(auto &item : menuItems)

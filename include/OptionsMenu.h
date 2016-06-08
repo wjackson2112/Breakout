@@ -5,7 +5,7 @@
 
 class OptionsMenu : public Menu
 {
-	int num_rows = 1;
+	int num_rows = 2;
 	int num_cols = 1;
 	
 public:
