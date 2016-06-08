@@ -13,36 +13,38 @@
 #include "AssetFactory.h"
 #include "Menu.h"
 #include "StateMachine.h"
+#include "MainMenu.h"
+#include "PauseMenu.h"
+#include "OptionsMenu.h"
 
 typedef enum
 {
-	NONE_ST,
-	MAIN_ST,
-	PAUSE_ST,
-	OPTIONS_ST
-} MenuManagerState;
+	MAIN_MENU,
+	PAUSE_MENU,
+	OPTIONS_MENU
+} MenuType;
 
 class MenuManager : public IEventHandler
 {
 private:
-	Menu *mainMenu, *pauseMenu, *optionsMenu;
-	std::vector<MenuManagerState> menuStack;
+	//Menu *mainMenu, *pauseMenu, *optionsMenu;
+	std::vector<Menu*> menuStack;
 	AssetFactory* assetFactory;
 	
-	StateMachine<MenuManagerState>* state;
+	// StateMachine<MenuManagerState>* state;
 	
 	bool visible;
 	
-	void setMainMenuButtons();
-	void setPauseMenuButtons();
-	void setOptionsMenuButtons();
+	// void setMainMenuButtons();
+	// void setPauseMenuButtons();
+	// void setOptionsMenuButtons();
 
-	void pushMenu(MenuManagerState menu);
+	void pushMenu(MenuType menu);
 	void popMenu();
-	MenuManagerState peekMenu();
+	Menu* peekMenu();
 	void clearMenuStack();
 
-	void stateChanged(MenuManagerState prevState, MenuManagerState currState);
+	// void stateChanged(MenuManagerState prevState, MenuManagerState currState);
 public:
 	MenuManager(AssetFactory* assetFactory);
 	~MenuManager();

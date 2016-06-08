@@ -2,7 +2,7 @@
 
 //TODO: Find a way to eliminate the "num_rows" and "num_cols" vars here
 //They should just be dynamically updated based on adding items to the menu
-Menu::Menu(int x, int y, int num_rows, int row_height, int row_padding, int num_cols, int col_width, int col_padding)
+Menu::Menu(int x, int y, int num_rows, int row_height, int row_padding, int num_cols, int col_width, int col_padding, AssetFactory* assetFactory)
 {
 	this->rect.x = x;
 	this->rect.y = y;
@@ -31,7 +31,7 @@ void Menu::add_menu_item(MenuEntity* item, int row, int col)
 
 	item->setRect(*new_rect);
 
-	this->menuItems[row + col] = item;
+	this->menuItems.push_back(item);//this->menuItems[row + col] = item;
 }
 
 void Menu::render(SDL_Renderer* gRenderer)
