@@ -1,7 +1,16 @@
 #include "PauseMenu.h"
 
+#define X_OFFSET 100
+#define Y_OFFSET 100
+#define NUM_ROWS 5
+#define ROW_HEIGHT 75
+#define ROW_PADDING 25
+#define NUM_COLS 1
+#define COL_WIDTH 100
+#define COL_PADDING 25
+
 PauseMenu::PauseMenu(AssetFactory* assetFactory)
-: Menu(this->x, this->y, this->num_rows, this->row_height, this->row_padding, this->num_cols, this->col_width, this->col_padding, assetFactory)
+	: Menu(X_OFFSET, Y_OFFSET, NUM_ROWS, ROW_HEIGHT, ROW_PADDING, NUM_COLS, COL_WIDTH, COL_PADDING, assetFactory)
 {
 	this->add_menu_item(new Button("./png/ResumeGame.png", assetFactory,  RESUME_GAME), 0, 0);
 	this->add_menu_item(new Button("./png/NewGame.png", assetFactory, NEW_GAME), 1, 0);

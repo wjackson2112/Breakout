@@ -14,8 +14,6 @@ Menu::Menu(int x, int y, int num_rows, int row_height, int row_padding, int num_
 	this->num_cols = num_cols;
 	this->col_width = col_width;
 	this->col_padding = col_padding;
-
-	this->menuItems.resize(num_rows * num_cols);
 }
 
 void Menu::add_menu_item(MenuEntity* item, int row, int col)

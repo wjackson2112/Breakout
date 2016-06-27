@@ -8,7 +8,7 @@
 
 class Menu
 {
-private:
+protected:
 	int num_rows, row_height, row_padding;
 	int num_cols, col_width, col_padding;
 	SDL_Rect rect;
