@@ -4,28 +4,104 @@
 		"selected_items":
 		[
 			[
-				"PAUSE",
-				"PAUSE_GAME"
+				"COL_",
+				"COL_PADDING"
 			],
 			[
-				"clear",
-				"clearMenuStack	(MenuManager.h)"
+				"NUM",
+				"NUM_COLS"
+			],
+			[
+				"QUIT",
+				"QUIT_PROGRAM"
+			],
+			[
+				"AUDIO_OPTOIN",
+				"AUDIO_OPTIONS_MENU"
+			],
+			[
+				"VIDEO",
+				"VIDEO_OPTIONS_MENU"
+			],
+			[
+				"OP",
+				"OPTIONS_ST"
+			],
+			[
+				"MenuMana",
+				"MenuManagerState"
+			],
+			[
+				"show",
+				"shownMenuStateChanged"
+			],
+			[
+				"screen",
+				"screenWidth"
+			],
+			[
+				"scree",
+				"screenWidth"
+			],
+			[
+				"pauseMen",
+				"pauseMenuNumRows"
+			],
+			[
+				"mainMen",
+				"mainMenuColPadding"
+			],
+			[
+				"main",
+				"mainMenuColWidth"
 			],
 			[
 				"mainMenuRow",
 				"mainMenuRowPadding"
 			],
 			[
-				"SDL_SetTexture",
-				"SDL_SetTextureAlphaMod	(Block.cpp)"
+				"upda",
+				"updateState"
 			],
 			[
-				"SDL_Render",
-				"SDL_RenderCopy"
+				"enab",
+				"enabled"
 			],
 			[
-				"SDL",
-				"SDL_Renderer"
+				"extra",
+				"extra_tag_files"
+			],
+			[
+				"SDL_GetPer",
+				"SDL_GetPerformanceFrequency	(Ball.cpp)"
+			],
+			[
+				"State",
+				"StateMachineCB"
+			],
+			[
+				"alp",
+				"alphaTransitionComplete	(Block.h)"
+			],
+			[
+				"alph",
+				"alphaCB"
+			],
+			[
+				"SDL_Get",
+				"SDL_GetPerformanceFrequency	(Ball.cpp)"
+			],
+			[
+				"SDL_SetT",
+				"SDL_SetTextureColorMod"
+			],
+			[
+				"paddle",
+				"paddle_sound	(Ball.h)"
+			],
+			[
+				"Sound",
+				"SoundBuffer"
 			],
 			[
 				"FLYING",
@@ -42,6 +118,10 @@
 			[
 				"StateM",
 				"StateMachineCB	(StateMachine.h)"
+			],
+			[
+				"SDL",
+				"SDL_Surface"
 			],
 			[
 				"CSimple",
@@ -62,14 +142,6 @@
 			[
 				"block",
 				"blockWidth	(Globals.h)"
-			],
-			[
-				"scree",
-				"screenHeight	(Globals.h)"
-			],
-			[
-				"screen",
-				"screenHeight	(Globals.h)"
 			],
 			[
 				"getFiel",
@@ -160,6 +232,10 @@
 				"EventManager	(ProgramManager.h)"
 			],
 			[
+				"clear",
+				"clearGameEvents"
+			],
+			[
 				"SDL_SC",
 				"SDL_SCANCODE_P"
 			],
@@ -182,10 +258,6 @@
 			[
 				"event",
 				"eventHandlers"
-			],
-			[
-				"SDL_Get",
-				"SDL_GetPerformanceFrequency"
 			],
 			[
 				"update",
@@ -296,140 +368,10 @@
 	"buffers":
 	[
 		{
-			"file": "include/MenuManager.h",
+			"file": "include/Label.h",
 			"settings":
 			{
-				"buffer_size": 1315,
-				"line_ending": "Unix"
-			}
-		},
-		{
-			"file": "src/MenuManager.cpp",
-			"settings":
-			{
-				"buffer_size": 2774,
-				"line_ending": "Unix"
-			}
-		},
-		{
-			"file": "include/PauseMenu.h",
-			"settings":
-			{
-				"buffer_size": 309,
-				"line_ending": "Unix"
-			}
-		},
-		{
-			"file": "src/PauseMenu.cpp",
-			"settings":
-			{
-				"buffer_size": 664,
-				"line_ending": "Unix"
-			}
-		},
-		{
-			"file": "include/OptionsMenu.h",
-			"settings":
-			{
-				"buffer_size": 318,
-				"line_ending": "Unix"
-			}
-		},
-		{
-			"file": "src/OptionsMenu.cpp",
-			"settings":
-			{
-				"buffer_size": 416,
-				"line_ending": "Unix"
-			}
-		},
-		{
-			"file": "breakout.ini",
-			"settings":
-			{
-				"buffer_size": 238,
-				"line_ending": "Unix"
-			}
-		},
-		{
-			"file": "include/AudioOptionsMenu.h",
-			"settings":
-			{
-				"buffer_size": 340,
-				"line_ending": "Unix"
-			}
-		},
-		{
-			"file": "src/AudioOptionsMenu.cpp",
-			"settings":
-			{
-				"buffer_size": 242,
-				"line_ending": "Unix"
-			}
-		},
-		{
-			"file": "include/VideoOptionsMenu.h",
-			"settings":
-			{
-				"buffer_size": 340,
-				"line_ending": "Unix"
-			}
-		},
-		{
-			"file": "src/VideoOptionsMenu.cpp",
-			"settings":
-			{
-				"buffer_size": 242,
-				"line_ending": "Unix"
-			}
-		},
-		{
-			"file": "include/MainMenu.h",
-			"settings":
-			{
-				"buffer_size": 305,
-				"line_ending": "Unix"
-			}
-		},
-		{
-			"file": "src/MainMenu.cpp",
-			"settings":
-			{
-				"buffer_size": 481,
-				"line_ending": "Unix"
-			}
-		},
-		{
-			"file": "include/Menu.h",
-			"settings":
-			{
-				"buffer_size": 632,
-				"line_ending": "Unix"
-			}
-		},
-		{
-			"contents": "Searching 93 files for \"AssetFactory\" (case sensitive)\n\n/home/will/Documents/git/Breakout/.tags:\n    5  !_TAG_PROGRAM_URL	http://ctags.sourceforge.net	/official site/\n    6  !_TAG_PROGRAM_VERSION	5.9~svn20110310	//\n    7: ASSET_FACTORY_H	include/AssetFactory.h	2;\"	d\n    8  AddEntry	include/SimpleIni.h	/^CSimpleIniTempl<SI_CHAR,SI_STRLESS,SI_CONVERTER>::AddEntry($/;\"	f	class:CSimpleIniTempl\n    9  AlphaKeyFrame	include/Effects.h	/^		AlphaKeyFrame(Uint64 transitionTime, int start_a, int final_a)$/;\"	f	class:Effects::AlphaKeyFrame\n   10  AlphaKeyFrame	include/Effects.h	/^	class AlphaKeyFrame$/;\"	c	class:Effects\n   11: AssetFactory	include/AssetFactory.h	/^class AssetFactory {	$/;\"	c\n   12: AssetFactory	src/AssetFactory.cpp	/^AssetFactory::AssetFactory(SDL_Renderer* gRenderer){$/;\"	f	class:AssetFactory\n   13  BALLS_DEPLETED	include/EventManager.h	/^	BALLS_DEPLETED,$/;\"	e	enum:GameEvent\n   14  BALLS_INDICATOR_H	include/BallsIndicator.h	2;\"	d\n   ..\n   22  BUTTON_H	include/Button.h	2;\"	d\n   23  Ball	include/Ball.h	/^class Ball : public PhysicsEntity$/;\"	c\n   24: Ball	src/Ball.cpp	/^Ball::Ball(Paddle* paddle, AssetFactory* assetFactory)$/;\"	f	class:Ball\n   25  BallState	include/Ball.h	/^} BallState;$/;\"	t	typeref:enum:__anon4\n   26  BallsIndicator	include/BallsIndicator.h	/^class BallsIndicator : public UIEntity$/;\"	c\n   27: BallsIndicator	src/BallsIndicator.cpp	/^BallsIndicator::BallsIndicator(float x, float y, AssetFactory* assetFactory)$/;\"	f	class:BallsIndicator\n   28  Block	include/Block.h	/^class Block : public PhysicsEntity$/;\"	c\n   29: Block	src/Block.cpp	/^Block::Block(int x, int y, int width, int height, int* blockCount, AssetFactory* assetFactory, BlockColor color)$/;\"	f	class:Block\n   30  BlockColor	include/Block.h	/^} BlockColor;$/;\"	t	typeref:enum:__anon3\n   31  BlockState	include/Block.h	/^} BlockState;$/;\"	t	typeref:enum:__anon2\n   ..\n   99  GameEventStr	include/EventManager.h	/^static char* GameEventStr[NUM_OF_EVENTS] =$/;\"	v\n  100  GameManager	include/GameManager.h	/^class GameManager : public IEventHandler$/;\"	c\n  101: GameManager	src/GameManager.cpp	/^GameManager::GameManager(AssetFactory* assetFactory)$/;\"	f	class:GameManager\n  102  GetAllKeys	include/SimpleIni.h	/^CSimpleIniTempl<SI_CHAR,SI_STRLESS,SI_CONVERTER>::GetAllKeys($/;\"	f	class:CSimpleIniTempl\n  103  GetAllSections	include/SimpleIni.h	/^CSimpleIniTempl<SI_CHAR,SI_STRLESS,SI_CONVERTER>::GetAllSections($/;\"	f	class:CSimpleIniTempl\n  ...\n  158  PURPLE	include/Block.h	/^	PURPLE$/;\"	e	enum:__anon3\n  159  Paddle	include/Paddle.h	/^class Paddle : public PhysicsEntity$/;\"	c\n  160: Paddle	src/Paddle.cpp	/^Paddle::Paddle(float x, float y, AssetFactory* assetFactory)$/;\"	f	class:Paddle\n  161  PaddleState	include/Paddle.h	/^} PaddleState;$/;\"	t	typeref:enum:__anon1\n  162  PauseMenuManager	include/PauseMenuManager.h	/^class PauseMenuManager : public MenuManager$/;\"	c\n  ...\n  276  alphaTransitionComplete	src/Block.cpp	/^void Block::alphaTransitionComplete()$/;\"	f	class:Block\n  277  apply	src/Effects.cpp	/^void Effects::apply(){$/;\"	f	class:Effects\n  278: assetFactory	include/Ball.h	/^	AssetFactory* assetFactory;$/;\"	m	class:Ball\n  279: assetFactory	include/BallsIndicator.h	/^	AssetFactory* assetFactory;$/;\"	m	class:BallsIndicator\n  280: assetFactory	include/Block.h	/^	AssetFactory* assetFactory;$/;\"	m	class:Block\n  281: assetFactory	include/GameManager.h	/^	AssetFactory* assetFactory;$/;\"	m	class:GameManager\n  282: assetFactory	include/Paddle.h	/^	AssetFactory* assetFactory;$/;\"	m	class:Paddle\n  283: assetFactory	include/ProgramManager.h	/^	AssetFactory* assetFactory;$/;\"	m	class:ProgramManager\n  284  b	include/Block.h	/^	int r, g, b;$/;\"	m	class:Block\n  285  b	include/Button.h	/^	int r, g, b;$/;\"	m	class:Button\n  ...\n  323  g	include/Effects.h	/^		Uint8 r, g, b;$/;\"	m	class:Effects::ColorKeyFrame\n  324  g	include/Effects.h	/^	Uint8 r, g, b, a;$/;\"	m	class:Effects\n  325: gRenderer	include/AssetFactory.h	/^	SDL_Renderer* gRenderer;$/;\"	m	class:AssetFactory\n  326  gRenderer	include/ProgramManager.h	/^	SDL_Renderer* gRenderer;$/;\"	m	class:ProgramManager\n  327  gRenderer	src/main.cpp	/^SDL_Renderer* gRenderer = NULL;$/;\"	v\n  ...\n  332  gameWon	src/GameManager.cpp	/^void GameManager::gameWon()$/;\"	f	class:GameManager\n  333  gapWidth	include/BallsIndicator.h	/^	int gapWidth = Globals::ballWidth \\/ 2;$/;\"	m	class:BallsIndicator\n  334: getAsset	include/AssetFactory.h	/^	T* getAsset(string key){$/;\"	f	class:AssetFactory\n  335: getAsset	src/AssetFactory.cpp	/^SDL_Texture* AssetFactory::getAsset<SDL_Texture>(string key){$/;\"	f	class:AssetFactory\n  336: getAsset	src/AssetFactory.cpp	/^Sound* AssetFactory::getAsset<Sound>(string key){$/;\"	f	class:AssetFactory\n  337  getCenter	src/Ball.cpp	/^SDL_Point Ball::getCenter()$/;\"	f	class:Ball\n  338  getCenter	src/BallsIndicator.cpp	/^SDL_Point BallsIndicator::getCenter()$/;\"	f	class:BallsIndicator\n  ...\n  466  prevState	include/StateMachine.h	/^	T prevState, currState;$/;\"	m	class:StateMachine\n  467  prevTime	include/Effects.h	/^	Uint64 prevTime;$/;\"	m	class:Effects\n  468: printAssets	src/AssetFactory.cpp	/^void AssetFactory::printAssets(){$/;\"	f	class:AssetFactory\n  469  printHandlers	src/EventManager.cpp	/^void EventManager::printHandlers()$/;\"	f	class:EventManager\n  470  quit	include/PauseMenuManager.h	/^	bool quit;$/;\"	m	class:PauseMenuManager\n  ...\n  498  shouldQuit	src/PauseMenuManager.cpp	/^bool PauseMenuManager::shouldQuit()$/;\"	f	class:PauseMenuManager\n  499  size	include/MenuEntity.h	/^	SDL_Rect size;$/;\"	m	class:MenuEntity\n  500: sounds	include/AssetFactory.h	/^	unordered_map<string, Sound*> sounds;$/;\"	m	class:AssetFactory\n  501  source	include/Sound.h	/^	ALuint source;$/;\"	m	class:Sound\n  502  sourceExhausted	include/ConvertUTF.h	/^	sourceExhausted,	\\/* partial character in source, but hit end *\\/$/;\"	e	enum:__anon5\n  ...\n  521  texture	include/Effects.h	/^	SDL_Texture* texture;$/;\"	m	class:Effects\n  522  texture	include/Paddle.h	/^	SDL_Texture* texture;$/;\"	m	class:Paddle\n  523: textures	include/AssetFactory.h	/^	unordered_map<string, SDL_Texture*> textures;$/;\"	m	class:AssetFactory\n  524  transitionTime	include/Effects.h	/^		Uint64 transitionTime, elapsedTime;$/;\"	m	class:Effects::ColorKeyFrame\n  525  transitionTime	include/Effects.h	/^		double transitionTime, elapsedTime;$/;\"	m	class:Effects::AlphaKeyFrame\n  ...\n  560  xOffset	src/Globals.cpp	/^	int xOffset;$/;\"	m	namespace:Globals	file:\n  561  yOffset	src/Globals.cpp	/^	int yOffset;$/;\"	m	namespace:Globals	file:\n  562: ~AssetFactory	src/AssetFactory.cpp	/^AssetFactory::~AssetFactory(){$/;\"	f	class:AssetFactory\n  563  ~Ball	src/Ball.cpp	/^Ball::~Ball()$/;\"	f	class:Ball\n  564  ~BallsIndicator	src/BallsIndicator.cpp	/^BallsIndicator::~BallsIndicator()$/;\"	f	class:BallsIndicator\n\n/home/will/Documents/git/Breakout/.tags_sorted_by_file:\n   16  TARGET_NAME	Makefile	/^TARGET_NAME = breakout$/;\"	m\n   17  !_TAG_PROGRAM_URL	http://ctags.sourceforge.net	/official site/\n   18: ASSET_FACTORY_H	include/AssetFactory.h	2;\"	d\n   19: AssetFactory	include/AssetFactory.h	/^class AssetFactory {	$/;\"	c\n   20: gRenderer	include/AssetFactory.h	/^	SDL_Renderer* gRenderer;$/;\"	m	class:AssetFactory\n   21: getAsset	include/AssetFactory.h	/^	T* getAsset(string key){$/;\"	f	class:AssetFactory\n   22: sounds	include/AssetFactory.h	/^	unordered_map<string, Sound*> sounds;$/;\"	m	class:AssetFactory\n   23: textures	include/AssetFactory.h	/^	unordered_map<string, SDL_Texture*> textures;$/;\"	m	class:AssetFactory\n   24  BALL_H	include/Ball.h	2;\"	d\n   25  Ball	include/Ball.h	/^class Ball : public PhysicsEntity$/;\"	c\n   ..\n   28  LOST_ST	include/Ball.h	/^	LOST_ST,$/;\"	e	enum:__anon4\n   29  WAITING_ST	include/Ball.h	/^	WAITING_ST,$/;\"	e	enum:__anon4\n   30: assetFactory	include/Ball.h	/^	AssetFactory* assetFactory;$/;\"	m	class:Ball\n   31  blockSound	include/Ball.h	/^	Sound *paddleSound, *blockSound;$/;\"	m	class:Ball\n   32  height	include/Ball.h	/^	int height = Globals::ballHeight;$/;\"	m	class:Ball\n   ..\n   39  BALLS_INDICATOR_H	include/BallsIndicator.h	2;\"	d\n   40  BallsIndicator	include/BallsIndicator.h	/^class BallsIndicator : public UIEntity$/;\"	c\n   41: assetFactory	include/BallsIndicator.h	/^	AssetFactory* assetFactory;$/;\"	m	class:BallsIndicator\n   42  ballsRemaining	include/BallsIndicator.h	/^	int ballsRemaining;$/;\"	m	class:BallsIndicator\n   43  gapWidth	include/BallsIndicator.h	/^	int gapWidth = Globals::ballWidth \\/ 2;$/;\"	m	class:BallsIndicator\n   ..\n   56  RED	include/Block.h	/^	RED,$/;\"	e	enum:__anon3\n   57  YELLOW	include/Block.h	/^	YELLOW,$/;\"	e	enum:__anon3\n   58: assetFactory	include/Block.h	/^	AssetFactory* assetFactory;$/;\"	m	class:Block\n   59  b	include/Block.h	/^	int r, g, b;$/;\"	m	class:Block\n   60  effects	include/Block.h	/^	Effects* effects;$/;\"	m	class:Block\n   ..\n  161  GAME_MANAGER_H	include/GameManager.h	2;\"	d\n  162  GameManager	include/GameManager.h	/^class GameManager : public IEventHandler$/;\"	c\n  163: assetFactory	include/GameManager.h	/^	AssetFactory* assetFactory;$/;\"	m	class:GameManager\n  164  blockCount	include/GameManager.h	/^	int blockCount;$/;\"	m	class:GameManager\n  165  pause	include/GameManager.h	/^	bool pause, visible;$/;\"	m	class:GameManager\n  ...\n  187  accelX	include/Paddle.h	/^	float accelX, accelY;$/;\"	m	class:Paddle\n  188  accelY	include/Paddle.h	/^	float accelX, accelY;$/;\"	m	class:Paddle\n  189: assetFactory	include/Paddle.h	/^	AssetFactory* assetFactory;$/;\"	m	class:Paddle\n  190  height	include/Paddle.h	/^	int height = Globals::paddleHeight;$/;\"	m	class:Paddle\n  191  max_vel	include/Paddle.h	/^	float max_vel = width * 2.5;$/;\"	m	class:Paddle\n  ...\n  208  ProgramManagerState	include/ProgramManager.h	/^typedef enum ProgramManagerState$/;\"	g\n  209  ProgramManagerState	include/ProgramManager.h	/^} ProgramManagerState;$/;\"	t	typeref:enum:ProgramManagerState\n  210: assetFactory	include/ProgramManager.h	/^	AssetFactory* assetFactory;$/;\"	m	class:ProgramManager\n  211  gRenderer	include/ProgramManager.h	/^	SDL_Renderer* gRenderer;$/;\"	m	class:ProgramManager\n  212  gameManager	include/ProgramManager.h	/^	GameManager* gameManager;$/;\"	m	class:ProgramManager\n  ...\n  402  UIEntity	include/UIEntity.h	/^class UIEntity : public Entity$/;\"	c\n  403  UI_ENTITY_H	include/UIEntity.h	2;\"	d\n  404: AssetFactory	src/AssetFactory.cpp	/^AssetFactory::AssetFactory(SDL_Renderer* gRenderer){$/;\"	f	class:AssetFactory\n  405: getAsset	src/AssetFactory.cpp	/^SDL_Texture* AssetFactory::getAsset<SDL_Texture>(string key){$/;\"	f	class:AssetFactory\n  406: getAsset	src/AssetFactory.cpp	/^Sound* AssetFactory::getAsset<Sound>(string key){$/;\"	f	class:AssetFactory\n  407: printAssets	src/AssetFactory.cpp	/^void AssetFactory::printAssets(){$/;\"	f	class:AssetFactory\n  408: ~AssetFactory	src/AssetFactory.cpp	/^AssetFactory::~AssetFactory(){$/;\"	f	class:AssetFactory\n  409: Ball	src/Ball.cpp	/^Ball::Ball(Paddle* paddle, AssetFactory* assetFactory)$/;\"	f	class:Ball\n  410  getCenter	src/Ball.cpp	/^SDL_Point Ball::getCenter()$/;\"	f	class:Ball\n  411  getOrigin	src/Ball.cpp	/^SDL_Point Ball::getOrigin()$/;\"	f	class:Ball\n  ...\n  423  updateVelocityWithAngle	src/Ball.cpp	/^void Ball::updateVelocityWithAngle(float degrees)$/;\"	f	class:Ball\n  424  ~Ball	src/Ball.cpp	/^Ball::~Ball()$/;\"	f	class:Ball\n  425: BallsIndicator	src/BallsIndicator.cpp	/^BallsIndicator::BallsIndicator(float x, float y, AssetFactory* assetFactory)$/;\"	f	class:BallsIndicator\n  426  getCenter	src/BallsIndicator.cpp	/^SDL_Point BallsIndicator::getCenter()$/;\"	f	class:BallsIndicator\n  427  getOrigin	src/BallsIndicator.cpp	/^SDL_Point BallsIndicator::getOrigin()$/;\"	f	class:BallsIndicator\n  ...\n  435  update	src/BallsIndicator.cpp	/^void BallsIndicator::update(int frameTime)$/;\"	f	class:BallsIndicator\n  436  ~BallsIndicator	src/BallsIndicator.cpp	/^BallsIndicator::~BallsIndicator()$/;\"	f	class:BallsIndicator\n  437: Block	src/Block.cpp	/^Block::Block(int x, int y, int width, int height, int* blockCount, AssetFactory* assetFactory, BlockColor color)$/;\"	f	class:Block\n  438  alphaTransitionComplete	src/Block.cpp	/^void Block::alphaTransitionComplete()$/;\"	f	class:Block\n  439  getCenter	src/Block.cpp	/^SDL_Point Block::getCenter()$/;\"	f	class:Block\n  ...\n  494  registerHandler	src/EventManager.cpp	/^void EventManager::registerHandler(IEventHandler* handler)$/;\"	f	class:EventManager\n  495  reportGameEvent	src/EventManager.cpp	/^void EventManager::reportGameEvent(GameEvent event)$/;\"	f	class:EventManager\n  496: GameManager	src/GameManager.cpp	/^GameManager::GameManager(AssetFactory* assetFactory)$/;\"	f	class:GameManager\n  497  detectCollisions	src/GameManager.cpp	/^void GameManager::detectCollisions()$/;\"	f	class:GameManager\n  498  gameLost	src/GameManager.cpp	/^void GameManager::gameLost()$/;\"	f	class:GameManager\n  ...\n  531  update	src/MenuManager.cpp	/^void MenuManager::update(int frameTime)$/;\"	f	class:MenuManager\n  532  ~MenuManager	src/MenuManager.cpp	/^MenuManager::~MenuManager()$/;\"	f	class:MenuManager\n  533: Paddle	src/Paddle.cpp	/^Paddle::Paddle(float x, float y, AssetFactory* assetFactory)$/;\"	f	class:Paddle\n  534  getCenter	src/Paddle.cpp	/^SDL_Point Paddle::getCenter()$/;\"	f	class:Paddle\n  535  getOrigin	src/Paddle.cpp	/^SDL_Point Paddle::getOrigin()$/;\"	f	class:Paddle\n\n/home/will/Documents/git/Breakout/breakout:\n    <binary>\n\n/home/will/Documents/git/Breakout/build/AssetFactory.d:\n    1: build/AssetFactory.o: src/AssetFactory.cpp include/AssetFactory.h \\\n    2   include/Sound.h include/SimpleIni.h include/ConvertUTF.h\n    3  \n    4: include/AssetFactory.h:\n    5  \n    6  include/Sound.h:\n\n/home/will/Documents/git/Breakout/build/Ball.d:\n    2   include/Entity.h include/EventManager.h include/IEventHandler.h \\\n    3   include/Globals.h include/SimpleIni.h include/ConvertUTF.h \\\n    4:  include/Paddle.h include/AssetFactory.h include/Sound.h \\\n    5   include/StateMachine.h include/Block.h include/Ball.h include/Effects.h\n    6  \n    .\n   23  include/Paddle.h:\n   24  \n   25: include/AssetFactory.h:\n   26  \n   27  include/Sound.h:\n\n/home/will/Documents/git/Breakout/build/BallsIndicator.d:\n    2   include/UIEntity.h include/Entity.h include/EventManager.h \\\n    3   include/IEventHandler.h include/Globals.h include/SimpleIni.h \\\n    4:  include/ConvertUTF.h include/AssetFactory.h include/Sound.h\n    5  \n    6  include/BallsIndicator.h:\n    .\n   20  include/ConvertUTF.h:\n   21  \n   22: include/AssetFactory.h:\n   23  \n   24  include/Sound.h:\n\n/home/will/Documents/git/Breakout/build/Block.d:\n    2   include/Entity.h include/EventManager.h include/IEventHandler.h \\\n    3   include/Globals.h include/SimpleIni.h include/ConvertUTF.h \\\n    4:  include/Ball.h include/Paddle.h include/AssetFactory.h include/Sound.h \\\n    5   include/StateMachine.h include/Block.h include/Effects.h\n    6  \n    .\n   25  include/Paddle.h:\n   26  \n   27: include/AssetFactory.h:\n   28  \n   29  include/Sound.h:\n\n/home/will/Documents/git/Breakout/build/Button.d:\n    2   include/Entity.h include/EventManager.h include/IEventHandler.h \\\n    3   include/Globals.h include/SimpleIni.h include/ConvertUTF.h \\\n    4:  include/AssetFactory.h include/Sound.h\n    5  \n    6  include/Button.h:\n    .\n   20  include/ConvertUTF.h:\n   21  \n   22: include/AssetFactory.h:\n   23  \n   24  include/Sound.h:\n\n/home/will/Documents/git/Breakout/build/GameManager.d:\n    3   include/Entity.h include/Globals.h include/SimpleIni.h \\\n    4   include/ConvertUTF.h include/UIEntity.h include/Paddle.h \\\n    5:  include/AssetFactory.h include/Sound.h include/StateMachine.h \\\n    6   include/Ball.h include/Block.h include/Effects.h \\\n    7   include/BallsIndicator.h include/Collider.h\n    .\n   27  include/Paddle.h:\n   28  \n   29: include/AssetFactory.h:\n   30  \n   31  include/Sound.h:\n\n/home/will/Documents/git/Breakout/build/MenuManager.d:\n    3   include/Entity.h include/Globals.h include/SimpleIni.h \\\n    4   include/ConvertUTF.h include/Button.h include/MenuEntity.h \\\n    5:  include/AssetFactory.h include/Sound.h include/Menu.h \\\n    6   include/StateMachine.h\n    7  \n    .\n   26  include/MenuEntity.h:\n   27  \n   28: include/AssetFactory.h:\n   29  \n   30  include/Sound.h:\n\n/home/will/Documents/git/Breakout/build/Paddle.d:\n    2   include/Entity.h include/EventManager.h include/IEventHandler.h \\\n    3   include/Globals.h include/SimpleIni.h include/ConvertUTF.h \\\n    4:  include/AssetFactory.h include/Sound.h include/StateMachine.h \\\n    5   include/Ball.h include/Paddle.h include/Block.h include/Ball.h \\\n    6   include/Effects.h\n    .\n   22  include/ConvertUTF.h:\n   23  \n   24: include/AssetFactory.h:\n   25  \n   26  include/Sound.h:\n\n/home/will/Documents/git/Breakout/build/ProgramManager.d:\n    3   include/PhysicsEntity.h include/Entity.h include/Globals.h \\\n    4   include/SimpleIni.h include/ConvertUTF.h include/UIEntity.h \\\n    5:  include/Paddle.h include/AssetFactory.h include/Sound.h \\\n    6   include/StateMachine.h include/Ball.h include/Block.h include/Effects.h \\\n    7   include/BallsIndicator.h include/Collider.h include/MenuManager.h \\\n    .\n   30  include/Paddle.h:\n   31  \n   32: include/AssetFactory.h:\n   33  \n   34  include/Sound.h:\n\n/home/will/Documents/git/Breakout/build/breakout:\n    <binary>\n\n/home/will/Documents/git/Breakout/build/main.d:\n    3   include/PhysicsEntity.h include/Entity.h include/Globals.h \\\n    4   include/SimpleIni.h include/ConvertUTF.h include/UIEntity.h \\\n    5:  include/Paddle.h include/AssetFactory.h include/Sound.h \\\n    6   include/StateMachine.h include/Ball.h include/Block.h include/Effects.h \\\n    7   include/BallsIndicator.h include/Collider.h include/MenuManager.h \\\n    8   include/Button.h include/MenuEntity.h include/Menu.h include/MainMenu.h \\\n    9   include/PauseMenu.h include/OptionsMenu.h include/Globals.h \\\n   10:  include/SimpleIni.h include/AssetFactory.h\n   11  \n   12  include/ProgramManager.h:\n   ..\n   32  include/Paddle.h:\n   33  \n   34: include/AssetFactory.h:\n   35  \n   36  include/Sound.h:\n   ..\n   66  include/SimpleIni.h:\n   67  \n   68: include/AssetFactory.h:\n   69  \n\n/home/will/Documents/git/Breakout/cscope.out:\n    <binary>\n\n/home/will/Documents/git/Breakout/include/AssetFactory.h:\n   14  using namespace std;\n   15  \n   16: class AssetFactory {	\n   17  private:\n   18  	unordered_map<string, SDL_Texture*> textures;\n   ..\n   20  	SDL_Renderer* gRenderer;\n   21  public: \n   22: 	AssetFactory(SDL_Renderer* gRenderer);\n   23: 	~AssetFactory();\n   24  	void printAssets();\n   25  \n\n/home/will/Documents/git/Breakout/include/Ball.h:\n    9  #include \"Paddle.h\"\n   10  #include \"Block.h\"\n   11: #include \"AssetFactory.h\"\n   12  #include \"StateMachine.h\"\n   13  #include \"Sound.h\"\n   ..\n   28  	SDL_Texture* texture;\n   29  	Sound *paddleSound, *blockSound;\n   30: 	AssetFactory* assetFactory;\n   31  \n   32  \n   ..\n   38  	float max_vel = width * 15;\n   39  \n   40: 	Ball(Paddle*, AssetFactory* assetFactory);\n   41  	~Ball();\n   42  \n\n/home/will/Documents/git/Breakout/include/BallsIndicator.h:\n    3  \n    4  #include \"UIEntity.h\"\n    5: #include \"AssetFactory.h\"\n    6  \n    7  class BallsIndicator : public UIEntity\n    .\n   10  	int ballsRemaining;\n   11  	int gapWidth = Globals::ballWidth / 2;\n   12: 	AssetFactory* assetFactory;\n   13  	SDL_Texture* texture;\n   14  public:\n   15: 	BallsIndicator(float x, float y, AssetFactory* assetFactory);\n   16  	~BallsIndicator();\n   17  \n\n/home/will/Documents/git/Breakout/include/Block.h:\n    6  #include \"PhysicsEntity.h\"\n    7  #include \"Ball.h\"\n    8: #include \"AssetFactory.h\"\n    9  #include \"StateMachine.h\"\n   10  #include \"Effects.h\"\n   ..\n   33  	StateMachine<BlockState>* state;\n   34  	SDL_Texture* texture;\n   35: 	AssetFactory* assetFactory;\n   36  	Effects* effects;\n   37  \n   ..\n   42  	int height = 40.0;\n   43  \n   44: 	Block(int x, int y, int width, int height, int* blockCount, AssetFactory* assetFactory, BlockColor color);\n   45  	~Block();\n   46  \n\n/home/will/Documents/git/Breakout/include/Button.h:\n    7  #include \"MenuEntity.h\"\n    8  #include \"EventManager.h\"\n    9: #include \"AssetFactory.h\"\n   10  \n   11  class Button : public MenuEntity\n   ..\n   15  	bool lastState = false;\n   16  public:\n   17: 	Button(string texture_file, AssetFactory* assetFactory, GameEvent event);\n   18  	~Button();\n   19  \n\n/home/will/Documents/git/Breakout/include/GameManager.h:\n   22  	std::vector<PhysicsEntity*> physicsEntities;\n   23  	std::vector<UIEntity*> uiEntities;\n   24: 	AssetFactory* assetFactory;\n   25  	SDL_Texture* gameTexture;\n   26  	int blockCount;\n   ..\n   34  \n   35  public:\n   36: 	GameManager(AssetFactory* assetFactory, SDL_Renderer* gRenderer);\n   37  	~GameManager();\n   38  \n\n/home/will/Documents/git/Breakout/include/MenuManager.h:\n   11  #include \"Button.h\"\n   12  #include \"Globals.h\"\n   13: #include \"AssetFactory.h\"\n   14  #include \"Menu.h\"\n   15  #include \"StateMachine.h\"\n   ..\n   30  	//Menu *mainMenu, *pauseMenu, *optionsMenu;\n   31  	std::vector<Menu*> menuStack;\n   32: 	AssetFactory* assetFactory;\n   33  	\n   34  	// StateMachine<MenuManagerState>* state;\n   ..\n   47  	// void stateChanged(MenuManagerState prevState, MenuManagerState currState);\n   48  public:\n   49: 	MenuManager(AssetFactory* assetFactory);\n   50  	~MenuManager();\n   51  \n\n/home/will/Documents/git/Breakout/include/Paddle.h:\n    4  #include <iostream>\n    5  #include \"PhysicsEntity.h\"\n    6: #include \"AssetFactory.h\"\n    7  #include \"StateMachine.h\"\n    8  \n    .\n   16  	float accelX, accelY;\n   17  	SDL_Texture* texture;\n   18: 	AssetFactory* assetFactory;\n   19  	StateMachine<PaddleState>* state;\n   20  \n   ..\n   27  	int accel = max_vel * 5;\n   28  \n   29: 	Paddle(float x, float y, AssetFactory* assetFactory);\n   30  	~Paddle();\n   31  \n\n/home/will/Documents/git/Breakout/include/ProgramManager.h:\n   21  	GameManager* gameManager;\n   22  	MenuManager* menuManager;\n   23: 	AssetFactory* assetFactory;\n   24  	bool quit;\n   25  public:\n\n/home/will/Documents/git/Breakout/src/AssetFactory.cpp:\n    1: #include \"AssetFactory.h\"\n    2  \n    3  using namespace std;\n    4  \n    5: AssetFactory::AssetFactory(SDL_Renderer* gRenderer){\n    6  	this->gRenderer = gRenderer;\n    7  }\n    8  \n    9: AssetFactory::~AssetFactory(){\n   10  	textures.clear();\n   11  	sounds.clear();\n   12  }\n   13  \n   14: void AssetFactory::printAssets(){\n   15  	cout << \"Textures\" << endl;\n   16  	for(auto it = textures.begin(); it != textures.end(); ++it){\n   ..\n   21  \n   22  template<>\n   23: SDL_Texture* AssetFactory::getAsset<SDL_Texture>(string key){\n   24  	\n   25  	//SDL_Surface* surface;\n   ..\n   62  \n   63  template<>\n   64: Sound* AssetFactory::getAsset<Sound>(string key){\n   65  \n   66  	Sound* sound;\n\n/home/will/Documents/git/Breakout/src/Ball.cpp:\n    1  #include \"Ball.h\"\n    2  \n    3: Ball::Ball(Paddle* paddle, AssetFactory* assetFactory)\n    4  {\n    5  	EventManager::Instance()->registerHandler(this);\n\n/home/will/Documents/git/Breakout/src/BallsIndicator.cpp:\n    1  #include \"BallsIndicator.h\"\n    2  \n    3: BallsIndicator::BallsIndicator(float x, float y, AssetFactory* assetFactory)\n    4  {\n    5  	this->ballsRemaining = 0;\n\n/home/will/Documents/git/Breakout/src/Block.cpp:\n    1  #include \"Block.h\"\n    2  \n    3: Block::Block(int x, int y, int width, int height, int* blockCount, AssetFactory* assetFactory, BlockColor color)\n    4  \n    5  {\n\n/home/will/Documents/git/Breakout/src/Button.cpp:\n    1  #include \"Button.h\"\n    2  \n    3: Button::Button(string texture_file, AssetFactory* assetFactory, GameEvent event)\n    4  {\n    5  	this->event = event;\n\n/home/will/Documents/git/Breakout/src/GameManager.cpp:\n    1  #include \"GameManager.h\"\n    2  \n    3: GameManager::GameManager(AssetFactory* assetFactory, SDL_Renderer* gRenderer)\n    4  {\n    5  	srand(time(NULL));\n\n/home/will/Documents/git/Breakout/src/MenuManager.cpp:\n    1  #include \"MenuManager.h\"\n    2  \n    3: MenuManager::MenuManager(AssetFactory* assetFactory)\n    4  {\n    5  	visible = true;\n\n/home/will/Documents/git/Breakout/src/Paddle.cpp:\n    2  #include \"Ball.h\"\n    3  \n    4: Paddle::Paddle(float x, float y, AssetFactory* assetFactory)\n    5  {\n    6  	posX = x;\n\n/home/will/Documents/git/Breakout/src/ProgramManager.cpp:\n    4  {\n    5  	this->gRenderer = gRenderer;\n    6: 	assetFactory = new AssetFactory(gRenderer);\n    7  	gameManager = new GameManager(this->assetFactory, this->gRenderer);\n    8  	menuManager = new MenuManager(this->assetFactory);\n\n/home/will/Documents/git/Breakout/src/main.cpp:\n    9  #include \"Globals.h\"\n   10  #include \"SimpleIni.h\"\n   11: #include \"AssetFactory.h\"\n   12  #include <memory>\n   13  \n\n348 matches across 34 files\n",
-			"settings":
-			{
-				"buffer_size": 24555,
-				"line_ending": "Unix",
-				"name": "Find Results",
-				"scratch": true
-			}
-		},
-		{
-			"file": "include/Button.h",
-			"settings":
-			{
-				"buffer_size": 761,
-				"line_ending": "Unix"
-			}
-		},
-		{
-			"file": "src/Menu.cpp",
-			"settings":
-			{
-				"buffer_size": 2059,
+				"buffer_size": 0,
 				"line_ending": "Unix"
 			}
 		}
@@ -497,25 +439,41 @@
 	"build_varint": "",
 	"command_palette":
 	{
-		"height": 350.0,
-		"last_filter": "run",
+		"height": 105.0,
+		"last_filter": "disable",
 		"selected_items":
 		[
+			[
+				"disable",
+				"Package Control: Disable Package"
+			],
+			[
+				"sort",
+				"Sort Tabs: Menu"
+			],
+			[
+				"install",
+				"Package Control: Install Package"
+			],
+			[
+				"remove",
+				"Package Control: Remove Package"
+			],
 			[
 				"run",
 				"Build With: Make - Run"
 			],
 			[
-				"",
-				"Build With: Make - All"
+				"Debug",
+				"Build With: Make - Debug"
 			],
 			[
 				"make",
 				"Build With: Make - Run"
 			],
 			[
-				"remove",
-				"Package Control: Remove Package"
+				"",
+				"Build With: Make - Run"
 			],
 			[
 				"list",
@@ -532,10 +490,6 @@
 			[
 				"todo",
 				"TodoReview: Open Files"
-			],
-			[
-				"install",
-				"Package Control: Install Package"
 			],
 			[
 				"make all",
@@ -610,10 +564,6 @@
 				"Package Control: Enable Package"
 			],
 			[
-				"disable",
-				"Package Control: Disable Package"
-			],
-			[
 				"color",
 				"Colorsublime: Install Theme"
 			]
@@ -646,52 +596,77 @@
 	[
 		"/home/will/Documents/git/Breakout",
 		"/home/will/Documents/git/Breakout/include",
-		"/home/will/Documents/git/Breakout/sounds",
 		"/home/will/Documents/git/Breakout/src"
 	],
 	"file_history":
 	[
-		"/home/will/Documents/git/Breakout/src/GameManager.cpp",
-		"/home/will/Documents/git/Breakout/src/Globals.cpp",
-		"/home/will/Documents/git/Breakout/src/Block.cpp",
-		"/home/will/Documents/git/Breakout/src/Paddle.cpp",
-		"/home/will/Documents/git/Breakout/include/Paddle.h",
-		"/home/will/Documents/git/Breakout/include/Ball.h",
-		"/home/will/Documents/git/Breakout/include/Block.h",
-		"/home/will/Documents/git/Breakout/src/BallsIndicator.cpp",
-		"/home/will/Documents/git/Breakout/include/BallsIndicator.h",
-		"/home/will/Documents/git/Breakout/breakout.ini",
 		"/home/will/Documents/git/Breakout/include/Globals.h",
+		"/home/will/Documents/git/Breakout/src/Globals.cpp",
 		"/home/will/Documents/git/Breakout/src/main.cpp",
+		"/home/will/Documents/git/Breakout/src/GameManager.cpp",
+		"/home/will/Documents/git/Breakout/src/Ball.cpp",
+		"/home/will/Documents/git/Breakout/src/Paddle.cpp",
 		"/home/will/Documents/git/Breakout/src/ProgramManager.cpp",
 		"/home/will/Documents/git/Breakout/include/GameManager.h",
-		"/home/will/Documents/git/Breakout/src/Ball.cpp",
-		"/home/will/Documents/git/Breakout/include/ProgramManager.h",
+		"/home/will/Documents/git/Breakout/include/SimpleIni.h",
+		"/home/will/Documents/git/Breakout/include/MenuManager.h",
+		"/home/will/Documents/git/Breakout/breakout.ini",
+		"/home/will/Documents/git/Breakout/include/MainMenu.h",
+		"/home/will/Documents/git/Breakout/src/PauseMenu.cpp",
+		"/home/will/Documents/git/Breakout/include/PauseMenu.h",
+		"/home/will/Documents/git/Breakout/src/MenuManager.cpp",
+		"/home/will/Documents/git/Breakout/include/EventManager.h",
+		"/home/will/Documents/git/Breakout/src/OptionsMenu.cpp",
+		"/home/will/Documents/git/Breakout/include/VideoOptionsMenu.h",
+		"/home/will/Documents/git/Breakout/include/AudioOptionsMenu.h",
+		"/home/will/Documents/git/Breakout/src/VideoOptionsMenu.cpp",
+		"/home/will/Documents/git/Breakout/src/AudioOptionsMenu.cpp",
+		"/home/will/Documents/git/Breakout/include/OptionsMenu.h",
+		"/home/will/Documents/git/Breakout/include/MenuEntity.h",
+		"/home/will/Documents/git/Breakout/src/Label.cpp",
+		"/home/will/Documents/git/Breakout/include/Menu.h",
+		"/home/will/Documents/git/Breakout/src/Menu.cpp",
+		"/home/will/Documents/git/Breakout/include/Button.h",
+		"/home/will/Documents/git/Breakout/src/Button.cpp",
+		"/home/will/Documents/git/Breakout/src/MainMenu.cpp",
+		"/home/will/Documents/git/Breakout/breakout.sublime-project",
 		"/home/will/Documents/git/Breakout/include/AssetFactory.h",
-		"/home/will/Documents/git/Breakout/Makefile",
+		"/home/will/Documents/git/Breakout/.tags",
+		"/home/will/.config/sublime-text-3/Packages/CTags/CTags.sublime-settings",
+		"/home/will/.config/sublime-text-3/Packages/User/CTags.sublime-settings",
+		"/home/will/Documents/git/Breakout/include/PauseMenuManager.h",
+		"/home/will/Documents/git/Breakout/src/PauseMenuManager.cpp",
+		"/home/will/Documents/git/Breakout/include/UIEntity.h",
+		"/home/will/Documents/git/Breakout/src/MenuEntity.cpp",
+		"/home/will/.config/sublime-text-3/Packages/CTags/Default.sublime-keymap",
+		"/usr/include/SDL2/.tags",
+		"/usr/include/SDL2/SDL_surface.h",
+		"/home/will/.config/sublime-text-3/Packages/User/Preferences.sublime-settings",
+		"/home/will/.config/sublime-text-3/Packages/User/Default (Linux).sublime-keymap",
+		"/home/will/Documents/git/Breakout/include/Ball.h",
+		"/home/will/Documents/git/Breakout/include/Block.h",
+		"/home/will/Documents/git/Breakout/src/Block.cpp",
 		"/home/will/Documents/git/Breakout/src/AssetFactory.cpp",
 		"/home/will/Documents/git/Breakout/include/StateMachine.h",
+		"/home/will/Documents/git/Breakout/include/Effects.h",
+		"/home/will/Documents/git/Breakout/src/Effects.cpp",
+		"/home/will/Documents/git/Breakout/include/PhysicsEntity.h",
 		"/home/will/Documents/git/Breakout/include/Entity.h",
+		"/home/will/Documents/git/Breakout/Makefile",
+		"/home/will/Documents/git/Breakout/src/Sound.cpp",
+		"/home/will/Documents/git/Breakout/src/BallsIndicator.cpp",
+		"/home/will/Documents/git/Breakout/include/Paddle.h",
+		"/home/will/Documents/git/Breakout/include/ProgramManager.h",
+		"/home/will/Documents/git/Breakout/include/BallsIndicator.h",
+		"/home/will/Documents/git/Breakout/include/Sound.h",
 		"/home/will/Documents/git/Breakout/src/StateMachine.cpp",
-		"/home/will/Documents/git/Breakout/include/SimpleIni.h",
 		"/home/will/Documents/git/Breakout/include/TextureFactory.h",
 		"/home/will/Documents/git/Breakout/include/IEventHandler.h",
 		"/home/will/Documents/git/Breakout/include/Types.h",
 		"/home/will/Documents/git/Breakout/src/TextureFactory.cpp",
 		"/home/will/Documents/SDL Tutorial/07_texture_loading_and_rendering_SDL.cpp",
-		"/home/will/Documents/git/Breakout/include/MenuManager.h",
-		"/home/will/Documents/git/Breakout/src/MenuManager.cpp",
-		"/home/will/Documents/git/Breakout/src/Button.cpp",
-		"/home/will/.config/sublime-text-3/Packages/User/Preferences.sublime-settings",
 		"/home/will/Documents/git/Breakout/include/Collider.h",
-		"/home/will/Documents/git/Breakout/include/Button.h",
 		"/home/will/Documents/git/Breakout/src/Collider.cpp",
-		"/home/will/Documents/git/Breakout/src/PauseMenuManager.cpp",
-		"/home/will/Documents/git/Breakout/include/EventManager.h",
-		"/home/will/Documents/git/Breakout/include/PauseMenuManager.h",
-		"/home/will/Documents/git/Breakout/breakout.sublime-project",
-		"/home/will/Documents/git/Breakout/include/UIEntity.h",
-		"/home/will/Documents/git/Breakout/include/PhysicsEntity.h",
 		"/home/will/Documents/git/Breakout/src/EventManager.cpp",
 		"/usr/include/c++/4.9/bits/stl_iterator.h",
 		"/build/buildd/glibc-2.21/sysdeps/unix/syscall-template.S",
@@ -700,7 +675,6 @@
 		"/home/will/.config/sublime-text-3/Packages/User/Default (Linux).sublime-mousemap",
 		"/home/will/Documents/git/Breakout/src/Entity.cpp",
 		"/home/will/.config/sublime-text-3/Packages/Default/Default (Linux).sublime-keymap",
-		"/home/will/.config/sublime-text-3/Packages/User/Default (Linux).sublime-keymap",
 		"/usr/local/bin/colormake",
 		"/usr/local/bin/testcolormake.sh",
 		"/home/will/Documents/git/Breakout/build/Ball.d",
@@ -736,7 +710,6 @@
 		"/home/will/Documents/breakout/src/main.cpp",
 		"/home/will/Documents/breakout/Makefile",
 		"/home/will/Documents/breakout/breakout",
-		"/home/will/.config/sublime-text-3/Packages/User/CTags.sublime-settings",
 		"/home/will/Documents/SDL Tutorial/11_clip_rendering_and_sprite_sheets/LTexture.h",
 		"/home/will/Documents/SDL Tutorial/11_clip_rendering_and_sprite_sheets/LTexture.cpp",
 		"/home/will/Documents/SDL Tutorial/11_clip_rendering_and_sprite_sheets/11_clip_rendering_and_sprite_sheets_SDL.cpp",
@@ -747,7 +720,6 @@
 		"/home/will/Documents/SDL Tutorial/10_color_keying/10_color_keying_SDL.cpp",
 		"/home/will/Documents/SDL Tutorial/08_geometry_rendering_SDL.cpp",
 		"/home/will/Documents/SDL Tutorial/06_extension_libraries_and_loading_other_image_formats_SDL.cpp",
-		"/home/will/.config/sublime-text-3/Packages/CTags/CTags.sublime-settings",
 		"/usr/include/SDL2/SDL_render.h",
 		"/home/will/.config/sublime-text-3/Packages/User/PlainTasks.sublime-settings",
 		"/home/will/.config/sublime-text-3/Packages/PlainTasks/messages/Tutorial.todo",
@@ -755,16 +727,11 @@
 		"/home/will/Documents/SDL Tutorial/04_key_presses_SDL.cpp",
 		"/home/will/Documents/SDL Tutorial/03_event_driven_programming_SDL.cpp",
 		"/home/will/Documents/SDL Tutorial/02_image_on_screen_SDL.cpp",
-		"/home/will/Downloads/01_hello_SDL/Makefile",
-		"/home/will/Downloads/01_hello_SDL/01_hello_SDL.cpp",
-		"/home/will/Downloads/01_hello_SDL/02_image_on_screen_SDL.cpp",
-		"/home/will/.config/sublime-text-3/Packages/User/Make.sublime-build",
-		"/home/will/.config/sublime-text-3/Packages/Default/Preferences.sublime-settings",
-		"/home/will/.config/sublime-text-3/Packages/User/custom.sublime-build"
+		"/home/will/Downloads/01_hello_SDL/Makefile"
 	],
 	"find":
 	{
-		"height": 25.0
+		"height": 36.0
 	},
 	"find_in_files":
 	{
@@ -779,11 +746,30 @@
 	},
 	"find_state":
 	{
-		"case_sensitive": true,
+		"case_sensitive": false,
 		"find_history":
 		[
+			"BACK",
+			"auto",
+			"setRect",
+			"NULL",
+			"activeMenu",
+			"disable",
+			"enable",
+			"height",
+			"width",
+			"posY",
+			"posX",
+			"this->r",
+			"UIEntity",
+			"uiEntities",
+			"cout",
+			"SetRenderDrawColor",
+			"0",
+			"COMPLETE",
+			"){",
 			"AssetFactory",
-			"effects",
+			"string",
 			"getTexture",
 			"TextureFactory",
 			"textureFactory",
@@ -892,6 +878,12 @@
 		"regex": false,
 		"replace_history":
 		[
+			"this->rect.h",
+			"this->rect.w",
+			"this->rect.y",
+			"this->rect.x",
+			"MenuEntity",
+			"menuEntities",
 			"getAsset",
 			"AssetFactory",
 			"assetFactory",
@@ -942,16 +934,16 @@
 	"groups":
 	[
 		{
-			"selected": 12,
+			"selected": 0,
 			"sheets":
 			[
 				{
 					"buffer": 0,
-					"file": "include/MenuManager.h",
+					"file": "include/Label.h",
 					"semi_transient": false,
 					"settings":
 					{
-						"buffer_size": 1315,
+						"buffer_size": 0,
 						"regions":
 						{
 						},
@@ -964,1079 +956,15 @@
 						],
 						"settings":
 						{
-							"syntax": "Packages/C++/C++.sublime-syntax",
-							"translate_tabs_to_spaces": false
-						},
-						"translation.x": 0.0,
-						"translation.y": 195.0,
-						"zoom_level": 1.0
-					},
-					"stack_index": 14,
-					"type": "text"
-				},
-				{
-					"buffer": 1,
-					"file": "src/MenuManager.cpp",
-					"semi_transient": false,
-					"settings":
-					{
-						"buffer_size": 2774,
-						"regions":
-						{
-						},
-						"selection":
-						[
-							[
-								2319,
-								2319
-							]
-						],
-						"settings":
-						{
-							"syntax": "Packages/C++/C++.sublime-syntax",
-							"translate_tabs_to_spaces": false
-						},
-						"translation.x": 0.0,
-						"translation.y": 1836.0,
-						"zoom_level": 1.0
-					},
-					"stack_index": 7,
-					"type": "text"
-				},
-				{
-					"buffer": 2,
-					"file": "include/PauseMenu.h",
-					"semi_transient": false,
-					"settings":
-					{
-						"buffer_size": 309,
-						"regions":
-						{
-						},
-						"selection":
-						[
-							[
-								270,
-								270
-							]
-						],
-						"settings":
-						{
 							"open_with_edit": true,
+							"sorttabs_lastactivated": 1467724921.36,
 							"syntax": "Packages/C++/C++.sublime-syntax"
-						},
-						"translation.x": 0.0,
-						"translation.y": 0.0,
-						"zoom_level": 1.0
-					},
-					"stack_index": 11,
-					"type": "text"
-				},
-				{
-					"buffer": 3,
-					"file": "src/PauseMenu.cpp",
-					"semi_transient": false,
-					"settings":
-					{
-						"buffer_size": 664,
-						"regions":
-						{
-						},
-						"selection":
-						[
-							[
-								45,
-								45
-							]
-						],
-						"settings":
-						{
-							"open_with_edit": true,
-							"syntax": "Packages/C++/C++.sublime-syntax"
-						},
-						"translation.x": 0.0,
-						"translation.y": 0.0,
-						"zoom_level": 1.0
-					},
-					"stack_index": 10,
-					"type": "text"
-				},
-				{
-					"buffer": 4,
-					"file": "include/OptionsMenu.h",
-					"semi_transient": false,
-					"settings":
-					{
-						"buffer_size": 318,
-						"regions":
-						{
-						},
-						"selection":
-						[
-							[
-								318,
-								318
-							]
-						],
-						"settings":
-						{
-							"open_with_edit": true,
-							"syntax": "Packages/C++/C++.sublime-syntax"
-						},
-						"translation.x": 0.0,
-						"translation.y": 0.0,
-						"zoom_level": 1.0
-					},
-					"stack_index": 4,
-					"type": "text"
-				},
-				{
-					"buffer": 5,
-					"file": "src/OptionsMenu.cpp",
-					"semi_transient": false,
-					"settings":
-					{
-						"buffer_size": 416,
-						"regions":
-						{
-						},
-						"selection":
-						[
-							[
-								51,
-								51
-							]
-						],
-						"settings":
-						{
-							"open_with_edit": true,
-							"syntax": "Packages/C++/C++.sublime-syntax"
-						},
-						"translation.x": 0.0,
-						"translation.y": 0.0,
-						"zoom_level": 1.0
-					},
-					"stack_index": 3,
-					"type": "text"
-				},
-				{
-					"buffer": 6,
-					"file": "breakout.ini",
-					"semi_transient": false,
-					"settings":
-					{
-						"buffer_size": 238,
-						"regions":
-						{
-						},
-						"selection":
-						[
-							[
-								33,
-								33
-							]
-						],
-						"settings":
-						{
-							"syntax": "Packages/Text/Plain text.tmLanguage"
-						},
-						"translation.x": 0.0,
-						"translation.y": 0.0,
-						"zoom_level": 1.0
-					},
-					"stack_index": 2,
-					"type": "text"
-				},
-				{
-					"buffer": 7,
-					"file": "include/AudioOptionsMenu.h",
-					"semi_transient": false,
-					"settings":
-					{
-						"buffer_size": 340,
-						"regions":
-						{
-						},
-						"selection":
-						[
-							[
-								301,
-								301
-							]
-						],
-						"settings":
-						{
-							"syntax": "Packages/C++/C++.sublime-syntax"
-						},
-						"translation.x": 0.0,
-						"translation.y": 0.0,
-						"zoom_level": 1.0
-					},
-					"stack_index": 9,
-					"type": "text"
-				},
-				{
-					"buffer": 8,
-					"file": "src/AudioOptionsMenu.cpp",
-					"semi_transient": false,
-					"settings":
-					{
-						"buffer_size": 242,
-						"regions":
-						{
-						},
-						"selection":
-						[
-							[
-								66,
-								66
-							]
-						],
-						"settings":
-						{
-							"syntax": "Packages/C++/C++.sublime-syntax"
-						},
-						"translation.x": 8.0,
-						"translation.y": 0.0,
-						"zoom_level": 1.0
-					},
-					"stack_index": 6,
-					"type": "text"
-				},
-				{
-					"buffer": 9,
-					"file": "include/VideoOptionsMenu.h",
-					"semi_transient": false,
-					"settings":
-					{
-						"buffer_size": 340,
-						"regions":
-						{
-						},
-						"selection":
-						[
-							[
-								301,
-								301
-							]
-						],
-						"settings":
-						{
-							"syntax": "Packages/C++/C++.sublime-syntax"
-						},
-						"translation.x": 0.0,
-						"translation.y": 0.0,
-						"zoom_level": 1.0
-					},
-					"stack_index": 8,
-					"type": "text"
-				},
-				{
-					"buffer": 10,
-					"file": "src/VideoOptionsMenu.cpp",
-					"semi_transient": false,
-					"settings":
-					{
-						"buffer_size": 242,
-						"regions":
-						{
-						},
-						"selection":
-						[
-							[
-								66,
-								66
-							]
-						],
-						"settings":
-						{
-							"syntax": "Packages/C++/C++.sublime-syntax"
-						},
-						"translation.x": 0.0,
-						"translation.y": 0.0,
-						"zoom_level": 1.0
-					},
-					"stack_index": 5,
-					"type": "text"
-				},
-				{
-					"buffer": 11,
-					"file": "include/MainMenu.h",
-					"semi_transient": false,
-					"settings":
-					{
-						"buffer_size": 305,
-						"regions":
-						{
-						},
-						"selection":
-						[
-							[
-								129,
-								129
-							]
-						],
-						"settings":
-						{
-							"open_with_edit": true,
-							"syntax": "Packages/C++/C++.sublime-syntax"
-						},
-						"translation.x": 0.0,
-						"translation.y": 0.0,
-						"zoom_level": 1.0
-					},
-					"stack_index": 1,
-					"type": "text"
-				},
-				{
-					"buffer": 12,
-					"file": "src/MainMenu.cpp",
-					"semi_transient": false,
-					"settings":
-					{
-						"buffer_size": 481,
-						"regions":
-						{
-						},
-						"selection":
-						[
-							[
-								481,
-								481
-							]
-						],
-						"settings":
-						{
-							"open_with_edit": true,
-							"syntax": "Packages/C++/C++.sublime-syntax",
-							"translate_tabs_to_spaces": false
 						},
 						"translation.x": 0.0,
 						"translation.y": 0.0,
 						"zoom_level": 1.0
 					},
 					"stack_index": 0,
-					"type": "text"
-				},
-				{
-					"buffer": 13,
-					"file": "include/Menu.h",
-					"semi_transient": false,
-					"settings":
-					{
-						"buffer_size": 632,
-						"regions":
-						{
-						},
-						"selection":
-						[
-							[
-								0,
-								0
-							]
-						],
-						"settings":
-						{
-							"syntax": "Packages/C++/C++.sublime-syntax"
-						},
-						"translation.x": 0.0,
-						"translation.y": 0.0,
-						"zoom_level": 1.0
-					},
-					"stack_index": 13,
-					"type": "text"
-				},
-				{
-					"buffer": 14,
-					"semi_transient": false,
-					"settings":
-					{
-						"buffer_size": 24555,
-						"regions":
-						{
-							"match":
-							{
-								"flags": 112,
-								"regions":
-								[
-									[
-										246,
-										258
-									],
-									[
-										623,
-										635
-									],
-									[
-										644,
-										656
-									],
-									[
-										667,
-										679
-									],
-									[
-										696,
-										708
-									],
-									[
-										713,
-										725
-									],
-									[
-										732,
-										744
-									],
-									[
-										746,
-										758
-									],
-									[
-										797,
-										809
-									],
-									[
-										1119,
-										1131
-									],
-									[
-										1428,
-										1440
-									],
-									[
-										1651,
-										1663
-									],
-									[
-										2125,
-										2137
-									],
-									[
-										2649,
-										2661
-									],
-									[
-										3100,
-										3112
-									],
-									[
-										3193,
-										3205
-									],
-									[
-										3287,
-										3299
-									],
-									[
-										3378,
-										3390
-									],
-									[
-										3470,
-										3482
-									],
-									[
-										3565,
-										3577
-									],
-									[
-										3920,
-										3932
-									],
-									[
-										3975,
-										3987
-									],
-									[
-										4385,
-										4397
-									],
-									[
-										4440,
-										4452
-									],
-									[
-										4473,
-										4485
-									],
-									[
-										4505,
-										4517
-									],
-									[
-										4566,
-										4578
-									],
-									[
-										4599,
-										4611
-									],
-									[
-										4625,
-										4637
-									],
-									[
-										4680,
-										4692
-									],
-									[
-										5072,
-										5084
-									],
-									[
-										5096,
-										5108
-									],
-									[
-										5137,
-										5149
-									],
-									[
-										5548,
-										5560
-									],
-									[
-										5616,
-										5628
-									],
-									[
-										6011,
-										6023
-									],
-									[
-										6087,
-										6099
-									],
-									[
-										6498,
-										6510
-									],
-									[
-										6515,
-										6527
-									],
-									[
-										6534,
-										6546
-									],
-									[
-										6549,
-										6561
-									],
-									[
-										6577,
-										6589
-									],
-									[
-										6975,
-										6987
-									],
-									[
-										7003,
-										7015
-									],
-									[
-										7024,
-										7036
-									],
-									[
-										7047,
-										7059
-									],
-									[
-										7094,
-										7106
-									],
-									[
-										7149,
-										7161
-									],
-									[
-										7186,
-										7198
-									],
-									[
-										7241,
-										7253
-									],
-									[
-										7276,
-										7288
-									],
-									[
-										7344,
-										7356
-									],
-									[
-										7381,
-										7393
-									],
-									[
-										7457,
-										7469
-									],
-									[
-										7746,
-										7758
-									],
-									[
-										8164,
-										8176
-									],
-									[
-										8586,
-										8598
-									],
-									[
-										8952,
-										8964
-									],
-									[
-										9366,
-										9378
-									],
-									[
-										9848,
-										9860
-									],
-									[
-										10231,
-										10243
-									],
-									[
-										10248,
-										10260
-									],
-									[
-										10267,
-										10279
-									],
-									[
-										10281,
-										10293
-									],
-									[
-										10332,
-										10344
-									],
-									[
-										10365,
-										10377
-									],
-									[
-										10397,
-										10409
-									],
-									[
-										10458,
-										10470
-									],
-									[
-										10491,
-										10503
-									],
-									[
-										10517,
-										10529
-									],
-									[
-										10572,
-										10584
-									],
-									[
-										10608,
-										10620
-									],
-									[
-										10632,
-										10644
-									],
-									[
-										10673,
-										10685
-									],
-									[
-										10694,
-										10706
-									],
-									[
-										10711,
-										10723
-									],
-									[
-										10730,
-										10742
-									],
-									[
-										10745,
-										10757
-									],
-									[
-										10773,
-										10785
-									],
-									[
-										10840,
-										10852
-									],
-									[
-										11313,
-										11325
-									],
-									[
-										11902,
-										11914
-									],
-									[
-										12474,
-										12486
-									],
-									[
-										12988,
-										13000
-									],
-									[
-										13329,
-										13341
-									],
-									[
-										13349,
-										13361
-									],
-									[
-										13374,
-										13386
-									],
-									[
-										13479,
-										13491
-									],
-									[
-										13752,
-										13764
-									],
-									[
-										13927,
-										13939
-									],
-									[
-										14212,
-										14224
-									],
-									[
-										14342,
-										14354
-									],
-									[
-										14631,
-										14643
-									],
-									[
-										14791,
-										14803
-									],
-									[
-										15049,
-										15061
-									],
-									[
-										15171,
-										15183
-									],
-									[
-										15423,
-										15435
-									],
-									[
-										15644,
-										15656
-									],
-									[
-										15898,
-										15910
-									],
-									[
-										16043,
-										16055
-									],
-									[
-										16301,
-										16313
-									],
-									[
-										16514,
-										16526
-									],
-									[
-										16793,
-										16805
-									],
-									[
-										17038,
-										17050
-									],
-									[
-										17371,
-										17383
-									],
-									[
-										17750,
-										17762
-									],
-									[
-										17860,
-										17872
-									],
-									[
-										17965,
-										17977
-									],
-									[
-										18157,
-										18169
-									],
-									[
-										18306,
-										18318
-									],
-									[
-										18354,
-										18366
-									],
-									[
-										18527,
-										18539
-									],
-									[
-										18687,
-										18699
-									],
-									[
-										18803,
-										18815
-									],
-									[
-										18972,
-										18984
-									],
-									[
-										19131,
-										19143
-									],
-									[
-										19245,
-										19257
-									],
-									[
-										19437,
-										19449
-									],
-									[
-										19599,
-										19611
-									],
-									[
-										19770,
-										19782
-									],
-									[
-										19977,
-										19989
-									],
-									[
-										20130,
-										20142
-									],
-									[
-										20365,
-										20377
-									],
-									[
-										20500,
-										20512
-									],
-									[
-										20716,
-										20728
-									],
-									[
-										20894,
-										20906
-									],
-									[
-										21108,
-										21120
-									],
-									[
-										21300,
-										21312
-									],
-									[
-										21431,
-										21443
-									],
-									[
-										21589,
-										21601
-									],
-									[
-										21782,
-										21794
-									],
-									[
-										21918,
-										21930
-									],
-									[
-										21985,
-										21997
-									],
-									[
-										21999,
-										22011
-									],
-									[
-										22099,
-										22111
-									],
-									[
-										22114,
-										22126
-									],
-									[
-										22209,
-										22221
-									],
-									[
-										22395,
-										22407
-									],
-									[
-										22531,
-										22543
-									],
-									[
-										22720,
-										22732
-									],
-									[
-										22972,
-										22984
-									],
-									[
-										23201,
-										23213
-									],
-									[
-										23393,
-										23405
-									],
-									[
-										23604,
-										23616
-									],
-									[
-										23821,
-										23833
-									],
-									[
-										24006,
-										24018
-									],
-									[
-										24193,
-										24205
-									],
-									[
-										24477,
-										24489
-									]
-								],
-								"scope": ""
-							}
-						},
-						"selection":
-						[
-							[
-								0,
-								0
-							]
-						],
-						"settings":
-						{
-							"default_dir": "/home/will/Documents/git/Breakout",
-							"detect_indentation": false,
-							"line_numbers": false,
-							"output_tag": 1,
-							"result_base_dir": "",
-							"result_file_regex": "^([^ 	].*):$",
-							"result_line_regex": "^ +([0-9]+):",
-							"scroll_past_end": true,
-							"syntax": "Packages/Default/Find Results.hidden-tmLanguage"
-						},
-						"translation.x": 0.0,
-						"translation.y": 6626.0,
-						"zoom_level": 1.0
-					},
-					"stack_index": 16,
-					"type": "text"
-				},
-				{
-					"buffer": 15,
-					"file": "include/Button.h",
-					"semi_transient": false,
-					"settings":
-					{
-						"buffer_size": 761,
-						"regions":
-						{
-						},
-						"selection":
-						[
-							[
-								0,
-								0
-							]
-						],
-						"settings":
-						{
-							"syntax": "Packages/C++/C++.sublime-syntax",
-							"translate_tabs_to_spaces": false
-						},
-						"translation.x": 0.0,
-						"translation.y": 0.0,
-						"zoom_level": 1.0
-					},
-					"stack_index": 15,
-					"type": "text"
-				},
-				{
-					"buffer": 16,
-					"file": "src/Menu.cpp",
-					"semi_transient": false,
-					"settings":
-					{
-						"buffer_size": 2059,
-						"regions":
-						{
-						},
-						"selection":
-						[
-							[
-								0,
-								0
-							]
-						],
-						"settings":
-						{
-							"syntax": "Packages/C++/C++.sublime-syntax",
-							"translate_tabs_to_spaces": false
-						},
-						"translation.x": 0.0,
-						"translation.y": 203.0,
-						"zoom_level": 1.0
-					},
-					"stack_index": 12,
 					"type": "text"
 				}
 			]
@@ -2075,7 +1003,7 @@
 	"menu_visible": true,
 	"output.exec":
 	{
-		"height": 244.0
+		"height": 445.0
 	},
 	"output.find_results":
 	{
@@ -2089,7 +1017,7 @@
 	"project": "breakout.sublime-project",
 	"replace":
 	{
-		"height": 46.0
+		"height": 68.0
 	},
 	"save_all_on_build": true,
 	"select_file":
@@ -2099,76 +1027,104 @@
 		"selected_items":
 		[
 			[
-				"vide",
-				"src/VideoOptionsMenu.cpp"
+				"menu.cpp",
+				"Breakout/src/Menu.cpp"
 			],
 			[
-				"audi",
-				"src/AudioOptionsMenu.cpp"
+				"menuman",
+				"Breakout/src/MenuManager.cpp"
 			],
 			[
-				"menu",
-				"src/MenuManager.cpp"
+				"menu.h",
+				"Breakout/include/Menu.h"
 			],
 			[
-				"vid",
-				"src/VideoOptionsMenu.cpp"
+				"mainm",
+				"Breakout/include/MainMenu.h"
 			],
 			[
-				"vi",
-				"include/VideoOptionsMenu.h"
+				"pause",
+				"Breakout/include/PauseMenu.h"
 			],
 			[
-				"audio",
-				"src/AudioOptionsMenu.cpp"
+				"op",
+				"Breakout/include/OptionsMenu.h"
+			],
+			[
+				"options",
+				"Breakout/src/OptionsMenu.cpp"
+			],
+			[
+				"menueni",
+				"Breakout/include/MenuEntity.h"
+			],
+			[
+				"pro",
+				"Breakout/src/ProgramManager.cpp"
+			],
+			[
+				"asset",
+				"Breakout/include/AssetFactory.h"
 			],
 			[
 				"button.h",
-				"include/Button.h"
+				"Breakout/include/Button.h"
 			],
 			[
-				"game",
-				"src/GameManager.cpp"
+				"stateme",
+				"include/StateMachine.h"
 			],
 			[
-				"balls",
-				"include/BallsIndicator.h"
-			],
-			[
-				"paddle.cpp",
-				"src/Paddle.cpp"
-			],
-			[
-				"ball.h",
-				"include/Ball.h"
-			],
-			[
-				"paddle.h",
-				"include/Paddle.h"
-			],
-			[
-				"global.cpp",
-				"src/Globals.cpp"
-			],
-			[
-				"block.cpp",
-				"src/Block.cpp"
+				"ball.cpp",
+				"src/Ball.cpp"
 			],
 			[
 				"block.h",
 				"include/Block.h"
 			],
 			[
-				"pr",
-				"src/ProgramManager.cpp"
+				"block.cpp",
+				"src/Block.cpp"
 			],
 			[
-				"main.cpp",
+				"entity",
+				"include/Entity.h"
+			],
+			[
+				"physics",
+				"include/PhysicsEntity.h"
+			],
+			[
+				"ball.h",
+				"include/Ball.h"
+			],
+			[
+				"sond.h",
+				"include/Sound.h"
+			],
+			[
+				"sound.h",
+				"include/Sound.h"
+			],
+			[
+				"makefil",
+				"Makefile"
+			],
+			[
+				"main",
 				"src/main.cpp"
+			],
+			[
+				"make",
+				"Makefile"
 			],
 			[
 				"progr",
 				"include/ProgramManager.h"
+			],
+			[
+				"game",
+				"include/GameManager.h"
 			],
 			[
 				"padd",
@@ -2181,6 +1137,10 @@
 			[
 				"ball",
 				"src/Ball.cpp"
+			],
+			[
+				"paddle.cpp",
+				"src/Paddle.cpp"
 			],
 			[
 				"block.cp",
@@ -2201,6 +1161,10 @@
 			[
 				"button.cpp",
 				"src/Button.cpp"
+			],
+			[
+				"menu",
+				"src/MenuManager.cpp"
 			],
 			[
 				"block.",
@@ -2225,6 +1189,10 @@
 			[
 				"button",
 				"include/Button.h"
+			],
+			[
+				"balls",
+				"src/BallsIndicator.cpp"
 			],
 			[
 				"ballsin",
@@ -2268,10 +1236,10 @@
 	{
 	},
 	"show_minimap": true,
-	"show_open_files": true,
+	"show_open_files": false,
 	"show_tabs": true,
 	"side_bar_visible": true,
-	"side_bar_width": 224.0,
+	"side_bar_width": 232.0,
 	"status_bar_visible": true,
 	"template_settings":
 	{

@@ -3,6 +3,7 @@
 
 #include <vector>
 #include "Button.h"
+#include "Label.h"
 #include "AssetFactory.h"
 #include "EventManager.h"
 
