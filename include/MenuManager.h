@@ -28,7 +28,7 @@ typedef enum
 	AUDIO_OPTIONS_MENU
 } MenuType;
 
-class MenuManager : public IEventHandler
+class MenuManager : public IEventHandler, public IMouseEventHandler
 {
 private:
 	//Menu *mainMenu, *pauseMenu, *optionsMenu;
@@ -58,9 +58,12 @@ public:
 
 	char* type();
 
-	void handleMouseEvents(int mouseState, int x, int y);
 	void handleKeyboardEvents(const Uint8*);
 	void handleGameEvents(const Uint8* events);
+
+	void handleMousePress(int mouseButton, int x, int y);
+	void handleMouseDrag(int mouseButton, int prevX, int prevY, int currX, int currY);
+	void handleMouseRelease(int mouseButton, int x, int y);
 };
 
 #endif

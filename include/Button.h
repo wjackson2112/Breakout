@@ -19,8 +19,10 @@ public:
 
 	void setRect(SDL_Rect rect);
 
-	GameEvent handleClick(int x, int y);
-	void handleMouseEvents(int mouseState, int x, int y);
+	void handleMousePress(int mouseState, int x, int y);
+	void handleMouseDrag(int mouseButton, int prevX, int prevY, int currX, int currY);
+	void handleMouseRelease(int mouseState, int x, int y);
+	
 	void handleKeyboardEvents(const Uint8*);
 	void handleGameEvents(const Uint8* events);
 

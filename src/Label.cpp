@@ -19,14 +19,19 @@ void Label::setRect(SDL_Rect rect)
 	this->rect.h = rect.h;
 }
 
-GameEvent Label::handleClick(int x, int y)
+void Label::handleMousePress(int mouseButton, int x, int y)
 {
-	return NO_EVENT;
+	// Labels do nothing on a Press
 }
 
-void Label::handleMouseEvents(int mouseState, int x, int y)
+void Label::handleMouseDrag(int mouseButton, int prevX, int prevY, int currX, int currY)
 {
+	// Labels do nothing on a Drag
+}
 
+void Label::handleMouseRelease(int mouseButton, int x, int y)
+{
+	// Labels do nothing on a Release
 }
 
 void Label::handleKeyboardEvents(const Uint8*)

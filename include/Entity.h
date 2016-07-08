@@ -16,7 +16,7 @@ public:
 	//Entity();
 	virtual ~Entity() = 0;
 
-	virtual void handleMouseEvents(int mouseState, int x, int y) = 0;
+	//virtual void handleMouseEvents(int mouseState, int x, int y) = 0;
 	virtual void handleKeyboardEvents(const Uint8*) = 0;
 	virtual void handleGameEvents(const Uint8* events) = 0;
 	virtual char* type() = 0;

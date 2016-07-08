@@ -23,37 +23,26 @@ void Button::setRect(SDL_Rect rect)
 	this->rect.h = rect.h;
 }
 
-GameEvent Button::handleClick(int x, int y)
+void Button::handleMousePress(int mouseButton, int x, int y)
 {
-	if(x > this->rect.x && 
+	// Buttons do nothing on a Press
+}
+
+void Button::handleMouseDrag(int mouseButton, int prevX, int prevY, int currX, int currY)
+{
+	// Buttons do nothing on a Drag
+}
+
+void Button::handleMouseRelease(int mouseButton, int x, int y)
+{
+	if(mouseButton & SDL_BUTTON(SDL_BUTTON_LEFT) &&
+	   x > this->rect.x && 
 	   x < this->rect.x + this->rect.w && 
 	   y > this->rect.y && 
 	   y < this->rect.y + this->rect.h)
 	{
-		return this->event;
+		EventManager::Instance()->reportGameEvent(event);
 	}
-
-	return NO_EVENT;
-}
-
-void Button::handleMouseEvents(int mouseState, int x, int y)
-{
-
-	// if((mouseState & SDL_BUTTON(SDL_BUTTON_LEFT)) && 
-	// 	x > this->rect.x && 
-	// 	x < this->rect.x + this->rect.w && 
-	// 	y > this->rect.y && 
-	// 	y < this->rect.y + this->rect.h &&
-	// 	lastState == false)
-	// {
-	// 	lastState = true;
-	// }
-	// else if(!(mouseState & SDL_BUTTON(SDL_BUTTON_LEFT)) && 
-	// 		lastState == true)
-	// {
-	// 	EventManager::Instance()->reportGameEvent(this->event);
-	// 	lastState = false;
-	// }
 }
 
 void Button::handleKeyboardEvents(const Uint8*)

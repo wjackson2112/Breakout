@@ -8,6 +8,7 @@
 //#include <map>
 //#include "Entity.h"
 #include "IEventHandler.h"
+#include "IMouseEventHandler.h"
 
 typedef enum GameEvent
 {
@@ -39,6 +40,9 @@ static char* GameEventStr[NUM_OF_EVENTS] =
 	"PAUSE_GAME",
 	"RESUME_GAME",
 	"OPTIONS",
+	"VIDEO_OPTIONS",
+	"AUDIO_OPTIONS",
+	"BACK",
 	"CREDITS",
 	"QUIT_GAME",
 	"QUIT_PROGRAM"
@@ -51,6 +55,7 @@ private:
 	static bool instanceFlag;
 	static EventManager* instance;
 	std::vector<IEventHandler*> eventHandlers;
+	std::vector<IMouseEventHandler*> mouseEventHandlers;
 
 	Uint8 gameEvents[NUM_OF_EVENTS] = {{0}};
 
@@ -60,6 +65,7 @@ private:
 	void clearGameEvents();
 public:
 	static EventManager* Instance();
+
 	void registerHandler(IEventHandler* handler);
 	void deregisterHandler(IEventHandler* handler);
 	void printHandlers();
@@ -67,8 +73,10 @@ public:
 	void reportSDLEvent(SDL_Event e);
 	void reportGameEvent(GameEvent event);
 	void handleGameEvents();
-	void handleMouseEvents();
 
+	void registerMouseHandler(IMouseEventHandler* handler);
+	void deregisterMouseHander(IMouseEventHandler* handler);
+	void handleMouseEvents();
 };
 
 #endif

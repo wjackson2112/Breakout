@@ -48,19 +48,31 @@ void Menu::add_floating_menu_item(MenuEntity* item, int x, int y)
 	this->menuItems.push_back(item);//this->menuItems[row + col] = item	
 }
 
-GameEvent Menu::handleClick(int x, int y)
+void Menu::handleMousePress(int mouseButton, int x, int y)
 {
 	for(auto &menuItem : menuItems)
 	{
-		GameEvent event = menuItem->handleClick(x,y);
-		if(event != NO_EVENT)
-		{
-			return event;
-		}
+		menuItem->handleMousePress(mouseButton, x, y);
 	}
-
-	return NO_EVENT;
 }
+
+void Menu::handleMouseRelease(int mouseButton, int x, int y)
+{
+	for(auto &menuItem : menuItems)
+	{
+		menuItem->handleMouseRelease(mouseButton, x, y);
+	}
+}
+
+void Menu::handleMouseDrag(int mouseButton, int prevX, int prevY, int currX, int currY)
+{
+	for(auto &menuItem : menuItems)
+	{
+		menuItem->handleMouseDrag(mouseButton, prevX, prevY, currX, currY);
+	}
+}
+
+
 
 void Menu::render(SDL_Renderer* gRenderer)
 {

@@ -5,6 +5,7 @@ MenuManager::MenuManager(AssetFactory* assetFactory)
 	visible = true;
 	this->assetFactory = assetFactory;
 	EventManager::Instance()->registerHandler(this);
+	EventManager::Instance()->registerMouseHandler(this);
 
 	this->pushMenu(MAIN_MENU);
 }
@@ -37,30 +38,36 @@ char* MenuManager::type()
 	return "MenuManager";
 }
 
-void MenuManager::handleMouseEvents(int mouseState, int x, int y)
+void MenuManager::handleMousePress(int mouseButton, int x, int y)
 {
-	static bool lastState = false;
 	Menu* activeMenu = this->peekMenu();
 
-	if((mouseState & SDL_BUTTON(SDL_BUTTON_LEFT)) &&
-		lastState == false)
+	if(activeMenu)
 	{
-		lastState = true;
-	}
-	else if(!(mouseState & SDL_BUTTON(SDL_BUTTON_LEFT)) && 
-			lastState == true)
-	{
-		if(activeMenu)
-		{
-			GameEvent event = activeMenu->handleClick(x, y);
-			if(event != NO_EVENT)
-			{
-				EventManager::Instance()->reportGameEvent(event);
-			}
-		}
-		lastState = false;
+		activeMenu->handleMousePress(mouseButton, x, y);
 	}
 }
+
+void MenuManager::handleMouseDrag(int mouseButton, int prevX, int prevY, int currX, int currY)
+{
+	Menu* activeMenu = this->peekMenu();
+
+	if(activeMenu)
+	{
+		activeMenu->handleMouseDrag(mouseButton, prevX, prevY, currX, currY);
+	}
+}
+
+void MenuManager::handleMouseRelease(int mouseButton, int x, int y)
+{
+	Menu* activeMenu = this->peekMenu();
+
+	if(activeMenu)
+	{
+		activeMenu->handleMouseRelease(mouseButton, x, y);
+	}
+}
+
 
 void MenuManager::handleKeyboardEvents(const Uint8* keyStates)
 {

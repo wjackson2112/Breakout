@@ -4,8 +4,9 @@
 #include <SDL2/SDL.h>
 #include "Entity.h"
 #include "EventManager.h"
+#include "IMouseEventHandler.h"
 
-class MenuEntity : public Entity
+class MenuEntity : public Entity, public IMouseEventHandler
 {
 public:
 	SDL_Rect rect;
@@ -13,7 +14,6 @@ public:
 
 	virtual void setRect(SDL_Rect rect) = 0;
 	virtual SDL_Rect  getRect() = 0;
-	virtual GameEvent handleClick(int x, int y) = 0;
 };
 
 #endif

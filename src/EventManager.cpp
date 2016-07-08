@@ -50,17 +50,63 @@ void EventManager::printHandlers()
 	std::cout << std::endl;
 }
 
+void EventManager::registerMouseHandler(IMouseEventHandler* handler)
+{
+	this->mouseEventHandlers.push_back(handler);
+}
+
+void EventManager::deregisterMouseHander(IMouseEventHandler* handler)
+{
+	for(std::vector<IMouseEventHandler*>::iterator it=this->mouseEventHandlers.begin(); it!=this->mouseEventHandlers.end();)
+	{
+		if(*it == handler)
+		{
+			it = this->mouseEventHandlers.erase(it);
+		}
+		else
+		{
+			++it;
+		}
+	}	
+}
+
 void EventManager::handleMouseEvents()
 {
+	static int prevX, prevY, prevMouseState;
+
 	int x, y, mouseState;
 
 	SDL_PumpEvents();
 	mouseState = SDL_GetMouseState(&x, &y);
 
-	for(auto &handler : eventHandlers)
+	for(int i = SDL_BUTTON_LEFT; i <= SDL_BUTTON_X2; i++)
 	{
-		handler->handleMouseEvents(mouseState, x, y);
+		if(mouseState & SDL_BUTTON(i) && !(prevMouseState & SDL_BUTTON(i)))
+		{
+			for(auto &handler : mouseEventHandlers)
+			{
+				handler->handleMousePress(i, x, y);
+			}
+		} 
+		else if(!(mouseState & SDL_BUTTON(i)) && prevMouseState & SDL_BUTTON(i))
+		{
+			for(auto &handler : mouseEventHandlers)
+			{
+				handler->handleMouseRelease(i, x, y);
+			}
+		}
+		else if(mouseState & SDL_BUTTON(i) && prevMouseState & SDL_BUTTON(i))
+		{
+			for(auto &handler : mouseEventHandlers)
+			{
+				handler->handleMouseDrag(i, prevX, prevY, x, y);
+			}
+		}
 	}
+
+	prevX = x;
+	prevY = y;
+	prevMouseState = mouseState;
 }
 
 void EventManager::handleKeyboardEvents()
