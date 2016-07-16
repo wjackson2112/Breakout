@@ -5,15 +5,18 @@
 #include "Entity.h"
 #include "EventManager.h"
 #include "IMouseEventHandler.h"
+#include "IGameEventHandler.h"
+#include "IKeyboardEventHandler.h"
 
 class MenuEntity : public Entity, public IMouseEventHandler
 {
 public:
-	SDL_Rect rect;
-	SDL_Texture* texture;
+	MenuEntity(string texture_file, AssetFactory* assetFactory);
+	virtual ~MenuEntity(){};
 
-	virtual void setRect(SDL_Rect rect) = 0;
-	virtual SDL_Rect  getRect() = 0;
+	virtual void handleMousePress(int mouseState, int x, int y){}
+	virtual void handleMouseDrag(int mouseButton, int prevX, int prevY, int currX, int currY){}
+	virtual void handleMouseRelease(int mouseState, int x, int y){}
 };
 
 #endif

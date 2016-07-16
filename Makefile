@@ -47,10 +47,6 @@ distclean:
 	@echo Removing Directory $(BUILD_DIR)
 	@$(RM) -rf $(BUILD_DIR)
 
-run: all	
-	@echo Running $(TARGET)
-	@./$(TARGET)
-
 $(BUILD_DIR)/%.d: ;
 .PRECIOUS: $(BUILD_DIR)/%.d
 

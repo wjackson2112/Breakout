@@ -5,7 +5,7 @@
 #include <cstdlib>
 #include <cstring>
 
-#include "IEventHandler.h"
+#include "IGameEventHandler.h"
 #include "EventManager.h"
 #include "UIEntity.h"
 #include "Button.h"
@@ -28,7 +28,7 @@ typedef enum
 	AUDIO_OPTIONS_MENU
 } MenuType;
 
-class MenuManager : public IEventHandler, public IMouseEventHandler
+class MenuManager : public IGameEventHandler, public IMouseEventHandler
 {
 private:
 	//Menu *mainMenu, *pauseMenu, *optionsMenu;

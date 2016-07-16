@@ -5,36 +5,52 @@
 !_TAG_PROGRAM_URL	http://ctags.sourceforge.net	/official site/
 !_TAG_PROGRAM_VERSION	5.9~svn20110310	//
 ASSET_FACTORY_H	include/AssetFactory.h	2;"	d
+AUDIO_OPTIONS	include/EventManager.h	/^	AUDIO_OPTIONS,$/;"	e	enum:GameEvent
+AUDIO_OPTIONS_MENU	include/MenuManager.h	/^	AUDIO_OPTIONS_MENU$/;"	e	enum:__anon1
+AUDIO_OPTIONS_MENU_H	include/AudioOptionsMenu.h	2;"	d
 AddEntry	include/SimpleIni.h	/^CSimpleIniTempl<SI_CHAR,SI_STRLESS,SI_CONVERTER>::AddEntry($/;"	f	class:CSimpleIniTempl
 AlphaKeyFrame	include/Effects.h	/^		AlphaKeyFrame(Uint64 transitionTime, int start_a, int final_a)$/;"	f	class:Effects::AlphaKeyFrame
 AlphaKeyFrame	include/Effects.h	/^	class AlphaKeyFrame$/;"	c	class:Effects
 AssetFactory	include/AssetFactory.h	/^class AssetFactory {	$/;"	c
 AssetFactory	src/AssetFactory.cpp	/^AssetFactory::AssetFactory(SDL_Renderer* gRenderer){$/;"	f	class:AssetFactory
+AudioOptionsMenu	include/AudioOptionsMenu.h	/^class AudioOptionsMenu : public Menu$/;"	c
+AudioOptionsMenu	src/AudioOptionsMenu.cpp	/^AudioOptionsMenu::AudioOptionsMenu(AssetFactory* assetFactory)$/;"	f	class:AudioOptionsMenu
+BACK	include/EventManager.h	/^	BACK,$/;"	e	enum:GameEvent
 BALLS_DEPLETED	include/EventManager.h	/^	BALLS_DEPLETED,$/;"	e	enum:GameEvent
 BALLS_INDICATOR_H	include/BallsIndicator.h	2;"	d
 BALL_ADDED	include/EventManager.h	/^	BALL_ADDED,$/;"	e	enum:GameEvent
 BALL_H	include/Ball.h	2;"	d
 BALL_LOST	include/EventManager.h	/^	BALL_LOST,$/;"	e	enum:GameEvent
-BLOCK_DISAPPEARED	include/EventManager.h	/^	BLOCK_DISAPPEARED = 0,$/;"	e	enum:GameEvent
+BLOCK_DISAPPEARED	include/EventManager.h	/^	BLOCK_DISAPPEARED,$/;"	e	enum:GameEvent
 BLOCK_H	include/Block.h	2;"	d
-BLUE	include/Block.h	/^	BLUE,$/;"	e	enum:__anon3
+BLUE	include/Block.h	/^	BLUE,$/;"	e	enum:__anon4
 BUILD_DIR	Makefile	/^BUILD_DIR = build$/;"	m
 BUTTON_H	include/Button.h	2;"	d
-Ball	include/Ball.h	/^class Ball : public PhysicsEntity$/;"	c
+Ball	include/Ball.h	/^class Ball : public GameEntity$/;"	c
 Ball	src/Ball.cpp	/^Ball::Ball(Paddle* paddle, AssetFactory* assetFactory)$/;"	f	class:Ball
-BallState	include/Ball.h	/^} BallState;$/;"	t	typeref:enum:__anon4
+BallState	include/Ball.h	/^} BallState;$/;"	t	typeref:enum:__anon5
 BallsIndicator	include/BallsIndicator.h	/^class BallsIndicator : public UIEntity$/;"	c
 BallsIndicator	src/BallsIndicator.cpp	/^BallsIndicator::BallsIndicator(float x, float y, AssetFactory* assetFactory)$/;"	f	class:BallsIndicator
-Block	include/Block.h	/^class Block : public PhysicsEntity$/;"	c
+Block	include/Block.h	/^class Block : public GameEntity$/;"	c
 Block	src/Block.cpp	/^Block::Block(int x, int y, int width, int height, int* blockCount, AssetFactory* assetFactory, BlockColor color)$/;"	f	class:Block
-BlockColor	include/Block.h	/^} BlockColor;$/;"	t	typeref:enum:__anon3
-BlockState	include/Block.h	/^} BlockState;$/;"	t	typeref:enum:__anon2
+BlockColor	include/Block.h	/^} BlockColor;$/;"	t	typeref:enum:__anon4
+BlockState	include/Block.h	/^} BlockState;$/;"	t	typeref:enum:__anon3
 Boolean	include/ConvertUTF.h	/^typedef unsigned char	Boolean; \/* 0 or 1 *\/$/;"	t
 Button	include/Button.h	/^class Button : public MenuEntity$/;"	c
-Button	src/Button.cpp	/^Button::Button(const char* fontName, const char* text, GameEvent event, int x, int y)$/;"	f	class:Button
+Button	src/Button.cpp	/^Button::Button(string texture_file, AssetFactory* assetFactory, GameEvent event)$/;"	f	class:Button
 CC	Makefile	/^CC = g++$/;"	m
 CC_FLAGS	Makefile	/^CC_FLAGS = -w -std=c++11$/;"	m
 COLLIDER_H	include/Collider.h	2;"	d
+COL_PADDING	src/AudioOptionsMenu.cpp	10;"	d	file:
+COL_PADDING	src/MainMenu.cpp	10;"	d	file:
+COL_PADDING	src/OptionsMenu.cpp	10;"	d	file:
+COL_PADDING	src/PauseMenu.cpp	10;"	d	file:
+COL_PADDING	src/VideoOptionsMenu.cpp	10;"	d	file:
+COL_WIDTH	src/AudioOptionsMenu.cpp	9;"	d	file:
+COL_WIDTH	src/MainMenu.cpp	9;"	d	file:
+COL_WIDTH	src/OptionsMenu.cpp	9;"	d	file:
+COL_WIDTH	src/PauseMenu.cpp	9;"	d	file:
+COL_WIDTH	src/VideoOptionsMenu.cpp	9;"	d	file:
 CREDITS	include/EventManager.h	/^	CREDITS,$/;"	e	enum:GameEvent
 CSimpleIni	include/SimpleIni.h	3423;"	d
 CSimpleIni	include/SimpleIni.h	3427;"	d
@@ -48,12 +64,12 @@ CSimpleIniTempl	include/SimpleIni.h	/^CSimpleIniTempl<SI_CHAR,SI_STRLESS,SI_CONV
 CSimpleIniTempl	include/SimpleIni.h	/^class CSimpleIniTempl$/;"	c
 CSimpleIniW	include/SimpleIni.h	/^    SI_NoCase<UChar>,SI_ConvertW<UChar> >               CSimpleIniW;$/;"	t
 CSimpleIniW	include/SimpleIni.h	/^    SI_NoCase<wchar_t>,SI_ConvertW<wchar_t> >           CSimpleIniW;$/;"	t
-Collider	include/Collider.h	/^class Collider : public PhysicsEntity$/;"	c
+Collider	include/Collider.h	/^class Collider : public GameEntity$/;"	c
 Collider	src/Collider.cpp	/^Collider::Collider(Entity* entity)$/;"	f	class:Collider
 ColorKeyFrame	include/Effects.h	/^		ColorKeyFrame(Uint32 completionTime, int r, int g, int b){$/;"	f	class:Effects::ColorKeyFrame
 ColorKeyFrame	include/Effects.h	/^	class ColorKeyFrame$/;"	c	class:Effects
-ConversionFlags	include/ConvertUTF.h	/^} ConversionFlags;$/;"	t	typeref:enum:__anon6
-ConversionResult	include/ConvertUTF.h	/^} ConversionResult;$/;"	t	typeref:enum:__anon5
+ConversionFlags	include/ConvertUTF.h	/^} ConversionFlags;$/;"	t	typeref:enum:__anon7
+ConversionResult	include/ConvertUTF.h	/^} ConversionResult;$/;"	t	typeref:enum:__anon6
 ConvertFromStore	include/SimpleIni.h	/^    bool ConvertFromStore($/;"	f	class:SI_ConvertA
 ConvertFromStore	include/SimpleIni.h	/^    bool ConvertFromStore($/;"	f	class:SI_ConvertW
 ConvertToStore	include/SimpleIni.h	/^        bool ConvertToStore(const SI_CHAR * a_pszString) {$/;"	f	class:CSimpleIniTempl::Converter
@@ -63,9 +79,6 @@ Converter	include/SimpleIni.h	/^        Converter(bool a_bStoreIsUtf8) : SI_CONV
 Converter	include/SimpleIni.h	/^        Converter(const Converter & rhs) { operator=(rhs); }$/;"	f	class:CSimpleIniTempl::Converter
 Converter	include/SimpleIni.h	/^    class Converter : private SI_CONVERTER {$/;"	c	class:CSimpleIniTempl
 CopyString	include/SimpleIni.h	/^CSimpleIniTempl<SI_CHAR,SI_STRLESS,SI_CONVERTER>::CopyString($/;"	f	class:CSimpleIniTempl
-DEF_FULL_SCREEN	include/Globals.h	26;"	d
-DEF_SCREEN_HEIGHT	include/Globals.h	25;"	d
-DEF_SCREEN_WIDTH	include/Globals.h	24;"	d
 Data	include/SimpleIni.h	/^        const char * Data() { return m_scratch.data(); }$/;"	f	class:CSimpleIniTempl::Converter
 Delete	include/SimpleIni.h	/^CSimpleIniTempl<SI_CHAR,SI_STRLESS,SI_CONVERTER>::Delete($/;"	f	class:CSimpleIniTempl
 DeleteString	include/SimpleIni.h	/^CSimpleIniTempl<SI_CHAR,SI_STRLESS,SI_CONVERTER>::DeleteString($/;"	f	class:CSimpleIniTempl
@@ -76,15 +89,16 @@ EVENT_MANAGER_H	include/EventManager.h	2;"	d
 Effects	include/Effects.h	/^class Effects$/;"	c
 Effects	src/Effects.cpp	/^Effects::Effects(SDL_Texture* texture, EffectsCB alphaCB, EffectsCB colorCB){$/;"	f	class:Effects
 EffectsCB	include/Effects.h	/^	typedef std::function<void(void)> EffectsCB;$/;"	t	class:Effects
-Entity	include/Entity.h	/^class Entity : public IEventHandler$/;"	c
+Entity	include/Entity.h	/^class Entity : public IGameEventHandler$/;"	c
+Entity	src/Entity.cpp	/^Entity::Entity(string texture_file, AssetFactory* assetFactory)$/;"	f	class:Entity
 Entry	include/SimpleIni.h	/^        Entry(const Entry & rhs) { operator=(rhs); }$/;"	f	struct:CSimpleIniTempl::Entry
 Entry	include/SimpleIni.h	/^        Entry(const SI_CHAR * a_pszItem = NULL, int a_nOrder = 0)$/;"	f	struct:CSimpleIniTempl::Entry
 Entry	include/SimpleIni.h	/^        Entry(const SI_CHAR * a_pszItem, const SI_CHAR * a_pszComment, int a_nOrder)$/;"	f	struct:CSimpleIniTempl::Entry
 Entry	include/SimpleIni.h	/^    struct Entry {$/;"	s	class:CSimpleIniTempl
 EventManager	include/EventManager.h	/^class EventManager$/;"	c
 EventManager	src/EventManager.cpp	/^EventManager::EventManager()$/;"	f	class:EventManager
-FADING_ST	include/Block.h	/^	FADING_ST,$/;"	e	enum:__anon2
-FLYING_ST	include/Ball.h	/^	FLYING_ST$/;"	e	enum:__anon4
+FADING_ST	include/Block.h	/^	FADING_ST,$/;"	e	enum:__anon3
+FLYING_ST	include/Ball.h	/^	FLYING_ST$/;"	e	enum:__anon5
 FileWriter	include/SimpleIni.h	/^        FileWriter(FILE * a_file) : m_file(a_file) { }$/;"	f	class:CSimpleIniTempl::FileWriter
 FileWriter	include/SimpleIni.h	/^    class FileWriter : public OutputWriter {$/;"	c	class:CSimpleIniTempl
 FindEntry	include/SimpleIni.h	/^CSimpleIniTempl<SI_CHAR,SI_STRLESS,SI_CONVERTER>::FindEntry($/;"	f	class:CSimpleIniTempl
@@ -92,13 +106,13 @@ FindFileComment	include/SimpleIni.h	/^CSimpleIniTempl<SI_CHAR,SI_STRLESS,SI_CONV
 GAME	include/ProgramManager.h	/^	GAME$/;"	e	enum:ProgramManagerState
 GAME_MANAGER_H	include/GameManager.h	2;"	d
 GLOBALS_H	include/Globals.h	2;"	d
-GONE_ST	include/Block.h	/^	GONE_ST$/;"	e	enum:__anon2
-GREEN	include/Block.h	/^	GREEN,$/;"	e	enum:__anon3
+GONE_ST	include/Block.h	/^	GONE_ST$/;"	e	enum:__anon3
+GREEN	include/Block.h	/^	GREEN,$/;"	e	enum:__anon4
 GameEvent	include/EventManager.h	/^typedef enum GameEvent$/;"	g
 GameEvent	include/EventManager.h	/^} GameEvent;$/;"	t	typeref:enum:GameEvent
 GameEventStr	include/EventManager.h	/^static char* GameEventStr[NUM_OF_EVENTS] =$/;"	v
-GameManager	include/GameManager.h	/^class GameManager : public IEventHandler$/;"	c
-GameManager	src/GameManager.cpp	/^GameManager::GameManager(AssetFactory* assetFactory)$/;"	f	class:GameManager
+GameManager	include/GameManager.h	/^class GameManager : public IGameEventHandler$/;"	c
+GameManager	src/GameManager.cpp	/^GameManager::GameManager(AssetFactory* assetFactory, SDL_Renderer* gRenderer)$/;"	f	class:GameManager
 GetAllKeys	include/SimpleIni.h	/^CSimpleIniTempl<SI_CHAR,SI_STRLESS,SI_CONVERTER>::GetAllKeys($/;"	f	class:CSimpleIniTempl
 GetAllSections	include/SimpleIni.h	/^CSimpleIniTempl<SI_CHAR,SI_STRLESS,SI_CONVERTER>::GetAllSections($/;"	f	class:CSimpleIniTempl
 GetAllValues	include/SimpleIni.h	/^CSimpleIniTempl<SI_CHAR,SI_STRLESS,SI_CONVERTER>::GetAllValues($/;"	f	class:CSimpleIniTempl
@@ -112,9 +126,11 @@ GetValue	include/SimpleIni.h	/^CSimpleIniTempl<SI_CHAR,SI_STRLESS,SI_CONVERTER>:
 Globals	include/Globals.h	/^namespace Globals$/;"	n
 Globals	src/Globals.cpp	/^namespace Globals$/;"	n	file:
 HDR	Makefile	/^HDR = $(wildcard $(SRC_DIR)\/*.h)$/;"	m
-IDLE_ST	include/Block.h	/^	IDLE_ST,$/;"	e	enum:__anon2
-IEVENT_HANDLER_H	include/IEventHandler.h	2;"	d
-IEventHandler	include/IEventHandler.h	/^class IEventHandler$/;"	c
+IDLE_ST	include/Block.h	/^	IDLE_ST,$/;"	e	enum:__anon3
+IEVENT_HANDLER_H	include/IGameEventHandler.h	2;"	d
+IGameEventHandler	include/IGameEventHandler.h	/^class IGameEventHandler$/;"	c
+IMOUSE_EVENT_HANDLER_H	include/IMouseEventHandler.h	2;"	d
+IMouseEventHandler	include/IMouseEventHandler.h	/^class IMouseEventHandler$/;"	c
 INCLUDED_SimpleIni_h	include/SimpleIni.h	196;"	d
 INCLUDES	Makefile	/^INCLUDES = -Iinclude$/;"	m
 Instance	src/EventManager.cpp	/^EventManager* EventManager::Instance(){$/;"	f	class:EventManager
@@ -129,47 +145,86 @@ IsNewLineChar	include/SimpleIni.h	/^CSimpleIniTempl<SI_CHAR,SI_STRLESS,SI_CONVER
 IsSpace	include/SimpleIni.h	/^    inline bool IsSpace(SI_CHAR ch) const {$/;"	f	class:CSimpleIniTempl
 IsUnicode	include/SimpleIni.h	/^    bool IsUnicode() const { return m_bStoreIsUtf8; }$/;"	f	class:CSimpleIniTempl
 KeyOrder	include/SimpleIni.h	/^        struct KeyOrder : std::binary_function<Entry, Entry, bool> {$/;"	s	struct:CSimpleIniTempl::Entry
+LABEL_H	include/Label.h	2;"	d
 LD_FLAGS	Makefile	/^LD_FLAGS = -lSDL2 -lSDL2_image -lSDL2_ttf -lopenal -lalut$/;"	m
-LOST_ST	include/Ball.h	/^	LOST_ST,$/;"	e	enum:__anon4
+LOST_ST	include/Ball.h	/^	LOST_ST,$/;"	e	enum:__anon5
+Label	include/Label.h	/^class Label : public MenuEntity$/;"	c
+Label	src/Label.cpp	/^Label::Label(string texture_file, AssetFactory* assetFactory)$/;"	f	class:Label
 LoadData	include/SimpleIni.h	/^    SI_Error LoadData(const std::string & a_strData) {$/;"	f	class:CSimpleIniTempl
 LoadData	include/SimpleIni.h	/^CSimpleIniTempl<SI_CHAR,SI_STRLESS,SI_CONVERTER>::LoadData($/;"	f	class:CSimpleIniTempl
 LoadFile	include/SimpleIni.h	/^CSimpleIniTempl<SI_CHAR,SI_STRLESS,SI_CONVERTER>::LoadFile($/;"	f	class:CSimpleIniTempl
 LoadMultiLineText	include/SimpleIni.h	/^CSimpleIniTempl<SI_CHAR,SI_STRLESS,SI_CONVERTER>::LoadMultiLineText($/;"	f	class:CSimpleIniTempl
 LoadOrder	include/SimpleIni.h	/^        struct LoadOrder : std::binary_function<Entry, Entry, bool> {$/;"	s	struct:CSimpleIniTempl::Entry
+MAIN_MENU	include/MenuManager.h	/^	MAIN_MENU,$/;"	e	enum:__anon1
+MAIN_MENU_H	include/MainMenu.h	2;"	d
 MENU	include/ProgramManager.h	/^	MENU,$/;"	e	enum:ProgramManagerState
 MENU_ENTITY_H	include/MenuEntity.h	2;"	d
+MENU_H	include/Menu.h	2;"	d
 MENU_MANAGER_H	include/MenuManager.h	2;"	d
-MenuEntity	include/MenuEntity.h	/^class MenuEntity : public Entity$/;"	c
-MenuManager	include/MenuManager.h	/^class MenuManager : public IEventHandler$/;"	c
-MenuManager	src/MenuManager.cpp	/^MenuManager::MenuManager()$/;"	f	class:MenuManager
+MainMenu	include/MainMenu.h	/^class MainMenu : public Menu$/;"	c
+MainMenu	src/MainMenu.cpp	/^MainMenu::MainMenu(AssetFactory* assetFactory)$/;"	f	class:MainMenu
+Menu	include/Menu.h	/^class Menu$/;"	c
+Menu	src/Menu.cpp	/^Menu::Menu(int x, int y, int num_rows, int row_height, int row_padding, int num_cols, int col_width, int col_padding, AssetFactory* assetFactory)$/;"	f	class:Menu
+MenuEntity	include/MenuEntity.h	/^class MenuEntity : public Entity, public IMouseEventHandler$/;"	c
+MenuEntity	src/MenuEntity.cpp	/^MenuEntity::MenuEntity(string texture_file, AssetFactory* assetFactory)$/;"	f	class:MenuEntity
+MenuManager	include/MenuManager.h	/^class MenuManager : public IGameEventHandler, public IMouseEventHandler$/;"	c
+MenuManager	src/MenuManager.cpp	/^MenuManager::MenuManager(AssetFactory* assetFactory)$/;"	f	class:MenuManager
+MenuType	include/MenuManager.h	/^} MenuType;$/;"	t	typeref:enum:__anon1
 NEW_GAME	include/EventManager.h	/^	NEW_GAME,$/;"	e	enum:GameEvent
+NO_EVENT	include/EventManager.h	/^	NO_EVENT = 0,$/;"	e	enum:GameEvent
+NUM_COLS	src/AudioOptionsMenu.cpp	8;"	d	file:
+NUM_COLS	src/MainMenu.cpp	8;"	d	file:
+NUM_COLS	src/OptionsMenu.cpp	8;"	d	file:
+NUM_COLS	src/PauseMenu.cpp	8;"	d	file:
+NUM_COLS	src/VideoOptionsMenu.cpp	8;"	d	file:
 NUM_OF_EVENTS	include/EventManager.h	/^	NUM_OF_EVENTS$/;"	e	enum:GameEvent
+NUM_ROWS	src/AudioOptionsMenu.cpp	5;"	d	file:
+NUM_ROWS	src/MainMenu.cpp	5;"	d	file:
+NUM_ROWS	src/OptionsMenu.cpp	5;"	d	file:
+NUM_ROWS	src/PauseMenu.cpp	5;"	d	file:
+NUM_ROWS	src/VideoOptionsMenu.cpp	5;"	d	file:
 OBJS	Makefile	/^OBJS = $(patsubst $(SRC_DIR)\/%.cpp,$(BUILD_DIR)\/%.o,$(SRC))$/;"	m
 OPTIONS	include/EventManager.h	/^	OPTIONS,$/;"	e	enum:GameEvent
-ORANGE	include/Block.h	/^	ORANGE,$/;"	e	enum:__anon3
+OPTIONS_MENU	include/MenuManager.h	/^	OPTIONS_MENU,$/;"	e	enum:__anon1
+OPTIONS_MENU_H	include/OptionsMenu.h	2;"	d
+ORANGE	include/Block.h	/^	ORANGE,$/;"	e	enum:__anon4
+OptionsMenu	include/OptionsMenu.h	/^class OptionsMenu : public Menu$/;"	c
+OptionsMenu	src/OptionsMenu.cpp	/^OptionsMenu::OptionsMenu(AssetFactory* assetFactory)$/;"	f	class:OptionsMenu
 OutputMultiLineText	include/SimpleIni.h	/^CSimpleIniTempl<SI_CHAR,SI_STRLESS,SI_CONVERTER>::OutputMultiLineText($/;"	f	class:CSimpleIniTempl
 OutputWriter	include/SimpleIni.h	/^        OutputWriter() { }$/;"	f	class:CSimpleIniTempl::OutputWriter
 OutputWriter	include/SimpleIni.h	/^    class OutputWriter {$/;"	c	class:CSimpleIniTempl
 PADDLE_H	include/Paddle.h	2;"	d
 PAUSE_GAME	include/EventManager.h	/^	PAUSE_GAME,$/;"	e	enum:GameEvent
-PAUSE_MENU_MANAGER_H	include/PauseMenuManager.h	2;"	d
-PHYSICS_ENTITY_H	include/PhysicsEntity.h	2;"	d
+PAUSE_MENU	include/MenuManager.h	/^	PAUSE_MENU,$/;"	e	enum:__anon1
+PAUSE_MENU_H	include/PauseMenu.h	2;"	d
+PHYSICS_ENTITY_H	include/GameEntity.h	2;"	d
 PROGRAM_MANAGER_H	include/ProgramManager.h	2;"	d
-PURPLE	include/Block.h	/^	PURPLE$/;"	e	enum:__anon3
-Paddle	include/Paddle.h	/^class Paddle : public PhysicsEntity$/;"	c
+PURPLE	include/Block.h	/^	PURPLE$/;"	e	enum:__anon4
+Paddle	include/Paddle.h	/^class Paddle : public GameEntity$/;"	c
 Paddle	src/Paddle.cpp	/^Paddle::Paddle(float x, float y, AssetFactory* assetFactory)$/;"	f	class:Paddle
-PaddleState	include/Paddle.h	/^} PaddleState;$/;"	t	typeref:enum:__anon1
-PauseMenuManager	include/PauseMenuManager.h	/^class PauseMenuManager : public MenuManager$/;"	c
-PauseMenuManager	src/PauseMenuManager.cpp	/^PauseMenuManager::PauseMenuManager()$/;"	f	class:PauseMenuManager
-PhysicsEntity	include/PhysicsEntity.h	/^class PhysicsEntity : public Entity$/;"	c
-ProgramManager	include/ProgramManager.h	/^class ProgramManager : public IEventHandler$/;"	c
+PaddleState	include/Paddle.h	/^} PaddleState;$/;"	t	typeref:enum:__anon2
+PauseMenu	include/PauseMenu.h	/^class PauseMenu : public Menu$/;"	c
+PauseMenu	src/PauseMenu.cpp	/^PauseMenu::PauseMenu(AssetFactory* assetFactory)$/;"	f	class:PauseMenu
+GameEntity	include/GameEntity.h	/^class GameEntity : public Entity$/;"	c
+GameEntity	src/GameEntity.cpp	/^GameEntity::GameEntity(string texture_file, AssetFactory* assetFactory)$/;"	f	class:GameEntity
+ProgramManager	include/ProgramManager.h	/^class ProgramManager : public IGameEventHandler$/;"	c
 ProgramManager	src/ProgramManager.cpp	/^ProgramManager::ProgramManager(SDL_Renderer* gRenderer)$/;"	f	class:ProgramManager
 ProgramManagerState	include/ProgramManager.h	/^typedef enum ProgramManagerState$/;"	g
 ProgramManagerState	include/ProgramManager.h	/^} ProgramManagerState;$/;"	t	typeref:enum:ProgramManagerState
 QUIT_GAME	include/EventManager.h	/^	QUIT_GAME,$/;"	e	enum:GameEvent
 QUIT_PROGRAM	include/EventManager.h	/^	QUIT_PROGRAM,$/;"	e	enum:GameEvent
-RED	include/Block.h	/^	RED,$/;"	e	enum:__anon3
+RED	include/Block.h	/^	RED,$/;"	e	enum:__anon4
 RESUME_GAME	include/EventManager.h	/^	RESUME_GAME,$/;"	e	enum:GameEvent
+ROW_HEIGHT	src/AudioOptionsMenu.cpp	6;"	d	file:
+ROW_HEIGHT	src/MainMenu.cpp	6;"	d	file:
+ROW_HEIGHT	src/OptionsMenu.cpp	6;"	d	file:
+ROW_HEIGHT	src/PauseMenu.cpp	6;"	d	file:
+ROW_HEIGHT	src/VideoOptionsMenu.cpp	6;"	d	file:
+ROW_PADDING	src/AudioOptionsMenu.cpp	7;"	d	file:
+ROW_PADDING	src/MainMenu.cpp	7;"	d	file:
+ROW_PADDING	src/OptionsMenu.cpp	7;"	d	file:
+ROW_PADDING	src/PauseMenu.cpp	7;"	d	file:
+ROW_PADDING	src/VideoOptionsMenu.cpp	7;"	d	file:
 Reset	include/SimpleIni.h	/^CSimpleIniTempl<SI_CHAR,SI_STRLESS,SI_CONVERTER>::Reset()$/;"	f	class:CSimpleIniTempl
 SI_ASSERT	include/SimpleIni.h	232;"	d
 SI_ASSERT	include/SimpleIni.h	234;"	d
@@ -250,6 +305,7 @@ TKeyVal	include/SimpleIni.h	/^    typedef std::multimap<Entry,const SI_CHAR *,ty
 TNamesDepend	include/SimpleIni.h	/^    typedef std::list<Entry> TNamesDepend;$/;"	t	class:CSimpleIniTempl
 TSection	include/SimpleIni.h	/^    typedef std::map<Entry,TKeyVal,typename Entry::KeyOrder> TSection;$/;"	t	class:CSimpleIniTempl
 UIEntity	include/UIEntity.h	/^class UIEntity : public Entity$/;"	c
+UIEntity	src/UIEntity.cpp	/^UIEntity::UIEntity(string texture_file, AssetFactory* assetFactory)$/;"	f	class:UIEntity
 UI_ENTITY_H	include/UIEntity.h	2;"	d
 UNI_MAX_BMP	include/ConvertUTF.h	97;"	d
 UNI_MAX_LEGAL_UTF32	include/ConvertUTF.h	100;"	d
@@ -260,17 +316,34 @@ UTF16	include/ConvertUTF.h	/^typedef unsigned short	UTF16;	\/* at least 16 bits 
 UTF32	include/ConvertUTF.h	/^typedef unsigned int	UTF32;	\/* at least 32 bits *\/$/;"	t
 UTF8	include/ConvertUTF.h	/^typedef unsigned char	UTF8;	\/* typically 8 bits *\/$/;"	t
 UsingSpaces	include/SimpleIni.h	/^    bool UsingSpaces() const { return m_bSpaces; }$/;"	f	class:CSimpleIniTempl
-WAITING_ST	include/Ball.h	/^	WAITING_ST,$/;"	e	enum:__anon4
+VIDEO_OPTIONS	include/EventManager.h	/^	VIDEO_OPTIONS,$/;"	e	enum:GameEvent
+VIDEO_OPTIONS_MENU	include/MenuManager.h	/^	VIDEO_OPTIONS_MENU,$/;"	e	enum:__anon1
+VIDEO_OPTIONS_MENU_H	include/VideoOptionsMenu.h	2;"	d
+VideoOptionsMenu	include/VideoOptionsMenu.h	/^class VideoOptionsMenu : public Menu$/;"	c
+VideoOptionsMenu	src/VideoOptionsMenu.cpp	/^VideoOptionsMenu::VideoOptionsMenu(AssetFactory* assetFactory)$/;"	f	class:VideoOptionsMenu
+WAITING_ST	include/Ball.h	/^	WAITING_ST,$/;"	e	enum:__anon5
 Write	include/SimpleIni.h	/^        void Write(const char * a_pBuf) {$/;"	f	class:CSimpleIniTempl::FileWriter
 Write	include/SimpleIni.h	/^        void Write(const char * a_pBuf) {$/;"	f	class:CSimpleIniTempl::StreamWriter
 Write	include/SimpleIni.h	/^        void Write(const char * a_pBuf) {$/;"	f	class:CSimpleIniTempl::StringWriter
-YELLOW	include/Block.h	/^	YELLOW,$/;"	e	enum:__anon3
+X_OFFSET	src/AudioOptionsMenu.cpp	3;"	d	file:
+X_OFFSET	src/MainMenu.cpp	3;"	d	file:
+X_OFFSET	src/OptionsMenu.cpp	3;"	d	file:
+X_OFFSET	src/PauseMenu.cpp	3;"	d	file:
+X_OFFSET	src/VideoOptionsMenu.cpp	3;"	d	file:
+YELLOW	include/Block.h	/^	YELLOW,$/;"	e	enum:__anon4
+Y_OFFSET	src/AudioOptionsMenu.cpp	4;"	d	file:
+Y_OFFSET	src/MainMenu.cpp	4;"	d	file:
+Y_OFFSET	src/OptionsMenu.cpp	4;"	d	file:
+Y_OFFSET	src/PauseMenu.cpp	4;"	d	file:
+Y_OFFSET	src/VideoOptionsMenu.cpp	4;"	d	file:
 a	include/Effects.h	/^	Uint8 r, g, b, a;$/;"	m	class:Effects
-accel	include/Paddle.h	/^	int accel = max_vel * 5;$/;"	m	class:Paddle
+accel	include/Paddle.h	/^	int accel;$/;"	m	class:Paddle
 accelX	include/Paddle.h	/^	float accelX, accelY;$/;"	m	class:Paddle
 accelY	include/Paddle.h	/^	float accelX, accelY;$/;"	m	class:Paddle
 addAlphaTransition	src/Effects.cpp	/^void Effects::addAlphaTransition(Uint32 interval, int start_a, int final_a){$/;"	f	class:Effects
 addColorTransition	src/Effects.cpp	/^void Effects::addColorTransition(Uint32 interval, int r, int g, int b){$/;"	f	class:Effects
+add_floating_menu_item	src/Menu.cpp	/^void Menu::add_floating_menu_item(MenuEntity* item, int x, int y)$/;"	f	class:Menu
+add_menu_item	src/Menu.cpp	/^void Menu::add_menu_item(MenuEntity* item, int row, int col)$/;"	f	class:Menu
 alphaCB	include/Effects.h	/^	EffectsCB alphaCB, colorCB;$/;"	m	class:Effects
 alphaFrames	include/Effects.h	/^	vector<AlphaKeyFrame*> alphaFrames;$/;"	m	class:Effects
 alphaTransitionComplete	src/Block.cpp	/^void Block::alphaTransitionComplete()$/;"	f	class:Block
@@ -279,47 +352,52 @@ assetFactory	include/Ball.h	/^	AssetFactory* assetFactory;$/;"	m	class:Ball
 assetFactory	include/BallsIndicator.h	/^	AssetFactory* assetFactory;$/;"	m	class:BallsIndicator
 assetFactory	include/Block.h	/^	AssetFactory* assetFactory;$/;"	m	class:Block
 assetFactory	include/GameManager.h	/^	AssetFactory* assetFactory;$/;"	m	class:GameManager
+assetFactory	include/MenuManager.h	/^	AssetFactory* assetFactory;$/;"	m	class:MenuManager
 assetFactory	include/Paddle.h	/^	AssetFactory* assetFactory;$/;"	m	class:Paddle
 assetFactory	include/ProgramManager.h	/^	AssetFactory* assetFactory;$/;"	m	class:ProgramManager
 b	include/Block.h	/^	int r, g, b;$/;"	m	class:Block
-b	include/Button.h	/^	int r, g, b;$/;"	m	class:Button
 b	include/Effects.h	/^		Uint8 r, g, b;$/;"	m	class:Effects::ColorKeyFrame
 b	include/Effects.h	/^	Uint8 r, g, b, a;$/;"	m	class:Effects
-ballHeight	src/Globals.cpp	/^	int ballHeight;$/;"	m	namespace:Globals	file:
-ballWidth	src/Globals.cpp	/^	int ballWidth;$/;"	m	namespace:Globals	file:
+ballHeight	src/Globals.cpp	/^	int ballHeight 				= update_value(blockHeight \/ 2, NULL, NULL);$/;"	m	namespace:Globals	file:
+ballWidth	src/Globals.cpp	/^	int ballWidth 				= update_value(blockHeight \/ 2, NULL, NULL);$/;"	m	namespace:Globals	file:
 ballsRemaining	include/BallsIndicator.h	/^	int ballsRemaining;$/;"	m	class:BallsIndicator
 blockCount	include/GameManager.h	/^	int blockCount;$/;"	m	class:GameManager
-blockHeight	src/Globals.cpp	/^	int blockHeight;$/;"	m	namespace:Globals	file:
+blockHeight	src/Globals.cpp	/^	int blockHeight 			= update_value((int) (blockWidth * (float) 2\/(float) 3), NULL, NULL);$/;"	m	namespace:Globals	file:
 blockSound	include/Ball.h	/^	Sound *paddleSound, *blockSound;$/;"	m	class:Ball
-blockWidth	src/Globals.cpp	/^	int blockWidth;$/;"	m	namespace:Globals	file:
+blockWidth	src/Globals.cpp	/^	int blockWidth 				= update_value(fieldWidth \/ 10, NULL, NULL);$/;"	m	namespace:Globals	file:
 buffer	include/Sound.h	/^	ALuint buffer;$/;"	m	class:Sound
 callback	include/StateMachine.h	/^	StateMachineCB callback;$/;"	m	class:StateMachine
 checkError	src/Sound.cpp	/^bool checkError(string source)$/;"	f
 clearGameEvents	src/EventManager.cpp	/^void EventManager::clearGameEvents()$/;"	f	class:EventManager
+clearMenuStack	src/MenuManager.cpp	/^void MenuManager::clearMenuStack()$/;"	f	class:MenuManager
 close	src/main.cpp	/^void close()$/;"	f
+col_padding	include/Menu.h	/^	int num_cols, col_width, col_padding;$/;"	m	class:Menu
+col_width	include/Menu.h	/^	int num_cols, col_width, col_padding;$/;"	m	class:Menu
 colorCB	include/Effects.h	/^	EffectsCB alphaCB, colorCB;$/;"	m	class:Effects
 colorFrames	include/Effects.h	/^	vector<ColorKeyFrame*> colorFrames;$/;"	m	class:Effects
-conversionOK	include/ConvertUTF.h	/^	conversionOK, 		\/* conversion successful *\/$/;"	e	enum:__anon5
+configured	src/Globals.cpp	/^	bool configured = false;$/;"	m	namespace:Globals	file:
+conversionOK	include/ConvertUTF.h	/^	conversionOK, 		\/* conversion successful *\/$/;"	e	enum:__anon6
 currState	include/StateMachine.h	/^	T prevState, currState;$/;"	m	class:StateMachine
-deregisterHandler	src/EventManager.cpp	/^void EventManager::deregisterHandler(IEventHandler* handler)$/;"	f	class:EventManager
+deregisterHandler	src/EventManager.cpp	/^void EventManager::deregisterHandler(IGameEventHandler* handler)$/;"	f	class:EventManager
+deregisterMouseHander	src/EventManager.cpp	/^void EventManager::deregisterMouseHander(IMouseEventHandler* handler)$/;"	f	class:EventManager
 detectCollisions	src/GameManager.cpp	/^void GameManager::detectCollisions()$/;"	f	class:GameManager
 e	include/EventManager.h	/^	SDL_Event e;$/;"	m	class:EventManager
 effects	include/Block.h	/^	Effects* effects;$/;"	m	class:Block
 elapsedTime	include/Effects.h	/^		Uint64 transitionTime, elapsedTime;$/;"	m	class:Effects::ColorKeyFrame
 elapsedTime	include/Effects.h	/^		double transitionTime, elapsedTime;$/;"	m	class:Effects::AlphaKeyFrame
 event	include/Button.h	/^	GameEvent event;$/;"	m	class:Button
-eventHandlers	include/EventManager.h	/^	std::vector<IEventHandler*> eventHandlers;$/;"	m	class:EventManager
-fieldHeight	src/Globals.cpp	/^	int fieldHeight;$/;"	m	namespace:Globals	file:
-fieldRatio	src/Globals.cpp	/^	float fieldRatio;$/;"	m	namespace:Globals	file:
-fieldWidth	src/Globals.cpp	/^	int fieldWidth;$/;"	m	namespace:Globals	file:
+eventHandlers	include/EventManager.h	/^	std::vector<IGameEventHandler*> eventHandlers;$/;"	m	class:EventManager
+fieldHeight	src/Globals.cpp	/^	int fieldHeight 			= update_value(screenHeight, NULL, NULL);$/;"	m	namespace:Globals	file:
+fieldRatio	src/Globals.cpp	/^	float fieldRatio 			= update_value((float) 3\/ (float) 4, 	NULL, 			NULL);$/;"	m	namespace:Globals	file:
+fieldWidth	src/Globals.cpp	/^	int fieldWidth 				= update_value((int) (screenHeight * fieldRatio) \/ 10 * 10, NULL, NULL);$/;"	m	namespace:Globals	file:
 final_a	include/Effects.h	/^		Uint8 final_a;$/;"	m	class:Effects::AlphaKeyFrame
-font	include/Button.h	/^	TTF_Font* font;$/;"	m	class:Button
+floatRect	include/Entity.h	/^} floatRect;$/;"	t	typeref:struct:floatRect_s
+floatRect_s	include/Entity.h	/^typedef struct floatRect_s$/;"	s
 frameComplete	include/Effects.h	/^		bool frameComplete()$/;"	f	class:Effects::AlphaKeyFrame
 frameComplete	include/Effects.h	/^		bool frameComplete()$/;"	f	class:Effects::ColorKeyFrame
 frameTimer	include/Effects.h	/^	SDL_TimerID frameTimer;$/;"	m	class:Effects
-fullScreen	src/Globals.cpp	/^	int fullScreen;$/;"	m	namespace:Globals	file:
+fullScreen	src/Globals.cpp	/^	int fullScreen 				= update_value(0,		"dimensions", 	"fullScreen");$/;"	m	namespace:Globals	file:
 g	include/Block.h	/^	int r, g, b;$/;"	m	class:Block
-g	include/Button.h	/^	int r, g, b;$/;"	m	class:Button
 g	include/Effects.h	/^		Uint8 r, g, b;$/;"	m	class:Effects::ColorKeyFrame
 g	include/Effects.h	/^	Uint8 r, g, b, a;$/;"	m	class:Effects
 gRenderer	include/AssetFactory.h	/^	SDL_Renderer* gRenderer;$/;"	m	class:AssetFactory
@@ -329,34 +407,23 @@ gWindow	src/main.cpp	/^SDL_Window* gWindow = NULL;$/;"	v
 gameEvents	include/EventManager.h	/^	Uint8 gameEvents[NUM_OF_EVENTS] = {{0}};$/;"	m	class:EventManager
 gameLost	src/GameManager.cpp	/^void GameManager::gameLost()$/;"	f	class:GameManager
 gameManager	include/ProgramManager.h	/^	GameManager* gameManager;$/;"	m	class:ProgramManager
+gameTexture	include/GameManager.h	/^	SDL_Texture* gameTexture;$/;"	m	class:GameManager
 gameWon	src/GameManager.cpp	/^void GameManager::gameWon()$/;"	f	class:GameManager
 gapWidth	include/BallsIndicator.h	/^	int gapWidth = Globals::ballWidth \/ 2;$/;"	m	class:BallsIndicator
 getAsset	include/AssetFactory.h	/^	T* getAsset(string key){$/;"	f	class:AssetFactory
 getAsset	src/AssetFactory.cpp	/^SDL_Texture* AssetFactory::getAsset<SDL_Texture>(string key){$/;"	f	class:AssetFactory
 getAsset	src/AssetFactory.cpp	/^Sound* AssetFactory::getAsset<Sound>(string key){$/;"	f	class:AssetFactory
-getCenter	src/Ball.cpp	/^SDL_Point Ball::getCenter()$/;"	f	class:Ball
-getCenter	src/BallsIndicator.cpp	/^SDL_Point BallsIndicator::getCenter()$/;"	f	class:BallsIndicator
 getCenter	src/Block.cpp	/^SDL_Point Block::getCenter()$/;"	f	class:Block
-getCenter	src/Button.cpp	/^SDL_Point Button::getCenter()$/;"	f	class:Button
-getCenter	src/Collider.cpp	/^SDL_Point Collider::getCenter()$/;"	f	class:Collider
-getCenter	src/Paddle.cpp	/^SDL_Point Paddle::getCenter()$/;"	f	class:Paddle
-getOrigin	src/Ball.cpp	/^SDL_Point Ball::getOrigin()$/;"	f	class:Ball
-getOrigin	src/BallsIndicator.cpp	/^SDL_Point BallsIndicator::getOrigin()$/;"	f	class:BallsIndicator
+getCenter	src/Entity.cpp	/^SDL_Point Entity::getCenter()$/;"	f	class:Entity
 getOrigin	src/Block.cpp	/^SDL_Point Block::getOrigin()$/;"	f	class:Block
-getOrigin	src/Button.cpp	/^SDL_Point Button::getOrigin()$/;"	f	class:Button
-getOrigin	src/Collider.cpp	/^SDL_Point Collider::getOrigin()$/;"	f	class:Collider
-getOrigin	src/Paddle.cpp	/^SDL_Point Paddle::getOrigin()$/;"	f	class:Paddle
-getSize	src/Ball.cpp	/^SDL_Point Ball::getSize()$/;"	f	class:Ball
-getSize	src/BallsIndicator.cpp	/^SDL_Point BallsIndicator::getSize()$/;"	f	class:BallsIndicator
+getRect	src/Entity.cpp	/^floatRect Entity::getRect()$/;"	f	class:Entity
 getSize	src/Block.cpp	/^SDL_Point Block::getSize()$/;"	f	class:Block
-getSize	src/Button.cpp	/^SDL_Point Button::getSize()$/;"	f	class:Button
-getSize	src/Collider.cpp	/^SDL_Point Collider::getSize()$/;"	f	class:Collider
-getSize	src/Paddle.cpp	/^SDL_Point Paddle::getSize()$/;"	f	class:Paddle
 getState	include/StateMachine.h	/^	T getState()$/;"	f	class:StateMachine
 getVelocity	src/Ball.cpp	/^SDL_Point Ball::getVelocity()$/;"	f	class:Ball
 getVelocity	src/Block.cpp	/^SDL_Point Block::getVelocity()$/;"	f	class:Block
 getVelocity	src/Collider.cpp	/^SDL_Point Collider::getVelocity()$/;"	f	class:Collider
 getVelocity	src/Paddle.cpp	/^SDL_Point Paddle::getVelocity()$/;"	f	class:Paddle
+h	include/Entity.h	/^	float h;$/;"	m	struct:floatRect_s
 handleGameEvents	src/Ball.cpp	/^void Ball::handleGameEvents(const Uint8* events)$/;"	f	class:Ball
 handleGameEvents	src/BallsIndicator.cpp	/^void BallsIndicator::handleGameEvents(const Uint8* events)$/;"	f	class:BallsIndicator
 handleGameEvents	src/Block.cpp	/^void Block::handleGameEvents(const Uint8* events)$/;"	f	class:Block
@@ -364,9 +431,9 @@ handleGameEvents	src/Button.cpp	/^void Button::handleGameEvents(const Uint8* eve
 handleGameEvents	src/Collider.cpp	/^void Collider::handleGameEvents(const Uint8* events)$/;"	f	class:Collider
 handleGameEvents	src/EventManager.cpp	/^void EventManager::handleGameEvents()$/;"	f	class:EventManager
 handleGameEvents	src/GameManager.cpp	/^void GameManager::handleGameEvents(const Uint8* events)$/;"	f	class:GameManager
+handleGameEvents	src/Label.cpp	/^void Label::handleGameEvents(const Uint8* events)$/;"	f	class:Label
 handleGameEvents	src/MenuManager.cpp	/^void MenuManager::handleGameEvents(const Uint8* events)$/;"	f	class:MenuManager
 handleGameEvents	src/Paddle.cpp	/^void Paddle::handleGameEvents(const Uint8* events)$/;"	f	class:Paddle
-handleGameEvents	src/PauseMenuManager.cpp	/^void PauseMenuManager::handleGameEvents(const Uint8* events)$/;"	f	class:PauseMenuManager
 handleGameEvents	src/ProgramManager.cpp	/^void ProgramManager::handleGameEvents(const Uint8* events)$/;"	f	class:ProgramManager
 handleKeyboardEvents	src/Ball.cpp	/^void Ball::handleKeyboardEvents(const Uint8* keyStates)$/;"	f	class:Ball
 handleKeyboardEvents	src/BallsIndicator.cpp	/^void BallsIndicator::handleKeyboardEvents(const Uint8*)$/;"	f	class:BallsIndicator
@@ -375,25 +442,31 @@ handleKeyboardEvents	src/Button.cpp	/^void Button::handleKeyboardEvents(const Ui
 handleKeyboardEvents	src/Collider.cpp	/^void Collider::handleKeyboardEvents(const Uint8*)$/;"	f	class:Collider
 handleKeyboardEvents	src/EventManager.cpp	/^void EventManager::handleKeyboardEvents()$/;"	f	class:EventManager
 handleKeyboardEvents	src/GameManager.cpp	/^void GameManager::handleKeyboardEvents(const Uint8* keyStates)$/;"	f	class:GameManager
+handleKeyboardEvents	src/Label.cpp	/^void Label::handleKeyboardEvents(const Uint8*)$/;"	f	class:Label
 handleKeyboardEvents	src/MenuManager.cpp	/^void MenuManager::handleKeyboardEvents(const Uint8* keyStates)$/;"	f	class:MenuManager
 handleKeyboardEvents	src/Paddle.cpp	/^void Paddle::handleKeyboardEvents(const Uint8* keyStates)$/;"	f	class:Paddle
-handleKeyboardEvents	src/PauseMenuManager.cpp	/^void PauseMenuManager::handleKeyboardEvents(const Uint8* keyStates)$/;"	f	class:PauseMenuManager
 handleKeyboardEvents	src/ProgramManager.cpp	/^void ProgramManager::handleKeyboardEvents(const Uint8* keyStates)$/;"	f	class:ProgramManager
+handleMouseDrag	src/Button.cpp	/^void Button::handleMouseDrag(int mouseButton, int prevX, int prevY, int currX, int currY)$/;"	f	class:Button
+handleMouseDrag	src/Label.cpp	/^void Label::handleMouseDrag(int mouseButton, int prevX, int prevY, int currX, int currY)$/;"	f	class:Label
+handleMouseDrag	src/Menu.cpp	/^void Menu::handleMouseDrag(int mouseButton, int prevX, int prevY, int currX, int currY)$/;"	f	class:Menu
+handleMouseDrag	src/MenuManager.cpp	/^void MenuManager::handleMouseDrag(int mouseButton, int prevX, int prevY, int currX, int currY)$/;"	f	class:MenuManager
 handleMouseEvents	src/Ball.cpp	/^void Ball::handleMouseEvents(int mouseState, int x, int y)$/;"	f	class:Ball
 handleMouseEvents	src/BallsIndicator.cpp	/^void BallsIndicator::handleMouseEvents(int mouseState, int x, int y)$/;"	f	class:BallsIndicator
 handleMouseEvents	src/Block.cpp	/^void Block::handleMouseEvents(int mouseState, int x, int y)$/;"	f	class:Block
-handleMouseEvents	src/Button.cpp	/^void Button::handleMouseEvents(int mouseState, int x, int y)$/;"	f	class:Button
 handleMouseEvents	src/Collider.cpp	/^void Collider::handleMouseEvents(int mouseState, int x, int y)$/;"	f	class:Collider
 handleMouseEvents	src/EventManager.cpp	/^void EventManager::handleMouseEvents()$/;"	f	class:EventManager
 handleMouseEvents	src/GameManager.cpp	/^void GameManager::handleMouseEvents(int mouseState, int x, int y)$/;"	f	class:GameManager
-handleMouseEvents	src/MenuManager.cpp	/^void MenuManager::handleMouseEvents(int mouseState, int x, int y)$/;"	f	class:MenuManager
 handleMouseEvents	src/Paddle.cpp	/^void Paddle::handleMouseEvents(int mouseState, int x, int y)$/;"	f	class:Paddle
-handleMouseEvents	src/PauseMenuManager.cpp	/^void PauseMenuManager::handleMouseEvents(int mouseState, int x, int y)$/;"	f	class:PauseMenuManager
 handleMouseEvents	src/ProgramManager.cpp	/^void ProgramManager::handleMouseEvents(int mouseState, int x, int y)$/;"	f	class:ProgramManager
-height	include/Ball.h	/^	int height = Globals::ballHeight;$/;"	m	class:Ball
-height	include/Block.h	/^	int height = 40.0;$/;"	m	class:Block
-height	include/Entity.h	/^	int width, height;$/;"	m	class:Entity
-height	include/Paddle.h	/^	int height = Globals::paddleHeight;$/;"	m	class:Paddle
+handleMousePress	src/Button.cpp	/^void Button::handleMousePress(int mouseButton, int x, int y)$/;"	f	class:Button
+handleMousePress	src/Label.cpp	/^void Label::handleMousePress(int mouseButton, int x, int y)$/;"	f	class:Label
+handleMousePress	src/Menu.cpp	/^void Menu::handleMousePress(int mouseButton, int x, int y)$/;"	f	class:Menu
+handleMousePress	src/MenuManager.cpp	/^void MenuManager::handleMousePress(int mouseButton, int x, int y)$/;"	f	class:MenuManager
+handleMouseRelease	src/Button.cpp	/^void Button::handleMouseRelease(int mouseButton, int x, int y)$/;"	f	class:Button
+handleMouseRelease	src/Label.cpp	/^void Label::handleMouseRelease(int mouseButton, int x, int y)$/;"	f	class:Label
+handleMouseRelease	src/Menu.cpp	/^void Menu::handleMouseRelease(int mouseButton, int x, int y)$/;"	f	class:Menu
+handleMouseRelease	src/MenuManager.cpp	/^void MenuManager::handleMouseRelease(int mouseButton, int x, int y)$/;"	f	class:MenuManager
+ini	src/Globals.cpp	/^	CSimpleIniA ini;$/;"	m	namespace:Globals	file:
 ini	src/main.cpp	/^CSimpleIniA ini;$/;"	v
 init	src/main.cpp	/^bool init()$/;"	f
 instance	include/EventManager.h	/^	static EventManager* instance;$/;"	m	class:EventManager
@@ -406,8 +479,7 @@ isDeletable	src/Block.cpp	/^bool Block::isDeletable()$/;"	f	class:Block
 isDeletable	src/Collider.cpp	/^bool Collider::isDeletable()$/;"	f	class:Collider
 isDeletable	src/Paddle.cpp	/^bool Paddle::isDeletable()$/;"	f	class:Paddle
 lastState	include/Button.h	/^	bool lastState = false;$/;"	m	class:Button
-lenientConversion	include/ConvertUTF.h	/^	lenientConversion$/;"	e	enum:__anon6
-load_settings	src/main.cpp	/^void load_settings()$/;"	f
+lenientConversion	include/ConvertUTF.h	/^	lenientConversion$/;"	e	enum:__anon7
 locase	include/SimpleIni.h	/^    inline SI_CHAR locase(SI_CHAR ch) const {$/;"	f	struct:SI_GenericNoCase
 loop	src/ProgramManager.cpp	/^void ProgramManager::loop()$/;"	f	class:ProgramManager
 m_bAllowMultiKey	include/SimpleIni.h	/^    bool m_bAllowMultiKey;$/;"	m	class:CSimpleIniTempl
@@ -431,11 +503,22 @@ m_uCodePage	include/SimpleIni.h	/^    UINT m_uCodePage;$/;"	m	class:SI_ConvertW
 m_uDataLen	include/SimpleIni.h	/^    size_t m_uDataLen;$/;"	m	class:CSimpleIniTempl
 machineState	include/ProgramManager.h	/^	ProgramManagerState machineState;$/;"	m	class:ProgramManager
 main	src/main.cpp	/^int main( int argc, char* args[] )$/;"	f
-max_vel	include/Ball.h	/^	float max_vel = width * 15;$/;"	m	class:Ball
-max_vel	include/Paddle.h	/^	float max_vel = width * 2.5;$/;"	m	class:Paddle
-max_vel	include/PhysicsEntity.h	/^	float max_vel = 200;$/;"	m	class:PhysicsEntity
+mainMenuColPadding	src/Globals.cpp	/^	int mainMenuColPadding 		= update_value(25,		NULL,			NULL);$/;"	m	namespace:Globals	file:
+mainMenuColWidth	src/Globals.cpp	/^	int mainMenuColWidth 		= update_value(100,		NULL,			NULL);$/;"	m	namespace:Globals	file:
+mainMenuRowHeight	src/Globals.cpp	/^	int mainMenuRowHeight 		= update_value(75,		NULL,			NULL);$/;"	m	namespace:Globals	file:
+mainMenuRowPadding	src/Globals.cpp	/^	int mainMenuRowPadding 		= update_value(25,		NULL,			NULL);$/;"	m	namespace:Globals	file:
+mainMenuX	src/Globals.cpp	/^	int mainMenuX 				= update_value(100,		NULL,			NULL);$/;"	m	namespace:Globals	file:
+mainMenuY	src/Globals.cpp	/^	int mainMenuY 				= update_value(100,		NULL,			NULL);$/;"	m	namespace:Globals	file:
+max_vel	include/Ball.h	/^	float max_vel;$/;"	m	class:Ball
+max_vel	include/Paddle.h	/^	float max_vel;$/;"	m	class:Paddle
+max_vel	include/GameEntity.h	/^	float max_vel;$/;"	m	class:GameEntity
+menuItems	include/Menu.h	/^	std::vector<MenuEntity*> menuItems;$/;"	m	class:Menu
 menuManager	include/ProgramManager.h	/^	MenuManager* menuManager;$/;"	m	class:ProgramManager
+menuStack	include/MenuManager.h	/^	std::vector<Menu*> menuStack;$/;"	m	class:MenuManager
+mouseEventHandlers	include/EventManager.h	/^	std::vector<IMouseEventHandler*> mouseEventHandlers;$/;"	m	class:EventManager
 nOrder	include/SimpleIni.h	/^        int             nOrder;$/;"	m	struct:CSimpleIniTempl::Entry
+num_cols	include/Menu.h	/^	int num_cols, col_width, col_padding;$/;"	m	class:Menu
+num_rows	include/Menu.h	/^	int num_rows, row_height, row_padding;$/;"	m	class:Menu
 operator ()	include/SimpleIni.h	/^            bool operator()(const Entry & lhs, const Entry & rhs) const {$/;"	f	struct:CSimpleIniTempl::Entry::KeyOrder
 operator ()	include/SimpleIni.h	/^            bool operator()(const Entry & lhs, const Entry & rhs) const {$/;"	f	struct:CSimpleIniTempl::Entry::LoadOrder
 operator ()	include/SimpleIni.h	/^    bool operator()(const SI_CHAR * pLeft, const SI_CHAR * pRight) const {$/;"	f	struct:SI_GenericCase
@@ -454,53 +537,62 @@ orig_r	include/Effects.h	/^	Uint8 orig_r, orig_g, orig_b, orig_a;$/;"	m	class:Ef
 pComment	include/SimpleIni.h	/^        const SI_CHAR * pComment;$/;"	m	struct:CSimpleIniTempl::Entry
 pItem	include/SimpleIni.h	/^        const SI_CHAR * pItem;$/;"	m	struct:CSimpleIniTempl::Entry
 paddle	include/Ball.h	/^	Paddle* paddle;$/;"	m	class:Ball
-paddleHeight	src/Globals.cpp	/^	int paddleHeight;$/;"	m	namespace:Globals	file:
+paddleHeight	src/Globals.cpp	/^	int paddleHeight 			= update_value(blockHeight \/ 2, NULL, NULL);$/;"	m	namespace:Globals	file:
 paddleSound	include/Ball.h	/^	Sound *paddleSound, *blockSound;$/;"	m	class:Ball
-paddleWidth	src/Globals.cpp	/^	int paddleWidth;$/;"	m	namespace:Globals	file:
+paddleWidth	src/Globals.cpp	/^	int paddleWidth 			= update_value(blockWidth, NULL, NULL);$/;"	m	namespace:Globals	file:
 pause	include/GameManager.h	/^	bool pause, visible;$/;"	m	class:GameManager
 pause	src/Sound.cpp	/^void Sound::pause()$/;"	f	class:Sound
-physicsEntities	include/GameManager.h	/^	std::vector<PhysicsEntity*> physicsEntities;$/;"	m	class:GameManager
+pauseMenuColPadding	src/Globals.cpp	/^	int pauseMenuColPadding 	= update_value(25,		NULL,			NULL);$/;"	m	namespace:Globals	file:
+pauseMenuColWidth	src/Globals.cpp	/^	int pauseMenuColWidth 		= update_value(100,		NULL,			NULL);$/;"	m	namespace:Globals	file:
+pauseMenuRowHeight	src/Globals.cpp	/^	int pauseMenuRowHeight 		= update_value(75,		NULL,			NULL);$/;"	m	namespace:Globals	file:
+pauseMenuRowPadding	src/Globals.cpp	/^	int pauseMenuRowPadding 	= update_value(25,		NULL,			NULL);$/;"	m	namespace:Globals	file:
+pauseMenuX	src/Globals.cpp	/^	int pauseMenuX 				= update_value(100,		NULL,			NULL);$/;"	m	namespace:Globals	file:
+pauseMenuY	src/Globals.cpp	/^	int pauseMenuY 				= update_value(100,		NULL,			NULL);$/;"	m	namespace:Globals	file:
+peekMenu	src/MenuManager.cpp	/^Menu* MenuManager::peekMenu()$/;"	f	class:MenuManager
+physicsEntities	include/GameManager.h	/^	std::vector<GameEntity*> physicsEntities;$/;"	m	class:GameManager
 play	src/Sound.cpp	/^void Sound::play()$/;"	f	class:Sound
-posX	include/Entity.h	/^	float posX, posY;$/;"	m	class:Entity
-posY	include/Entity.h	/^	float posX, posY;$/;"	m	class:Entity
+popMenu	src/MenuManager.cpp	/^void MenuManager::popMenu()$/;"	f	class:MenuManager
 prevState	include/StateMachine.h	/^	T prevState, currState;$/;"	m	class:StateMachine
 prevTime	include/Effects.h	/^	Uint64 prevTime;$/;"	m	class:Effects
 printAssets	src/AssetFactory.cpp	/^void AssetFactory::printAssets(){$/;"	f	class:AssetFactory
 printHandlers	src/EventManager.cpp	/^void EventManager::printHandlers()$/;"	f	class:EventManager
-quit	include/PauseMenuManager.h	/^	bool quit;$/;"	m	class:PauseMenuManager
+pushMenu	src/MenuManager.cpp	/^void MenuManager::pushMenu(MenuType menuType)$/;"	f	class:MenuManager
 quit	include/ProgramManager.h	/^	bool quit;$/;"	m	class:ProgramManager
 r	include/Block.h	/^	int r, g, b;$/;"	m	class:Block
-r	include/Button.h	/^	int r, g, b;$/;"	m	class:Button
 r	include/Effects.h	/^		Uint8 r, g, b;$/;"	m	class:Effects::ColorKeyFrame
 r	include/Effects.h	/^	Uint8 r, g, b, a;$/;"	m	class:Effects
-registerHandler	src/EventManager.cpp	/^void EventManager::registerHandler(IEventHandler* handler)$/;"	f	class:EventManager
+rect	include/Entity.h	/^	floatRect rect;$/;"	m	class:Entity
+rect	include/Menu.h	/^	SDL_Rect rect;$/;"	m	class:Menu
+registerHandler	src/EventManager.cpp	/^void EventManager::registerHandler(IGameEventHandler* handler)$/;"	f	class:EventManager
+registerMouseHandler	src/EventManager.cpp	/^void EventManager::registerMouseHandler(IMouseEventHandler* handler)$/;"	f	class:EventManager
 render	src/Ball.cpp	/^void Ball::render(SDL_Renderer* gRenderer)$/;"	f	class:Ball
 render	src/BallsIndicator.cpp	/^void BallsIndicator::render(SDL_Renderer* gRenderer)$/;"	f	class:BallsIndicator
 render	src/Block.cpp	/^void Block::render(SDL_Renderer* gRenderer)$/;"	f	class:Block
 render	src/Button.cpp	/^void Button::render(SDL_Renderer* gRenderer)$/;"	f	class:Button
 render	src/Collider.cpp	/^void Collider::render(SDL_Renderer*)$/;"	f	class:Collider
+render	src/Entity.cpp	/^void Entity::render(SDL_Renderer* gRenderer)$/;"	f	class:Entity
 render	src/GameManager.cpp	/^void GameManager::render(SDL_Renderer* gRenderer)$/;"	f	class:GameManager
+render	src/Label.cpp	/^void Label::render(SDL_Renderer* gRenderer)$/;"	f	class:Label
+render	src/Menu.cpp	/^void Menu::render(SDL_Renderer* gRenderer)$/;"	f	class:Menu
 render	src/MenuManager.cpp	/^void MenuManager::render(SDL_Renderer* gRenderer)$/;"	f	class:MenuManager
 render	src/Paddle.cpp	/^void Paddle::render(SDL_Renderer* gRenderer)$/;"	f	class:Paddle
-render	src/PauseMenuManager.cpp	/^void PauseMenuManager::render(SDL_Renderer* gRenderer)$/;"	f	class:PauseMenuManager
 reportGameEvent	src/EventManager.cpp	/^void EventManager::reportGameEvent(GameEvent event)$/;"	f	class:EventManager
 reset	src/Effects.cpp	/^void Effects::reset(){$/;"	f	class:Effects
 resetLevel	src/GameManager.cpp	/^void GameManager::resetLevel()$/;"	f	class:GameManager
-resolveCollision	src/Ball.cpp	/^void Ball::resolveCollision(PhysicsEntity* collider, PhysicsEntity* object)$/;"	f	class:Ball
-resolveCollision	src/Block.cpp	/^void Block::resolveCollision(PhysicsEntity* collider, PhysicsEntity* object)$/;"	f	class:Block
-resolveCollision	src/Collider.cpp	/^void Collider::resolveCollision(PhysicsEntity* collider, PhysicsEntity* object)$/;"	f	class:Collider
-resolveCollision	src/Paddle.cpp	/^void Paddle::resolveCollision(PhysicsEntity* collider, PhysicsEntity* object)$/;"	f	class:Paddle
+resolveCollision	src/Ball.cpp	/^void Ball::resolveCollision(GameEntity* collider, GameEntity* object)$/;"	f	class:Ball
+resolveCollision	src/Block.cpp	/^void Block::resolveCollision(GameEntity* collider, GameEntity* object)$/;"	f	class:Block
+resolveCollision	src/Collider.cpp	/^void Collider::resolveCollision(GameEntity* collider, GameEntity* object)$/;"	f	class:Collider
+resolveCollision	src/Paddle.cpp	/^void Paddle::resolveCollision(GameEntity* collider, GameEntity* object)$/;"	f	class:Paddle
 rewind	src/Sound.cpp	/^void Sound::rewind()$/;"	f	class:Sound
-screenHeight	src/Globals.cpp	/^	int screenHeight;$/;"	m	namespace:Globals	file:
-screenWidth	src/Globals.cpp	/^	int screenWidth;$/;"	m	namespace:Globals	file:
-setMainMenuButtons	src/MenuManager.cpp	/^void MenuManager::setMainMenuButtons()$/;"	f	class:MenuManager
-setPauseMenuButtons	src/MenuManager.cpp	/^void MenuManager::setPauseMenuButtons()$/;"	f	class:MenuManager
-shouldQuit	src/PauseMenuManager.cpp	/^bool PauseMenuManager::shouldQuit()$/;"	f	class:PauseMenuManager
-size	include/MenuEntity.h	/^	SDL_Rect size;$/;"	m	class:MenuEntity
+row_height	include/Menu.h	/^	int num_rows, row_height, row_padding;$/;"	m	class:Menu
+row_padding	include/Menu.h	/^	int num_rows, row_height, row_padding;$/;"	m	class:Menu
+screenHeight	src/Globals.cpp	/^	int screenHeight 			= update_value(768, 	"dimensions", 	"height");$/;"	m	namespace:Globals	file:
+screenWidth	src/Globals.cpp	/^	int screenWidth 			= update_value(1024, 	"dimensions", 	"width");$/;"	m	namespace:Globals	file:
+setRect	src/Entity.cpp	/^void      Entity::setRect(floatRect rect)$/;"	f	class:Entity
 sounds	include/AssetFactory.h	/^	unordered_map<string, Sound*> sounds;$/;"	m	class:AssetFactory
 source	include/Sound.h	/^	ALuint source;$/;"	m	class:Sound
-sourceExhausted	include/ConvertUTF.h	/^	sourceExhausted,	\/* partial character in source, but hit end *\/$/;"	e	enum:__anon5
-sourceIllegal	include/ConvertUTF.h	/^	sourceIllegal		\/* source sequence is illegal\/malformed *\/$/;"	e	enum:__anon5
+sourceExhausted	include/ConvertUTF.h	/^	sourceExhausted,	\/* partial character in source, but hit end *\/$/;"	e	enum:__anon6
+sourceIllegal	include/ConvertUTF.h	/^	sourceIllegal		\/* source sequence is illegal\/malformed *\/$/;"	e	enum:__anon6
 start_a	include/Effects.h	/^		Uint8 start_a;$/;"	m	class:Effects::AlphaKeyFrame
 start_b	include/Effects.h	/^		Uint8 start_r, start_g, start_b;$/;"	m	class:Effects::ColorKeyFrame
 start_g	include/Effects.h	/^		Uint8 start_r, start_g, start_b;$/;"	m	class:Effects::ColorKeyFrame
@@ -512,13 +604,14 @@ stateChanged	src/Ball.cpp	/^void Ball::stateChanged(BallState prevState, BallSta
 stateChanged	src/Block.cpp	/^void Block::stateChanged(BlockState prevState, BlockState currState){$/;"	f	class:Block
 stateChanged	src/Paddle.cpp	/^void stateChanged(PaddleState prevState, PaddleState currState)$/;"	f
 stop	src/Sound.cpp	/^void Sound::stop()$/;"	f	class:Sound
-strictConversion	include/ConvertUTF.h	/^	strictConversion = 0,$/;"	e	enum:__anon6
-targetExhausted	include/ConvertUTF.h	/^	targetExhausted,	\/* insuff. room in target for conversion *\/$/;"	e	enum:__anon5
-text	include/Button.h	/^	const char* text;$/;"	m	class:Button
+strictConversion	include/ConvertUTF.h	/^	strictConversion = 0,$/;"	e	enum:__anon7
+targetExhausted	include/ConvertUTF.h	/^	targetExhausted,	\/* insuff. room in target for conversion *\/$/;"	e	enum:__anon6
 texture	include/Ball.h	/^	SDL_Texture* texture;$/;"	m	class:Ball
 texture	include/BallsIndicator.h	/^	SDL_Texture* texture;$/;"	m	class:BallsIndicator
 texture	include/Block.h	/^	SDL_Texture* texture;$/;"	m	class:Block
 texture	include/Effects.h	/^	SDL_Texture* texture;$/;"	m	class:Effects
+texture	include/Entity.h	/^	SDL_Texture* texture;$/;"	m	class:Entity
+texture	include/MenuEntity.h	/^	SDL_Texture* texture;$/;"	m	class:MenuEntity
 texture	include/Paddle.h	/^	SDL_Texture* texture;$/;"	m	class:Paddle
 textures	include/AssetFactory.h	/^	unordered_map<string, SDL_Texture*> textures;$/;"	m	class:AssetFactory
 transitionTime	include/Effects.h	/^		Uint64 transitionTime, elapsedTime;$/;"	m	class:Effects::ColorKeyFrame
@@ -528,14 +621,13 @@ type	src/BallsIndicator.cpp	/^char* BallsIndicator::type()$/;"	f	class:BallsIndi
 type	src/Block.cpp	/^char* Block::type()$/;"	f	class:Block
 type	src/Button.cpp	/^char* Button::type()$/;"	f	class:Button
 type	src/Collider.cpp	/^char* Collider::type()$/;"	f	class:Collider
+type	src/Entity.cpp	/^char* Entity::type()$/;"	f	class:Entity
 type	src/GameManager.cpp	/^char* GameManager::type()$/;"	f	class:GameManager
+type	src/Label.cpp	/^char* Label::type()$/;"	f	class:Label
 type	src/MenuManager.cpp	/^char* MenuManager::type()$/;"	f	class:MenuManager
 type	src/Paddle.cpp	/^char* Paddle::type()$/;"	f	class:Paddle
-type	src/PauseMenuManager.cpp	/^char* PauseMenuManager::type()$/;"	f	class:PauseMenuManager
 type	src/ProgramManager.cpp	/^char* ProgramManager::type()$/;"	f	class:ProgramManager
 uiEntities	include/GameManager.h	/^	std::vector<UIEntity*> uiEntities;$/;"	m	class:GameManager
-uiEntities	include/MenuManager.h	/^	std::vector<UIEntity*> uiEntities;$/;"	m	class:MenuManager
-uiEntities	include/PauseMenuManager.h	/^	std::vector<UIEntity*> uiEntities;$/;"	m	class:PauseMenuManager
 update	include/Effects.h	/^		void update(Uint64 elapsedTime, Uint8& r, Uint8& g, Uint8& b){$/;"	f	class:Effects::ColorKeyFrame
 update	include/Effects.h	/^		void update(double elapsedTime, Uint8& a){$/;"	f	class:Effects::AlphaKeyFrame
 update	src/Ball.cpp	/^void Ball::update(int frameTime)$/;"	f	class:Ball
@@ -543,22 +635,24 @@ update	src/BallsIndicator.cpp	/^void BallsIndicator::update(int frameTime)$/;"	f
 update	src/Block.cpp	/^void Block::update(int frameTime)$/;"	f	class:Block
 update	src/Button.cpp	/^void Button::update(int frameTime)$/;"	f	class:Button
 update	src/Collider.cpp	/^void Collider::update(int frameTime)$/;"	f	class:Collider
+update	src/Entity.cpp	/^void Entity::update(int frameTime)$/;"	f	class:Entity
 update	src/GameManager.cpp	/^void GameManager::update(int frameTime)$/;"	f	class:GameManager
+update	src/Label.cpp	/^void Label::update(int frameTime)$/;"	f	class:Label
 update	src/MenuManager.cpp	/^void MenuManager::update(int frameTime)$/;"	f	class:MenuManager
 update	src/Paddle.cpp	/^void Paddle::update(int frameTime)$/;"	f	class:Paddle
-update	src/PauseMenuManager.cpp	/^void PauseMenuManager::update(int frameTime)$/;"	f	class:PauseMenuManager
 updateState	include/StateMachine.h	/^	void updateState(T state)$/;"	f	class:StateMachine
 updateVelocityWithAngle	src/Ball.cpp	/^void Ball::updateVelocityWithAngle(float degrees)$/;"	f	class:Ball
-velX	include/PhysicsEntity.h	/^	float velX, velY;$/;"	m	class:PhysicsEntity
-velY	include/PhysicsEntity.h	/^	float velX, velY;$/;"	m	class:PhysicsEntity
+update_value	src/Globals.cpp	/^	float update_value(float def, const char *section, const char *key)$/;"	f	namespace:Globals
+update_value	src/Globals.cpp	/^	int update_value(int def, const char *section, const char *key)$/;"	f	namespace:Globals
+velX	include/GameEntity.h	/^	float velX, velY;$/;"	m	class:GameEntity
+velY	include/GameEntity.h	/^	float velX, velY;$/;"	m	class:GameEntity
 visible	include/GameManager.h	/^	bool pause, visible;$/;"	m	class:GameManager
 visible	include/MenuManager.h	/^	bool visible;$/;"	m	class:MenuManager
-width	include/Ball.h	/^	int width = Globals::ballWidth;$/;"	m	class:Ball
-width	include/Block.h	/^	int width = 80.0;$/;"	m	class:Block
-width	include/Entity.h	/^	int width, height;$/;"	m	class:Entity
-width	include/Paddle.h	/^	int width = Globals::paddleWidth;$/;"	m	class:Paddle
-xOffset	src/Globals.cpp	/^	int xOffset;$/;"	m	namespace:Globals	file:
-yOffset	src/Globals.cpp	/^	int yOffset;$/;"	m	namespace:Globals	file:
+w	include/Entity.h	/^	float w;$/;"	m	struct:floatRect_s
+x	include/Entity.h	/^	float x;$/;"	m	struct:floatRect_s
+xOffset	src/Globals.cpp	/^	int xOffset 				= update_value((screenWidth \/ 2) - (fieldWidth \/ 2), NULL, NULL);$/;"	m	namespace:Globals	file:
+y	include/Entity.h	/^	float y;$/;"	m	struct:floatRect_s
+yOffset	src/Globals.cpp	/^	int yOffset 				= update_value(0, NULL, NULL);$/;"	m	namespace:Globals	file:
 ~AssetFactory	src/AssetFactory.cpp	/^AssetFactory::~AssetFactory(){$/;"	f	class:AssetFactory
 ~Ball	src/Ball.cpp	/^Ball::~Ball()$/;"	f	class:Ball
 ~BallsIndicator	src/BallsIndicator.cpp	/^BallsIndicator::~BallsIndicator()$/;"	f	class:BallsIndicator
@@ -568,10 +662,10 @@ yOffset	src/Globals.cpp	/^	int yOffset;$/;"	m	namespace:Globals	file:
 ~Collider	src/Collider.cpp	/^Collider::~Collider()$/;"	f	class:Collider
 ~Entity	src/Entity.cpp	/^Entity::~Entity()$/;"	f	class:Entity
 ~GameManager	src/GameManager.cpp	/^GameManager::~GameManager()$/;"	f	class:GameManager
+~Label	src/Label.cpp	/^Label::~Label()$/;"	f	class:Label
 ~MenuManager	src/MenuManager.cpp	/^MenuManager::~MenuManager()$/;"	f	class:MenuManager
 ~OutputWriter	include/SimpleIni.h	/^        virtual ~OutputWriter() { }$/;"	f	class:CSimpleIniTempl::OutputWriter
 ~Paddle	src/Paddle.cpp	/^Paddle::~Paddle()$/;"	f	class:Paddle
-~PauseMenuManager	src/PauseMenuManager.cpp	/^PauseMenuManager::~PauseMenuManager()$/;"	f	class:PauseMenuManager
 ~ProgramManager	src/ProgramManager.cpp	/^ProgramManager::~ProgramManager()$/;"	f	class:ProgramManager
 ~SI_ConvertW	include/SimpleIni.h	/^    ~SI_ConvertW() { if (m_pConverter) ucnv_close(m_pConverter); }$/;"	f	class:SI_ConvertW
 ~Sound	src/Sound.cpp	/^Sound::~Sound()$/;"	f	class:Sound

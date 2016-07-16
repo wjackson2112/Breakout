@@ -4,7 +4,7 @@
 #include "EventManager.h"
 #include "GameManager.h"
 #include "MenuManager.h"
-#include "IEventHandler.h"
+#include "IGameEventHandler.h"
 #include <iostream>
 
 typedef enum ProgramManagerState
@@ -13,7 +13,7 @@ typedef enum ProgramManagerState
 	GAME
 } ProgramManagerState;
 
-class ProgramManager : public IEventHandler
+class ProgramManager : public IGameEventHandler, public IKeyboardEventHandler
 {
 private:
 	SDL_Renderer* gRenderer;
@@ -27,7 +27,6 @@ public:
 	void loop();
 	~ProgramManager();
 
-	void handleMouseEvents(int mouseState, int x, int y);
 	void handleKeyboardEvents(const Uint8*);
 	void handleGameEvents(const Uint8* events);
 	char* type();

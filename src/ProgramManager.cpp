@@ -9,13 +9,15 @@ ProgramManager::ProgramManager(SDL_Renderer* gRenderer)
 	machineState = MENU;
 	quit = false;
 
-	EventManager::Instance()->registerHandler(this);
+	EventManager::Instance()->registerGameEventHandler(this);
+	EventManager::Instance()->registerKeyboardEventHandler(this);
 }
 
 ProgramManager::~ProgramManager()
 {
-	EventManager::Instance()->deregisterHandler(this);
 	delete assetFactory;
+	EventManager::Instance()->deregisterGameEventHandler(this);
+	EventManager::Instance()->deregisterKeyboardEventHandler(this);
 }
 
 void ProgramManager::loop()
@@ -63,11 +65,6 @@ void ProgramManager::loop()
 
 	delete gameManager;
 	delete menuManager;
-}
-
-void ProgramManager::handleMouseEvents(int mouseState, int x, int y)
-{
-
 }
 
 void ProgramManager::handleKeyboardEvents(const Uint8* keyStates)

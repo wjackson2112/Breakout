@@ -5,9 +5,9 @@
 #include <cstdlib>
 #include <cstring>
 
-#include "IEventHandler.h"
+#include "IGameEventHandler.h"
 #include "EventManager.h"
-#include "PhysicsEntity.h"
+#include "GameEntity.h"
 #include "UIEntity.h"
 #include "Paddle.h"
 #include "Ball.h"
@@ -16,10 +16,10 @@
 #include "Collider.h"
 #include "Globals.h"
 
-class GameManager : public IEventHandler
+class GameManager : public IGameEventHandler
 {
 private:
-	std::vector<PhysicsEntity*> physicsEntities;
+	std::vector<GameEntity*> physicsEntities;
 	std::vector<UIEntity*> uiEntities;
 	AssetFactory* assetFactory;
 	SDL_Texture* gameTexture;
@@ -40,9 +40,7 @@ public:
 	void update(int frameTime);
 
 	char* type();
-
-	void handleMouseEvents(int mouseState, int x, int y);
-	void handleKeyboardEvents(const Uint8*);
+	
 	void handleGameEvents(const Uint8* events);
 };
 

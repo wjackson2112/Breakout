@@ -4,15 +4,17 @@ MenuManager::MenuManager(AssetFactory* assetFactory)
 {
 	visible = true;
 	this->assetFactory = assetFactory;
-	EventManager::Instance()->registerHandler(this);
-	EventManager::Instance()->registerMouseHandler(this);
 
 	this->pushMenu(MAIN_MENU);
+
+	EventManager::Instance()->registerGameEventHandler(this);
+	EventManager::Instance()->registerMouseEventHandler(this);
 }
 
 MenuManager::~MenuManager()
 {
-	EventManager::Instance()->deregisterHandler(this);
+	EventManager::Instance()->deregisterGameEventHandler(this);
+	EventManager::Instance()->deregisterMouseEventHandler(this);	
 }
 
 void MenuManager::render(SDL_Renderer* gRenderer)

@@ -19,15 +19,15 @@ Menu::Menu(int x, int y, int num_rows, int row_height, int row_padding, int num_
 void Menu::add_menu_item(MenuEntity* item, int row, int col)
 {
 	//Scale the texture to match the size of the menu items
-	SDL_Rect orig_rect = item->getRect();
-	SDL_Rect *new_rect = new SDL_Rect();
+	floatRect orig_rect = item->getRect();
+	floatRect new_rect;
 
-	new_rect->x = this->rect.x + (col) * (this->col_width + this->col_padding);
-	new_rect->y = this->rect.y + (row) * (this->row_height + this->row_padding);
-	new_rect->w = ((float) this->row_height/(float) orig_rect.h)*orig_rect.w;
-	new_rect->h = this->row_height;
+	new_rect.x = this->rect.x + (col) * (this->col_width + this->col_padding);
+	new_rect.y = this->rect.y + (row) * (this->row_height + this->row_padding);
+	new_rect.w = ((float) this->row_height/(int) orig_rect.h)*(int) orig_rect.w;
+	new_rect.h = this->row_height;
 
-	item->setRect(*new_rect);
+	item->setRect(new_rect);
 
 	this->menuItems.push_back(item);//this->menuItems[row + col] = item;
 }
@@ -35,15 +35,15 @@ void Menu::add_menu_item(MenuEntity* item, int row, int col)
 void Menu::add_floating_menu_item(MenuEntity* item, int x, int y)
 {
 	//Scale the texture to match the size of the menu items
-	SDL_Rect orig_rect = item->getRect();
-	SDL_Rect *new_rect = new SDL_Rect();
+	floatRect orig_rect = item->getRect();
+	floatRect new_rect;
 
-	new_rect->x = x;
-	new_rect->y = y;
-	new_rect->w = ((float) this->row_height/(float) orig_rect.h)*orig_rect.w;
-	new_rect->h = this->row_height;
+	new_rect.x = x;
+	new_rect.y = y;
+	new_rect.w = ((float) this->row_height/(float) orig_rect.h)*orig_rect.w;
+	new_rect.h = this->row_height;
 
-	item->setRect(*new_rect);
+	item->setRect(new_rect);
 
 	this->menuItems.push_back(item);//this->menuItems[row + col] = item	
 }

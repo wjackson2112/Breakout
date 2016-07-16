@@ -7,8 +7,9 @@
 #include <vector>
 //#include <map>
 //#include "Entity.h"
-#include "IEventHandler.h"
+#include "IGameEventHandler.h"
 #include "IMouseEventHandler.h"
+#include "IKeyboardEventHandler.h"
 
 typedef enum GameEvent
 {
@@ -54,8 +55,9 @@ private:
 	//Singleton vars
 	static bool instanceFlag;
 	static EventManager* instance;
-	std::vector<IEventHandler*> eventHandlers;
+	std::vector<IGameEventHandler*> gameEventHandlers;
 	std::vector<IMouseEventHandler*> mouseEventHandlers;
+	std::vector<IKeyboardEventHandler*> keyboardEventHandlers;
 
 	Uint8 gameEvents[NUM_OF_EVENTS] = {{0}};
 
@@ -63,19 +65,26 @@ private:
 
 	EventManager();
 	void clearGameEvents();
+
 public:
 	static EventManager* Instance();
 
-	void registerHandler(IEventHandler* handler);
-	void deregisterHandler(IEventHandler* handler);
-	void printHandlers();
+	void registerGameEventHandler(IGameEventHandler* handler);
+	void deregisterGameEventHandler(IGameEventHandler* handler);
+
+	void registerMouseEventHandler(IMouseEventHandler* handler);
+	void deregisterMouseEventHandler(IMouseEventHandler* handler);
+
+	void registerKeyboardEventHandler(IKeyboardEventHandler* handler);
+	void deregisterKeyboardEventHandler(IKeyboardEventHandler* handler);
+
+	//void printHandlers();
 	void handleKeyboardEvents();
 	void reportSDLEvent(SDL_Event e);
 	void reportGameEvent(GameEvent event);
 	void handleGameEvents();
 
-	void registerMouseHandler(IMouseEventHandler* handler);
-	void deregisterMouseHander(IMouseEventHandler* handler);
+
 	void handleMouseEvents();
 };
 

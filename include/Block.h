@@ -3,7 +3,7 @@
 
 #include <iostream>
 #include <cstdlib>
-#include "PhysicsEntity.h"
+#include "GameEntity.h"
 #include "Ball.h"
 #include "AssetFactory.h"
 #include "StateMachine.h"
@@ -26,42 +26,30 @@ typedef enum
 	PURPLE
 } BlockColor;
 
-class Block : public PhysicsEntity
+class Block : public GameEntity
 {
 private:
-	int r, g, b;
 	StateMachine<BlockState>* state;
-	SDL_Texture* texture;
 	AssetFactory* assetFactory;
 	Effects* effects;
 
-	void stateChanged(BlockState prevState, BlockState currState);
-
 public:
-	int width = 80.0;
-	int height = 40.0;
-
 	Block(int x, int y, int width, int height, int* blockCount, AssetFactory* assetFactory, BlockColor color);
 	~Block();
 
-	void handleMouseEvents(int mouseState, int x, int y);
-	void handleKeyboardEvents(const Uint8*);
-	void handleGameEvents(const Uint8* events);
-	void update(int frameTime);
 	void render(SDL_Renderer*);
 
 	char* type();
 
-	void resolveCollision(PhysicsEntity* collider, PhysicsEntity* object);
-
-	SDL_Point getCenter();
-	SDL_Point getOrigin();
-	SDL_Point getSize();
-	SDL_Point getVelocity();
+	void resolveCollision(GameEntity* collider, GameEntity* object);
 
 	bool isDeletable();
 
 	void alphaTransitionComplete();
+
+private:
+	void stateChanged(BlockState prevState, BlockState currState);
+
 };
 
 #endif

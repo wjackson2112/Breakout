@@ -5,7 +5,9 @@ GameManager::GameManager(AssetFactory* assetFactory, SDL_Renderer* gRenderer)
 	srand(time(NULL));
 	pause = true;
 	visible = false;
-	EventManager::Instance()->registerHandler(this);
+	
+	EventManager::Instance()->registerGameEventHandler(this);
+
 	this->assetFactory = assetFactory;
 	this->gameTexture = SDL_CreateTexture(gRenderer, SDL_PIXELFORMAT_RGBA8888, SDL_TEXTUREACCESS_TARGET, Globals::fieldWidth, Globals::fieldHeight);
 	this->resetLevel();
@@ -19,13 +21,13 @@ GameManager::~GameManager()
 		it = uiEntities.erase(it);
 	}
 
-	for(std::vector<PhysicsEntity*>::iterator it=physicsEntities.begin(); it!=physicsEntities.end();)
+	for(std::vector<GameEntity*>::iterator it=physicsEntities.begin(); it!=physicsEntities.end();)
 	{
 		delete * it;
 		it = physicsEntities.erase(it);
 	}
 
-	EventManager::Instance()->deregisterHandler(this);
+	EventManager::Instance()->deregisterGameEventHandler(this);
 }
 
 void GameManager::gameWon()
@@ -52,7 +54,7 @@ void GameManager::resetLevel()
 	uiEntities.push_back(new BallsIndicator(0, Globals::screenHeight - Globals::ballHeight, assetFactory));
 
 	if(physicsEntities.size() >= 0){
-		for(std::vector<PhysicsEntity*>::iterator it=physicsEntities.begin(); it!=physicsEntities.end();)
+		for(std::vector<GameEntity*>::iterator it=physicsEntities.begin(); it!=physicsEntities.end();)
 		{
 			delete * it;
 			it = physicsEntities.erase(it);
@@ -86,28 +88,25 @@ void GameManager::detectCollisions()
 		{
 			if(entityA != entityB){
 
-				SDL_Point originA, originB;
-				SDL_Point sizeA, sizeB;
+				floatRect rectA, rectB;
 
 				int leftA, leftB;
 				int rightA, rightB;
 				int topA, topB;
 				int bottomA, bottomB;
 
-				originA = entityA->getOrigin();
-				originB = entityB->getOrigin();
-				sizeA = entityA->getSize();
-				sizeB = entityB->getSize();
+				rectA = entityA->getRect();
+				rectB = entityB->getRect();
 
-				leftA = originA.x;
-				rightA = originA.x + sizeA.x;
-				topA = originA.y;
-				bottomA = originA.y + sizeA.y;
+				leftA = rectA.x;
+				rightA = rectA.x + rectA.w;
+				topA = rectA.y;
+				bottomA = rectA.y + rectA.h;
 
-				leftB = originB.x;
-				rightB = originB.x + sizeB.x;
-				topB = originB.y;
-				bottomB = originB.y + sizeB.y;
+				leftB = rectB.x;
+				rightB = rectB.x + rectB.w;
+				topB = rectB.y;
+				bottomB = rectB.y + rectB.h;
 
 				if(bottomA <= topB    ||
 				   topA    >= bottomB ||
@@ -167,7 +166,7 @@ void GameManager::update(int frameTime)
 	}
 
 	//std::cout << "Updating" << std::endl;
-	for(std::vector<PhysicsEntity*>::iterator it=physicsEntities.begin(); it!=physicsEntities.end();)
+	for(std::vector<GameEntity*>::iterator it=physicsEntities.begin(); it!=physicsEntities.end();)
 	{
 		//Update the item
 		(*it)->update(frameTime);
@@ -199,20 +198,11 @@ char* GameManager::type()
 	return "GameManager";
 }
 
-void GameManager::handleMouseEvents(int mouseState, int x, int y)
-{
-	
-}
-
-void GameManager::handleKeyboardEvents(const Uint8* keyStates)
-{
-
-}
-
 void GameManager::handleGameEvents(const Uint8* events)
 {
 	if(events[BLOCK_DISAPPEARED])
 	{
+
 		blockCount -= events[BLOCK_DISAPPEARED];
 	}
 

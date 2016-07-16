@@ -1,15 +1,15 @@
 #include "Ball.h"
 
 Ball::Ball(Paddle* paddle, AssetFactory* assetFactory)
+	: GameEntity("./png/Ball.png", assetFactory)
 {
-	EventManager::Instance()->registerHandler(this);
-	posX = -100;
-	posY = -100;
-	velX = 0;
-	velY = 0;
-
-	this->assetFactory = assetFactory;
-	this->texture = assetFactory->getAsset<SDL_Texture>("./png/Ball.png");
+	this->rect.x = -100;
+	this->rect.y = -100;
+	this->rect.w = Globals::ballWidth;
+	this->rect.h = Globals::ballHeight;
+	this->max_vel = this->rect.w * 15;
+	this->velX = 0.0;
+	this->velY = 0.0;
 
 	this->paddleSound = assetFactory->getAsset<Sound>("./sounds/LowBlip.wav");
 	this->blockSound = assetFactory->getAsset<Sound>("./sounds/MidBlip.wav");
@@ -19,24 +19,24 @@ Ball::Ball(Paddle* paddle, AssetFactory* assetFactory)
 						//(StateMachine<BallState>::StateMachineCB) &Ball::stateChanged,
 						[this](BallState prevState, BallState currState){ return this->stateChanged(prevState, currState); },
 						LOST_ST);
+
+	EventManager::Instance()->registerKeyboardEventHandler(this);
 }
 
 Ball::~Ball()
 {
-	EventManager::Instance()->deregisterHandler(this);
+	EventManager::Instance()->deregisterKeyboardEventHandler(this);
 }
 
-void Ball::updateVelocityWithAngle(float degrees)
+void Ball::handleKeyboardEvents(const Uint8* keyStates)
 {
-	float radians = degrees * 3.14159/180;
-	velX = max_vel * cos(radians);
-	velY = -(max_vel * sin(radians));
-}
-
-void Ball::render(SDL_Renderer* gRenderer)
-{
-	SDL_Rect drawRect = {posX, posY, width, height};
-	SDL_RenderCopy( gRenderer, this->texture, NULL, &drawRect );
+	if(keyStates[SDL_SCANCODE_SPACE])
+	{
+		if(this->state->getState() == WAITING_ST){
+			this->state->updateState(FLYING_ST);
+			updateVelocityWithAngle(90-((this->paddle->getVelocity().x/this->paddle->max_vel)*45));
+		}
+	}
 }
 
 void Ball::update(int frameTime)
@@ -47,50 +47,36 @@ void Ball::update(int frameTime)
 			EventManager::Instance()->reportGameEvent(BALL_LOST);
 			this->state->updateState(WAITING_ST);
 		case WAITING_ST:
-			posX = paddle->getCenter().x - width/2;
-			posY = paddle->getOrigin().y - height;
+			this->rect.x = this->paddle->getCenter().x - this->rect.w/2.0;
+			this->rect.y = this->paddle->getRect().y - this->rect.h - 1;
 			break;
 
 		case FLYING_ST:
-			posX += velX * (float) frameTime/SDL_GetPerformanceFrequency();
+			this->rect.x += this->velX * (float) frameTime/SDL_GetPerformanceFrequency();
 
-			if(posX < 0)
+			if((int) this->rect.x < 0)
 			{
-				posX = 0;
-				velX = -velX;
+				this->rect.x = 0;
+				this->velX = -(this->velX);
 			} 
-			else if(posX > Globals::fieldWidth - width)
+			else if(this->rect.x > Globals::fieldWidth - this->rect.w)
 			{
-				posX = Globals::fieldWidth - width;
-				velX = -velX;
+				this->rect.x = Globals::fieldWidth - this->rect.w;
+				this->velX = -(this->velX);
 			}
 
-			posY += velY * (float) frameTime/SDL_GetPerformanceFrequency();
+			this->rect.y += this->velY * (float) frameTime/SDL_GetPerformanceFrequency();
 
-			if(posY < 0)
+			if((int) this->rect.y < 0)
 			{
-				posY = 0;
-				velY = -velY;
+				this->rect.y = 0;
+				this->velY = -(this->velY);
 			}
-			else if(posY > Globals::fieldHeight)
+			else if(this->rect.y > Globals::fieldHeight)
 			{
-				
 				this->state->updateState(LOST_ST);
 			}
 
-			break;
-	}
-}
-
-void Ball::stateChanged(BallState prevState, BallState currState)
-{
-	switch(currState)
-	{
-		case LOST_ST:
-			break;
-		case WAITING_ST:
-			break;
-		case FLYING_ST:
 			break;
 	}
 }
@@ -100,30 +86,8 @@ char* Ball::type()
 	return "Ball";
 }
 
-void Ball::handleMouseEvents(int mouseState, int x, int y)
+void Ball::resolveCollision(GameEntity* collider, GameEntity* object)
 {
-
-}
-
-void Ball::handleKeyboardEvents(const Uint8* keyStates)
-{
-	if(keyStates[SDL_SCANCODE_SPACE])
-	{
-		if(this->state->getState() == WAITING_ST){
-			this->state->updateState(FLYING_ST);
-			updateVelocityWithAngle(90-((paddle->getVelocity().x/paddle->max_vel)*45));
-		}
-	}
-}
-
-void Ball::handleGameEvents(const Uint8* events)
-{
-
-}
-
-void Ball::resolveCollision(PhysicsEntity* collider, PhysicsEntity* object)
-{
-	//std::cout << "Ball resolving" << std::endl;
 	//Bounce off the paddle
 	if(dynamic_cast<Paddle*> (object) != NULL)
 	{
@@ -131,80 +95,80 @@ void Ball::resolveCollision(PhysicsEntity* collider, PhysicsEntity* object)
 		int direction;
 
 		//if(velX >= 0){
-		if(posX + width - collider->getOrigin().x < collider->getOrigin().x + collider->getSize().x - posX)
+		if(this->rect.x + this->rect.w - collider->getRect().x < collider->getRect().x + collider->getRect().w - this->rect.x)
 		{
-			deltaX = posX + width - collider->getOrigin().x;
-			if(velX != 0)
-				deltaY = (velY/velX)*deltaX;
+			deltaX = this->rect.x + this->rect.w - collider->getRect().x;
+			if(this->velX != 0)
+				deltaY = (this->velY/this->velX)*deltaX;
 			else
 				deltaY = INT_MAX;
 			direction = 0;
 		}
 		else
 		{
-			deltaX = collider->getOrigin().x + collider->getSize().x - posX;
-			if(velX != 0)
-				deltaY = (velY/velX)*deltaX;
+			deltaX = collider->getRect().x + collider->getRect().w - this->rect.x;
+			if(this->velX != 0)
+				deltaY = (this->velY/this->velX)*deltaX;
 			else
 				deltaY = INT_MAX;
 			direction = 1;
 		}
 
-		if(velY >= 0){
-			if(posY + height - collider->getOrigin().y < abs(deltaY)){
-				deltaY = posY + height - collider->getOrigin().y;
-				deltaX = (velX/velY)*deltaY;
+		if(this->velY >= 0){
+			if(this->rect.y + this->rect.h - collider->getRect().y < abs(deltaY)){
+				deltaY = this->rect.y + this->rect.h - collider->getRect().y;
+				deltaX = (this->velX/this->velY)*deltaY;
 				direction = 2;
 			}
 		}
 		else
 		{
-			if(collider->getOrigin().y + collider->getSize().y - posY < abs(deltaY))
+			if(collider->getRect().y + collider->getRect().h - this->rect.y < abs(deltaY))
 			{
-				deltaY = collider->getOrigin().y + collider->getSize().y - posY;
-				deltaX = velX/velY*deltaY;
+				deltaY = collider->getRect().y + collider->getRect().h - this->rect.y;
+				deltaX = this->velX/this->velY*deltaY;
 				direction = 3;
 			}	
 		}
 
-		if(velX >= 0)
-			posX -= deltaX;
+		if(this->velX >= 0)
+			this->rect.x -= deltaX;
 		else
-			posX += deltaX;
+			this->rect.x += deltaX;
 
-		if(velY >= 0)
-			posY -= deltaY;
+		if(this->velY >= 0)
+			this->rect.y -= deltaY;
 		else
-			posY += deltaY;
+			this->rect.y += deltaY;
 
 		switch(direction)
 		{
 			//left
 			case 0:
-				if(velX > 0)
+				if(this->velX > 0)
 				{
-					velX = -velX;
+					this->velX = -(this->velX);
 				}
 				break;
 			//right 
 			case 1:
-				if(velX < 0)
+				if(this->velX < 0)
 				{
-					velX = -velX;					
+					this->velX = -(this->velX);					
 				}
 				break;
 			//top
 			case 2:
 			{
-				float angle = (((float) collider->getCenter().x - (float) getCenter().x)/((float) collider->getSize().x/2) * 45) + 90;
+				float angle = (((float) collider->getCenter().x - (float) getCenter().x)/((float) collider->getRect().w/2) * 45) + 90;
 				updateVelocityWithAngle(angle);
 				break;
 			}
 			//bottom 
 			case 3:
-				if(velY < 0)
+				if(this->velY < 0)
 				{
-					velY = -velY;
+					this->velY = -(this->velY);
 				}
 				break;
 			default:
@@ -220,82 +184,82 @@ void Ball::resolveCollision(PhysicsEntity* collider, PhysicsEntity* object)
 		int direction;
 
 		//if(velX >= 0){
-		if(posX + width - collider->getOrigin().x < collider->getOrigin().x + collider->getSize().x - posX)
+		if(this->rect.x + this->rect.w - collider->getRect().x < collider->getRect().x + collider->getRect().w - this->rect.x)
 		{
-			deltaX = posX + width - collider->getOrigin().x;
-			if(velX != 0)
-				deltaY = (velY/velX)*deltaX;
+			deltaX = this->rect.x + this->rect.w - collider->getRect().x;
+			if(this->velX != 0)
+				deltaY = (this->velY/this->velX)*deltaX;
 			else
 				deltaY = INT_MAX;
 			direction = 0;
 		}
 		else
 		{
-			deltaX = collider->getOrigin().x + collider->getSize().x - posX;
-			if(velX != 0)
-				deltaY = (velY/velX)*deltaX;
+			deltaX = collider->getRect().x + collider->getRect().w - this->rect.x;
+			if(this->velX != 0)
+				deltaY = (this->velY/this->velX)*deltaX;
 			else
 				deltaY = INT_MAX;
 			direction = 1;
 		}
 
-		if(posY + height - collider->getOrigin().y < collider->getOrigin().y + collider->getSize().y - posY){
-			if(posY + height - collider->getOrigin().y < abs(deltaY)){
-				deltaY = posY + height - collider->getOrigin().y;
-				deltaX = (velX/velY)*deltaY;
+		if(this->rect.y + this->rect.h - collider->getRect().y < collider->getRect().y + collider->getRect().h - this->rect.y){
+			if(this->rect.y + this->rect.h - collider->getRect().y < abs(deltaY)){
+				deltaY = this->rect.y + this->rect.h - collider->getRect().y;
+				deltaX = (this->velX/this->velY)*deltaY;
 				direction = 2;
 			}
 		}
 		else
 		{
-			if(collider->getOrigin().y + collider->getSize().y - posY < abs(deltaY))
+			if(collider->getRect().y + collider->getRect().h - this->rect.y < abs(deltaY))
 			{
-				deltaY = collider->getOrigin().y + collider->getSize().y - posY;
-				deltaX = velX/velY*deltaY;
+				deltaY = collider->getRect().y + collider->getRect().h - this->rect.y;
+				deltaX = this->velX/this->velY*deltaY;
 				direction = 3;
 			}	
 		}
 
-		if(velX >= 0)
-			posX -= deltaX;
+		if(this->velX >= 0)
+			this->rect.x -= deltaX;
 		else
-			posX += deltaX;
+			this->rect.x += deltaX;
 
-		if(velY >= 0)
-			posY -= deltaY;
+		if(this->velY >= 0)
+			this->rect.y -= deltaY;
 		else
-			posY += deltaY;
+			this->rect.y += deltaY;
 
 		switch(direction)
 		{
 			//left
 			case 0:
-				if(velX > 0)
+				if(this->velX > 0)
 				{
-					velX = -velX;
+					this->velX = -(this->velX);
 				}
 				break;
 			//right 
 			case 1:
-				if(velX < 0)
+				if(this->velX < 0)
 				{
-					velX = -velX;					
+					this->velX = -(this->velX);					
 				}
 				break;
 			//top
 			case 2:
 			{
-				if(velY > 0)
+				if(this->velY > 0)
 				{
-					velY = -velY;
+					this->velY = -(this->velY);
 				}
 				break;
 			}
 			//bottom 
 			case 3:
-				if(velY < 0)
+				if(this->velY < 0)
 				{
-					velY = -velY;
+					this->velY = -(this->velY);
 				}
 				break;
 			default:
@@ -306,31 +270,22 @@ void Ball::resolveCollision(PhysicsEntity* collider, PhysicsEntity* object)
 	}
 }
 
-SDL_Point Ball::getCenter()
+void Ball::updateVelocityWithAngle(float degrees)
 {
-	SDL_Point center = {posX + width/2, posY + height/2};
-	return center;
+	float radians = degrees * 3.14159/180;
+	this->velX = this->max_vel * cos(radians);
+	this->velY = -(this->max_vel * sin(radians));
 }
 
-SDL_Point Ball::getOrigin()
+void Ball::stateChanged(BallState prevState, BallState currState)
 {
-	SDL_Point origin = {posX, posY};
-	return origin;
-}
-
-SDL_Point Ball::getVelocity()
-{
-	SDL_Point velocity = {velX, velY};
-	return velocity;
-}
-
-SDL_Point Ball::getSize()
-{
-	SDL_Point size = {width, height};
-	return size;
-}
-
-bool Ball::isDeletable()
-{
-	return false;
+	switch(currState)
+	{
+		case LOST_ST:
+			break;
+		case WAITING_ST:
+			break;
+		case FLYING_ST:
+			break;
+	}
 }

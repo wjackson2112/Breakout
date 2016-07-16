@@ -3,9 +3,9 @@
 
 #include <iostream>
 #include <cstdlib>
-#include "PhysicsEntity.h"
+#include "GameEntity.h"
 
-class Collider : public PhysicsEntity
+class Collider : public GameEntity
 {
 public:
 	Collider(Entity* entity);
@@ -19,11 +19,8 @@ public:
 
 	char* type();
 
-	void resolveCollision(PhysicsEntity* collider, PhysicsEntity* object);
+	void resolveCollision(GameEntity* collider, GameEntity* object);
 
-	SDL_Point getCenter();
-	SDL_Point getOrigin();
-	SDL_Point getSize();
 	SDL_Point getVelocity();
 
 	bool isDeletable();

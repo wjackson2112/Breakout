@@ -20,18 +20,20 @@ EventManager* EventManager::Instance(){
 	return instance;
 }
 
-void EventManager::registerHandler(IEventHandler* handler)
+template<typename T>
+void registerEventHandler(std::vector<T*> &eventHandlers, T* handler)
 {
-	this->eventHandlers.push_back(handler);
+	eventHandlers.push_back(handler);
 }
 
-void EventManager::deregisterHandler(IEventHandler* handler)
+template<typename T>
+void deregisterEventHandler(std::vector<T*> &eventHandlers, T* handler)
 {
-	for(std::vector<IEventHandler*>::iterator it=this->eventHandlers.begin(); it!=this->eventHandlers.end();)
+	for(typename std::vector<T*>::iterator it=eventHandlers.begin(); it!=eventHandlers.end();)
 	{
 		if(*it == handler)
 		{
-			it = this->eventHandlers.erase(it);
+			it = eventHandlers.erase(it);
 		}
 		else
 		{
@@ -40,34 +42,35 @@ void EventManager::deregisterHandler(IEventHandler* handler)
 	}
 }
 
-void EventManager::printHandlers()
+
+void EventManager::registerGameEventHandler(IGameEventHandler* handler)
 {
-	std::cout << "Registered Handlers: |";
-	for(auto &handler : eventHandlers)
-	{
-		std::cout << handler->type() << "|";
-	}
-	std::cout << std::endl;
+	registerEventHandler(this->gameEventHandlers, handler);
 }
 
-void EventManager::registerMouseHandler(IMouseEventHandler* handler)
+void EventManager::deregisterGameEventHandler(IGameEventHandler* handler)
 {
-	this->mouseEventHandlers.push_back(handler);
+	deregisterEventHandler(this->gameEventHandlers, handler);
 }
 
-void EventManager::deregisterMouseHander(IMouseEventHandler* handler)
+void EventManager::registerMouseEventHandler(IMouseEventHandler* handler)
 {
-	for(std::vector<IMouseEventHandler*>::iterator it=this->mouseEventHandlers.begin(); it!=this->mouseEventHandlers.end();)
-	{
-		if(*it == handler)
-		{
-			it = this->mouseEventHandlers.erase(it);
-		}
-		else
-		{
-			++it;
-		}
-	}	
+	registerEventHandler(this->mouseEventHandlers, handler);
+}
+
+void EventManager::deregisterMouseEventHandler(IMouseEventHandler* handler)
+{
+	deregisterEventHandler(this->mouseEventHandlers, handler);	
+}
+
+void EventManager::registerKeyboardEventHandler(IKeyboardEventHandler* handler)
+{
+	registerEventHandler(this->keyboardEventHandlers, handler);
+}
+
+void EventManager::deregisterKeyboardEventHandler(IKeyboardEventHandler* handler)
+{
+	deregisterEventHandler(this->keyboardEventHandlers, handler);	
 }
 
 void EventManager::handleMouseEvents()
@@ -112,7 +115,7 @@ void EventManager::handleMouseEvents()
 void EventManager::handleKeyboardEvents()
 {
 	const Uint8* keyStates = SDL_GetKeyboardState(NULL);
-	for(auto &handler : eventHandlers)
+	for(auto &handler : keyboardEventHandlers)
 	{
 		handler->handleKeyboardEvents(keyStates);
 	}
@@ -125,9 +128,13 @@ void EventManager::reportGameEvent(GameEvent event)
 
 void EventManager::handleGameEvents()
 {
-	for(auto &handler : eventHandlers)
+	for(auto &handler : gameEventHandlers)
 	{
-		handler->handleGameEvents(gameEvents);
+		if(handler == NULL)
+		{
+			std::cout << "PROBLEM" << std::endl;
+		}
+		handler->handleGameEvents(this->gameEvents);
 	}
 	this->clearGameEvents();
 }
@@ -139,3 +146,13 @@ void EventManager::clearGameEvents()
 		this->gameEvents[i] = 0;
 	}
 }
+
+// void EventManager::printHandlers()
+// {
+// 	std::cout << "Registered Handlers: |";
+// 	for(auto &handler : eventHandlers)
+// 	{
+// 		std::cout << handler->type() << "|";
+// 	}
+// 	std::cout << std::endl;
+// }

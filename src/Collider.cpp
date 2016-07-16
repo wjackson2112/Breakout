@@ -1,11 +1,12 @@
 #include "Collider.h"
 
 Collider::Collider(Entity* entity)
+	: GameEntity("", NULL)
 {
-	this->posX = entity->getOrigin().x;
-	this->posY = entity->getOrigin().y;
-	this->width = entity->getSize().x;
-	this->height = entity->getSize().y;
+	this->rect.x = entity->getRect().x;
+	this->rect.y = entity->getRect().y;
+	this->rect.w = entity->getRect().w;
+	this->rect.h = entity->getRect().h;
 }
 
 Collider::~Collider()
@@ -43,27 +44,9 @@ char* Collider::type()
 	return "Collider";
 }
 
-void Collider::resolveCollision(PhysicsEntity* collider, PhysicsEntity* object)
+void Collider::resolveCollision(GameEntity* collider, GameEntity* object)
 {
 
-}
-
-SDL_Point Collider::getCenter()
-{
-	SDL_Point center = {posX + width/2, posY + height/2};
-	return center;
-}
-
-SDL_Point Collider::getOrigin()
-{
-	SDL_Point origin = {posX, posY};
-	return origin;
-}
-
-SDL_Point Collider::getSize()
-{
-	SDL_Point velocity = {width, height};
-	return velocity;
 }
 
 SDL_Point Collider::getVelocity()

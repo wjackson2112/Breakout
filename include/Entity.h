@@ -3,30 +3,35 @@
 
 #include <SDL2/SDL.h>
 #include "EventManager.h"
-#include "IEventHandler.h"
 #include "Globals.h"
+#include "AssetFactory.h"
 
-class Entity : public IEventHandler
+typedef struct floatRect_s
+{
+	float x;
+	float y;
+	float w;
+	float h;
+} floatRect;
+
+class Entity
 {
 protected:
-	float posX, posY;
+	floatRect rect;
+	SDL_Texture* texture;
 public:
-	int width, height;
 
-	//Entity();
-	virtual ~Entity() = 0;
+	Entity(string texture_file, AssetFactory* assetFactory);
+	
+	virtual char* type();
 
-	//virtual void handleMouseEvents(int mouseState, int x, int y) = 0;
-	virtual void handleKeyboardEvents(const Uint8*) = 0;
-	virtual void handleGameEvents(const Uint8* events) = 0;
-	virtual char* type() = 0;
+	virtual void render(SDL_Renderer*);
+	virtual void update(int frameTime){};
 
-	virtual void update(int frameTime) = 0;
-	virtual void render(SDL_Renderer*) = 0;
+	SDL_Point getCenter();
 
-	virtual SDL_Point getCenter() = 0;
-	virtual SDL_Point getOrigin() = 0;
-	virtual SDL_Point getSize() = 0;
+	void 	  setRect(floatRect rect);
+	floatRect getRect();
 };
 
 #endif

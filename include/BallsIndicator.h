@@ -4,28 +4,22 @@
 #include "UIEntity.h"
 #include "AssetFactory.h"
 
-class BallsIndicator : public UIEntity
+class BallsIndicator : public UIEntity, public IGameEventHandler
 {
 private:
 	int ballsRemaining;
 	int gapWidth = Globals::ballWidth / 2;
 	AssetFactory* assetFactory;
-	SDL_Texture* texture;
 public:
 	BallsIndicator(float x, float y, AssetFactory* assetFactory);
 	~BallsIndicator();
 
-	void handleMouseEvents(int mouseState, int x, int y);
-	void handleKeyboardEvents(const Uint8*);
 	void handleGameEvents(const Uint8* events);
 	void update(int frameTime);
 	void render(SDL_Renderer*);
 	char* type();
 
 	SDL_Point getCenter();
-	SDL_Point getOrigin();
-	SDL_Point getVelocity();
-	SDL_Point getSize();
 
 	bool isDeletable();
 };

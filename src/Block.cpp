@@ -1,16 +1,12 @@
 #include "Block.h"
 
 Block::Block(int x, int y, int width, int height, int* blockCount, AssetFactory* assetFactory, BlockColor color)
-
+	: GameEntity("", NULL)
 {
-	this->posX = x;
-	this->posY = y;
-	this->width = width;
-	this->height = height;
-
-	r = rand()%0xFF;
-	g = rand()%0xFF;
-	b = rand()%0xFF;
+	this->rect.x = x;
+	this->rect.y = y;
+	this->rect.w = width;
+	this->rect.h = height;
 
 	this->assetFactory = assetFactory;
 
@@ -49,34 +45,11 @@ Block::Block(int x, int y, int width, int height, int* blockCount, AssetFactory*
 								[this](void){ return this->alphaTransitionComplete(); }, 
 								//(Effects::EffectsCB) &Block::alphaTransitionComplete, 
 								NULL);
-
-	EventManager::Instance()->registerHandler(this);
 }
 
 Block::~Block()
 {
 	EventManager::Instance()->reportGameEvent(BLOCK_DISAPPEARED);
-	EventManager::Instance()->deregisterHandler(this);
-}
-
-void Block::handleMouseEvents(int mouseState, int x, int y)
-{
-
-}
-
-void Block::handleKeyboardEvents(const Uint8* keyStates)
-{
-
-}
-
-void Block::handleGameEvents(const Uint8* events)
-{
-	
-}
-
-void Block::update(int frameTime)
-{
-
 }
 
 void Block::render(SDL_Renderer* gRenderer)
@@ -84,12 +57,40 @@ void Block::render(SDL_Renderer* gRenderer)
 	switch(this->state->getState()){
 		case IDLE_ST:
 		case FADING_ST:
-			SDL_Rect drawRect = {posX, posY, width, height};
+		{
 			this->effects->apply();
-			SDL_RenderCopy( gRenderer, this->texture, NULL, &drawRect );	
+			SDL_Rect renderRect = {this->rect.x, this->rect.y, this->rect.w, this->rect.h};
+			SDL_RenderCopy( gRenderer, this->texture, NULL, &renderRect );
 			break;
+		}
 	}
+}
 
+char* Block::type()
+{
+	return "Block";
+}
+
+void Block::resolveCollision(GameEntity* collider, GameEntity* object)
+{
+	//Dismiss self if collided with ball
+	if(dynamic_cast<Ball*> (object) != NULL)
+	{
+		this->state->updateState(FADING_ST);
+	}
+}
+
+bool Block::isDeletable()
+{
+	if(this->state->getState() == GONE_ST){
+		return true;
+	}
+	return false;
+}
+
+void Block::alphaTransitionComplete()
+{
+	this->state->updateState(GONE_ST);
 }
 
 void Block::stateChanged(BlockState prevState, BlockState currState){
@@ -108,55 +109,4 @@ void Block::stateChanged(BlockState prevState, BlockState currState){
 		case GONE_ST:
 			break;
 	}
-}
-
-char* Block::type()
-{
-	return "Block";
-}
-
-void Block::resolveCollision(PhysicsEntity* collider, PhysicsEntity* object)
-{
-	//Dismiss self if collided with ball
-	if(dynamic_cast<Ball*> (object) != NULL)
-	{
-		this->state->updateState(FADING_ST);
-	}
-}
-
-SDL_Point Block::getCenter()
-{
-	SDL_Point center = {posX + width/2, posY + height/2};
-	return center;
-}
-
-SDL_Point Block::getOrigin()
-{
-	SDL_Point origin = {posX, posY};
-	return origin;
-}
-
-SDL_Point Block::getSize()
-{
-	SDL_Point velocity = {width, height};
-	return velocity;
-}
-
-SDL_Point Block::getVelocity()
-{
-	SDL_Point size = {velX, velY};
-	return size;
-}
-
-bool Block::isDeletable()
-{
-	if(this->state->getState() == GONE_ST){
-		return true;
-	}
-	return false;
-}
-
-void Block::alphaTransitionComplete()
-{
-	this->state->updateState(GONE_ST);
 }
