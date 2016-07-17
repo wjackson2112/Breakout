@@ -1,12 +1,12 @@
 #include "PauseMenu.h"
 
-#define X_OFFSET 100
+#define X_OFFSET 150
 #define Y_OFFSET 100
 #define NUM_ROWS 5
-#define ROW_HEIGHT 75
-#define ROW_PADDING 25
+#define ROW_HEIGHT 30
+#define ROW_PADDING 15
 #define NUM_COLS 1
-#define COL_WIDTH 100
+#define COL_WIDTH 250
 #define COL_PADDING 25
 
 PauseMenu::PauseMenu(AssetFactory* assetFactory)

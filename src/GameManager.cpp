@@ -88,7 +88,7 @@ void GameManager::detectCollisions()
 		{
 			if(entityA != entityB){
 
-				floatRect rectA, rectB;
+				Rect rectA, rectB;
 
 				int leftA, leftB;
 				int rightA, rightB;

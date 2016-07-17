@@ -4,10 +4,7 @@ Entity::Entity(string texture_file, AssetFactory* assetFactory)
 {
 	int width, height;
 
-	this->rect.x = 0.0f;
-	this->rect.y = 0.0f;
-	this->rect.w = 0.0f;
-	this->rect.h = 0.0f;
+	this->rect = Rect(0.0, 0.0, 0.0, 0.0);
 
 	if(texture_file != "" && assetFactory != NULL)
 	{
@@ -35,15 +32,12 @@ SDL_Point Entity::getCenter()
 	return center;
 }
 
-void Entity::setRect(floatRect rect)
+void Entity::setRect(Rect rect)
 {
-	this->rect.x = rect.x;
-	this->rect.y = rect.y;
-	this->rect.w = rect.w;
-	this->rect.h = rect.h;
+	this->rect = rect;
 }
 
-floatRect Entity::getRect()
+Rect Entity::getRect()
 {
 	return this->rect;
 }

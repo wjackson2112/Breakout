@@ -14,9 +14,13 @@ public:
 	MenuEntity(string texture_file, AssetFactory* assetFactory);
 	virtual ~MenuEntity(){};
 
-	virtual void handleMousePress(int mouseState, int x, int y){}
-	virtual void handleMouseDrag(int mouseButton, int prevX, int prevY, int currX, int currY){}
-	virtual void handleMouseRelease(int mouseState, int x, int y){}
+	virtual void handleMousePress(int mouseState, int x, int y){};
+	virtual void handleMouseDrag(int mouseButton, int prevX, int prevY, int currX, int currY){};
+	virtual void handleMouseRelease(int mouseState, int x, int y){};
+
+	virtual void update(int frameTime){};
+
+	virtual void setRect(Rect rect);
 };
 
 #endif

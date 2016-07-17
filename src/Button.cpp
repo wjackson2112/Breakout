@@ -9,10 +9,7 @@ Button::Button(string texture_file, AssetFactory* assetFactory, GameEvent event)
 void Button::handleMouseRelease(int mouseButton, int x, int y)
 {
 	if(mouseButton & SDL_BUTTON(SDL_BUTTON_LEFT) &&
-	   x > this->rect.x && 
-	   x < this->rect.x + this->rect.w && 
-	   y > this->rect.y && 
-	   y < this->rect.y + this->rect.h)
+	   this->rect.contains(x, y))
 	{
 		EventManager::Instance()->reportGameEvent(event);
 	}

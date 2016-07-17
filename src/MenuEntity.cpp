@@ -5,3 +5,8 @@ MenuEntity::MenuEntity(string texture_file, AssetFactory* assetFactory)
 {
 	
 }
+
+void MenuEntity::setRect(Rect rect)
+{
+	Entity::setRect(rect);
+}

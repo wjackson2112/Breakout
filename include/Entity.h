@@ -2,22 +2,16 @@
 #define ENTITY_H
 
 #include <SDL2/SDL.h>
+#include <iostream>
 #include "EventManager.h"
 #include "Globals.h"
 #include "AssetFactory.h"
-
-typedef struct floatRect_s
-{
-	float x;
-	float y;
-	float w;
-	float h;
-} floatRect;
+#include "Rect.h"
 
 class Entity
 {
 protected:
-	floatRect rect;
+	Rect rect;
 	SDL_Texture* texture;
 public:
 
@@ -30,8 +24,8 @@ public:
 
 	SDL_Point getCenter();
 
-	void 	  setRect(floatRect rect);
-	floatRect getRect();
+	virtual void setRect(Rect rect);
+	Rect getRect();
 };
 
 #endif

@@ -4,6 +4,10 @@
 		"selected_items":
 		[
 			[
+				"deregister",
+				"deregisterKeyboardEventHandler"
+			],
+			[
 				"mouse",
 				"mouseButton"
 			],
@@ -380,106 +384,10 @@
 	"buffers":
 	[
 		{
-			"file": "src/Ball.cpp",
-			"settings":
-			{
-				"buffer_size": 6915,
-				"line_ending": "Unix"
-			}
-		},
-		{
-			"file": "include/Ball.h",
-			"settings":
-			{
-				"buffer_size": 968,
-				"line_ending": "Unix"
-			}
-		},
-		{
 			"file": "src/BallsIndicator.cpp",
 			"settings":
 			{
-				"buffer_size": 1283,
-				"line_ending": "Unix"
-			}
-		},
-		{
-			"file": "include/BallsIndicator.h",
-			"settings":
-			{
-				"buffer_size": 606,
-				"line_ending": "Unix"
-			}
-		},
-		{
-			"file": "src/Button.cpp",
-			"settings":
-			{
-				"buffer_size": 1177,
-				"line_ending": "Unix"
-			}
-		},
-		{
-			"file": "include/Button.h",
-			"settings":
-			{
-				"buffer_size": 739,
-				"line_ending": "Unix"
-			}
-		},
-		{
-			"file": "src/Entity.cpp",
-			"settings":
-			{
-				"buffer_size": 1167,
-				"line_ending": "Unix"
-			}
-		},
-		{
-			"file": "include/Entity.h",
-			"settings":
-			{
-				"buffer_size": 778,
-				"line_ending": "Unix"
-			}
-		},
-		{
-			"file": "src/GameManager.cpp",
-			"settings":
-			{
-				"buffer_size": 5247,
-				"line_ending": "Unix"
-			}
-		},
-		{
-			"file": "src/Label.cpp",
-			"settings":
-			{
-				"buffer_size": 874,
-				"line_ending": "Unix"
-			}
-		},
-		{
-			"file": "src/Menu.cpp",
-			"settings":
-			{
-				"buffer_size": 2284,
-				"line_ending": "Unix"
-			}
-		},
-		{
-			"file": "src/MenuEntity.cpp",
-			"settings":
-			{
-				"buffer_size": 148,
-				"line_ending": "Unix"
-			}
-		},
-		{
-			"file": "include/MenuEntity.h",
-			"settings":
-			{
-				"buffer_size": 288,
+				"buffer_size": 1215,
 				"line_ending": "Unix"
 			}
 		},
@@ -487,23 +395,15 @@
 			"file": "src/Paddle.cpp",
 			"settings":
 			{
-				"buffer_size": 2451,
+				"buffer_size": 1823,
 				"line_ending": "Unix"
 			}
 		},
 		{
-			"file": "include/Paddle.h",
+			"file": "include/BallsIndicator.h",
 			"settings":
 			{
-				"buffer_size": 924,
-				"line_ending": "Unix"
-			}
-		},
-		{
-			"file": "include/PhysicsEntity.h",
-			"settings":
-			{
-				"buffer_size": 419,
+				"buffer_size": 535,
 				"line_ending": "Unix"
 			}
 		}
@@ -572,11 +472,11 @@
 	"command_palette":
 	{
 		"height": 392.0,
-		"last_filter": "run",
+		"last_filter": "",
 		"selected_items":
 		[
 			[
-				"run",
+				"",
 				"Build With: Make - Run"
 			],
 			[
@@ -584,12 +484,12 @@
 				"Build With: Make - Debug"
 			],
 			[
-				"all",
-				"Build With: Make - All"
+				"run",
+				"Build With: Make - Run"
 			],
 			[
-				"",
-				"Build With: Make - Run"
+				"all",
+				"Build With: Make - All"
 			],
 			[
 				"make",
@@ -736,40 +636,75 @@
 	],
 	"file_history":
 	[
-		"/home/will/Documents/git/Breakout/src/Ball.cpp",
-		"/home/will/Documents/git/Breakout/include/Ball.h",
-		"/home/will/Documents/git/Breakout/src/BallsIndicator.cpp",
-		"/home/will/Documents/git/Breakout/include/BallsIndicator.h",
-		"/home/will/Documents/git/Breakout/src/Block.cpp",
-		"/home/will/Documents/git/Breakout/breakout.sublime-project",
-		"/home/will/Documents/git/Breakout/include/Button.h",
-		"/home/will/Documents/git/Breakout/src/Collider.cpp",
-		"/home/will/Documents/git/Breakout/include/Collider.h",
-		"/home/will/Documents/git/Breakout/src/Entity.cpp",
-		"/home/will/Documents/git/Breakout/include/Entity.h",
-		"/home/will/Documents/git/Breakout/src/GameManager.cpp",
-		"/home/will/Documents/git/Breakout/src/Label.cpp",
 		"/home/will/Documents/git/Breakout/include/Label.h",
-		"/home/will/Documents/git/Breakout/src/Menu.cpp",
-		"/home/will/Documents/git/Breakout/src/MenuEntity.cpp",
+		"/home/will/Documents/git/Breakout/src/Label.cpp",
+		"/home/will/Documents/git/Breakout/include/Button.h",
 		"/home/will/Documents/git/Breakout/include/MenuEntity.h",
-		"/home/will/Documents/git/Breakout/src/Paddle.cpp",
-		"/home/will/Documents/git/Breakout/src/PhysicsEntity.cpp",
-		"/home/will/Documents/git/Breakout/include/PhysicsEntity.h",
-		"/home/will/Documents/git/Breakout/src/UIEntity.cpp",
-		"/home/will/Documents/git/Breakout/include/UIEntity.h",
 		"/home/will/Documents/git/Breakout/src/Button.cpp",
-		"/home/will/Documents/git/Breakout/include/Block.h",
-		"/home/will/Documents/git/Breakout/include/Paddle.h",
-		"/home/will/Documents/git/Breakout/breakout",
+		"/home/will/Documents/git/Breakout/src/MenuEntity.cpp",
+		"/home/will/Documents/git/Breakout/include/BallsIndicator.h",
+		"/home/will/Documents/git/Breakout/include/UIEntity.h",
+		"/home/will/Documents/git/Breakout/src/BallsIndicator.cpp",
+		"/home/will/Documents/git/Breakout/src/UIEntity.cpp",
+		"/home/will/Documents/git/Breakout/include/Entity.h",
 		"/home/will/Documents/git/Breakout/src/EventManager.cpp",
-		"/home/will/Documents/git/Breakout/include/EventManager.h",
-		"/home/will/Documents/git/Breakout/include/IEventHandler.h",
-		"/home/will/Documents/git/Breakout/include/IMouseEventHandler.h",
-		"/home/will/Documents/git/Breakout/include/Menu.h",
+		"/home/will/Documents/git/Breakout/src/GameEntity.cpp",
+		"/home/will/Documents/git/Breakout/include/GameEntity.h",
+		"/home/will/Documents/git/Breakout/src/GameManager.cpp",
+		"/home/will/Documents/git/Breakout/include/GameManager.h",
+		"/home/will/Documents/git/Breakout/include/IGameEventHandler.h",
+		"/home/will/Documents/git/Breakout/Makefile",
+		"/home/will/Documents/git/Breakout/src/ProgramManager.cpp",
+		"/home/will/Documents/git/Breakout/include/ProgramManager.h",
 		"/home/will/Documents/git/Breakout/src/MenuManager.cpp",
 		"/home/will/Documents/git/Breakout/include/MenuManager.h",
-		"/home/will/Documents/git/Breakout/src/ProgramManager.cpp",
+		"/home/will/Documents/git/Breakout/include/Paddle.h",
+		"/home/will/Documents/git/Breakout/src/Paddle.cpp",
+		"/home/will/Documents/git/Breakout/include/Block.h",
+		"/home/will/Documents/git/Breakout/src/Block.cpp",
+		"/home/will/Documents/git/Breakout/include/Ball.h",
+		"/home/will/Documents/git/Breakout/src/Ball.cpp",
+		"/home/will/Documents/git/Breakout/src/Entity.cpp",
+		"/home/will/Documents/git/Breakout/include/EventManager.h",
+		"/home/will/Documents/git/Breakout/include/IKeyboardEventHandler.h",
+		"/home/will/Documents/git/Breakout/include/IMouseEventHandler.h",
+		"/home/will/Documents/git/Breakout/.tags",
+		"/home/will/Documents/git/Breakout/.tags_sorted_by_file",
+		"/home/will/Documents/git/Breakout/build/AudioOptionsMenu.d",
+		"/home/will/Documents/git/Breakout/build/Ball.d",
+		"/home/will/Documents/git/Breakout/build/BallsIndicator.d",
+		"/home/will/Documents/git/Breakout/build/Block.d",
+		"/home/will/Documents/git/Breakout/breakout",
+		"/home/will/Documents/git/Breakout/build/breakout",
+		"/home/will/Documents/git/Breakout/build/Button.d",
+		"/home/will/Documents/git/Breakout/src/Collider.cpp",
+		"/home/will/Documents/git/Breakout/build/Collider.d",
+		"/home/will/Documents/git/Breakout/include/Collider.h",
+		"/home/will/Documents/git/Breakout/cscope.in.out",
+		"/home/will/Documents/git/Breakout/cscope.out",
+		"/home/will/Documents/git/Breakout/build/Entity.d",
+		"/home/will/Documents/git/Breakout/build/EventManager.d",
+		"/home/will/Documents/git/Breakout/build/GameEntity.d",
+		"/home/will/Documents/git/Breakout/build/GameManager.d",
+		"/home/will/Documents/git/Breakout/build/Label.d",
+		"/home/will/Documents/git/Breakout/build/main.d",
+		"/home/will/Documents/git/Breakout/build/MainMenu.d",
+		"/home/will/Documents/git/Breakout/src/Menu.cpp",
+		"/home/will/Documents/git/Breakout/build/Menu.d",
+		"/home/will/Documents/git/Breakout/build/MenuEntity.d",
+		"/home/will/Documents/git/Breakout/build/MenuManager.d",
+		"/home/will/Documents/git/Breakout/build/OptionsMenu.d",
+		"/home/will/Documents/git/Breakout/build/Paddle.d",
+		"/home/will/Documents/git/Breakout/build/PauseMenu.d",
+		"/home/will/Documents/git/Breakout/build/PhysicsEntity.d",
+		"/home/will/Documents/git/Breakout/build/ProgramManager.d",
+		"/home/will/Documents/git/Breakout/build/UIEntity.d",
+		"/home/will/Documents/git/Breakout/build/VideoOptionsMenu.d",
+		"/home/will/Documents/git/Breakout/breakout.sublime-project",
+		"/home/will/Documents/git/Breakout/src/PhysicsEntity.cpp",
+		"/home/will/Documents/git/Breakout/include/PhysicsEntity.h",
+		"/home/will/Documents/git/Breakout/include/IEventHandler.h",
+		"/home/will/Documents/git/Breakout/include/Menu.h",
 		"/home/will/.config/sublime-text-3/Packages/Default/Default (Linux).sublime-keymap",
 		"/home/will/.config/sublime-text-3/Packages/User/Default (Linux).sublime-keymap",
 		"/home/will/Documents/git/Breakout/src/AudioOptionsMenu.cpp",
@@ -778,7 +713,6 @@
 		"/home/will/Documents/git/Breakout/include/Globals.h",
 		"/home/will/Documents/git/Breakout/src/Globals.cpp",
 		"/home/will/Documents/git/Breakout/src/main.cpp",
-		"/home/will/Documents/git/Breakout/include/GameManager.h",
 		"/home/will/Documents/git/Breakout/include/SimpleIni.h",
 		"/home/will/Documents/git/Breakout/breakout.ini",
 		"/home/will/Documents/git/Breakout/include/MainMenu.h",
@@ -791,7 +725,6 @@
 		"/home/will/Documents/git/Breakout/include/OptionsMenu.h",
 		"/home/will/Documents/git/Breakout/src/MainMenu.cpp",
 		"/home/will/Documents/git/Breakout/include/AssetFactory.h",
-		"/home/will/Documents/git/Breakout/.tags",
 		"/home/will/.config/sublime-text-3/Packages/CTags/CTags.sublime-settings",
 		"/home/will/.config/sublime-text-3/Packages/User/CTags.sublime-settings",
 		"/home/will/Documents/git/Breakout/include/PauseMenuManager.h",
@@ -804,9 +737,7 @@
 		"/home/will/Documents/git/Breakout/include/StateMachine.h",
 		"/home/will/Documents/git/Breakout/include/Effects.h",
 		"/home/will/Documents/git/Breakout/src/Effects.cpp",
-		"/home/will/Documents/git/Breakout/Makefile",
 		"/home/will/Documents/git/Breakout/src/Sound.cpp",
-		"/home/will/Documents/git/Breakout/include/ProgramManager.h",
 		"/home/will/Documents/git/Breakout/include/Sound.h",
 		"/home/will/Documents/git/Breakout/src/StateMachine.cpp",
 		"/home/will/Documents/git/Breakout/include/TextureFactory.h",
@@ -820,7 +751,6 @@
 		"/home/will/.config/sublime-text-3/Packages/User/Default (Linux).sublime-mousemap",
 		"/usr/local/bin/colormake",
 		"/usr/local/bin/testcolormake.sh",
-		"/home/will/Documents/git/Breakout/build/Ball.d",
 		"/home/will/Documents/git/Breakout/src/GameManager.h",
 		"/home/will/Documents/git/Breakout/src/Ball.h",
 		"/home/will/Documents/git/Breakout/src/Paddle.h",
@@ -833,37 +763,7 @@
 		"/home/will/Documents/git/Breakout/src/UIEntity.c",
 		"/home/will/Documents/git/Breakout/src/PhysicsEntity.c",
 		"/home/will/Documents/git/Breakout/src/Globals.h",
-		"/home/will/Documents/git/Breakout/.gitignore",
-		"/home/will/Documents/breakout/src/Paddle.cpp",
-		"/home/will/Documents/breakout/src/Paddle.h",
-		"/home/will/Documents/breakout/src/Entity.cpp",
-		"/home/will/Documents/breakout/src/Ball.cpp",
-		"/home/will/Documents/breakout/src/Entity.h",
-		"/home/will/Documents/SDL Tutorial/09_the_viewport_SDL.cpp",
-		"/home/will/Documents/breakout/src/IEventHandler.h",
-		"/home/will/Documents/breakout/src/Block.cpp",
-		"/home/will/Documents/breakout/src/Block.h",
-		"/home/will/Documents/breakout/src/Ball.h",
-		"/home/will/Documents/breakout/src/EventManager.cpp",
-		"/home/will/Documents/breakout/src/EventManager.h",
-		"/home/will/Documents/breakout/src/GameManager.cpp",
-		"/home/will/Documents/breakout/src/GameManager.h",
-		"/home/will/Documents/breakout/src/Globals.h",
-		"/home/will/Documents/breakout/src/main.cpp",
-		"/home/will/Documents/breakout/Makefile",
-		"/home/will/Documents/breakout/breakout",
-		"/home/will/Documents/SDL Tutorial/11_clip_rendering_and_sprite_sheets/LTexture.h",
-		"/home/will/Documents/SDL Tutorial/11_clip_rendering_and_sprite_sheets/LTexture.cpp",
-		"/home/will/Documents/SDL Tutorial/11_clip_rendering_and_sprite_sheets/11_clip_rendering_and_sprite_sheets_SDL.cpp",
-		"/home/will/Documents/SDL Tutorial/10_color_keying/Makefile",
-		"/home/will/Documents/SDL Tutorial/Makefile",
-		"/home/will/Documents/SDL Tutorial/10_color_keying/LTexture.cpp",
-		"/home/will/Documents/SDL Tutorial/10_color_keying/LTexture.h",
-		"/home/will/Documents/SDL Tutorial/10_color_keying/10_color_keying_SDL.cpp",
-		"/home/will/Documents/SDL Tutorial/08_geometry_rendering_SDL.cpp",
-		"/home/will/Documents/SDL Tutorial/06_extension_libraries_and_loading_other_image_formats_SDL.cpp",
-		"/usr/include/SDL2/SDL_render.h",
-		"/home/will/.config/sublime-text-3/Packages/User/PlainTasks.sublime-settings"
+		"/home/will/Documents/git/Breakout/.gitignore"
 	],
 	"find":
 	{
@@ -885,6 +785,13 @@
 		"case_sensitive": true,
 		"find_history":
 		[
+			"r",
+			"ESC",
+			"getVelocity",
+			"BLOCK_DISAPPEARED",
+			"NEW_GAME",
+			"IEventHandler",
+			"PhysicsEntity",
 			"cout",
 			"velX",
 			"updateVelocityWithAngle",
@@ -1005,14 +912,7 @@
 			"delegate",
 			"\\",
 			"Delegate",
-			"gameWon()",
-			"collidedObject",
-			"resolveCollision",
-			"clone",
-			"Clone",
-			"delegate->",
-			"handleGameEvents(Uint8* events);",
-			"handleGameEvents(int event);"
+			"gameWon()"
 		],
 		"highlight": true,
 		"in_selection": false,
@@ -1020,6 +920,8 @@
 		"regex": false,
 		"replace_history":
 		[
+			"IGameEventHandler",
+			"GameEntity",
 			"this->rect.h",
 			"this->rect.w",
 			"this->rect.y",
@@ -1090,489 +992,109 @@
 		"reverse": false,
 		"show_context": true,
 		"use_buffer2": true,
-		"whole_word": false,
+		"whole_word": true,
 		"wrap": true
 	},
 	"groups":
 	[
 		{
-			"selected": 9,
+			"selected": 0,
 			"sheets":
 			[
 				{
 					"buffer": 0,
-					"file": "src/Ball.cpp",
-					"semi_transient": false,
-					"settings":
-					{
-						"buffer_size": 6915,
-						"regions":
-						{
-						},
-						"selection":
-						[
-							[
-								3241,
-								3241
-							]
-						],
-						"settings":
-						{
-							"sorttabs_lastactivated": 1468589978.34,
-							"syntax": "Packages/C++/C++.sublime-syntax",
-							"translate_tabs_to_spaces": false
-						},
-						"translation.x": 0.0,
-						"translation.y": 1596.0,
-						"zoom_level": 1.0
-					},
-					"stack_index": 2,
-					"type": "text"
-				},
-				{
-					"buffer": 1,
-					"file": "include/Ball.h",
-					"semi_transient": false,
-					"settings":
-					{
-						"buffer_size": 968,
-						"regions":
-						{
-						},
-						"selection":
-						[
-							[
-								819,
-								819
-							]
-						],
-						"settings":
-						{
-							"sorttabs_lastactivated": 1468586647.6,
-							"syntax": "Packages/C++/C++.sublime-syntax",
-							"translate_tabs_to_spaces": false
-						},
-						"translation.x": 0.0,
-						"translation.y": 45.0,
-						"zoom_level": 1.0
-					},
-					"stack_index": 4,
-					"type": "text"
-				},
-				{
-					"buffer": 2,
 					"file": "src/BallsIndicator.cpp",
 					"semi_transient": false,
 					"settings":
 					{
-						"buffer_size": 1283,
+						"buffer_size": 1215,
 						"regions":
 						{
 						},
 						"selection":
 						[
 							[
-								962,
-								962
+								606,
+								606
 							]
 						],
 						"settings":
 						{
-							"sorttabs_lastactivated": 1468562741.93,
+							"sorttabs_lastactivated": 1468647065.56,
 							"syntax": "Packages/C++/C++.sublime-syntax",
 							"translate_tabs_to_spaces": false
 						},
-						"translation.x": 0.0,
-						"translation.y": 399.0,
-						"zoom_level": 1.0
-					},
-					"stack_index": 10,
-					"type": "text"
-				},
-				{
-					"buffer": 3,
-					"file": "include/BallsIndicator.h",
-					"semi_transient": false,
-					"settings":
-					{
-						"buffer_size": 606,
-						"regions":
-						{
-						},
-						"selection":
-						[
-							[
-								241,
-								241
-							]
-						],
-						"settings":
-						{
-							"sorttabs_lastactivated": 1468562128.14,
-							"syntax": "Packages/C++/C++.sublime-syntax",
-							"translate_tabs_to_spaces": false
-						},
-						"translation.x": 0.0,
+						"translation.x": -0.0,
 						"translation.y": 0.0,
-						"zoom_level": 1.0
-					},
-					"stack_index": 13,
-					"type": "text"
-				},
-				{
-					"buffer": 4,
-					"file": "src/Button.cpp",
-					"semi_transient": false,
-					"settings":
-					{
-						"buffer_size": 1177,
-						"regions":
-						{
-						},
-						"selection":
-						[
-							[
-								73,
-								73
-							]
-						],
-						"settings":
-						{
-							"sorttabs_lastactivated": 1468561481.02,
-							"syntax": "Packages/C++/C++.sublime-syntax",
-							"translate_tabs_to_spaces": false
-						},
-						"translation.x": 0.0,
-						"translation.y": 0.0,
-						"zoom_level": 1.0
-					},
-					"stack_index": 14,
-					"type": "text"
-				},
-				{
-					"buffer": 5,
-					"file": "include/Button.h",
-					"semi_transient": false,
-					"settings":
-					{
-						"buffer_size": 739,
-						"regions":
-						{
-						},
-						"selection":
-						[
-							[
-								0,
-								0
-							]
-						],
-						"settings":
-						{
-							"sorttabs_lastactivated": 1468560998.36,
-							"syntax": "Packages/C++/C++.sublime-syntax",
-							"translate_tabs_to_spaces": false
-						},
-						"translation.x": 0.0,
-						"translation.y": 0.0,
-						"zoom_level": 1.0
-					},
-					"stack_index": 15,
-					"type": "text"
-				},
-				{
-					"buffer": 6,
-					"file": "src/Entity.cpp",
-					"semi_transient": false,
-					"settings":
-					{
-						"buffer_size": 1167,
-						"regions":
-						{
-						},
-						"selection":
-						[
-							[
-								653,
-								653
-							]
-						],
-						"settings":
-						{
-							"sorttabs_lastactivated": 1468589443.58,
-							"syntax": "Packages/C++/C++.sublime-syntax",
-							"translate_tabs_to_spaces": false
-						},
-						"translation.x": 0.0,
-						"translation.y": 179.0,
-						"zoom_level": 1.0
-					},
-					"stack_index": 3,
-					"type": "text"
-				},
-				{
-					"buffer": 7,
-					"file": "include/Entity.h",
-					"semi_transient": false,
-					"settings":
-					{
-						"buffer_size": 778,
-						"regions":
-						{
-						},
-						"selection":
-						[
-							[
-								291,
-								291
-							]
-						],
-						"settings":
-						{
-							"sorttabs_lastactivated": 1468562997.16,
-							"syntax": "Packages/C++/C++.sublime-syntax",
-							"translate_tabs_to_spaces": false
-						},
-						"translation.x": 0.0,
-						"translation.y": 0.0,
-						"zoom_level": 1.0
-					},
-					"stack_index": 7,
-					"type": "text"
-				},
-				{
-					"buffer": 8,
-					"file": "src/GameManager.cpp",
-					"semi_transient": false,
-					"settings":
-					{
-						"buffer_size": 5247,
-						"regions":
-						{
-						},
-						"selection":
-						[
-							[
-								2581,
-								2581
-							]
-						],
-						"settings":
-						{
-							"sorttabs_lastactivated": 1468590953.13,
-							"syntax": "Packages/C++/C++.sublime-syntax",
-							"translate_tabs_to_spaces": false
-						},
-						"translation.x": 0.0,
-						"translation.y": 1539.0,
-						"zoom_level": 1.0
-					},
-					"stack_index": 1,
-					"type": "text"
-				},
-				{
-					"buffer": 9,
-					"file": "src/Label.cpp",
-					"semi_transient": false,
-					"settings":
-					{
-						"buffer_size": 874,
-						"regions":
-						{
-						},
-						"selection":
-						[
-							[
-								0,
-								0
-							]
-						],
-						"settings":
-						{
-							"sorttabs_lastactivated": 1468590962.32,
-							"syntax": "Packages/C++/C++.sublime-syntax"
-						},
-						"translation.x": 0.0,
-						"translation.y": 171.0,
 						"zoom_level": 1.0
 					},
 					"stack_index": 0,
 					"type": "text"
 				},
 				{
-					"buffer": 10,
-					"file": "src/Menu.cpp",
-					"semi_transient": false,
-					"settings":
-					{
-						"buffer_size": 2284,
-						"regions":
-						{
-						},
-						"selection":
-						[
-							[
-								819,
-								819
-							]
-						],
-						"settings":
-						{
-							"sorttabs_lastactivated": 1468562991.94,
-							"syntax": "Packages/C++/C++.sublime-syntax",
-							"translate_tabs_to_spaces": false
-						},
-						"translation.x": 0.0,
-						"translation.y": 171.0,
-						"zoom_level": 1.0
-					},
-					"stack_index": 8,
-					"type": "text"
-				},
-				{
-					"buffer": 11,
-					"file": "src/MenuEntity.cpp",
-					"semi_transient": false,
-					"settings":
-					{
-						"buffer_size": 148,
-						"regions":
-						{
-						},
-						"selection":
-						[
-							[
-								146,
-								146
-							]
-						],
-						"settings":
-						{
-							"sorttabs_lastactivated": 1468562955.41,
-							"syntax": "Packages/C++/C++.sublime-syntax"
-						},
-						"translation.x": 0.0,
-						"translation.y": 0.0,
-						"zoom_level": 1.0
-					},
-					"stack_index": 9,
-					"type": "text"
-				},
-				{
-					"buffer": 12,
-					"file": "include/MenuEntity.h",
-					"semi_transient": false,
-					"settings":
-					{
-						"buffer_size": 288,
-						"regions":
-						{
-						},
-						"selection":
-						[
-							[
-								215,
-								215
-							]
-						],
-						"settings":
-						{
-							"sorttabs_lastactivated": 1468565676.88,
-							"syntax": "Packages/C++/C++.sublime-syntax"
-						},
-						"translation.x": 0.0,
-						"translation.y": 0.0,
-						"zoom_level": 1.0
-					},
-					"stack_index": 6,
-					"type": "text"
-				},
-				{
-					"buffer": 13,
+					"buffer": 1,
 					"file": "src/Paddle.cpp",
-					"semi_transient": false,
+					"semi_transient": true,
 					"settings":
 					{
-						"buffer_size": 2451,
+						"buffer_size": 1823,
 						"regions":
 						{
 						},
 						"selection":
 						[
 							[
-								465,
-								465
+								331,
+								331
 							]
 						],
 						"settings":
 						{
-							"sorttabs_lastactivated": 1468562529.65,
+							"sorttabs_lastactivated": 1468646569.68,
 							"syntax": "Packages/C++/C++.sublime-syntax",
 							"translate_tabs_to_spaces": false
-						},
-						"translation.x": 0.0,
-						"translation.y": 1368.0,
-						"zoom_level": 1.0
-					},
-					"stack_index": 12,
-					"type": "text"
-				},
-				{
-					"buffer": 14,
-					"file": "include/Paddle.h",
-					"semi_transient": false,
-					"settings":
-					{
-						"buffer_size": 924,
-						"regions":
-						{
-						},
-						"selection":
-						[
-							[
-								865,
-								865
-							]
-						],
-						"settings":
-						{
-							"sorttabs_lastactivated": 1468562562.28,
-							"syntax": "Packages/C++/C++.sublime-syntax",
-							"translate_tabs_to_spaces": false
-						},
-						"translation.x": 0.0,
-						"translation.y": 114.0,
-						"zoom_level": 1.0
-					},
-					"stack_index": 11,
-					"type": "text"
-				},
-				{
-					"buffer": 15,
-					"file": "include/PhysicsEntity.h",
-					"semi_transient": false,
-					"settings":
-					{
-						"buffer_size": 419,
-						"regions":
-						{
-						},
-						"selection":
-						[
-							[
-								377,
-								377
-							]
-						],
-						"settings":
-						{
-							"sorttabs_lastactivated": 1468565682.1,
-							"syntax": "Packages/C++/C++.sublime-syntax"
 						},
 						"translation.x": 0.0,
 						"translation.y": 0.0,
 						"zoom_level": 1.0
 					},
-					"stack_index": 5,
+					"stack_index": 2,
+					"type": "text"
+				}
+			]
+		},
+		{
+			"selected": 0,
+			"sheets":
+			[
+				{
+					"buffer": 2,
+					"file": "include/BallsIndicator.h",
+					"semi_transient": false,
+					"settings":
+					{
+						"buffer_size": 535,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								341,
+								341
+							]
+						],
+						"settings":
+						{
+							"sorttabs_lastactivated": 1468646625.44,
+							"syntax": "Packages/C++/C++.sublime-syntax",
+							"translate_tabs_to_spaces": false
+						},
+						"translation.x": 0.0,
+						"translation.y": 0.0,
+						"zoom_level": 1.0
+					},
+					"stack_index": 1,
 					"type": "text"
 				}
 			]
@@ -1595,11 +1117,18 @@
 				0,
 				1,
 				1
+			],
+			[
+				1,
+				0,
+				2,
+				1
 			]
 		],
 		"cols":
 		[
 			0.0,
+			0.5,
 			1.0
 		],
 		"rows":
@@ -1635,20 +1164,156 @@
 		"selected_items":
 		[
 			[
+				"entity.h",
+				"Breakout/include/Entity.h"
+			],
+			[
+				"menuentity.cpp",
+				"Breakout/src/MenuEntity.cpp"
+			],
+			[
+				"menuentity.h",
+				"Breakout/include/MenuEntity.h"
+			],
+			[
+				"button.h",
+				"Breakout/include/Button.h"
+			],
+			[
+				"button.cpp",
+				"Breakout/src/Button.cpp"
+			],
+			[
+				"even",
+				"Breakout/src/EventManager.cpp"
+			],
+			[
+				"program",
+				"Breakout/include/ProgramManager.h"
+			],
+			[
+				"eventmanager.cpp",
+				"Breakout/src/EventManager.cpp"
+			],
+			[
+				"makefile",
+				"Breakout/Makefile"
+			],
+			[
+				"ball.cpp",
+				"Breakout/src/Ball.cpp"
+			],
+			[
+				"menuentity",
+				"Breakout/src/MenuEntity.cpp"
+			],
+			[
+				"gamee",
+				"Breakout/include/IGameEventHandler.h"
+			],
+			[
+				"paddle.h",
+				"Breakout/include/Paddle.h"
+			],
+			[
+				"gameentity.cpp",
+				"Breakout/src/GameEntity.cpp"
+			],
+			[
+				"gameentity.h",
+				"Breakout/include/GameEntity.h"
+			],
+			[
+				"block.cpp",
+				"Breakout/src/Block.cpp"
+			],
+			[
+				"",
+				"Breakout/include/Paddle.h"
+			],
+			[
+				"pad",
+				"Breakout/src/Paddle.cpp"
+			],
+			[
+				"p",
+				"Breakout/include/Paddle.h"
+			],
+			[
+				"game",
+				"Breakout/src/GameEntity.cpp"
+			],
+			[
+				"paddle.cpp",
+				"Breakout/src/Paddle.cpp"
+			],
+			[
+				"block.h",
+				"Breakout/include/Block.h"
+			],
+			[
+				"ball.h",
+				"Breakout/include/Ball.h"
+			],
+			[
+				"ui",
+				"Breakout/include/UIEntity.h"
+			],
+			[
+				"gameen",
+				"Breakout/src/GameEntity.cpp"
+			],
+			[
+				"menumanager.h",
+				"Breakout/include/MenuManager.h"
+			],
+			[
+				"eventmanager.h",
+				"Breakout/include/EventManager.h"
+			],
+			[
+				"menum",
+				"Breakout/include/MenuManager.h"
+			],
+			[
+				"menumanager.cpp",
+				"Breakout/src/MenuManager.cpp"
+			],
+			[
+				"gamemanager",
+				"Breakout/src/GameManager.cpp"
+			],
+			[
+				"gamemaanger",
+				"Breakout/include/GameManager.h"
+			],
+			[
+				"balls",
+				"Breakout/src/BallsIndicator.cpp"
+			],
+			[
+				"ballsindi",
+				"Breakout/include/BallsIndicator.h"
+			],
+			[
+				"paddle",
+				"Breakout/include/Paddle.h"
+			],
+			[
+				"eventmana",
+				"Breakout/include/EventManager.h"
+			],
+			[
+				"eventmanager",
+				"Breakout/src/EventManager.cpp"
+			],
+			[
 				"label.c",
 				"Breakout/src/Label.cpp"
 			],
 			[
 				"gamemanager.cpp",
 				"Breakout/src/GameManager.cpp"
-			],
-			[
-				"",
-				"Breakout/src/Ball.cpp"
-			],
-			[
-				"paddle.h",
-				"Breakout/include/Paddle.h"
 			],
 			[
 				"physics",
@@ -1659,18 +1324,6 @@
 				"Breakout/src/BallsIndicator.cpp"
 			],
 			[
-				"entity.h",
-				"Breakout/include/Entity.h"
-			],
-			[
-				"menuentity",
-				"Breakout/src/MenuEntity.cpp"
-			],
-			[
-				"button.h",
-				"Breakout/include/Button.h"
-			],
-			[
 				"entity.cpp",
 				"Breakout/src/Entity.cpp"
 			],
@@ -1679,16 +1332,8 @@
 				"Breakout/src/Menu.cpp"
 			],
 			[
-				"block.cpp",
-				"Breakout/src/Block.cpp"
-			],
-			[
 				"collider",
 				"Breakout/src/Collider.cpp"
-			],
-			[
-				"balls",
-				"Breakout/src/BallsIndicator.cpp"
 			],
 			[
 				"uien",
@@ -1703,32 +1348,12 @@
 				"Breakout/src/Label.cpp"
 			],
 			[
-				"ball.cpp",
-				"Breakout/src/Ball.cpp"
-			],
-			[
-				"button.cpp",
-				"Breakout/src/Button.cpp"
-			],
-			[
 				"ballsind",
 				"Breakout/src/BallsIndicator.cpp"
 			],
 			[
 				"entity",
 				"Breakout/include/Entity.h"
-			],
-			[
-				"block.h",
-				"Breakout/include/Block.h"
-			],
-			[
-				"ball.h",
-				"Breakout/include/Ball.h"
-			],
-			[
-				"gamemanager",
-				"Breakout/src/GameManager.cpp"
 			],
 			[
 				"ballsin",
@@ -1739,24 +1364,8 @@
 				"Breakout/src/Label.cpp"
 			],
 			[
-				"paddle.cpp",
-				"Breakout/src/Paddle.cpp"
-			],
-			[
-				"menumanager.cpp",
-				"Breakout/src/MenuManager.cpp"
-			],
-			[
-				"program",
-				"Breakout/src/ProgramManager.cpp"
-			],
-			[
 				"label.h",
 				"Breakout/include/Label.h"
-			],
-			[
-				"menumanager.h",
-				"Breakout/include/MenuManager.h"
 			],
 			[
 				"menumanager",
@@ -1831,10 +1440,6 @@
 				"include/ProgramManager.h"
 			],
 			[
-				"game",
-				"include/GameManager.h"
-			],
-			[
 				"padd",
 				"src/Paddle.cpp"
 			],
@@ -1889,10 +1494,6 @@
 			[
 				"eve",
 				"src/EventManager.cpp"
-			],
-			[
-				"p",
-				"src/Paddle.cpp"
 			]
 		],
 		"width": 0.0

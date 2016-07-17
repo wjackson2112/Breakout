@@ -32,7 +32,12 @@ void MenuManager::render(SDL_Renderer* gRenderer)
 
 void MenuManager::update(int frameTime)
 {
+	Menu* activeMenu = this->peekMenu();
 
+	if(activeMenu)
+	{
+		activeMenu->update(frameTime);
+	}
 }
 
 char* MenuManager::type()

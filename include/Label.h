@@ -1,12 +1,7 @@
 #ifndef LABEL_H
 #define LABEL_H
 
-#include <SDL2/SDL.h>
-#include <SDL2/SDL_ttf.h>
-#include <string>
 #include "MenuEntity.h"
-#include "EventManager.h"
-#include "AssetFactory.h"
 
 class Label : public MenuEntity
 {

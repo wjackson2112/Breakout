@@ -4,6 +4,7 @@
 #include <vector>
 #include "Button.h"
 #include "Label.h"
+#include "Slider.h"
 #include "AssetFactory.h"
 #include "EventManager.h"
 
@@ -22,6 +23,7 @@ public:
 	void handleMouseDrag(int mouseButton, int prevX, int prevY, int currX, int currY);
 	void handleMouseRelease(int mouseButton, int x, int y);
 	void render(SDL_Renderer *gRenderer);
+	void update(int frameTime);
 };
 
 #endif
