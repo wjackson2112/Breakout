@@ -1,9 +1,10 @@
 #include "MenuManager.h"
 
-MenuManager::MenuManager(AssetFactory* assetFactory)
+MenuManager::MenuManager(AssetFactory* assetFactory, Options* options)
 {
 	visible = true;
 	this->assetFactory = assetFactory;
+	this->options = options;
 
 	this->pushMenu(MAIN_MENU);
 
@@ -136,7 +137,7 @@ void MenuManager::pushMenu(MenuType menuType)
 			newMenu = new OptionsMenu(this->assetFactory);
 			break;
 		case AUDIO_OPTIONS_MENU:
-			newMenu = new AudioOptionsMenu(this->assetFactory);
+			newMenu = new AudioOptionsMenu(this->assetFactory, this->options);
 			break;
 		case VIDEO_OPTIONS_MENU:
 			newMenu = new VideoOptionsMenu(this->assetFactory);

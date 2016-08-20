@@ -2,8 +2,9 @@
 
 using namespace std;
 
-AssetFactory::AssetFactory(SDL_Renderer* gRenderer){
+AssetFactory::AssetFactory(SDL_Renderer* gRenderer, Options* options){
 	this->gRenderer = gRenderer;
+	this->options = options;
 }
 
 AssetFactory::~AssetFactory(){
@@ -72,7 +73,7 @@ Sound* AssetFactory::getAsset<Sound>(string key){
 		return it->second;
 	}
 
-	sound = new Sound(key);
+	sound = new Sound(key, this->options);
 
 	sounds.insert(make_pair(key, sound));
 	return sound;

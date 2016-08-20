@@ -18,6 +18,7 @@
 #include "OptionsMenu.h"
 #include "AudioOptionsMenu.h"
 #include "VideoOptionsMenu.h"
+#include "Options.h"
 
 typedef enum
 {
@@ -34,6 +35,7 @@ private:
 	//Menu *mainMenu, *pauseMenu, *optionsMenu;
 	std::vector<Menu*> menuStack;
 	AssetFactory* assetFactory;
+	Options* options;
 	
 	// StateMachine<MenuManagerState>* state;
 	
@@ -50,7 +52,7 @@ private:
 
 	// void stateChanged(MenuManagerState prevState, MenuManagerState currState);
 public:
-	MenuManager(AssetFactory* assetFactory);
+	MenuManager(AssetFactory* assetFactory, Options* options);
 	~MenuManager();
 
 	void render(SDL_Renderer*);

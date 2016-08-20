@@ -3,11 +3,13 @@
 ProgramManager::ProgramManager(SDL_Renderer* gRenderer)
 {
 	this->gRenderer = gRenderer;
-	assetFactory = new AssetFactory(gRenderer);
-	gameManager = new GameManager(this->assetFactory, this->gRenderer);
-	menuManager = new MenuManager(this->assetFactory);
-	machineState = MENU;
-	quit = false;
+	this->options = new Options();
+	this->options->load();
+	this->assetFactory = new AssetFactory(this->gRenderer, this->options);
+	this->gameManager = new GameManager(this->assetFactory, this->gRenderer);
+	this->menuManager = new MenuManager(this->assetFactory, this->options);
+	this->machineState = MENU;
+	this->quit = false;
 
 	EventManager::Instance()->registerGameEventHandler(this);
 	EventManager::Instance()->registerKeyboardEventHandler(this);

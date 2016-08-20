@@ -8,6 +8,7 @@
 #include <SDL2/SDL.h>
 #include <SDL2/SDL_image.h>
 #include "Sound.h"
+#include "Options.h"
 
 #include "SimpleIni.h"
 
@@ -18,8 +19,9 @@ private:
 	unordered_map<string, SDL_Texture*> textures;
 	unordered_map<string, Sound*> sounds;
 	SDL_Renderer* gRenderer;
+	Options* options;
 public: 
-	AssetFactory(SDL_Renderer* gRenderer);
+	AssetFactory(SDL_Renderer* gRenderer, Options* options);
 	~AssetFactory();
 	void printAssets();
 

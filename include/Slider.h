@@ -9,9 +9,11 @@ private:
 	Rect slideRect;
 	SDL_Texture* slideTexture;
 	double slideValue;
+	int* controlledValue;
+	int controlledMin, controlledMax;
 	bool dragging;
 public:
-	Slider(AssetFactory* assetFactory);
+	Slider(AssetFactory* assetFactory, int* value, int min, int max, int paginations);
 
 	void handleMousePress(int mouseState, int x, int y);
 	void handleMouseDrag(int mouseButton, int prevX, int prevY, int currX, int currY);

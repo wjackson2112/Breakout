@@ -1,14 +1,23 @@
 #include "Slider.h"
 
-Slider::Slider(AssetFactory* assetFactory)
+Slider::Slider(AssetFactory* assetFactory, int* value, int min, int max, int paginations)
 	: MenuEntity::MenuEntity("./png/SliderLine.png", assetFactory)
 {
 	int width, height;
+
+	if(paginations != 0)
+	{
+		std::cout << "Pagination not supported yet" << std::endl;
+	}
 
 	this->dragging = false;
 
 	this->slideRect.x = this->rect.x;
 	this->slideRect.y = this->rect.y;
+
+	this->controlledValue = value;
+	this->controlledMin = min;
+	this->controlledMax = max;
 
 	// Load the texture for the slide
 	// NOTE: The texture for the line will be loaded in the Entity constructor
@@ -19,6 +28,8 @@ Slider::Slider(AssetFactory* assetFactory)
 		this->slideRect.w = width;
 		this->slideRect.h = height;
 	}
+
+	this->slideValue = (float) (*this->controlledValue - this->controlledMin)/(float) (this->controlledMax - this->controlledMin);
 }
 
 void Slider::handleMousePress(int mouseState, int x, int y)
@@ -54,6 +65,8 @@ void Slider::handleMouseRelease(int mouseState, int x, int y)
 	{
 		this->dragging = false;
 	}
+
+	*this->controlledValue = ((this->controlledMax - this->controlledMin) * slideValue) + this->controlledMin;
 }
 
 void Slider::update(int frameTime)

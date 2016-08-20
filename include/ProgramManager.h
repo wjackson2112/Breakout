@@ -5,6 +5,7 @@
 #include "GameManager.h"
 #include "MenuManager.h"
 #include "IGameEventHandler.h"
+#include "Options.h"
 #include <iostream>
 
 typedef enum ProgramManagerState
@@ -21,6 +22,7 @@ private:
 	GameManager* gameManager;
 	MenuManager* menuManager;
 	AssetFactory* assetFactory;
+	Options* options;
 	bool quit;
 public:
 	ProgramManager(SDL_Renderer* gRenderer);
