@@ -7,11 +7,15 @@
 #include "IMouseEventHandler.h"
 #include "IGameEventHandler.h"
 #include "IKeyboardEventHandler.h"
+#include "Options.h"
 
 class MenuEntity : public Entity, public IMouseEventHandler
 {
+protected:
+	Options* options;
+
 public:
-	MenuEntity(string texture_file, AssetFactory* assetFactory);
+	MenuEntity(string texture_file, AssetFactory* assetFactory, Options* options);
 	virtual ~MenuEntity(){};
 
 	virtual void handleMousePress(int mouseState, int x, int y){};

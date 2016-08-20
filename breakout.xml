@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="utf-8"?>
+<screen>
+	<width>800</width>
+	<height>600</height>
+	<fullScreen>0</fullScreen>
+</screen>
+<sound>
+	<volume>81</volume>
+</sound>
+<asset>
+	<texture>
+		<block>
+			<red>png/RedBlock.png</red>
+			<orange>png/OrangeBlock.png</orange>
+			<yellow>png/YellowBlock.png</yellow>
+			<green>png/GreenBlock.png</green>
+			<blue>png/BlueBlock.png</blue>
+			<purple>png/PurpleBlock.png</purple>
+		</block>
+	</texture>
+</asset>

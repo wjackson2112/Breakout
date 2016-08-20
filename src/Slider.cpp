@@ -1,7 +1,7 @@
 #include "Slider.h"
 
-Slider::Slider(AssetFactory* assetFactory, int* value, int min, int max, int paginations)
-	: MenuEntity::MenuEntity("./png/SliderLine.png", assetFactory)
+Slider::Slider(AssetFactory* assetFactory, Options* options, string optionPath, int min, int max, int paginations)
+	: MenuEntity::MenuEntity("./png/SliderLine.png", assetFactory, options)
 {
 	int width, height;
 
@@ -15,7 +15,8 @@ Slider::Slider(AssetFactory* assetFactory, int* value, int min, int max, int pag
 	this->slideRect.x = this->rect.x;
 	this->slideRect.y = this->rect.y;
 
-	this->controlledValue = value;
+	this->optionPath = optionPath;
+	this->controlledValue = std::stoi(options->getValue(optionPath));
 	this->controlledMin = min;
 	this->controlledMax = max;
 
@@ -29,7 +30,7 @@ Slider::Slider(AssetFactory* assetFactory, int* value, int min, int max, int pag
 		this->slideRect.h = height;
 	}
 
-	this->slideValue = (float) (*this->controlledValue - this->controlledMin)/(float) (this->controlledMax - this->controlledMin);
+	this->slideValue = (float) (this->controlledValue - this->controlledMin)/(float) (this->controlledMax - this->controlledMin);
 }
 
 void Slider::handleMousePress(int mouseState, int x, int y)
@@ -66,7 +67,8 @@ void Slider::handleMouseRelease(int mouseState, int x, int y)
 		this->dragging = false;
 	}
 
-	*this->controlledValue = ((this->controlledMax - this->controlledMin) * slideValue) + this->controlledMin;
+	this->controlledValue = ((this->controlledMax - this->controlledMin) * slideValue) + this->controlledMin;
+	options->setValue(optionPath, std::to_string(this->controlledValue));
 }
 
 void Slider::update(int frameTime)

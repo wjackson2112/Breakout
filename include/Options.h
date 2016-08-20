@@ -2,28 +2,21 @@
 #define OPTIONS_H
 
 #include <iostream>
+#include <boost/property_tree/ptree.hpp>
+#include <string>
 
-typedef struct SliderOption_t
-{
-	int min;
-	int max;
-	int value;
-} SliderOption;
-
-typedef struct Audio_t
-{
-	SliderOption masterVolume;
-	SliderOption musicVolume;
-	SliderOption sfxVolume;
-} Audio;
+using boost::property_tree::ptree;
+using std::string;
 
 class Options
 {
+	ptree pt;
 public:
-	Audio audio;
+	void write();
+	void read();
 
-	void save();
-	void load();
+	string getValue(string path);
+	void   setValue(string path, string value);
 };
 
 #endif

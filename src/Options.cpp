@@ -1,14 +1,24 @@
 #include "Options.h"
+#include <boost/property_tree/xml_parser.hpp>
+#include <boost/property_tree/detail/xml_parser_writer_settings.hpp>
 
-void Options::save()
+void Options::write()
 {
-	//TODO: Actually save out some options
-	std::cout << "Saving Options" << std::endl;
+	write_xml("breakout.xml", pt, std::locale(), 
+		boost::property_tree::xml_parser::xml_writer_make_settings('\t', 1));
 }
 
-void Options::load()
+void Options::read()
 {
-	//TOOD: Actually load up some options
-	std::cout << "Loading Options" << std::endl;
-	this->audio.masterVolume.value = 100;
+	read_xml("breakout.xml", pt, boost::property_tree::xml_parser::trim_whitespace);
+}
+
+string Options::getValue(string path)
+{
+	return pt.get<std::string>(path);
+}
+
+void Options::setValue(string path, string value)
+{
+	pt.put(path, value);
 }

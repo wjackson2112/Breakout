@@ -4,7 +4,7 @@ ProgramManager::ProgramManager(SDL_Renderer* gRenderer)
 {
 	this->gRenderer = gRenderer;
 	this->options = new Options();
-	this->options->load();
+	this->options->read();
 	this->assetFactory = new AssetFactory(this->gRenderer, this->options);
 	this->gameManager = new GameManager(this->assetFactory, this->gRenderer);
 	this->menuManager = new MenuManager(this->assetFactory, this->options);

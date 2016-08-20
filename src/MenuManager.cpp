@@ -117,7 +117,8 @@ void MenuManager::handleGameEvents(const Uint8* events)
 
 	if(events[BACK])
 	{
-		this->popMenu();
+		options->write();
+		popMenu();
 	}
 }
 
@@ -128,25 +129,25 @@ void MenuManager::pushMenu(MenuType menuType)
 	switch(menuType)
 	{
 		case MAIN_MENU:
-			newMenu = new MainMenu(this->assetFactory);
+			newMenu = new MainMenu(this->assetFactory, this->options);
 			break;
 		case PAUSE_MENU:
-			newMenu = new PauseMenu(this->assetFactory);
+			newMenu = new PauseMenu(this->assetFactory, this->options);
 			break;
 		case OPTIONS_MENU:
-			newMenu = new OptionsMenu(this->assetFactory);
+			newMenu = new OptionsMenu(this->assetFactory, this->options);
 			break;
 		case AUDIO_OPTIONS_MENU:
 			newMenu = new AudioOptionsMenu(this->assetFactory, this->options);
 			break;
 		case VIDEO_OPTIONS_MENU:
-			newMenu = new VideoOptionsMenu(this->assetFactory);
+			newMenu = new VideoOptionsMenu(this->assetFactory, this->options);
 			break;
 	}
 
 	if(this->menuStack.size() >= 1)
 	{
-		newMenu->add_floating_menu_item(new Button("./png/Back.png", assetFactory, BACK), 25, 25);
+		newMenu->add_floating_menu_item(new Button("./png/Back.png", assetFactory, options, BACK), 25, 25);
 	}
 
 	this->menuStack.push_back(newMenu);

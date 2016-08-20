@@ -1,7 +1,7 @@
 #include "Label.h"
 
-Label::Label(string texture_file, AssetFactory* assetFactory)
-	: MenuEntity::MenuEntity(texture_file, assetFactory)
+Label::Label(string texture_file, AssetFactory* assetFactory, Options* options)
+	: MenuEntity::MenuEntity(texture_file, assetFactory, options)
 {
 
 }

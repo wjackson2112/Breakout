@@ -9,8 +9,8 @@
 #define COL_WIDTH 250
 #define COL_PADDING 25
 
-VideoOptionsMenu::VideoOptionsMenu(AssetFactory* assetFactory)
-	: Menu(X_OFFSET, Y_OFFSET, NUM_ROWS, ROW_HEIGHT, ROW_PADDING, NUM_COLS, COL_WIDTH, COL_PADDING, assetFactory)
+VideoOptionsMenu::VideoOptionsMenu(AssetFactory* assetFactory, Options* options)
+	: Menu(X_OFFSET, Y_OFFSET, NUM_ROWS, ROW_HEIGHT, ROW_PADDING, NUM_COLS, COL_WIDTH, COL_PADDING)
 {
 
 }

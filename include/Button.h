@@ -7,6 +7,7 @@
 #include "MenuEntity.h"
 #include "EventManager.h"
 #include "AssetFactory.h"
+#include "Options.h"
 
 class Button : public MenuEntity, public IMouseEventHandler
 {
@@ -14,7 +15,7 @@ private:
 	GameEvent event;
 	bool lastState = false;
 public:
-	Button(string texture_file, AssetFactory* assetFactory, GameEvent event);
+	Button(string texture_file, AssetFactory* assetFactory, Options* options, GameEvent event);
 
 	void handleMousePress(int mouseState, int x, int y){};
 	void handleMouseDrag(int mouseButton, int prevX, int prevY, int currX, int currY){};

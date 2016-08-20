@@ -2,11 +2,13 @@
 #define VIDEO_OPTIONS_MENU_H
 
 #include "Menu.h"
+#include "AssetFactory.h"
+#include "Options.h"
 
 class VideoOptionsMenu : public Menu
 {
 public:
-	VideoOptionsMenu(AssetFactory* assetFactory);
+	VideoOptionsMenu(AssetFactory* assetFactory, Options* options);
 };
 
 #endif

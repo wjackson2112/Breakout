@@ -9,10 +9,10 @@
 #define COL_WIDTH 250
 #define COL_PADDING 25
 
-MainMenu::MainMenu(AssetFactory* assetFactory)
-	: Menu(X_OFFSET, Y_OFFSET, NUM_ROWS, ROW_HEIGHT, ROW_PADDING, NUM_COLS, COL_WIDTH, COL_PADDING, assetFactory)
+MainMenu::MainMenu(AssetFactory* assetFactory, Options* options)
+	: Menu(X_OFFSET, Y_OFFSET, NUM_ROWS, ROW_HEIGHT, ROW_PADDING, NUM_COLS, COL_WIDTH, COL_PADDING)
 {
-	this->add_menu_item(new Button("./png/NewGame.png", assetFactory, NEW_GAME), 0, 0);
-	this->add_menu_item(new Button("./png/Options.png", assetFactory, OPTIONS), 1, 0);
-	this->add_menu_item(new Button("./png/QuitToDesktop.png", assetFactory, QUIT_PROGRAM), 2, 0);
+	this->add_menu_item(new Button("./png/NewGame.png", assetFactory, options, NEW_GAME), 0, 0);
+	this->add_menu_item(new Button("./png/Options.png", assetFactory, options, OPTIONS), 1, 0);
+	this->add_menu_item(new Button("./png/QuitToDesktop.png", assetFactory, options, QUIT_PROGRAM), 2, 0);
 }

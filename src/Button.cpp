@@ -1,7 +1,7 @@
 #include "Button.h"
 
-Button::Button(string texture_file, AssetFactory* assetFactory, GameEvent event)
-	: MenuEntity::MenuEntity(texture_file, assetFactory)
+Button::Button(string texture_file, AssetFactory* assetFactory, Options* options, GameEvent event)
+	: MenuEntity::MenuEntity(texture_file, assetFactory, options)
 {
 	this->event = event;
 }

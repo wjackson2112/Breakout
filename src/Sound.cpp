@@ -41,7 +41,7 @@ Sound::~Sound()
 void Sound::play()
 {
 	//Apply Master Volume Setting
-	alSourcef(source, AL_GAIN, ((float) this->options->audio.masterVolume.value)/100);
+	alSourcef(source, AL_GAIN, ((float) stof(options->getValue("sound.volume")))/100);
 
 	alSourcePlay(source);
 }
